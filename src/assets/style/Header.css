@@ -9,13 +9,17 @@
     width: 100%;
 }
 .logo{
+    background-image: url('../img//codelearn-logo.png');
+    background-repeat: no-repeat;
     margin-top: 1px;
     width: 180px;
+    height: 60px;
     float: left;
 }
 .List-menu{
     height: 20px;
     width: 1000px;
+    display: inline;
     padding-left: 70px;
     float: left;
     list-style-type: none;

@@ -7,10 +7,10 @@ function header() {
     return (
         <div id="header" >
             <NavLink className="logo" to="/">
-                        <img className="img-logo" src="../codelearn-logo.png" alt="Logo" />
-                    </NavLink>
+                <p id="img-logo" alt="Logo" />
+            </NavLink>
             <ul className="List-menu">
-                
+
                 <li>
                     <NavLink to="/learning" className="a">Học tập</NavLink>
                 </li>
