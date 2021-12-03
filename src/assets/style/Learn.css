@@ -1,0 +1,83 @@
+
+.learnContent{
+    height: auto;  
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.find{
+    background-image: url('../img/background-find-learn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    
+    padding-top: 30px;
+    padding-left: 290px;
+    box-sizing: border-box;
+}
+.find h2{
+    color: white;
+}
+.searchCourse{
+    background-color: white;
+    height: 50px;
+    width: 360px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-top: 12px;
+}
+
+.searchCourse input{
+    float: left;
+    font-size: 20px;
+    width: 290px;
+    box-sizing: border-box;
+    border-style: none;
+    border-color: white;
+}
+.searchCourse input:focus{
+    outline: none;
+}
+.searchCourse p{
+    margin-top: -12px;
+    background-color: white;
+    box-sizing: border-box;
+    float: left;
+    width: 60px;
+    height: 50px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: url('../img/icon-search.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.searchCourse p:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+.mainContent{
+    min-height: 600px;
+    box-sizing: border-box;
+    /* padding-top: 20px; */
+    margin-left: 200px;
+    /* padding-left: 200px; */
+    padding-right: 200px;
+}
+.card{
+    margin-left: 9px;
+    margin-bottom: 15px;
+    width: 22rem;
+    height: 24rem;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 1px 5px 11px 1px #888888;
+}
+.card-img-top{
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 50%;
+}

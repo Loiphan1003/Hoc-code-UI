@@ -6,9 +6,15 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "ace-code-editor": "^1.2.3",
     "react": "^17.0.2",
+    "react-ace": "^9.5.0",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
+    "save": "^2.4.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

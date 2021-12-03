@@ -1,0 +1,185 @@
+.Content{
+    padding-top: 90px;
+}
+.Content-Login{
+    height: 800px;
+}
+
+.Left-side{
+    width: 60%;
+    height: 800px;
+    margin-left: 80px;
+    /* float: left; */
+}
+
+.Right-side{
+    margin-right: 20px;
+    border-radius: 30px;
+    height: 800px;
+    float: right;
+    width: 30%;
+    background-image: url("../src/assets/img/Background.jpg");
+    background-repeat: none;
+    background-size: cover;
+}
+.Login-side{
+    border-radius: 30px;
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    margin-top: 110px;
+    margin-left: 70px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.Login-side h2{
+    color: #000080;
+    font-weight: bold;
+}
+.Input input{
+    width: 350px;
+    height: 60px;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    border-width: 1px;
+}
+.input-email{
+    margin-top: 20px;
+}
+.input-password{
+    margin-top: 20px;
+}
+.Checkbox-Accept{
+    margin-top: 15px;
+    color: black;
+}
+.Checkbox-Accept p{
+    margin-right: 120px;
+    margin-top: 0px;
+    font-size: 15px;
+    font-weight: normal;
+    float: right;
+    color: black;
+    width: auto;
+    height: auto;
+}
+.Checkbox{
+    margin-top: 0;
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+}
+/*Nút đăng ký*/
+.btn-Register{
+    cursor: pointer;
+    border-style: none;
+    /* border-color: blue; */
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: purple;
+    width: 375px;
+    font-size: 20px;
+    height: 50px;
+}
+.btn-Register:hover{
+    background-color: blue;
+}
+.label-2{
+    margin-left: 20%;
+    font-size: 17px;
+    color: black;
+}
+/*Login with another account*/
+.Login-Account{
+    margin-left: 20%;
+}
+.Login-Account div{
+    margin-left: 10px;
+}
+.Microsoft-Account{
+    background-image: url("../src/assets/img/microsoft.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 40px;
+    border-style: groove;
+    border-width: 1px;
+    border-color: #3498DB;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.Microsoft-Account:hover{
+    cursor: pointer;
+    background-image: url("../src/assets/img/microsoft-white.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 40px;
+    border-style: groove;
+    border-width: 1px;
+    background-color: #3498DB;
+    border-color: #3498DB;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.Facebook-Account{
+    float: left;
+    background-image: url("../src/assets/img/facebook-logo.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 50px;
+    border-style: groove;
+    border-width: 1px;
+    border-color: #3F51B5;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+.Facebook-Account:hover{
+    cursor: pointer;
+    float: left;
+    background-image: url("../src/assets/img/facebook-white.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 50px;
+    border-style: groove;
+    border-width: 1px;
+    background-color:#3F51B5;
+    border-color: #3F51B5;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+.Google-Account{
+    float: left;
+    background-image: url("../src/assets/img/google.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 40px;
+    border-style: groove;
+    border-width: 1px;
+    border-color: #E74C3C;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+.Google-Account:hover{
+    cursor: pointer;
+    float: left;
+    background-image: url("../src/assets/img/google-white.png");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 40px;
+    border-style: groove;
+    border-width: 1px;
+    background-color:#E74C3C ;
+    border-color: #E74C3C;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}

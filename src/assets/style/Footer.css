@@ -1,0 +1,86 @@
+.Footer{
+    display: block;
+    /* background-color: green; */
+    box-sizing: border-box;
+    height: 250px;
+    padding-top: 40px;
+    color: #2C31CF;
+    box-sizing: border-box;
+}
+/*******************************/
+.Logo-Footer{
+    margin-left: 110px;
+    width: 580px;
+    float: left;
+    margin-right: 200px;
+}
+.Discription{
+    height: 30px;
+    color: black;
+}
+.SocialNetwork{
+    width: 200px;
+    height: 50px;
+}
+.SocialNetwork p{
+    margin-bottom: 100px;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.Facebook-logo{
+    background-image: url('../img/facebook.png');
+    background-repeat: none;
+    background-size: cover;
+}
+.Twitter-Logo{
+    background-image: url('../img/twitter-squared.png');
+    background-repeat: none;
+    background-size: cover;
+}
+.Instagram-Logo{
+    background-image: url('../img/instagram.png');
+    background-repeat: none;
+    background-size: cover;
+}
+.Youtube-Logo{
+    background-image: url('../img/youtube-squared.png');
+    background-repeat: none;
+    background-size: cover;
+}
+/*******************************/
+.Links{
+    float: left;
+    margin-right: 200px;
+}
+.Links p{
+    font-weight: bold;
+    font-size: 19px;
+}
+.List li{
+    margin-left: -40px;
+    margin-top: 10px;
+    list-style-type: none;
+}
+.List li a{
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+}
+.List li a:hover{
+    text-decoration: underline;
+}
+/*******************************/
+.Information{
+    float: left;
+    margin-right: 200px;
+}
+.Information p{
+    font-weight: bold;
+    font-size: 19px;
+}
+/*******************************/
+.Help p{
+    font-size: 19px;
+    font-weight: bold;
+}

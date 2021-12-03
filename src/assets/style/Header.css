@@ -1,0 +1,57 @@
+#header{
+    background:white;
+    margin-top: 0;
+    height: 70px;
+    padding-left: 150px;
+    padding-top: 10px;
+    font-size: 18px;
+    /* position: fixed; */
+    width: 100%;
+}
+.logo{
+    margin-top: 1px;
+    width: 180px;
+    float: left;
+}
+.List-menu{
+    height: 20px;
+    width: 1000px;
+    padding-left: 70px;
+    float: left;
+    list-style-type: none;
+}
+.List-menu a{
+    padding-left: 20px;
+    text-decoration: none;
+    color: Black;
+    font-size: 18px;
+}
+.button{
+    padding-top: 1%;
+    padding-right: -20px;
+}
+.Login{
+    background-color: white;
+    font-size: 20px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+}
+.Login:hover{
+    color: white;
+    background-color: aqua;
+}
+.Register{
+    padding-left: 5px;
+    background-color: white;
+    font-size: 20px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+}
+.Register:hover{
+    color: white;
+    background-color: red;
+}
