@@ -1,38 +1,36 @@
 #header{
-    background:white;
-    margin-top: 0;
-    height: 70px;
-    padding-left: 150px;
-    padding-top: 10px;
+    /* background:; */
+    height: 100px;
     font-size: 18px;
-    /* position: fixed; */
-    width: 100%;
 }
 .logo{
-    background-image: url('../img/codelearn-logo.png');
-    background-repeat: no-repeat;
-    margin-top: 1px;
+    padding-top: 10px;
     width: 180px;
     height: 60px;
     float: left;
+    margin-left: 70px;
+    box-sizing: border-box;
 }
 .List-menu{
     height: 20px;
-    width: 1000px;
+    width: 800px;
     display: inline;
     padding-left: 70px;
     float: left;
     list-style-type: none;
 }
 .List-menu a{
-    padding-left: 20px;
+    /* padding-left: 20px; */
     text-decoration: none;
     color: Black;
     font-size: 18px;
 }
 .button{
-    padding-top: 1%;
-    padding-right: -20px;
+    /* padding-top: 1%; */
+    width: 200px;
+    height: 60px;
+    display: initial;
+    /* padding-right: -20px; */
 }
 .Login{
     background-color: white;

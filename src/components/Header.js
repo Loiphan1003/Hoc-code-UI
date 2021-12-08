@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../assets/style/Header.css"
+import companyLogo from '../assets/img/codelearn-logo.png'
 
 function header() {
 
     return (
         <div id="header" >
             <NavLink className="logo" to="/">
-                <p id="img-logo" alt="Logo" />
+                <img src={companyLogo} alt="Logo" />
             </NavLink>
             <ul className="List-menu">
 

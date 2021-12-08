@@ -7,6 +7,8 @@ import Home from './Home';
 import Learn from './Learn'
 import CodeUi from './CodeUi';
 import Footer from './components/Footer';
+
+
 function App() {
     return (
         <div>
@@ -14,7 +16,7 @@ function App() {
 
             {/* <Content /> */}
             <Routes>
-                <Route exact path="/" element={<Login />} />
+                <Route exact path="/Hoc-code-UI" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/learning" element={<Learn />} />
                 <Route path="/code" element={<CodeUi />} />
@@ -23,7 +25,7 @@ function App() {
 
             <Footer />
         </div>
-        
     )
 }
+
 export default App

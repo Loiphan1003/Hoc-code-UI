@@ -1,12 +1,14 @@
 import React from "react";
 import "../assets/style/Footer.css"
+import companyLogo from '../assets/img/codelearn-logo.png'
+
 
 function Footer() {
     return (
         <div className="Footer">
 
             <div className="Logo-Footer">
-                <img src="../codelearn-logo.png" alt="Logo" />
+                <img src={companyLogo} alt="Logo" />
                 <p className="Discription">CodeLearn là nền tảng tương tác trực tuyến hỗ trợ người dùng học tập, thực hành, thi đấu và đánh giá kỹ năng lập trình một cách nhanh chóng và chính xác.</p>
                 <div className="SocialNetwork">
                     <a href='/learning' aria-label="Trang facebook">
