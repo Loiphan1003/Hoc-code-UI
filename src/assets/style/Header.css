@@ -26,10 +26,11 @@
     font-size: 18px;
 }
 .button{
-    /* padding-top: 1%; */
+    margin-top: 20px;
+    /* margin-bottom: auto; */
     width: 200px;
-    height: 60px;
-    display: initial;
+    height: 50px;
+    float: left;
     /* padding-right: -20px; */
 }
 .Login{
