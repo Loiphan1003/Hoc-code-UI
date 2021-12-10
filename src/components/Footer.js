@@ -1,7 +1,11 @@
 import React from "react";
 import "../assets/style/Footer.css"
-import companyLogo from '../assets/img/codelearn-logo.png'
 
+import companyLogo from '../assets/img/codelearn-logo.png'
+import facebookLogo from '../assets/img/facebook.png'
+import twitterLogo from '../assets/img/twitter.png'
+import instagramLogo from '../assets/img/instagram.png'
+import youtubeLogo from '../assets/img/youtube.png'
 
 function Footer() {
     return (
@@ -10,26 +14,39 @@ function Footer() {
             <div className="Logo-Footer">
                 <img src={companyLogo} alt="Logo" />
                 <p className="Discription">CodeLearn là nền tảng tương tác trực tuyến hỗ trợ người dùng học tập, thực hành, thi đấu và đánh giá kỹ năng lập trình một cách nhanh chóng và chính xác.</p>
-                <div className="SocialNetwork">
-                    <a href='/learning' aria-label="Trang facebook">
-                        <p className="Facebook-logo" />
-                    </a>
-                    <a href='/' aria-label="Trang instagram">
-                        <p className="Instagram-Logo" />
-                    </a>
-                    <a href='/' aria-label="Trang Twitter">
-                        <p className="Twitter-Logo" />
-                    </a>
-                    <a href='/' aria-label="Trang youtube">
-                        <p className="Youtube-Logo" />
-                    </a>
-                </div>
+                <ul className="SocialNetwork">
+
+                    <li>
+                        <a href='/learning' aria-label="Trang facebook">
+                            <img className="Facebook-logo" src={facebookLogo} alt="Facebook" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/' aria-label="Trang instagram">
+                            <img className="Instagram-Logo" src={instagramLogo} alt="Instagram" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/' aria-label="Trang Twitter">
+                            <img className="Twitter-Logo" src={twitterLogo} alt="Twitter" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href='/' aria-label="Trang youtube">
+                            <img className="Youtube-Logo" src={youtubeLogo} alt="Youtube" />
+                        </a>
+                    </li>
+
+                </ul>
             </div>
 
             <div className="Links">
-                <p>Liên kết</p>
+                <h3>Liên kết</h3>
                 <ul className="List">
-                    <li><a href="index.js">Học tập</a></li>
+                    <li><a href="/learning">Học tập</a></li>
                     <li><a href="index.js">Luyện tập</a></li>
                     <li><a href="index.js">Cuộc thi</a></li>
                     <li><a href="index.js">Trò chơi</a></li>
@@ -37,7 +54,7 @@ function Footer() {
             </div>
 
             <div className="Information">
-                <p>Thông tin</p>
+                <h3>Thông tin</h3>
                 <ul className="List">
                     <li><a href="index.js">Chia sẻ</a></li>
                     <li><a href="index.js">về chúng tôi</a></li>
@@ -46,14 +63,17 @@ function Footer() {
             </div>
 
             <div className="Help">
-                <p>Trợ giúp</p>
+                <h3>Trợ giúp</h3>
                 <ul className="List">
                     <li><a href="index.js">Hỗ trợ</a></li>
                     <li><a href="index.js">Thảo luận</a></li>
                     <li><a href="index.js">Liên hệ với chúng tôi</a></li>
                 </ul>
+
             </div>
+
         </div>
+
     )
 }
 

@@ -7,7 +7,7 @@ function header() {
 
     return (
         <div id="header" >
-            <NavLink className="logo" to="/">
+            <NavLink className="logo" to="/Hoc-code-UI">
                 <img src={companyLogo} alt="Logo" />
             </NavLink>
             <ul className="List-menu">
@@ -15,16 +15,22 @@ function header() {
                 <li>
                     <NavLink to="/learning" className="a">Học tập</NavLink>
                 </li>
-                {/* <a className="Training" href="index.js">Training</a>
-                <a className="Fights" href="index.js">Fights</a>
-                <a className="Challenge" href="index.js">Challenge</a>
-                <a className="Evaluating" href="index.js">Evaluating</a>
-                <a className="Discussion" href="index.js">Discussion</a>
-                <a className="Game" href="index.js">Game</a> */}
+
+                <li>
+                    <NavLink to="/" className="a">Luyện tập</NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/" className="a">Thi đấu</NavLink>
+                </li>
+                
+                <li>
+                    <NavLink to="/" className="a">Thử thách</NavLink>
+                </li>
             </ul>
             <div className="button">
-                <button className="Login">Login</button>
-                <button className="Register">Register</button>
+                <button className="btn_Login">Đăng nhập</button>
+                <button className="btn_Register">Đăng ký</button>
             </div>
 
 

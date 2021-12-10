@@ -1,66 +1,55 @@
 .Footer{
     display: block;
-    /* background-color: green; */
     box-sizing: border-box;
     height: 250px;
-    padding-top: 40px;
+    padding-top: 20px;
     color: #2C31CF;
     box-sizing: border-box;
 }
 /*******************************/
 .Logo-Footer{
-    /* display: inline; */
+    display: block;
     margin-left: 110px;
-    width: 580px;
+    max-width: 580px;
     float: left;
     margin-right: 200px;
 }
 .Discription{
-    height: 30px;
     color: black;
+    display: block;
 }
 .SocialNetwork{
-    width: 200px;
-    height: 50px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    display: block;
 }
-.SocialNetwork p{
-    margin-bottom: 100px;
-    width: 50px;
-    height: 50px;
-    float: left;
+.SocialNetwork li{
+    display: inline;
 }
-.Facebook-logo{
-    background-image: url('../img/facebook.png');
-    background-repeat: none;
-    background-size: cover;
-}
-.Twitter-Logo{
-    background-image: url('../img/twitter-squared.png');
-    background-repeat: none;
-    background-size: cover;
-}
-.Instagram-Logo{
-    background-image: url('../img/instagram.png');
-    background-repeat: none;
-    background-size: cover;
-}
-.Youtube-Logo{
-    background-image: url('../img/youtube-squared.png');
-    background-repeat: none;
-    background-size: cover;
+.SocialNetwork li a img{
+    max-height: 50px;
 }
 /*******************************/
 .Links{
     float: left;
-    margin-right: 200px;
 }
-.Links p{
-    font-weight: bold;
-    font-size: 19px;
+.Information{
+    margin-left: 200px;
+    float: left;
+}
+.Help{
+    margin-left: 200px;
+    float: left;
+    display: block;
+}
+
+.List{
+    display: block;
+    padding-inline-start: 0px;
 }
 .List li{
-    margin-left: -40px;
-    margin-top: 10px;
+    margin-top: 9px;
     list-style-type: none;
 }
 .List li a{
@@ -72,16 +61,3 @@
     text-decoration: underline;
 }
 /*******************************/
-.Information{
-    float: left;
-    margin-right: 200px;
-}
-.Information p{
-    font-weight: bold;
-    font-size: 19px;
-}
-/*******************************/
-.Help p{
-    font-size: 19px;
-    font-weight: bold;
-}

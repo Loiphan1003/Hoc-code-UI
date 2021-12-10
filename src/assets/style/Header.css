@@ -2,38 +2,44 @@
     /* background:; */
     height: 100px;
     font-size: 18px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    display: block;
 }
 .logo{
-    padding-top: 10px;
+    margin-top: 15px;
     width: 180px;
-    height: 60px;
+    height: 50px;
     float: left;
     margin-left: 70px;
     box-sizing: border-box;
+    display: block;
 }
 .List-menu{
     height: 20px;
-    width: 800px;
-    display: inline;
-    padding-left: 70px;
+    display: block;
     float: left;
-    list-style-type: none;
+    padding-top: 17px;
+}
+.List-menu li{
+    display: inline;
+    margin-left: 2rem;
 }
 .List-menu a{
-    /* padding-left: 20px; */
     text-decoration: none;
     color: Black;
     font-size: 18px;
 }
 .button{
-    margin-top: 20px;
-    /* margin-bottom: auto; */
-    width: 200px;
-    height: 50px;
-    float: left;
-    /* padding-right: -20px; */
+    margin-right: 4rem;
+    margin-top: 30px;
+    float: right;
+    display: block;
 }
-.Login{
+.button button{
+    margin-left: 1rem;
+}
+.btn_Login{
     background-color: white;
     font-size: 20px;
     height: 30px;
@@ -41,11 +47,11 @@
     border-radius: 6px;
     border: none;
 }
-.Login:hover{
+.btn_Login:hover{
     color: white;
     background-color: aqua;
 }
-.Register{
+.btn_Register{
     padding-left: 5px;
     background-color: white;
     font-size: 20px;
@@ -54,7 +60,7 @@
     border-radius: 6px;
     border: none;
 }
-.Register:hover{
+.btn_Register:hover{
     color: white;
     background-color: red;
 }
