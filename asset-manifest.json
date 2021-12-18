@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Hoc-code-UI/static/css/main.17381e72.chunk.css",
-    "main.js": "/Hoc-code-UI/static/js/main.44be0314.chunk.js",
-    "main.js.map": "/Hoc-code-UI/static/js/main.44be0314.chunk.js.map",
+    "main.js": "/Hoc-code-UI/static/js/main.ede6ed80.chunk.js",
+    "main.js.map": "/Hoc-code-UI/static/js/main.ede6ed80.chunk.js.map",
     "runtime-main.js": "/Hoc-code-UI/static/js/runtime-main.105c0374.js",
     "runtime-main.js.map": "/Hoc-code-UI/static/js/runtime-main.105c0374.js.map",
     "static/css/2.3e4ed1cb.chunk.css": "/Hoc-code-UI/static/css/2.3e4ed1cb.chunk.css",
@@ -17,6 +17,7 @@
     "static/media/Login.css": "/Hoc-code-UI/static/media/Background.0eec00e6.jpg",
     "static/media/C-image.93bb0e6c.jpg": "/Hoc-code-UI/static/media/C-image.93bb0e6c.jpg",
     "static/media/Learn.css": "/Hoc-code-UI/static/media/background-find-learn.ab671f70.png",
+    "static/media/main-screen.3a62e7f4.png": "/Hoc-code-UI/static/media/main-screen.3a62e7f4.png",
     "static/media/slick-theme.css": "/Hoc-code-UI/static/media/slick.c94f7671.ttf"
   },
   "entrypoints": [
@@ -24,6 +25,6 @@
     "static/css/2.3e4ed1cb.chunk.css",
     "static/js/2.bf7180ab.chunk.js",
     "static/css/main.17381e72.chunk.css",
-    "static/js/main.44be0314.chunk.js"
+    "static/js/main.ede6ed80.chunk.js"
   ]
 }
