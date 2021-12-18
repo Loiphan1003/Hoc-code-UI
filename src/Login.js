@@ -1,12 +1,15 @@
 import React from "react";
 import "./Login.css"
 
+import left_Img from '../src/assets/img/main-screen.png'
+
+
 function Login() {
 
     return (
         <div className="Content">
             <div className="Content-Login">
-                <img className="Left-side" src="../main-screen.png" alt="hinh anh 1" />
+                <img className="Left-side" src={left_Img} alt="hinh anh 1" />
                 <div className="Right-side">
                     <div className="Login-side">
                         <h2>Bắt đầu ngay</h2>
