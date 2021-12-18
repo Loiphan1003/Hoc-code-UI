@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import "../assets/style/Footer.css"
 
 import companyLogo from '../assets/img/codelearn-logo.png'
@@ -6,6 +8,7 @@ import facebookLogo from '../assets/img/facebook.png'
 import twitterLogo from '../assets/img/twitter.png'
 import instagramLogo from '../assets/img/instagram.png'
 import youtubeLogo from '../assets/img/youtube.png'
+
 
 function Footer() {
     return (
@@ -46,7 +49,7 @@ function Footer() {
             <div className="Links">
                 <h3>Liên kết</h3>
                 <ul className="List">
-                    <li><a href="/learning">Học tập</a></li>
+                    <li><NavLink to="/learning">Học tập</NavLink></li>
                     <li><a href="index.js">Luyện tập</a></li>
                     <li><a href="index.js">Cuộc thi</a></li>
                     <li><a href="index.js">Trò chơi</a></li>
