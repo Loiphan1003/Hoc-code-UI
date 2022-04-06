@@ -5,24 +5,28 @@
     padding-top: 20px;
     color: #2C31CF;
     box-sizing: border-box;
+    position: relative;
 }
 /*******************************/
 .Logo-Footer{
-    display: block;
-    margin-left: 110px;
+    /* display: block; */
+    margin-top: -50px;
+    margin-left: 100px;
     max-width: 580px;
     float: left;
-    margin-right: 200px;
+    margin-right: 400px;
 }
-.Discription{
-    color: black;
-    display: block;
+.Logo-Footer img{
+    max-width: 280px;
 }
+
 .SocialNetwork{
+    margin-top: -70px;
+    margin-left: 5px;
     list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    display: block;
+    /* padding: 0px;
+    margin: 0px; */
+    /* display: block; */
 }
 .SocialNetwork li{
     display: inline;

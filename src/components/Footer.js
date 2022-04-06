@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import "../assets/style/Footer.css"
 
-import companyLogo from '../assets/img/codelearn-logo.png'
+import companyLogo from '../assets/img/logo_transparent.png'
 import facebookLogo from '../assets/img/facebook.png'
 import twitterLogo from '../assets/img/twitter.png'
 import instagramLogo from '../assets/img/instagram.png'
@@ -16,7 +16,6 @@ function Footer() {
 
             <div className="Logo-Footer">
                 <img src={companyLogo} alt="Logo" />
-                <p className="Discription">CodeLearn là nền tảng tương tác trực tuyến hỗ trợ người dùng học tập, thực hành, thi đấu và đánh giá kỹ năng lập trình một cách nhanh chóng và chính xác.</p>
                 <ul className="SocialNetwork">
 
                     <li>

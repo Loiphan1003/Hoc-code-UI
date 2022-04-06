@@ -16,7 +16,7 @@ function App() {
 
             {/* <Content /> */}
             <Routes>
-                <Route exact path="/Hoc-code-UI" element={<Login />} />
+                <Route exact path="/" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/learning" element={<Learn />} />
                 <Route path="/code" element={<CodeUi />} />

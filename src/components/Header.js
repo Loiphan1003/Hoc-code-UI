@@ -1,41 +1,49 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../assets/style/Header.css"
-import companyLogo from '../assets/img/codelearn-logo.png'
+import companyLogo from '../assets/img/logo_transparent.png'
+import Backdrop from "./Backdrop";
+import Modal from "./Modal";
 
-function header() {
+
+
+function Header() {
+
+    const [show, setShow] = useState(false)
 
     return (
         <div id="header" >
+
             <NavLink className="logo" to="/Hoc-code-UI">
                 <img src={companyLogo} alt="Logo" />
             </NavLink>
-            <ul className="List-menu">
+            <div className="List-menu">
+                <div className="Menu-item active">
+                    <NavLink to="/learning">Học tập</NavLink>
+                </div>
 
-                <li>
-                    <NavLink to="/learning" className="a">Học tập</NavLink>
-                </li>
+                <div className="Menu-item">
+                    <NavLink to="/" >Luyện tập</NavLink>
+                </div>
 
-                <li>
-                    <NavLink to="/" className="a">Luyện tập</NavLink>
-                </li>
-
-                <li>
+                <div className="Menu-item">
                     <NavLink to="/" className="a">Thi đấu</NavLink>
-                </li>
-                
-                <li>
+                </div>
+
+                <div className="Menu-item">
                     <NavLink to="/" className="a">Thử thách</NavLink>
-                </li>
-            </ul>
-            <div className="button">
-                <button className="btn_Login">Đăng nhập</button>
-                <button className="btn_Register">Đăng ký</button>
+                </div>
+
+                <div className="Line"></div>
             </div>
-
-
+            <div id="button">
+                <button className="btn_" onClick={() => setShow(true)}>ĐĂNG NHẬP</button>
+                <button className="btn_">Đăng ký</button>
+            </div> 
+            {show && <Backdrop onClick={()=> setShow(false)}/>}
+            {show && <Modal />}
         </div>
     )
 }
 
-export default header;
+export default Header;

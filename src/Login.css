@@ -1,39 +1,99 @@
 .Content{
-    /* margin-top: 90px; */
-    padding-top: 10px;
+    /* margin-top: 90px;
+    padding-top: 10rem; */
+    /* background-image: url("../src//assets//img//background-1.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50rem; */
+    background-color: #ede0d4;
+    box-sizing: border-box;
 }
-.Content-Login{
+/* .Content-Login{
     height: 800px;
+} */
+.first-content{
+    padding-top: 7%;
+    display: flex;
+    height: 40rem;
 }
 
+.first-content .left-content{
+    width: 50%;
+    padding-top: 2%;
+    padding-left: 8%;
+    box-sizing: border-box;
+    /* display: inline-block; */
+    
+}
+.left-content h1{
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+.left-content p{
+    margin-top: -5%;
+    width: 40rem;
+}
+
+.first-content .right-content{
+    width: 50%;
+    height: 100%;
+    /* margin-top: -10%; */
+    
+    background-image: url(../src/assets/img/Frame-2.png);
+    background-size: contain;
+
+background-repeat: no-repeat;
+   
+}
+
+/* .first-content-image{
+    width: 40%;
+    height: 40%;
+    background-image: url("../src/assets/img/Frame-2.png");
+    background-size: contain;
+} */
+
+
+
+
+
+
+
+
+
+
+.First-content h1{
+    width: 30%;
+}
 .Left-side{
-    width: 60%;
-    height: 800px;
-    margin-left: 30px;
-    /* float: left; */
+    height: 40rem;
+    width: 50%;
+}
+
+.Img{
+    height: 30rem;
+    width: 50rem;
+    /* float: right; */
 }
 
 .Right-side{
-    margin-top: 30px;
-    margin-right: 50px;
     border-radius: 30px;
     height: 600px;
-    float: right;
-    width: 30%;
-    background-image: url("../src/assets/img/Background.jpg");
-    background-repeat: none;
+    /* float: right; */
+    /* width: auto; */
+    /* background-repeat: none;
     background-size: cover;
-    box-sizing: border-box;
+    box-sizing: border-box; */
 }
 .Login-side{
     border-radius: 30px;
     background-color: white;
     width: 400px;
     height: 500px;
-    margin: auto;
-    margin-top: 45px;
+    /* margin: auto; */
+    /* margin-top: 45px;
     padding-top: 10px;
-    padding-left: 20px;
+    padding-left: 20px; */
 }
 .Login-side h2{
     color: #000080;
