@@ -1,4 +1,4 @@
-.Content{
+.Content {
     /* margin-top: 90px;
     padding-top: 10rem; */
     /* background-image: url("../src//assets//img//background-1.jpg");
@@ -8,75 +8,62 @@
     background-color: #ede0d4;
     box-sizing: border-box;
 }
+
 /* .Content-Login{
     height: 800px;
 } */
-.first-content{
+.first-content {
     padding-top: 7%;
     display: flex;
     height: 40rem;
 }
 
-.first-content .left-content{
+.first-content .left-content {
     width: 50%;
     padding-top: 2%;
     padding-left: 8%;
     box-sizing: border-box;
     /* display: inline-block; */
-    
+
 }
-.left-content h1{
+
+.left-content h1 {
     font-size: 5rem;
     text-transform: uppercase;
 }
-.left-content p{
+
+.left-content p {
     margin-top: -5%;
     width: 40rem;
 }
 
-.first-content .right-content{
+.first-content .right-content {
     width: 50%;
     height: 100%;
     /* margin-top: -10%; */
-    
-    background-image: url(../src/assets/img/Frame-2.png);
-    background-size: contain;
 
-background-repeat: no-repeat;
-   
-}
-
-/* .first-content-image{
-    width: 40%;
-    height: 40%;
     background-image: url("../src/assets/img/Frame-2.png");
     background-size: contain;
-} */
 
+    background-repeat: no-repeat;
 
-
-
-
-
-
-
-
-
-.First-content h1{
+}
+.First-content h1 {
     width: 30%;
 }
-.Left-side{
+
+.Left-side {
     height: 40rem;
     width: 50%;
 }
 
-.Img{
+.Img {
     height: 30rem;
     width: 50rem;
     /* float: right; */
 }
 
-.Right-side{
+.Right-side {
     border-radius: 30px;
     height: 600px;
     /* float: right; */
@@ -85,21 +72,24 @@ background-repeat: no-repeat;
     background-size: cover;
     box-sizing: border-box; */
 }
-.Login-side{
+
+/* .Login-side {
     border-radius: 30px;
     background-color: white;
     width: 400px;
-    height: 500px;
+    height: 500px; */
     /* margin: auto; */
     /* margin-top: 45px;
     padding-top: 10px;
     padding-left: 20px; */
-}
-.Login-side h2{
+/* } */
+
+.Login-side h2 {
     color: #000080;
     font-weight: bold;
 }
-.Input input{
+
+.Input input {
     width: 350px;
     height: 60px;
     padding-left: 20px;
@@ -108,17 +98,21 @@ background-repeat: no-repeat;
     font-size: 16px;
     border-width: 1px;
 }
-.input-email{
+
+.input-email {
     margin-top: 20px;
 }
-.input-password{
+
+.input-password {
     margin-top: 20px;
 }
-.Checkbox-Accept{
+
+.Checkbox-Accept {
     margin-top: 15px;
     color: black;
 }
-.Checkbox-Accept p{
+
+.Checkbox-Accept p {
     margin-right: 120px;
     margin-top: 0px;
     font-size: 15px;
@@ -128,14 +122,16 @@ background-repeat: no-repeat;
     width: auto;
     height: auto;
 }
-.Checkbox{
+
+.Checkbox {
     margin-top: 0;
     border-radius: 5px;
     height: 20px;
     width: 20px;
 }
+
 /*Nút đăng ký*/
-.btn-Register{
+.btn-Register {
     cursor: pointer;
     border-style: none;
     /* border-color: blue; */
@@ -147,25 +143,30 @@ background-repeat: no-repeat;
     font-size: 20px;
     height: 50px;
 }
-.btn-Register:hover{
+
+/* .btn-Register:hover {
     background-color: blue;
 }
-.label-2{
+
+.label-2 {
     margin-left: 20%;
     font-size: 17px;
     color: black;
-}
+} */
+
 /*Login with another account*/
-.Login-Account{
+/* .Login-Account {
     margin-left: 20%;
 }
-.Login-Account div{
+
+.Login-Account div {
     margin-left: 10px;
 }
-.Microsoft-Account{
+
+.Microsoft-Account {
     background-image: url("../src/assets/img/microsoft.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 40px;
     border-style: groove;
     border-width: 1px;
@@ -174,12 +175,13 @@ background-repeat: no-repeat;
     width: 60px;
     height: 60px;
     float: left;
-}
-.Microsoft-Account:hover{
+} */
+
+/* .Microsoft-Account:hover {
     cursor: pointer;
     background-image: url("../src/assets/img/microsoft-white.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 40px;
     border-style: groove;
     border-width: 1px;
@@ -189,12 +191,13 @@ background-repeat: no-repeat;
     width: 60px;
     height: 60px;
     float: left;
-}
-.Facebook-Account{
+} */
+
+/* .Facebook-Account {
     float: left;
     background-image: url("../src/assets/img/facebook-logo.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 50px;
     border-style: groove;
     border-width: 1px;
@@ -202,27 +205,29 @@ background-repeat: no-repeat;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-}
-.Facebook-Account:hover{
+} */
+
+/* .Facebook-Account:hover {
     cursor: pointer;
     float: left;
     background-image: url("../src/assets/img/facebook-white.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 50px;
     border-style: groove;
     border-width: 1px;
-    background-color:#3F51B5;
+    background-color: #3F51B5;
     border-color: #3F51B5;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-}
-.Google-Account{
+} */
+
+/* .Google-Account {
     float: left;
     background-image: url("../src/assets/img/google.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 40px;
     border-style: groove;
     border-width: 1px;
@@ -230,19 +235,20 @@ background-repeat: no-repeat;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-}
-.Google-Account:hover{
+} */
+
+/* .Google-Account:hover {
     cursor: pointer;
     float: left;
     background-image: url("../src/assets/img/google-white.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: 40px;
     border-style: groove;
     border-width: 1px;
-    background-color:#E74C3C ;
+    background-color: #E74C3C;
     border-color: #E74C3C;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-}
+} */
