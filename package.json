@@ -1,13 +1,12 @@
 {
   "name": "hoccode",
   "version": "0.1.0",
-  "homepage": "https://loiphan1003.github.io/Hoc-code-UI/",
+  "homepage": "https://loiphan1003.github.io/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "ace-code-editor": "^1.2.3",
     "axios": "^0.26.1",
     "firebase": "^9.6.10",
     "gh-pages": "^3.2.3",

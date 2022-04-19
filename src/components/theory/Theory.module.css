@@ -1,0 +1,239 @@
+:root {
+    --main-color: #3F48CC;
+    --header-theory: #03045E;
+}
+
+
+.theory {
+    height: fit-content;
+    padding-top: 6rem;
+}
+
+.theoryHeader {
+    width: 100%;
+    background-color: var(--header-theory);
+    /* height: 14rem; */
+    /* background-image: url('../../images//imga_theory.png');
+    background-size: contain;
+    background-repeat: no-repeat; */
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.theoryHeader h1 {
+    /* font-family: Roboto; */
+    color: white;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+
+.nameTheory {
+    /* border-style: none; */
+    /* border-radius: none; */
+    min-width: 430px;
+    font-size: 15px;
+    outline: none;
+}
+
+.nameTheory:enabled {
+    border-style: none;
+}
+
+
+.findTheory {
+    display: flex;
+    height: 39px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 470px;
+    background-color: white;
+}
+
+.findTheory img {
+    cursor: pointer;
+    /* background-color: #023E8A; */
+    color: #023E8A;
+}
+
+.kienthuccoso {
+    /* background-color: #023E8A; */
+    /* text-align: left; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    /* align-content: center; */
+    flex-direction: column;
+    /* justify-content: left; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.kienthuccoso h1 {
+    text-transform: uppercase;
+}
+
+.listCourse {
+    display: grid; 
+    grid-template-columns: auto auto auto auto; 
+    gap: 50px 50px;
+    box-sizing: border-box; 
+}
+
+
+
+.course {
+    max-width: 260px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 5px 5px 0px gray;
+}
+.course img{
+    cursor: pointer;
+}
+
+.course div {
+    width: 260px;
+    height: 100%;
+    display: block;
+    /* flex-direction: column; */
+    padding-left: 10px;
+    border-radius: 0px 30px 5px 5px;
+    background-color: white;
+    box-sizing: border-box;
+    /* justify-content: flex-start; */
+}
+
+.discription {
+    font-size: 14px;
+    width: 190x;
+    height: 45px;
+    /* background-color: red; */
+    display: block;
+
+    overflow: hidden;
+    /* white-space:nowrap; */
+    text-overflow: ellipsis;
+}
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course div .line {
+    width: 235px;
+    margin-right: 10px;
+    height: 1px;
+    background-color: red;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.kind {
+    color: var(--main-color);
+    height: 10px;
+}
+.kienthucnangcao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.kienthucnangcao h1{
+    text-transform: uppercase;
+}
+
+.courseAdvancedList{
+    display: grid; 
+    grid-template-columns: auto auto auto auto; 
+    gap: 50px 50px;
+    box-sizing: border-box; 
+}
+
+
+@media only screen and (max-width: 991){
+    .listCourse {
+        display: block;
+        /* grid-template-columns: auto auto auto;
+        gap: 50px 50px; */
+    }
+    .course {
+        max-width: 220px;
+        height: 294px;
+    }
+    .course div{
+        width: 100%;
+        text-align: left;
+    }
+    .course div .line{
+        max-width: 12rem;
+    }
+}
+
+
+/* Responsive for deskstop */
+@media only screen and (max-width: 1199px){
+    .listCourse {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 50px 50px;
+    }
+    .course {
+        max-width: 220px;
+        height: 294px;
+    }
+    .course div{
+        width: 100%;
+        text-align: left;
+    }
+    .course div .line{
+        max-width: 12rem;
+    }
+}
+@media only screen and (max-width: 1399px) {
+    .listCourse {
+        display: grid;
+        /* word-wrap: break-word; */
+        grid-template-columns: auto auto auto auto;
+        /* align-content: space-between; */
+        /* justify-content: center; */
+        gap: 50px 50px;
+    }
+    .course {
+        max-width: 220px;
+        height: 294px;
+    }
+    .course div{
+        width: 100%;
+        text-align: left;
+    }
+    .course div .line{
+        max-width: 12rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .course {
+        max-width: 300px;
+        height: 350px;
+    }
+    .course div{
+        width: 100%;
+        text-align: left;
+    }
+    .course div .line{
+        min-width: 17rem;
+    }
+
+}

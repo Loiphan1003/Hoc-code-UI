@@ -1,65 +1,59 @@
-import React, { Suspense, useState, useEffect } from 'react';
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import Header from './components/Header';
-import Content from './Content';
-import Home from './Home';
-import Learn from './Learn'
-import CodeUi from './CodeUi';
-import Footer from './components/Footer';
-import Modal from './components/Modal';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { auth } from './firebase/config';
 
+import Content from './components/content/Content';
+import Home from './components/home/Home';
+import Learn from './components/learnings/Learning';
+// import Code from './components/code/Code';
+import Theory from './components/theory/Theory';
+import CouresDetail from './features/coureDetail/CouresDetail';
+import CouresDetailSection from './features/coureDetail/coures/CouresDetailSection';
 
 
 
 function App() {
 
-    const [login, isLogin] = useState();
+    const [dataUser, setDataUser] = useState('');
 
-    // Configure Firebase.s
-    const config = {
-        apiKey: 'AIzaSyAZhqU_BcQdWBJGUlcbP_uvDDbuaEaAW0o',
-        authDomain: 'hoc-code-1c31e.firebaseapp.com',
-    };
-    // if(!firebase.initializeApp(config)){
-    firebase.initializeApp(config);
-    // }
-    // Listen to the Firebase Auth state and set the local state.
+
     useEffect(() => {
-        const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-            if (!user) {
-                console.log("Not log in");
-                isLogin(false);
+        const login = auth.onAuthStateChanged((user) => {
+            if (user) {
+
+                const { displayName, email, uid, photoURL, providerId, Provider } = user;
+                setDataUser({ displayName, email, uid, photoURL, providerId, Provider });
+                // console.log("User ", user);
+                // (true);
+                // props.state(true);
+                localStorage.setItem("User", uid);
                 return;
             }
-            console.log("Log in");
-            console.log("User name: ", user.displayName);
-            const token = await user.getIdToken();
-            console.log("User token: ", token);
-            isLogin(true);
+            setDataUser('');
         });
-        return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-    }, []);
+        return () => {
+            login();
+        }
+    }, [])
+
+    console.log("Data: ", dataUser);
 
     return (
         <div>
-            <Suspense fallback={<div>Loading ...</div>}>
-                <BrowserRouter>
-                    <Header Check={login} />
-                    {/* {console.log(text)} */}
-                    {/* <Content /> */}
-                    <Routes>
-                        <Route exact path="/Hoc-code-UI" element={<Content/>} to="/home" />
-                        <Route path='/login' element={<Modal/>}/>
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/learning" element={<Learn />} />
-                        <Route path="/code" element={<CodeUi />} />
+            <Router>
+                {/* <Header data={dataUser}/> */}
+                <Routes>
+                    <Route path="/" element={<Content data={dataUser} />} />
+                    <Route path='/home' element={<Home data={dataUser} />} />
+                    <Route path='/learning' element={<Learn data={dataUser} />} />
+                    {/* <Route path='/code' element={<Code/>} /> */}
+                    <Route path='/theory' element={<Theory data={dataUser} />} />
+                    <Route path='/couredetail' element={<CouresDetail data={dataUser}/>} />
+                    <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser}/>} />
 
-                    </Routes>
-                    <Footer />
-                </BrowserRouter>
-            </Suspense>
+                </Routes>
+                {/* <Footer/> */}
+            </Router>
         </div>
     )
 }

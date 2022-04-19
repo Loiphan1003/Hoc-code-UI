@@ -5,9 +5,9 @@
     box-sizing: border-box;
 }
 .find{
-    background-image: url('../img/background-find-learn.png');
+    /* background-image: url('../img/background-find-learn.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     height: 200px;
     
     padding-top: 30px;
@@ -47,9 +47,9 @@
     height: 50px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
-    background-image: url('../img/icon-search.png');
+    /* background-image: url('../img/icon-search.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
     
 }
 .searchCourse p:hover{

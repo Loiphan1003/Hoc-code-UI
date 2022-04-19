@@ -1,31 +1,33 @@
 .Footer{
-    display: block;
     box-sizing: border-box;
     height: 250px;
-    padding-top: 20px;
+    padding-right: 5rem;
     color: #2C31CF;
     box-sizing: border-box;
+    /* position: static; */
     position: relative;
+    display: flex;
+    justify-content: space-around;
 }
 /*******************************/
-.Logo-Footer{
-    /* display: block; */
-    margin-top: -50px;
-    margin-left: 100px;
+.Logo_Footer{
+    display: block;
+    margin-top: -30px;
+    /* margin-left: 100px; */
     max-width: 580px;
     float: left;
-    margin-right: 400px;
+    /* margin-right: 400px; */
 }
-.Logo-Footer img{
+.Logo_Footer img{
     max-width: 280px;
 }
 
 .SocialNetwork{
     margin-top: -70px;
-    margin-left: 5px;
+    margin-left: 40px;
     list-style-type: none;
-    /* padding: 0px;
-    margin: 0px; */
+    padding: 0px;
+    box-sizing: border-box;
     /* display: block; */
 }
 .SocialNetwork li{
@@ -35,22 +37,22 @@
     max-height: 50px;
 }
 /*******************************/
-.Links{
-    float: left;
-}
-.Information{
-    margin-left: 200px;
-    float: left;
-}
-.Help{
-    margin-left: 200px;
-    float: left;
-    display: block;
+
+.Right_footer{
+    margin-top: 20px;
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
 }
 
+
 .List{
-    display: block;
+    /* display: block; */
+    text-align: left;
     padding-inline-start: 0px;
+    box-sizing: border-box;
 }
 .List li{
     margin-top: 9px;
