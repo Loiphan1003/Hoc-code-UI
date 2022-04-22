@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Hoc-code-UI/static/css/main.12c2d7b5.css",
-    "main.js": "/Hoc-code-UI/static/js/main.f3ef94ac.js",
+    "main.js": "/Hoc-code-UI/static/js/main.f135d123.js",
     "static/js/787.03749fbf.chunk.js": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js",
     "static/media/test1.png": "/Hoc-code-UI/static/media/test1.a1426d3144d2f2b85782.png",
     "static/media/test2.png": "/Hoc-code-UI/static/media/test2.f5d1e751cd0728ecb46f.png",
@@ -9,11 +9,11 @@
     "static/media/headerTheory.png": "/Hoc-code-UI/static/media/headerTheory.23f670a784db2cf93e1c.png",
     "index.html": "/Hoc-code-UI/index.html",
     "main.12c2d7b5.css.map": "/Hoc-code-UI/static/css/main.12c2d7b5.css.map",
-    "main.f3ef94ac.js.map": "/Hoc-code-UI/static/js/main.f3ef94ac.js.map",
+    "main.f135d123.js.map": "/Hoc-code-UI/static/js/main.f135d123.js.map",
     "787.03749fbf.chunk.js.map": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12c2d7b5.css",
-    "static/js/main.f3ef94ac.js"
+    "static/js/main.f135d123.js"
   ]
 }
