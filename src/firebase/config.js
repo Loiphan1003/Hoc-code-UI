@@ -7,13 +7,13 @@ import { GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
 
 const config = {
-    apiKey: "AIzaSyDJZSxlOyJn1FSWTxsTLnMqbiV7X4oMfGo",
-    authDomain: "first-web-91c0f.firebaseapp.com",
-    projectId: "first-web-91c0f",
-    storageBucket: "first-web-91c0f.appspot.com",
-    messagingSenderId: "541812255026",
-    appId: "1:541812255026:web:ec4d42930ce3b297758f2b",
-    measurementId: "G-QLGXJM045W"
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_FIREBASE_APPID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID
 };
 // if(!firebase.initializeApp(config)){
 const firebase = initializeApp(config);

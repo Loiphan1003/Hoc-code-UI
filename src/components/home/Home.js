@@ -25,7 +25,7 @@ function Home(props) {
             <div className="contentHome">
 
                 <div className="information">
-                    <p>Xin chào . Chào mừng  đến với CodeLearn. Hãy khám phá nhé!</p>
+                    <p>Xin chào {props.data.displayName} . Chào mừng  đến với Code Sample. Hãy khám phá nhé!</p>
                     <div className="information-account">
                     </div>
                 </div>

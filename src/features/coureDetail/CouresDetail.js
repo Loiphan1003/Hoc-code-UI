@@ -28,7 +28,7 @@ function CouresDetail(props) {
     }
 
     return (
-        <div>
+        <>
             <Header data={props.data} />
             <div className={styles.couresDetail}>
                 <div className={styles.couresDetailTitle}>
@@ -43,7 +43,7 @@ function CouresDetail(props) {
                 </div>
             </div>
             <Footer />
-        </div>
+        </>
     );
 }
 

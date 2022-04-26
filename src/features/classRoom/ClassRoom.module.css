@@ -1,0 +1,226 @@
+:root {
+    --roomheader-color: #24859A;
+    --header-theory: #03045E;
+}
+
+.classRoom {
+    padding-top: 6rem;
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+.joinClass {
+    float: right;
+    width: 250px;
+    height: fit-content;
+    display: inline;
+}
+
+.joinClass img {
+    float: left;
+    cursor: pointer;
+}
+
+.joinClass p {
+    font-size: 20px;
+    cursor: pointer;
+    width: fit-content;
+}
+.icon{
+    cursor: pointer;
+}
+.classRoomList {
+    margin-top: 4%;
+    width: calc(100% - 20%);
+    height: fit-content;
+    margin-left: 10%;
+    display: grid;
+    /* width: max-content; */
+    grid-template-columns: 100px 100px 100px 100px;
+    gap: 15px 19%;
+    /* background-color: red; */
+}
+
+.room {
+    width: 322px;
+    height: 218px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px;
+    background-color: white;
+}
+
+.roomheader {
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    height: 99px;
+    color: white;
+    padding-top: 2%;
+    background-color: var(--roomheader-color);
+}
+
+.roomName {
+    margin-top: 2%;
+    margin-left: 8%;
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+    font-size-adjust: 20%;
+}
+
+
+.owner {
+    top: -35px;
+    left: 20px;
+    right: 0;
+    bottom: 0;
+    height: 90px;
+    width: 90px;
+    position: relative;
+    display: inline;
+    box-sizing: border-box;
+
+}
+
+.ownerImage {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    float: left;
+}
+
+.ownerName {
+    font-size: 20px;
+    margin-top: 15%;
+    margin-left: 40%;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+}
+
+.line {
+    width: calc(100% - 10%);
+    margin-top: -5%;
+    margin-left: 5%;
+    height: 1px;
+    background-color: black;
+}
+
+.numberStudent {
+    width: 70px;
+    position: relative;
+    height: 20px;
+    top: -5%;
+    left: 80%;
+}
+
+.numberStudent img {
+    float: left;
+    margin-right: 5%;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .joinClass {
+        float: right;
+        width: 190px;
+        margin-right: 15px;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .joinClass p {
+        font-size: 20px;
+        cursor: pointer;
+        width: fit-content;
+    }
+    .classRoomList {
+        margin-top: 20px;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+        row-gap: 30px;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .joinClass {
+        float: right;
+        width: 190px;
+        margin-right: 15px;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .joinClass p {
+        font-size: 20px;
+        cursor: pointer;
+        width: fit-content;
+    }
+    .classRoomList {
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 20px 20px;
+        padding-left:0px 20px;
+        /* padding-top: 10px; */
+        box-sizing: border-box;
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .joinClass {
+        float: right;
+        width: 190px;
+        margin-right: 15px;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .classRoomList {
+        margin-top: 20px;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 30px 30px;
+        box-sizing: border-box;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .classRoomList {
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: center;
+        gap: 30px 30px;
+        padding-top: 50px;
+        box-sizing: border-box;
+    }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1400px) {
+    .classRoomList {
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        justify-content: center;
+        gap: 30px 30px;
+        padding-top: 50px;
+        padding-left: 40px;
+        box-sizing: border-box;
+    }
+}

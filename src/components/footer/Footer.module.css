@@ -12,18 +12,17 @@
 /*******************************/
 .Logo_Footer{
     display: block;
-    margin-top: -30px;
-    /* margin-left: 100px; */
+    margin-top: 20px;
+    height: fit-content;
+    height: 160px;
     max-width: 580px;
-    float: left;
-    /* margin-right: 400px; */
 }
 .Logo_Footer img{
     max-width: 280px;
 }
 
 .SocialNetwork{
-    margin-top: -70px;
+    margin: 0px;
     margin-left: 40px;
     list-style-type: none;
     padding: 0px;

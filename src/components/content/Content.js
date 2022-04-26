@@ -17,8 +17,8 @@ function Content(props) {
                 <div className="first-content">
 
                     <div className="left-content">
-                        <h1>Học code cùng CODE ACADEMY</h1>
-                        <p>CODE ACADEMY là nền tảng tương tác trực tuyến hỗ trợ người dùng học tập, thực hành, thi đấu và đánh giá kỹ năng lập trình một cách nhanh chóng và chính xác.</p>
+                        <h1>Học code cùng CODE SAMPLE</h1>
+                        <p>CODE SAMPLE là nền tảng tương tác trực tuyến hỗ trợ người dùng học tập, thực hành, thi đấu và đánh giá kỹ năng lập trình một cách nhanh chóng và chính xác.</p>
                     </div>
 
                     <div className="right-content">

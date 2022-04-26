@@ -6,16 +6,12 @@
 
 .theory {
     height: fit-content;
-    padding-top: 6rem;
+    padding-top: 7rem;
 }
 
 .theoryHeader {
     width: 100%;
     background-color: var(--header-theory);
-    /* height: 14rem; */
-    /* background-image: url('../../images//imga_theory.png');
-    background-size: contain;
-    background-repeat: no-repeat; */
     flex-direction: row;
     display: flex;
     justify-content: space-around;
@@ -53,27 +49,14 @@
     background-color: white;
 }
 
-.findTheory img {
-    cursor: pointer;
-    /* background-color: #023E8A; */
-    color: #023E8A;
-}
 
 .kienthuccoso {
-    /* background-color: #023E8A; */
-    /* text-align: left; */
-    /* margin-left: 10%;
-    margin-right: 10%; */
-    /* padding-left: 10%;
-    padding-right: 10%; */
     height: fit-content;
     width: 100%;
     display: flex;
-    /* align-content: center; */
+    flex-wrap: wrap;
     flex-direction: column;
-    /* justify-content: left; */
-    /* justify-content: center; */
-    align-items: center;
+    align-items: flex-start;
 }
 
 .kienthuccoso h1 {
@@ -81,10 +64,12 @@
 }
 
 .listCourse {
-    display: grid; 
-    grid-template-columns: auto auto auto auto; 
-    gap: 50px 50px;
-    box-sizing: border-box; 
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 
@@ -95,10 +80,13 @@
     border-radius: 5px;
     height: 320px;
     display: flex;
+    margin-right: 20px;
+    margin-top: 20px;
     flex-direction: column;
     box-shadow: 0px 5px 5px 0px gray;
 }
-.course img{
+
+.course img {
     cursor: pointer;
 }
 
@@ -145,95 +133,184 @@
     color: var(--main-color);
     height: 10px;
 }
-.kienthucnangcao{
+
+.kienthucnangcao {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    /* margin: 0px 300px; */
+    /* margin: 0px 10px; */
 }
-.kienthucnangcao h1{
+
+.kienthucnangcao h1 {
     text-transform: uppercase;
 }
 
-.courseAdvancedList{
-    display: grid; 
-    grid-template-columns: auto auto auto auto; 
-    gap: 50px 50px;
-    box-sizing: border-box; 
+.courseAdvancedList {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 
-@media only screen and (max-width: 991){
-    .listCourse {
-        display: block;
-        /* grid-template-columns: auto auto auto;
-        gap: 50px 50px; */
-    }
-    .course {
-        max-width: 220px;
-        height: 294px;
-    }
-    .course div{
+
+/* Small devices (portrait tablets and large phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .theoryHeader {
         width: 100%;
-        text-align: left;
+        height: 100px;
+        background-color: var(--header-theory);
+        flex-direction: row;
+        display: flex;
+        justify-content: space-around;
+        padding-left: 10px;
+        box-sizing: border-box;
+        /* text-align: left; */
     }
-    .course div .line{
-        max-width: 12rem;
+
+    .theoryHeaderLeft {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* margin-left: 5px; */
+    }
+
+    .theoryHeaderLeft h1 {
+        /* font-family: Roboto; */
+        color: white;
+        font-size: 20px;
+    }
+
+    .theoryHeader img {
+        display: none;
+    }
+
+    .nameTheory {
+        padding: 0;
+        width: 30px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .findTheory {
+        display: flex;
+        height: 39px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        width: 40%;
+        background-color: white;
+    }
+
+    .kienthuccoso {
+        margin: 0px 20px;
+    }
+
+    .kienthuccoso h1 {
+        text-transform: uppercase;
     }
 }
 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+}
 
 /* Responsive for deskstop */
-@media only screen and (max-width: 1199px){
+/* @media only screen and (max-width: 1199px) {
     .listCourse {
         display: grid;
         grid-template-columns: auto auto auto;
         gap: 50px 50px;
     }
+
     .course {
         max-width: 220px;
         height: 294px;
     }
-    .course div{
+
+    .course div {
         width: 100%;
         text-align: left;
     }
-    .course div .line{
+
+    .course div .line {
         max-width: 12rem;
     }
-}
-@media only screen and (max-width: 1399px) {
-    .listCourse {
+
+    .courseAdvancedList {
         display: grid;
-        /* word-wrap: break-word; */
-        grid-template-columns: auto auto auto auto;
-        /* align-content: space-between; */
-        /* justify-content: center; */
-        gap: 50px 50px;
+        grid-template-columns: auto auto auto;
+        gap: 30px 30px;
     }
-    .course {
-        max-width: 220px;
-        height: 294px;
-    }
-    .course div{
+} */
+
+@media only screen and (min-width: 992px) {
+
+    .container {
+        max-width: 1399px;
         width: 100%;
-        text-align: left;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin-left: 30px;
+        box-sizing: border-box;
     }
-    .course div .line{
-        max-width: 12rem;
+    /* .kienthuccoso {
+        height: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
     }
+
+    .kienthucnangcao {
+        width: auto;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .courseAdvancedList {
+        min-width: 500px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 30px 30px;
+    } */
 }
 
 @media only screen and (min-width: 1400px) {
-    .course {
-        max-width: 300px;
-        height: 350px;
-    }
-    .course div{
+
+    .container {
+        max-width: 1600px;
         width: 100%;
-        text-align: left;
-    }
-    .course div .line{
-        min-width: 17rem;
+        padding-left: 100px;
+        padding-right: 100px;
+        margin: auto;
+        box-sizing: border-box;
     }
 
+    .kienthuccoso {
+        height: fit-content;
+        width: 100%;
+        /* display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start; */
+    }
+
+    .kienthucnangcao {
+        width: 100%;
+        height: fit-content;
+        /* display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: flex-start; */
+    }
+
+    
 }
