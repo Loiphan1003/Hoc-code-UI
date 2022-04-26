@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Hoc-code-UI/static/css/main.98907361.css",
-    "main.js": "/Hoc-code-UI/static/js/main.9b5cd460.js",
+    "main.css": "/Hoc-code-UI/static/css/main.6e13cc2a.css",
+    "main.js": "/Hoc-code-UI/static/js/main.78423758.js",
     "static/js/787.03749fbf.chunk.js": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js",
     "static/media/test1.png": "/Hoc-code-UI/static/media/test1.a1426d3144d2f2b85782.png",
     "static/media/test2.png": "/Hoc-code-UI/static/media/test2.f5d1e751cd0728ecb46f.png",
@@ -10,12 +10,12 @@
     "static/media/logo_transparent.png": "/Hoc-code-UI/static/media/logo_transparent.321458ddd5c0fca60779.png",
     "static/media/userImageDev.png": "/Hoc-code-UI/static/media/userImageDev.1348a9ddc653774d1993.png",
     "index.html": "/Hoc-code-UI/index.html",
-    "main.98907361.css.map": "/Hoc-code-UI/static/css/main.98907361.css.map",
-    "main.9b5cd460.js.map": "/Hoc-code-UI/static/js/main.9b5cd460.js.map",
+    "main.6e13cc2a.css.map": "/Hoc-code-UI/static/css/main.6e13cc2a.css.map",
+    "main.78423758.js.map": "/Hoc-code-UI/static/js/main.78423758.js.map",
     "787.03749fbf.chunk.js.map": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.98907361.css",
-    "static/js/main.9b5cd460.js"
+    "static/css/main.6e13cc2a.css",
+    "static/js/main.78423758.js"
   ]
 }
