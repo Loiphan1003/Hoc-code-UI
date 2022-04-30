@@ -1,0 +1,151 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+    --status-draft-color: #b7b7a4;
+    --status-open-color: #74c69d;
+    --status-close-color: #d00000;
+}
+
+.header{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--main-color);
+    justify-content: space-between;
+}
+.header_left{
+    display: inline-flex;
+    align-items: center;
+    margin-left: 20px;
+    width: 300px;
+    color: white;
+    justify-content: space-evenly;
+}
+.header_left{
+    width: fit-content;
+}
+.header_right{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 200px;
+    margin-right: 200px;
+}
+.header_right > svg{
+    color: var(--icon-color);
+}
+.header_right > p{
+    width: fit-content;
+    height: fit-content;
+}
+
+.container{
+    width: 80%;
+    height: fit-content;
+    padding: 0px 9%;
+    /* background-color: green; */
+}
+.container > img{
+    margin-top: 3%;
+    width: 100%;
+}
+.content{
+    width: 100%;
+    display:flex;
+}
+/**/
+.left_content{
+    width: 70%;
+    /* background-color: green; */
+    height: 200px;
+}
+.left_content_header{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 30px;
+    /* background-color: green; */
+}
+.navItem{
+    text-decoration: none;
+    color: black;
+}
+.navItem_active{
+    text-decoration: none;
+    color: black;
+    color: var(--main-color);
+}
+/**/
+.right_content{
+    width: 30%;
+    height: 400px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: baseline;
+    box-sizing: border-box;
+}
+.btn_{
+    background-color: white;
+    display: inline-flex;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 0px 5px 2px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn_ > svg{
+    color: var(--icon-color);
+}
+.btn_ > p{
+    margin-left: 10px;
+    width: fit-content;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+.btn_ > input{
+    font-size: 20px;
+    border-style: none;
+    outline: none;
+}
+.btn_fillter{
+    width: 100%;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.fillter_{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+}
+.fillter_  > p{
+    margin:5px 0px;
+    height: fit-content;
+}
+
+#draft{
+    border-radius: 5px;
+    background-color: var(--status-draft-color);
+}
+#open{
+    border-radius: 5px;
+    background-color: var(--status-open-color);
+}
+#close{
+    border-radius: 5px;
+    width: 120px;
+    background-color: red;
+}
+.type{
+    margin-top: 1px;
+}

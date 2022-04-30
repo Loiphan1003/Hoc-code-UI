@@ -12,7 +12,7 @@ import CouresDetail from './features/coureDetail/CouresDetail';
 import CouresDetailSection from './features/coureDetail/coures/CouresDetailSection';
 import ClassRoom from './features/classRoom/ClassRoom';
 import Practice from './features/practice/Practice';
-
+import RoomDetail from './features/classRoom/RoomDetail';
 
 function App() {
 
@@ -32,9 +32,7 @@ function App() {
             }
             setDataUser('');
         });
-        return () => {
-            login();
-        }
+        login();
     }, [])
 
     // console.log("Data: ", dataUser);
@@ -48,12 +46,12 @@ function App() {
                     <Route path='/home' element={<Home data={dataUser} />} />
                     <Route path='/learning' element={<Learn data={dataUser} />} />
                     <Route path='/theory' element={<Theory data={dataUser} />} />
-                    <Route path='/couredetail' element={<CouresDetail data={dataUser}/>} />
-                    <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser}/>} />
-                    <Route path='/room' element={<ClassRoom data={dataUser}/>} />
-                    <Route path='/room' element={<ClassRoom data={dataUser}/>} />
-                    <Route path='/practice' element={<Practice data={dataUser}/>} />
-                    <Route path='/practice/code' element={<CodeUi/>} />
+                    <Route path="/theory/coureDetail/:courseID" element={<CouresDetail data={dataUser} />} />
+                    <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser} />} />
+                    <Route path='/room' element={<ClassRoom data={dataUser} />} />
+                    <Route path='/room/:roomName' element={<RoomDetail data={dataUser} />} />
+                    <Route path='/practice' element={<Practice data={dataUser} />} />
+                    <Route path='/practice/code' element={<CodeUi />} />
                 </Routes>
                 {/* <Footer/> */}
             </Router>

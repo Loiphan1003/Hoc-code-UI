@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import styles from './couresDetail.module.css';
+import CourseApi from '../../apis/courseApi';
 // import Course from '../../components/theory/Course';
 
 function CouresDetail(props) {
@@ -11,16 +12,18 @@ function CouresDetail(props) {
     const navigate = useNavigate();
     const [coures, setCoures] = useState([]);
     // const [id, setId] = useState('');
-
+    let params = useParams()
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (response) {
-                setCoures(response)
-            })
+        const getTheoryLection = async () =>{
+            try {
+                const response = await CourseApi.getOne(params.courseID);
+                setCoures(response.data);
+            } catch (error) {
+                console.log("Fetch data false ", error);
+            }
+        }
+        getTheoryLection();
     }, [])
 
     const handleClick = (name)=>{

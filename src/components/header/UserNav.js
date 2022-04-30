@@ -21,7 +21,7 @@ function UserNav(props) {
         //     })
         // )
         localStorage.clear();
-        navigate('/');
+        navigate('/Hoc-code-UI');
         alert("User log out");
         console.log("User is log out");
     }

@@ -1,10 +1,15 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
 import styles from './Theory.module.css';
 import image from '../../images/C-programming 1.png'
 
 
 function Course(props) {
+
+    let params = useParams();
+    console.log(params.couredetailID);
+
+
     return (
         <div className={styles.listCourse}>
             <div className={styles.course}>

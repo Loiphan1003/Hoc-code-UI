@@ -45,9 +45,11 @@
 .room {
     width: 322px;
     height: 218px;
+    text-decoration: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px;
+    box-shadow: 0px 0px 5px 1px black;
     background-color: white;
+    cursor: pointer;
 }
 
 .roomheader {
@@ -78,6 +80,7 @@
     bottom: 0;
     height: 90px;
     width: 90px;
+    color: black;
     position: relative;
     display: inline;
     box-sizing: border-box;
@@ -112,10 +115,13 @@
 
 .numberStudent {
     width: 70px;
+    display: inline-flex;
+    align-items: center;
     position: relative;
+    color: black;
     height: 20px;
-    top: -5%;
-    left: 80%;
+    top: 5px;
+    left: 50%;
 }
 
 .numberStudent img {

@@ -1,3 +1,11 @@
+/* :root {
+    --level-easy: #E7FAF5;
+    --level-easy-border: #B5D0C9;
+    --level-average: #D3DDDE;
+    --level-average-border: #768B8F;
+    --level-hard: #FFA8A8;
+    --level-hard-border: #FDA591;
+} */
 .Content {
     /* margin-top: 90px;
     padding-top: 10rem; */
@@ -5,7 +13,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     height: 50rem; */
-    padding-top: 7%;
+    padding-top: 7rem;
     background-color: #ede0d4;
     box-sizing: border-box;
 }
@@ -14,7 +22,7 @@
 /* .Content-Login{
     height: 800px;
 } */
-.first-content {
+.first_content {
     /* padding-top: 7%; */
     display: flex;
     height: 40rem;
@@ -23,7 +31,7 @@
     align-items: center;
 }
 
-.first-content .left-content {
+.left_content {
     width: 50%;
     margin-top: -10%;
     margin-left: 5%;
@@ -33,31 +41,30 @@
 
 }
 
-.left-content h1 {
+.left_content > h1 {
     font-size: 5rem;
     max-width: 750px;
     /* margin: 0%; */
     text-transform: uppercase;
 }
 
-.left-content p {
+.left_content p {
     margin-top: -5%;
     max-width: 600px;
 }
 
-.first-content .right-content {
+.right_content {
     min-width: 50%;
     height: 90%;
     /* margin-top: -10%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
     background-image: url("../../images//Frame-2.png");
     background-size: contain;
 
     background-repeat: no-repeat;
 
 }
+
 .First-content h1 {
     width: 30%;
 }
@@ -139,19 +146,46 @@
     height: 50px;
 }
 
-.seccond-content{
+.seccond_content {
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
     align-items: center;
     /* background-color: red; */
 }
-.seccond-content-icon{
+
+.seccond_content_icon {
     border-radius: 50%;
     width: 120px;
     background-color: white;
     text-align: center;
 }
-.seccond-content-icon img{
-    /* width: 50px; */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+    .first_content{
+        display: flex;
+        flex-direction: row;
+        align-items: unset;
+        height: fit-content;
+    }
+    .left_content {
+        width: 100%;
+        margin: 0px 10px;
+    }
+
+    .left_content > h1 {
+        margin-top: -20px;
+        width: auto;
+        font-size: 44px;
+        /* font-size: 5rem; */
+        /* margin: 0%; */
+    }
+
+
+    .right_content {
+        display: none;
+    }
 }
+
+@media only screen and (min-width: 786px) {}

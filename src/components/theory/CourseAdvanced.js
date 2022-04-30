@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import CourseApi from '../../apis/courseApi';
 
 import styles from './Theory.module.css';
@@ -35,16 +35,12 @@ function CourseAdvanced() {
         // return ()=> data();
     }, [])
 
-    const handdleClick = (id) => {
-        navigate('/coureDetail');
-    }
-
 
     return (
-        <div className={styles.courseAdvancedList}>
+        <div className={styles.listCourse}>
 
             {coures.map(coure => (
-                <div key={coure.id} className={styles.course} onClick={() => handdleClick(coure.id)}   >
+                <NavLink to={`/theory/coureDetail/${coure.id}`} key={coure.id} className={styles.course}    >
                     <img src={image} alt='imageCourse' />
                     <div>
                         <h3 className={styles.title}>{coure.name}</h3>
@@ -52,7 +48,7 @@ function CourseAdvanced() {
                         <div className={styles.line}></div>
                         <p className={styles.kind}>Miễn phí</p>
                     </div>
-                </div>
+                </NavLink>
 
             ))}
             {/* {console.log(document.getElementsByClassName(styles.course))} */}
