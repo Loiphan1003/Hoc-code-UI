@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Hoc-code-UI/static/css/main.a91517f0.css",
+    "main.css": "/Hoc-code-UI/static/css/main.24c91f8c.css",
     "main.js": "/Hoc-code-UI/static/js/main.6e221c1f.js",
     "static/js/787.03749fbf.chunk.js": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js",
     "static/media/room_background.png": "/Hoc-code-UI/static/media/room_background.844efbda35f773bfdddf.png",
@@ -11,12 +11,12 @@
     "static/media/logo_transparent.png": "/Hoc-code-UI/static/media/logo_transparent.321458ddd5c0fca60779.png",
     "static/media/userImageDev.png": "/Hoc-code-UI/static/media/userImageDev.1348a9ddc653774d1993.png",
     "index.html": "/Hoc-code-UI/index.html",
-    "main.a91517f0.css.map": "/Hoc-code-UI/static/css/main.a91517f0.css.map",
+    "main.24c91f8c.css.map": "/Hoc-code-UI/static/css/main.24c91f8c.css.map",
     "main.6e221c1f.js.map": "/Hoc-code-UI/static/js/main.6e221c1f.js.map",
     "787.03749fbf.chunk.js.map": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a91517f0.css",
+    "static/css/main.24c91f8c.css",
     "static/js/main.6e221c1f.js"
   ]
 }
