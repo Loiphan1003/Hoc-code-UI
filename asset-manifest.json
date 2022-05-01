@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Hoc-code-UI/static/css/main.2909a2be.css",
-    "main.js": "/Hoc-code-UI/static/js/main.4121c0f3.js",
+    "main.css": "/Hoc-code-UI/static/css/main.3c3ef9be.css",
+    "main.js": "/Hoc-code-UI/static/js/main.c0b9ef01.js",
     "static/js/787.03749fbf.chunk.js": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js",
     "static/media/room_background.png": "/Hoc-code-UI/static/media/room_background.844efbda35f773bfdddf.png",
     "static/media/test1.png": "/Hoc-code-UI/static/media/test1.a1426d3144d2f2b85782.png",
@@ -11,12 +11,12 @@
     "static/media/logo_transparent.png": "/Hoc-code-UI/static/media/logo_transparent.321458ddd5c0fca60779.png",
     "static/media/userImageDev.png": "/Hoc-code-UI/static/media/userImageDev.1348a9ddc653774d1993.png",
     "index.html": "/Hoc-code-UI/index.html",
-    "main.2909a2be.css.map": "/Hoc-code-UI/static/css/main.2909a2be.css.map",
-    "main.4121c0f3.js.map": "/Hoc-code-UI/static/js/main.4121c0f3.js.map",
+    "main.3c3ef9be.css.map": "/Hoc-code-UI/static/css/main.3c3ef9be.css.map",
+    "main.c0b9ef01.js.map": "/Hoc-code-UI/static/js/main.c0b9ef01.js.map",
     "787.03749fbf.chunk.js.map": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2909a2be.css",
-    "static/js/main.4121c0f3.js"
+    "static/css/main.3c3ef9be.css",
+    "static/js/main.c0b9ef01.js"
   ]
 }
