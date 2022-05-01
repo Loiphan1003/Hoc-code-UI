@@ -16,48 +16,29 @@ import "ace-builds/src-noconflict/theme-one_dark";
 function CodeUi() {
 
     const [code, setCode] = useState('');
+    const [tabType, setTabType] = useState("content")
     // const [navLeftSelector, setNavLeftSelector] = useState('');
     const [programming, setProgramming] = useState('c');
     // const [outputValue, setOutputValue] = useState("");
 
-    const handleNavLeft = () => {
+    const navLeftItems = [
+        {
+            icon: faAlignLeft,
+            name: "content"
+        },
+        {
+            icon: faRankingStar,
+            name: "rank"
+        },
+        {
+            icon: faClock,
+            name: "history"
+        }
+    ]
 
+    const handleNavLeft = (value) => {
+        setTabType(value);
     }
-
-    // const createExecutionRequest = () => {
-    //     // setTakeInput(false);
-    //     // setExecuting(true);
-    //     var data = {
-    //         code: code,
-    //         language: 'py',
-    //         input: ''
-    //     };
-
-    //     var config = {
-    //         method: "post",
-    //         url:"https://codexweb.netlify.app/.netlify/functions/enforceCode",
-    //         headers: {
-    //             'Access-Control-Allow-Origin': '*',
-    //             "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-    //             'Content-Type': "application/json"
-    //         },
-    //         // header.Add("Access-Control-Allow-Origin", "*"),
-
-    //         data: data
-    //     };
-
-    //     axios(config)
-    //         .then(function (response) {
-    //             // setExecuting(false);
-    //             setOutputValue(response.data.output);
-    //         })
-    //         .catch(function (error) {
-    //             // setExecuting(false);
-    //             setOutputValue("Network Error");
-    //         });
-    // };
-
-    // console.log("Outputvalue: ", outputValue);
 
 
     return (
@@ -69,17 +50,14 @@ function CodeUi() {
             </div>
 
             <div className={styles.Body}>
-                <div className={styles.nav_left}>
-                    <div className={styles.nav_item} onClick={handleNavLeft}>
-                        <FontAwesomeIcon icon={faAlignLeft} size="2x" />
-                    </div>
-                    <div className={styles.nav_item} onClick={handleNavLeft}>
-                        <FontAwesomeIcon icon={faRankingStar} size="2x" />
-                    </div>
-                    <div className={styles.nav_item} onClick={handleNavLeft}>
-                        <FontAwesomeIcon icon={faClock} size="2x" />
-                    </div>
 
+                <div className={styles.nav_left}>
+                    
+                    {navLeftItems.map(navLeftItem => (
+                        <div key={navLeftItem.name} className={tabType === navLeftItem.name ? styles.nav_item_active : styles.nav_item} onClick={() => handleNavLeft(navLeftItem.name)}>
+                            <FontAwesomeIcon icon={navLeftItem.icon} size="2x" />
+                        </div>
+                    ))}
                 </div>
 
                 <div className={styles.content}>
@@ -119,6 +97,7 @@ function CodeUi() {
                 </div>
 
                 <div className={styles.code_editor}>
+
                     <div className={styles.option_language}>
                         <select className={styles.selectpicker} data-live-search="true" name="Language" id="mode" defaultValue={programming}>
                             <option value="c" id="c">C</option>
@@ -128,6 +107,7 @@ function CodeUi() {
                             <option value="java" id="java">Java</option>
                         </select>
                     </div>
+
                     <div className={styles.editor}>
                         <AceEditor
                             className={styles.code}
@@ -151,17 +131,12 @@ function CodeUi() {
 
                         />
 
-
-                        {/* <div className={styles.editor__wrapper}>
-                            <div className={styles.editor__body}>
-                                <div id={styles.editorCode} className={styles.editor__code}></div>
-                            </div>
-                        </div> */}
                         <button className={styles.submit_code} >
                             {/* <i class="fa-solid fa-floppy-disk"></i> */}
                             <span>Nộp Bài</span>
                         </button>
                     </div>
+
                     <div className={styles.result}>
                         <h3>TEST CASE</h3>
 
@@ -243,6 +218,11 @@ function CodeUi() {
 
                             </ul>
                         </div>
+                    </div>
+
+                    <div className={styles.button}>
+                        <button className={styles.btn} >Chạy thử</button>
+                        <button className={styles.btn} >Nộp bài</button>
                     </div>
                 </div>
             </div>
