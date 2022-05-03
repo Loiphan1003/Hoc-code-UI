@@ -55,6 +55,7 @@
     width: 100%;
 }
 .content{
+    margin-top: 20px;
     width: 100%;
     display:flex;
     flex-direction: column;
@@ -85,97 +86,6 @@
     color: var(--main-color);
 }
 /**/
-.courseWork{
-    width: 100%;
-    height: 200px;
-    display: inline-flex;
-}
-.courseWork_left_content{
-    width: 70%;
-    background-color: red;
-    height: auto;
-}
-.courseWork_right_content{
-    width: 30%;
-    height: 400px;
-    padding: 0 5%;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: baseline;
-    box-sizing: border-box;
-}
-.btn_{
-    background-color: white;
-    display: inline-flex;
-    width: 100%;
-    height: 60px;
-    box-shadow: 0px 0px 5px 2px;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.btn_ > svg{
-    color: var(--icon-color);
-}
-.btn_ > p{
-    margin-left: 10px;
-    width: fit-content;
-    font-size: 20px;
-    box-sizing: border-box;
-}
-.btn_ > input{
-    font-size: 20px;
-    border-style: none;
-    outline: none;
-}
-.btn_fillter{
-    width: 100%;
-    border-radius: 10px;
-    font-size: 20px;
-}
-.fillter_{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120px;
-}
-.fillter_  > p{
-    margin:5px 0px;
-    height: fit-content;
-}
-
-#draft{
-    border-radius: 5px;
-    background-color: var(--status-draft-color);
-}
-#open{
-    border-radius: 5px;
-    background-color: var(--status-open-color);
-}
-#close{
-    border-radius: 5px;
-    width: 120px;
-    background-color: red;
-}
-.type{
-    margin-top: 1px;
-}
 .none{
     display: none;
-}
-
-/**/
-.member{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    background-color: green;
-}
-.memberHeader{
-    width: 450px;
-    text-decoration: solid;
 }

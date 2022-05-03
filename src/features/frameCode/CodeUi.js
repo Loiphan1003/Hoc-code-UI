@@ -117,6 +117,7 @@ function CodeUi() {
                             fontSize='12pt'
                             name="UNIQUE_ID_OF_DIV"
                             width='100%'
+                            height='645px'
                             showPrintMargin={false}
                             // enableSnippets= {true}
                             editorProps={{

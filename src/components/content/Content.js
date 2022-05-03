@@ -7,9 +7,7 @@ import styles from './Content.module.css';
 
 function Content(props) {
 
-    console.log("HeaderData: ",props.data);
-
-
+    
     return (
         <div>
             <Header data={props.data}/>

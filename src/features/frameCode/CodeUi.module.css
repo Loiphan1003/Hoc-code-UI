@@ -1,6 +1,7 @@
 :root {
     --nav-left-button: #03045E;
     --testcase-color: #515151;
+    --code-editor-color: #2B2D42;
 }
 
 /* width */
@@ -52,14 +53,13 @@
 .Body {
     display: inline-block;
     width: 100%;
-    height: 600px;
     height: fit-content;
 }
 
 
 .nav_left {
     /* position: absolute; */
-    width: 70px;
+    width: 4%;
     height: calc(100vh - 6vh);
     background-color: #D5DCEB;
     text-align: center;
@@ -125,9 +125,8 @@
 }
 
 .code_editor {
-    /* position: absolute; */
     float: left;
-    width: 50%;
+    width: 51%;
     height: 94vh;
 }
 
@@ -141,6 +140,8 @@
     float: right;
     outline: none;
 }
+
+
 
 .result {
     overflow: auto;
@@ -163,7 +164,7 @@
 .submit_code {
     position: absolute;
     right: 20px;
-    top: 550px;
+    top: 690px;
     /* bottom: 20px; */
     font-size: 15px;
     border: none;

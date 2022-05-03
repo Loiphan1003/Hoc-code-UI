@@ -16,6 +16,7 @@ import RoomDetail from './features/classRoom/RoomDetail';
 
 function App() {
 
+
     const [dataUser, setDataUser] = useState('');
 
     useEffect(() => {
@@ -24,18 +25,17 @@ function App() {
 
                 const { displayName, email, uid, photoURL, providerId, Provider } = user;
                 setDataUser({ displayName, email, uid, photoURL, providerId, Provider });
-                // console.log("User ", user);
-                // (true);
-                // props.state(true);
                 localStorage.setItem("User", uid);
                 return;
             }
+            
             setDataUser('');
         });
-        login();
+        // return () =>{
+        //     login();
+        // }
     }, [])
 
-    // console.log("Data: ", dataUser);
 
     return (
         <div>

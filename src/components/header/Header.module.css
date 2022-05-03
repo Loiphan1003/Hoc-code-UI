@@ -112,8 +112,11 @@
 .btn_ {
     font-size: 20px;
     height: 30px;
+    background-color: var(--main_color);
+    text-align: center;
+    color: white;
     cursor: pointer;
-    min-width: 10rem;
+    width: 100px;
 }
 
 .btnHeaderBars {
@@ -280,7 +283,8 @@
         font-size: 15px;
         height: fit-content;
         cursor: pointer;
-        min-width: 100px;
+        margin-right: 25px;
+        width: 100px;
     }
 
     #button_logout {
@@ -325,6 +329,9 @@
         display: none;
     }
 
+    #button{
+        margin-right: 15px;
+    }
     #button_logout {
         display: flex;
         flex-direction: row;
@@ -336,11 +343,10 @@
     }
 
     .btn_ {
-        margin-top: 0%;
+        margin-right: 20px;
         font-size: 15px;
         height: fit-content;
         cursor: pointer;
-        min-width: 100px;
     }
     /* .headerNavBars {
         z-index: 10;
@@ -394,7 +400,7 @@
     }
 
     #button {
-        margin-right: 1%;
+        margin-right: 15px;
     }
 
     #button_logout {
@@ -408,11 +414,10 @@
     }
 
     .btn_ {
-        margin-top: 0%;
+        margin-right: 20px;
         font-size: 15px;
         height: fit-content;
         cursor: pointer;
-        min-width: 100px;
     }
     /* .headerNavBars {
         z-index: 10;
@@ -468,7 +473,8 @@
     }
 
     #button {
-        margin-right: 1%;
+        margin-top: 30px;
+        align-items: center;
     }
 
 

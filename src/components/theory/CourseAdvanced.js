@@ -15,14 +15,7 @@ function CourseAdvanced() {
 
 
     useEffect(() => {
-        // fetch('https://jsonplaceholder.typicode.com/users')
-        //     .then(function (response) {
-        //         return response.json()
-        //     })
-        //     .then(function (response) {
-        //         setCoures(response)
-        //     })
-
+      
         const data = async () => {
             try {
                 const response = await CourseApi.getAll();
@@ -51,7 +44,6 @@ function CourseAdvanced() {
                 </NavLink>
 
             ))}
-            {/* {console.log(document.getElementsByClassName(styles.course))} */}
 
         </div>
     );
