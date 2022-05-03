@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faSortDown, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
-import NavBarLevel from './NavBarLevel';
 import styles from './Practice.module.css';
 import ImageDev from '../../images/userImageDev.png';
 
@@ -12,7 +11,6 @@ function Practice(props) {
 
     const [toggle, setToggle] = useState("Tự học");
     const [level, setLevel] = useState("Độ khó");
-    const [navBarLevelOpen, setNavBarLevelOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleToggle = () => {
@@ -23,7 +21,6 @@ function Practice(props) {
             setToggle("Tự học");
         }
     }
-    // let color = "Khó";
     const handClickPractice = () => {
         navigate('/practice/code');
     }
@@ -31,7 +28,7 @@ function Practice(props) {
     useEffect(() => {
 
     }, [])
-    // console.log("Temp: ", temp.current); 
+    // console.log("Level", level); 
     return (
         <>
             <Header data={props.data} />
@@ -42,11 +39,11 @@ function Practice(props) {
                         <FontAwesomeIcon className={styles.iconPracticeHeader} icon={faMagnifyingGlass} />
                     </div>
 
-                    <div name="level" id={styles.option_trangthai} onClick={() => setNavBarLevelOpen(!navBarLevelOpen)}>
-                        <span>{level}</span>
-                        <FontAwesomeIcon className={styles.icon_small} icon={faSortDown} />
-                        {navBarLevelOpen && <NavBarLevel value={setLevel} />}
-                    </div>
+                    <select name="level" value={level} id={styles.option_trangthai} onChange={(e)=> setLevel(e.target.value)} >
+                        <option value="Dễ" >Dễ</option>
+                        <option value="Trung bình" >Trung bình</option>
+                        <option value="Khó">Khó</option>
+                    </select>
                     <div className={styles.toggle}>
                         <input type="checkbox" onClick={handleToggle} />
                         <label className={styles.onbtn}>{toggle}</label>

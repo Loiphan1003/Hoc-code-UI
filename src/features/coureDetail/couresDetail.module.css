@@ -39,3 +39,34 @@
     box-sizing: border-box;
     background-color: white;
 }
+/* Small devices (portrait tablets and large phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .couresDetail{
+        height: fit-content;
+        box-sizing: border-box;
+        padding-top: 6.5rem;
+    }
+    .couresDetailTitle{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 5px;
+        justify-content: flex-start;
+    }
+    .couresDetailTitle > h1{
+        font-size: 20px;
+        margin-left: 10px;
+        width: fit-content;
+    }
+    .couresDetailList{
+        padding: 0px 20px;
+        margin: 0px;
+    }
+    .coure{
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+    }
+   
+}
+

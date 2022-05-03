@@ -46,8 +46,7 @@ function Header(props) {
         setIsLogin(false);
     }, [data])
 
-
-
+   
 
     if (isLogin === true) {
         return (
@@ -136,4 +135,4 @@ function Header(props) {
     )
 }
 
-export default memo(Header);
+export default Header;

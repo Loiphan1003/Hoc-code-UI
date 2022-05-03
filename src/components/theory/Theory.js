@@ -43,7 +43,7 @@ function Theory(props) {
 
 
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faCirclePlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import ImageBackground from '../../images/room_background.png';
-import Coursework from './Coursework';
-import Member from './Member';
+// import ImageBackground from '../../images/room_background.png';
+import Coursework from './coursework/Coursework';
+import Member from './member/Member';
 import styles from './RoomDetail.module.css'
 // import { async } from '@firebase/util';
 import CourseApi from '../../apis/courseApi';
@@ -75,7 +75,7 @@ function RoomDetail(props) {
             </div>
 
             <div className={styles.container}>
-                <img src={ImageBackground} alt="background" />
+                {/* <img src={ImageBackground} alt="background" /> */}
                 <div className={styles.content}>
                     <div className={styles.roomdetail_header}>
 

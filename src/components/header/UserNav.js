@@ -3,27 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/config';
 
 import styles from '../header/Header.module.css';
-// import userSlice from "../Redux/userSlice";
-// import { useDispatch } from "react-redux";
+import loginSlice from '../../redux/loginSlice';
+import { useDispatch } from "react-redux";
 
 function UserNav(props) {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
     const logoutAccount = () => {
         auth.signOut();
 
-        // dispatch(
-        //     userSlice.actions.userLogout({
-        //         value: false,
-        //     })
-        // )
+        dispatch(
+            loginSlice.actions.login({
+                isLogin: false,
+            })
+        )
         localStorage.clear();
         navigate('/Hoc-code-UI');
         alert("User log out");
-        console.log("User is log out");
     }
 
 

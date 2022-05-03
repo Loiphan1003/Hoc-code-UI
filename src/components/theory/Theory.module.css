@@ -162,7 +162,7 @@
 @media only screen and (max-width: 600px) {
     .theoryHeader {
         width: 100%;
-        height: 100px;
+        height: fit-content;
         background-color: var(--header-theory);
         display: block;
         padding: 0px 20px;
@@ -177,7 +177,7 @@
 
     .theoryHeaderLeft>h1 {
         color: white;
-        font-size: 20px;
+        font-size: auto;
     }
 
     .theoryHeader img {
@@ -193,6 +193,7 @@
         justify-content: space-between;
         border-radius: 5px;
         width: 250px;
+        margin-bottom: 15px;
         box-sizing: border-box;
     }
 
@@ -204,7 +205,10 @@
         outline-style: none;
         box-sizing: border-box;
     }
-
+    .container{
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
     .kienthuccoso {
         padding: 0px 20px;
         width: auto;
@@ -216,10 +220,10 @@
     }
 
     .course {
-        width: 100%;
+        width: auto;
         background-color: var(--main-color);
         border-radius: 5px;
-        height: 450px;
+        height: auto;
         display: flex;
         margin-right: 20px;
         margin-top: 20px;
@@ -295,7 +299,9 @@
         justify-content: first baseline;
         flex-direction: row;
     }
-
+    .container{
+        padding: 0px 50px;
+    }
     .course {
         width: 300px;
         background-color: var(--main-color);
