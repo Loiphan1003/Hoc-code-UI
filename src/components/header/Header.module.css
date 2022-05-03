@@ -3,17 +3,16 @@
 }
 
 #header {
-    height: 100px;
+    height: 50px;
     width: 100%;
     font-size: 18px;
     display: flex;
     justify-content: space-between;
-    position: absolute;
     /* background-color: white; */
 }
 
 .logo img {
-    width: 180px;
+    width: 100px;
 }
 
 .List_menu {
@@ -43,6 +42,8 @@
 }
 .Menu_item p{
     width: fit-content;
+    margin: 0px;
+    padding: 0px;
 }
 
 .Menu_item_active {
@@ -240,12 +241,10 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #header {
-        height: 100px;
+        height: 50px;
         width: 100%;
-        font-size: 18px;
         display: flex;
         justify-content: space-between;
-        position: absolute;
         /* background-color: white; */
     }
 
@@ -262,13 +261,18 @@
     .logo {
         /* padding: 5%; */
         /* margin-top: -10%; */
+        height: 100%;
         width: 45%;
         /* height: 100%; */
         box-sizing: border-box;
     }
 
     .logo img {
-        width: 100px;
+        margin-top: 5px;
+        margin-left: 10px;
+        width: 50%;
+        object-fit: cover;
+
     }
 
     .navbar {
@@ -318,7 +322,7 @@
     }
 
     .logo img {
-        width: 180px;
+        width: 100px;
     }
 
     .navbar {
@@ -374,7 +378,6 @@
         width: auto;
         display: flex;
         align-items: center;
-        margin: 20px;
         /* padding-top: 2rem;
         margin-left: -60rem; */
         /* box-sizing: border-box; */
@@ -442,6 +445,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .List_menu {
+        height: 50px;
         width: 600px;
         display: flex;
         align-content: space-around;
@@ -450,12 +454,16 @@
     }
 
     .logo {
+        height: 100%;
         float: left;
         width: 50%;
     }
 
     .logo img {
-        width: 170px;
+        height: 90%;
+        width: auto;
+        margin-left: 50px;
+        margin-top: 5px;
     }
 
     .navbar {
@@ -483,7 +491,6 @@
     }
 
     .btn_ {
-        margin-top: -20px;
         font-size: 18px;
         height: fit-content;
         cursor: pointer;

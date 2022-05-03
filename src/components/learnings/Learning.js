@@ -14,7 +14,7 @@ function Learn(props) {
 
 
     return (
-        <div>
+        <>
             <Header data={props.data}/>
             <div className='learnContent'>
                 <div className='find'>
@@ -30,8 +30,7 @@ function Learn(props) {
                 </div>
             </div>
             <Footer/>
-        </div>
-
+        </>
     )
 }
 

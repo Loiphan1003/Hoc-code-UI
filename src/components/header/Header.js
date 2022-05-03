@@ -86,7 +86,6 @@ function Header(props) {
 
     return (
 
-        <>
             <div id={styles.header} >
                 {/* {console.log(isLogin)} */}
                 <div className={styles.List_menu}>
@@ -130,8 +129,6 @@ function Header(props) {
                 {modalopen && <Backdrop onClick={() => setModalOpen(false)} />}
                 {modalopen && <Login />}
             </div>
-
-        </>
 
     )
 }
