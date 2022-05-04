@@ -5,7 +5,7 @@ import { auth } from './firebase/config';
 import Content from './components/content/Content';
 import Home from './components/home/Home';
 import Learn from './components/learnings/Learning';
-// import Code from './components/code/Code';
+import CreateCourseWork from './features/classRoom/createCourseWork/CreateCourseWork';
 import CodeUi from './features/frameCode/CodeUi';
 import Theory from './components/theory/Theory';
 import CouresDetail from './features/coureDetail/CouresDetail';
@@ -31,9 +31,9 @@ function App() {
             
             setDataUser('');
         });
-        // return () =>{
-        //     login();
-        // }
+        return () =>{
+            login();
+        }
     }, [])
 
 
@@ -50,6 +50,7 @@ function App() {
                     <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser} />} />
                     <Route path='/room' element={<ClassRoom data={dataUser} />} />
                     <Route path='/room/:roomName' element={<RoomDetail data={dataUser} />} />
+                    <Route path='/room/:roomName/create' element={<CreateCourseWork />} />
                     <Route path='/practice' element={<Practice data={dataUser} />} />
                     <Route path='/practice/code' element={<CodeUi />} />
                 </Routes>

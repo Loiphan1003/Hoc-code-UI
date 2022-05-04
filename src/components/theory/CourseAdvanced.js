@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CourseApi from '../../apis/courseApi';
 
 import styles from './Theory.module.css';
@@ -9,7 +9,7 @@ import image from '../../images/C-programming 1.png';
 
 function CourseAdvanced() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [coures, setCoures] = useState([]);
     // const [id, setId] = useState('');
 

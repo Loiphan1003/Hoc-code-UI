@@ -1,23 +1,48 @@
-import React, { useState } from 'react';
-
+import React, { useState, useRef } from 'react';
+import clsx from 'clsx';
+import { EditTextarea } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faCircleCheck, faCircleXmark, faSpinner, faAlignLeft, faRankingStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import styles from './CodeUi.module.css';
-import axios from 'axios';
+// import axios from 'axios';
 import AceEditor from "react-ace";
+import RunCodeAPI from '../../apis/runCodeAPI';
 // import * as ace from 'ace-builds'
 // import "ace-builds/src-noconflict/theme-one_dark";
-// import "ace-builds/src-noconflict/ext-language_tools";
+import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-c_cpp";
+import "ace-builds/src-noconflict/mode-java";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/mode-csharp";
 import "ace-builds/src-noconflict/theme-one_dark";
-// import "react-ace-builds/webpack-resolver-min";
+import "react-ace-builds/webpack-resolver-min";
 
 
 function CodeUi() {
 
-    const [code, setCode] = useState('');
+    const defaultValueEditor = {
+        "c": "#include <stdio.h> \n\n\n int main() {\n    // Complete the code.\n    return 0;\n}\n",
+        "cpp": "#include <iostream>\nusing namespace std;\n\nint main() {\n    // Complete the code.\n    return 0;\n}\n",
+        "java": "import java.io.*;\n\nclass Main {\n\n    public static void main(String[] args) {\n        // Your code goes here\n   }\n}\n",
+        "py": "# Enter your code here. Read input from STDIN. Print output to STDOUT",
+        "cs": "using System;\nnamespace HelloWorld\n{\n\tclass Program\n\t{\n\t\tstatic void Main(string[] args)\n\t\t{\n\t\t\tConsole.WriteLine(\"Hello World!\");\n\t\t}\n\t}\n}"
+    }
+    const modeEditor = {
+        "c": "c_cpp",
+        "cpp": "c_cpp",
+        "java": "java",
+        "py": "python",
+        "cs": "csharp"
+    }
+
+    const editor = useRef()
+    const [resulCode, setResultCode] = useState('Console ...')
+    const [isTestCase, setIsTestCase] = useState(true)
+    const [language, setLanguage] = useState("c")
+    const [input, setInput] = useState("")
     const [tabType, setTabType] = useState("content")
-    // const [navLeftSelector, setNavLeftSelector] = useState('');
+
     const [programming, setProgramming] = useState('c');
     // const [outputValue, setOutputValue] = useState("");
 
@@ -40,6 +65,31 @@ function CodeUi() {
         setTabType(value);
     }
 
+    function handleClickRunCode() {
+        //console.log(editor.current.editor.getValue())
+        const data = async () => {
+            try {
+                const response = await RunCodeAPI.postRunCode({
+                    code: editor.current.editor.getValue(),
+                    input: input,
+                    language: language
+                });
+                setResultCode(response.data.output);
+            } catch (error) {
+                console.log("Fetch data error: ", error);
+            }
+        }
+        data();
+    }
+
+    function handleChangeValueDropDownLanguage(e) {
+        setLanguage(e.target.value)
+        editor.current.editor.setValue(defaultValueEditor[e.target.value])
+
+    }
+    const handleSaveInput = ({ name, value, previousValue }) => {
+        setInput(value)
+    };
 
     return (
         <div className={styles.content_body}>
@@ -52,7 +102,7 @@ function CodeUi() {
             <div className={styles.Body}>
 
                 <div className={styles.nav_left}>
-                    
+
                     {navLeftItems.map(navLeftItem => (
                         <div key={navLeftItem.name} className={tabType === navLeftItem.name ? styles.nav_item_active : styles.nav_item} onClick={() => handleNavLeft(navLeftItem.name)}>
                             <FontAwesomeIcon icon={navLeftItem.icon} size="2x" />
@@ -99,21 +149,21 @@ function CodeUi() {
                 <div className={styles.code_editor}>
 
                     <div className={styles.option_language}>
-                        <select className={styles.selectpicker} data-live-search="true" name="Language" id="mode" defaultValue={programming}>
+                        <select className={styles.selectpicker} onChange={handleChangeValueDropDownLanguage} data-live-search="true" name="Language" id="mode" defaultValue={programming}>
                             <option value="c" id="c">C</option>
                             <option value="c++" id="c++">C++</option>
-                            <option value="python2" id="python2">Python2</option>
-                            <option value="python3" id="python3">Python3</option>
+                            <option value="py" id="python">Python</option>
+                            <option value="cs" id="c#">C#</option>
                             <option value="java" id="java">Java</option>
                         </select>
                     </div>
 
                     <div className={styles.editor}>
                         <AceEditor
-                            className={styles.code}
-                            mode="c_cpp"
+                            ref={editor}
+                            defaultValue={defaultValueEditor[language]}
+                            mode={modeEditor[language]}
                             theme='one_dark'
-                            onChange={setCode}
                             fontSize='12pt'
                             name="UNIQUE_ID_OF_DIV"
                             width='100%'
@@ -139,9 +189,13 @@ function CodeUi() {
                     </div>
 
                     <div className={styles.result}>
-                        <h3>TEST CASE</h3>
 
-                        <div className={styles.result_content}>
+                        <div className={styles.navRessult}>
+                            <h3 onClick={() => setIsTestCase(true)} className={clsx(styles.navRessult_item, { [styles.isSelect_navRessult]: isTestCase })} >Test case</h3>
+                            <h3 onClick={() => setIsTestCase(false)} className={clsx(styles.navRessult_item, { [styles.isSelect_navRessult]: !isTestCase })} >Console</h3>
+                        </div>
+
+                        {isTestCase && <div className={styles.result_content}>
                             <ul className={styles.list_testcase}>
                                 <li>
                                     <div className={styles.case}>
@@ -218,11 +272,21 @@ function CodeUi() {
                                 </li>
 
                             </ul>
-                        </div>
+                        </div>}
+
+                        {isTestCase || 
+                        <div className = {styles.consoleScreen}>
+                            <div className={styles.consoleContent}>
+                                {resulCode}
+                            </div>
+                            <div className={styles.consoleInput}>
+                                <EditTextarea onSave={handleSaveInput} placeholder='Nhập input ...' rows={2} className={styles.inputEdittext}/>
+                                <button onClick={handleClickRunCode}>Chạy thử</button>
+                            </div>
+                        </div> }
                     </div>
 
                     <div className={styles.button}>
-                        <button className={styles.btn} >Chạy thử</button>
                         <button className={styles.btn} >Nộp bài</button>
                     </div>
                 </div>

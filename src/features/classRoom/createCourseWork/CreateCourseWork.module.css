@@ -1,0 +1,135 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+.header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--main-color);
+    justify-content: center;
+    align-items: center;
+}
+.header_left{
+    display: inline-flex;
+    width: auto;
+    height: 30px;
+    align-items: center;
+}
+.header_left > h1{
+    margin-left: 10px;
+    width: 700px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.btnExit{
+    display: inline-flex;
+    align-items: center;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.header_right{
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    width: 90px;
+    height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.content{
+    width: 100%;
+    /* max-height: 899px; */
+    display: flex;
+    justify-content: center;
+}
+.main_content{
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 50%;
+    height: 700px;
+    padding: 20px 35px;
+    box-sizing: border-box;
+    border: 1px solid;
+}
+.course_name{
+    width: 880px;
+    height: 60px;
+    font-size: 20px;
+    padding: 0 20px;
+    border-radius: 5px;
+    outline-color: var(--icon-color);
+    border-style: none;
+    box-sizing: border-box;
+}
+.course_name:hover{
+    width: 880px;
+    height: 60px;
+    font-size: 20px;
+    padding: 0 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 3px;
+}
+.add_question{
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 150px;
+    box-shadow: 0px 0px 3px;
+}
+.icon_add_question{
+    color: var(--icon-color);
+}
+#list{
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+#list_active{
+    transform: rotate(180deg);
+    transition: 0.5s;
+}
+
+.course_date{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+}
+.date_close{
+    margin-left: 30px;
+}
+.nav_question{
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 5px;
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    top: 360px;
+    position: absolute;
+}
+.nav_question_item{
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.5;
+}
+.nav_question_item > p{
+    margin-left: 10px;
+}
+.nav_question_item:hover{
+    opacity: 1;
+}

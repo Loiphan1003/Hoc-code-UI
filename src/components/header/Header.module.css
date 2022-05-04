@@ -8,7 +8,7 @@
     font-size: 18px;
     display: flex;
     justify-content: space-between;
-    position: absolute;
+    /* position: absolute; */
     /* background-color: white; */
 }
 
@@ -248,8 +248,6 @@
         font-size: 18px;
         display: flex;
         justify-content: space-between;
-        position: absolute;
-        /* background-color: white; */
     }
 
     .List_menu {
@@ -257,9 +255,6 @@
         height: 100%;
         display: flex;
         align-items: center;
-        /* padding-top: 2rem;
-        margin-left: -60rem; */
-        /* box-sizing: border-box; */
     }
 
     .logo {

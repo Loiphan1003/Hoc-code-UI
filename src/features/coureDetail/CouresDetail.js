@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
+// import Footer from '../../components/footer/Footer';
 import styles from './couresDetail.module.css';
 import CourseApi from '../../apis/courseApi';
 // import Course from '../../components/theory/Course';
@@ -26,7 +26,7 @@ function CouresDetail(props) {
             }
         }
         getTheoryLection();
-    }, [])
+    }, [params.courseID])
 
     const handleClick = (name) => {
         navigate('/couredetail/section');

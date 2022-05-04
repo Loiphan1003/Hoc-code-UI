@@ -3,7 +3,7 @@ import React from "react";
 import useLookBodyScroll from "../useLockBodyScroll";
 import '../Login/Login.css';
 import { auth, googleProvider, githubProvider } from '../../firebase/config';
-import { signInWithPopup, linkWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 // import firebase from "../../firebase/config";
 import { useDispatch } from "react-redux";
 import loginSlice from "../../redux/loginSlice";
@@ -50,20 +50,7 @@ function Login(props) {
             // console.log(firebase.auth().fetchProvidersForEmail(googleCred));
             // navigate('/home');
         } catch (error) {
-            // if (error === "auth/account-exists-with-different-credential") {
-
-            linkWithPopup(auth.currentUser, googleProvider).then((result) => {
-                // Accounts successfully linked.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const user = result.user;
-                console.log(user)
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                // ...
-            });
-            // }
-
+            console.log("Error: ", error);
         }
     }
 

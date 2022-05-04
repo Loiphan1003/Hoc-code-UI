@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faCirclePlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 // import ImageBackground from '../../images/room_background.png';
 import Coursework from './coursework/Coursework';
 import Member from './member/Member';
@@ -77,6 +77,7 @@ function RoomDetail(props) {
             <div className={styles.container}>
                 {/* <img src={ImageBackground} alt="background" /> */}
                 <div className={styles.content}>
+
                     <div className={styles.roomdetail_header}>
 
                         {tabs.map((tab) => (

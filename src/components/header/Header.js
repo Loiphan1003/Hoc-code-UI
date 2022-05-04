@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faCircleUser } from "@fortawesome/free-regular-svg-icons";

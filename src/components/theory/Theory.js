@@ -2,7 +2,7 @@ import React from 'react';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Header from '../header/Header';
-import Footer from '../footer/Footer';
+// import Footer from '../footer/Footer';
 import Course from './Course';
 import CourseAdvanced from './CourseAdvanced';
 import image1 from '../../images/headerTheory.png';
