@@ -1,7 +1,6 @@
 .couresDetail{
     height: 60rem;
     box-sizing: border-box;
-    padding-top: 6.5rem;
 }
 .couresDetailTitle{
     display: inline-block;
@@ -44,7 +43,6 @@
     .couresDetail{
         height: fit-content;
         box-sizing: border-box;
-        padding-top: 6.5rem;
     }
     .couresDetailTitle{
         display: flex;

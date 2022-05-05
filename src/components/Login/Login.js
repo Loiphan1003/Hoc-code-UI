@@ -40,7 +40,7 @@ function Login(props) {
     const handleGitHubLogin = async (value) => {
         try {
 
-            const data = await signInWithPopup(auth, githubProvider);
+            // const data = await signInWithPopup(auth, githubProvider);
 
             // const data = await linkWithPopup(auth.currentUser, googleProvider);
             // console.log("ValueFacebook: ", data);

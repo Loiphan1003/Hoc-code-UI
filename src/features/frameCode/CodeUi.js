@@ -16,7 +16,7 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-csharp";
 import "ace-builds/src-noconflict/theme-one_dark";
-import "react-ace-builds/webpack-resolver-min";
+// import "react-ace-builds/webpack-resolver-min";
 
 
 function CodeUi() {

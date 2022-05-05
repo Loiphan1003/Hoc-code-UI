@@ -33,7 +33,7 @@ function Coursework(props) {
 
     }
 
-    console.log(filter);
+    // console.log(filter);
     
     return (
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
