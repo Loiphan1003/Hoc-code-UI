@@ -91,6 +91,8 @@ function CodeUi() {
         setInput(value)
     };
 
+    console.log(input)
+
     return (
         <div className={styles.content_body}>
 

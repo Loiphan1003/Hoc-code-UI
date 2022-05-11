@@ -5,8 +5,8 @@ import '../Login/Login.css';
 import { auth, googleProvider, githubProvider } from '../../firebase/config';
 import { signInWithPopup } from "firebase/auth";
 // import firebase from "../../firebase/config";
-import { useDispatch } from "react-redux";
-import loginSlice from "../../redux/loginSlice";
+// import { useDispatch } from "react-redux";
+// import loginSlice from "../../redux/loginSlice";
 // import { addDocument } from "../../firebase/services";
 // import { signInWithPopup } from "firebase/auth"
 // import { AuthContext } from '../../context/AuthProvider'
@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom"
 function Login(props) {
     useLookBodyScroll();
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const handleGoogleLogin = async (value) => {
         const data = await signInWithPopup(auth, googleProvider);
@@ -27,11 +27,11 @@ function Login(props) {
         console.log("Value: ", data);
 
         if (data !== undefined){
-            dispatch(
-                loginSlice.actions.login({
-                    isLogin: true,
-                })
-            )
+            // dispatch(
+            //     loginSlice.actions.login({
+            //         isLogin: true,
+            //     })
+            // )
             navigate('/home');
         }
     }

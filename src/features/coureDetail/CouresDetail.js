@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import Header from '../../components/header/Header';
-// import Footer from '../../components/footer/Footer';
 import styles from './couresDetail.module.css';
 import CourseApi from '../../apis/courseApi';
 // import Course from '../../components/theory/Course';
@@ -34,7 +31,6 @@ function CouresDetail(props) {
 
     return (
         <>
-            <Header data={props.data} />
             <div className={styles.couresDetail}>
                 <div className={styles.couresDetailTitle}>
                     <FontAwesomeIcon icon={faChevronRight} />

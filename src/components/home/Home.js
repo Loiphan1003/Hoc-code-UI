@@ -1,8 +1,7 @@
 import React from 'react'
 // import { useEffect } from 'react';
 import './Home.css'
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
+// import Footer from '../footer/Footer';
 // import {AuthContext} from './context/AuthProvider'
 
 // const courseList = ['Khóa học gợi ý', 'Đang học', 'Đã hoàn thành'];
@@ -21,11 +20,10 @@ function Home(props) {
     return (
 
         <div>
-            <Header data={props.data}/>
             <div className="contentHome">
 
                 <div className="information">
-                    <p>Xin chào {props.data.displayName} . Chào mừng  đến với Code Sample. Hãy khám phá nhé!</p>
+                    <p>Xin chào  . Chào mừng  đến với Code Sample. Hãy khám phá nhé!</p>
                     <div className="information-account">
                     </div>
                 </div>
@@ -45,7 +43,7 @@ function Home(props) {
                 </div>
 
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }

@@ -33,13 +33,13 @@ function Coursework(props) {
 
     }
 
-    // console.log(filter);
+    // console.log(params.roomId);
     
     return (
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
             {/*Start Mobile  */}
             <div className={styles.mobile_btn} >
-                <NavLink to={`/room/${params.roomName}/create`} className={styles.btn_mobile} >
+                <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_mobile} >
                     <FontAwesomeIcon icon={faCirclePlus} />
                     <span>Tạo bài tập</span>
                 </NavLink>
@@ -216,7 +216,7 @@ function Coursework(props) {
 
             <div className={styles.courseWork_right_content}>
 
-                <NavLink to={`/room/${params.roomName}/create`} className={styles.btn_}>
+                <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_}>
                     <FontAwesomeIcon icon={faCirclePlus} size="2x" />
                     <p>Tạo bài tập</p>
                 </NavLink>

@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../header/Header";
 import Footer from '../footer/Footer';
 import styles from './Content.module.css';
 // import Img_content from '../src/assets/img/Frame-2.png'
@@ -10,7 +9,6 @@ function Content(props) {
     
     return (
         <div>
-            <Header data={props.data}/>
             <div className={styles.Content}>
                 <div className={styles.first_content}>
 

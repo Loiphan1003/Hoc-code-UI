@@ -31,7 +31,7 @@ function Room(props) {
     return (
         <>
             {rooms.map(room => (
-                <NavLink to={`/room/${room.name}`} key={room.id} className={styles.room}>
+                <NavLink to={`/room/${room.id}`} key={room.id} className={styles.room}>
                     <div className={styles.roomheader}>
                         <h1 className={styles.roomName}>{room.name}</h1>
                     </div>

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import styles from './CreateCourseWork.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TextField, FormControlLabel, Switch } from '@material-ui/core';
-import { Radio, Input, Space } from 'antd';
-import { faLeftLong, faPlusCircle, faChevronUp, faChevronDown, faCode, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
-import { current } from '@reduxjs/toolkit';
-
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { Radio, Input, Space } from 'antd';
+import { faLeftLong, faPlusCircle, faChevronUp, faCode, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
+// import { current } from '@reduxjs/toolkit';
+// import CreateExercise from '../../exercise/createExercise/CreateExercise';
+// import MultipleChoiceExercises from '../../exercise/multipleChoiceExercises/MultipleChoiceExercises';
 
 function CreateCourseWork(props) {
 
@@ -16,25 +19,16 @@ function CreateCourseWork(props) {
     const [selecQuestion, setSelecQuestion] = useState(false);
     const [questions, setQuestions] = useState([]);
 
-    // let openDate = new Date(timeOpen);
-    // console.log(checked);
-
-    const CodeQuestion = { type: "code", name: "question 1", language: "c" };
-
-
     const handAddQuestion = (value) => {
         if (value === 'code') {
             setQuestions(
-                // current 
-                // => 
                 [
-                    ...current,
+                    ...questions,
                     { type: "code", name: "question 1", language: "c" }
                 ]
             )
         } else if (value === 'mutiple_question') {
             setQuestions(
-                current => 
                 [
                     ...questions,
                     { type: "mutiple_question", name: "question 1", option_1: false, option_2: false, option_3: false, option_4: false, answer: "c" }
@@ -43,18 +37,18 @@ function CreateCourseWork(props) {
         }
     }
 
-    console.log("Question: ",  questions);
+    console.log("Question: ", questions);
 
-    const handleAnswer = (event) => {
-        // console.log(event.target.value);
-    }
+    // const handleAnswer = (event) => {
+    //     // console.log(event.target.value);
+    // }
 
     let listQuesion = [];
     const handleSave = () => {
         console.log("Click");
         listQuesion.push(questions)
         // return;
-        
+
     }
 
 
@@ -81,6 +75,36 @@ function CreateCourseWork(props) {
 
                     <div className={styles.course_discription} >
                         <p>Mô tả:</p>
+                        <CKEditor
+                            // className={styles.editor}
+                            height="500px"
+                            editor={ClassicEditor}
+                            // data={valueInputAnswer}
+                            onReady={(editor) => {
+                                editor.editing.view.change((writer) => {
+                                    writer.setStyle(
+                                        "height",
+                                        "400px",
+                                        editor.editing.view.document.getRoot()
+                                    );
+                                });
+                            }}
+                            // onReady={editor => {
+                            //     // You can store the "editor" and use when it is needed.
+                            //     console.log('Editor is ready to use!', editor);
+                            // }}
+                            onChange={(event, editor) => {
+                                const data = editor.getData();
+                                // setExerciseName(data);
+                                // console.log("Change", { event, editor, data });
+                            }}
+                        // onBlur={(event, editor) => {
+                        //     console.log('Blur.', editor);
+                        // }}
+                        // onFocus={(event, editor) => {
+                        //     console.log('Focus.', editor);
+                        // }}
+                        />
                     </div>
 
                     <div className={styles.course_visibility} >
@@ -127,71 +151,21 @@ function CreateCourseWork(props) {
                     <div>
                         {questions.map((question, index) => (
                             <div key={index} className={styles.question_item} >
-                                <input className={styles.question_item_name} type='text' placeholder={`Câu hỏi ${index + 1}`} />
-                                <p>Mô tả</p>
+                                {/* <div className={question.type === 'code' ? styles.question_item_solution : styles.none} > */}
+                                {/* <CreateExercise  /> */}
+                                {/* </div> */}
 
-                                <div className={question.type === 'code' ? '' : styles.none} >
-                                    <label>Chọn ngôn ngữ:</label>
-                                    <select className={styles.question_item_selection} >
-                                        <option>C</option>
-                                        <option>C++</option>
-                                        <option>C#</option>
-                                        <option>Java</option>
-                                        <option>Python</option>
-                                    </select>
-                                </div>
-
-                                <div className={question.type === 'code' ? styles.question_item_solution : styles.none} >
-                                    <div className={styles.question_item_solution_header} >
-                                        <p>Bước 1 <br /> <span>Solution Code</span></p>
-                                        <FontAwesomeIcon icon={faChevronDown} />
-                                    </div>
-                                </div>
-
-                                <div className={question.type === 'code' ? styles.question_item_solution : styles.none} >
-                                    <div className={styles.question_item_solution_header} >
-                                        <p>Bước 2 <br /> <span>Stater Code</span></p>
-                                        <FontAwesomeIcon icon={faChevronDown} />
-                                    </div>
-                                </div>
-
-                                <div className={question.type === 'code' ? styles.question_item_solution : styles.none} >
-                                    <div className={styles.question_item_solution_header} >
-                                        <p>Bước 3 <br /> <span>Test case</span></p>
-                                        <FontAwesomeIcon icon={faChevronDown} />
-                                    </div>
-                                </div>
-
-                                <div className={question.type === 'mutiple_question' ? styles.question_item_mutiple_active : styles.none} >
-                                    <p>Câu trả lời</p>
-                                    <Radio.Group onChange={(e) => handleAnswer(e)} defaultValue='1'>
-                                        <Space className={styles.question_item_radio} >
-                                            <Radio value='1' >
-                                                <input className={styles.question_answer} type='text' placeholder='Option 1' />
-                                            </Radio>
-
-                                            <Radio value='2' >
-                                                <input className={styles.question_answer} type='text' placeholder='Option 2' />
-                                            </Radio>
-
-                                            <Radio value='3' >
-                                                <input className={styles.question_answer} type='text' placeholder='Option 3' />
-                                            </Radio>
-
-                                            <Radio value='4' >
-                                                <input className={styles.question_answer} type='text' placeholder='Option 4' />
-                                            </Radio>
-                                        </Space>
-                                    </Radio.Group>
-                                </div>
+                                {/* /\ <div className={question.type === 'mutiple_question' ? styles.question_item_mutiple_active : styles.none} > */}
+                                {/* <MultipleChoiceExercises /> */}
+                                {/* </div> * */}
                             </div>
                         ))}
                     </div>
 
                     <div className={styles.add_question} >
 
-                        {selecQuestion && <div className={styles.backdrop} onClick={()=> setSelecQuestion(false)} ></div>}
-                        {selecQuestion && <div className={styles.nav_question}>
+                        {selecQuestion && <div className={styles.backdrop} onClick={() => setSelecQuestion(false)} ></div>}
+                        {/* {selecQuestion && <div className={styles.nav_question}>
                             <button className={styles.nav_question_item} onClick={() => handAddQuestion("code")} >
                                 <FontAwesomeIcon icon={faCode} />
                                 <p>Bài tập code</p>
@@ -201,6 +175,20 @@ function CreateCourseWork(props) {
                                 <FontAwesomeIcon icon={faCircleQuestion} />
                                 <p>Câu hỏi trắc nghiệm</p>
                             </button>
+                        </div>}  */}
+
+                        {selecQuestion && <div className={styles.nav_question}>
+                            <h2>Thêm câu hỏi</h2>
+                            <input placeholder="Nhập mã bài tập" />
+                            <div>
+                                <label>Loại bài tập</label><br/>
+                                <select>
+                                    <option>Bài tập code</option>
+                                    <option>Bài tập trắc nghiệm</option>
+                                </select>
+                            </div>
+
+                            <button>Thêm bài tập</button>
                         </div>}
 
                         <button type='button' className={styles.add_question_btn} onClick={() => setSelecQuestion(!selecQuestion)} >

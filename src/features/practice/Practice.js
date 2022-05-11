@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,7 +30,6 @@ function Practice(props) {
     // console.log("Level", level); 
     return (
         <>
-            <Header data={props.data} />
             <div className={styles.practice}>
                 <div className={styles.conten_control}>
                     <div className={styles.conten_control_search}>

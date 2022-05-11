@@ -14,7 +14,26 @@ import RoomApi from '../../apis/roomApi';
 function RoomDetail(props) {
 
     const [tabType, setTabType] = useState("Bài tập");
+    const [roomInfo, setRoomInfo] = useState();
     const [member, setMember] = useState([]);
+    let params = useParams();
+    // let RoomInfo = [];
+
+    useEffect(() => {
+
+        const functions = async () => {
+            try {
+                const responseRoomInfo = await RoomApi.getRoomInfo(params.roomId);
+                console.log(responseRoomInfo);
+                setRoomInfo(responseRoomInfo.data);
+                // RoomInfo = responseRoomInfo.data;
+            } catch (error) {
+                console.log("Error: ", error);
+            }
+        }
+        functions();
+    }, [params.roomId])
+
     const tabs = [
         {
             path: "/practice",
@@ -30,6 +49,9 @@ function RoomDetail(props) {
         setTabType(value.name)
 
     }
+
+   
+
     useEffect(() => {
         const functions = async () => {
             try {
@@ -56,27 +78,28 @@ function RoomDetail(props) {
         functions();
     }, [tabType])
 
-    // console.log(member);
+    console.log("State: ",roomInfo);
 
-    let params = useParams();
+
 
     return (
         <>
             <div className={styles.header}>
                 <div className={styles.header_left}>
                     <FontAwesomeIcon icon={faChevronLeft} size='2x' />
-                    <h1>{params.roomName}</h1>
+                    <h1>{roomInfo === undefined ? '': roomInfo.name}</h1>
                 </div>
 
-                <div className={styles.header_right} >
-                    <FontAwesomeIcon icon={faCirclePlus} size='2x' />
-                    <p>Thêm thành viên</p>
-                </div>
             </div>
 
             <div className={styles.container}>
                 {/* <img src={ImageBackground} alt="background" /> */}
                 <div className={styles.content}>
+
+                    <div className={styles.roomdetail_id} >
+                        <p>Mã Lớp</p>
+                        <p>{roomInfo === undefined ? '': roomInfo.id}</p>
+                    </div>
 
                     <div className={styles.roomdetail_header}>
 
@@ -96,8 +119,8 @@ function RoomDetail(props) {
                         ))}
 
                     </div>
-                    {tabType === "Bài tập" && <Coursework type={tabType} /> } 
-                    {tabType === "Thành viên" && <Member type={tabType} member={member} /> } 
+                    {tabType === "Bài tập" && <Coursework type={tabType} />}
+                    {tabType === "Thành viên" && <Member type={tabType} member={member} />}
                 </div>
             </div>
         </>

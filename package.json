@@ -4,6 +4,8 @@
   "homepage": "https://loiphan1003.github.io/Hoc-code-UI",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^34.0.0",
+    "@ckeditor/ckeditor5-react": "^5.0.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -21,6 +23,7 @@
     "clsx": "^1.1.1",
     "firebase": "^9.6.10",
     "gh-pages": "^3.2.3",
+    "html-react-parser": "^1.4.12",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-ace": "^9.5.0",

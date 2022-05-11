@@ -1,0 +1,170 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+/* .container {
+    padding: 10px 300px;
+    box-sizing: border-box;
+} */
+
+.content {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_left {
+    width: auto;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+.exercise_name {
+    width: auto;
+}
+
+.exercise_name>input {
+    width: 98%;
+    height: 30px;
+    font-size: 20px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    /* box-sizing: border-box; */
+}
+
+
+
+.exercise_score {
+    width: auto;
+}
+
+.exercise_score>input {
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.exercise_level {
+    width: auto;
+}
+
+.exercise_level>select {
+    width: 100%;
+    font-size: 20px;
+}
+
+
+.content_right {
+    width: auto;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+.exercise_input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.exercise_add_button{
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+.exercise_btn{
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+.exercise_btn > p{
+    color: var(--main-color);
+}
+.exercise_btn > button{
+    cursor: pointer;
+    outline: none;
+    color: white;
+    background-color: var(--main-color);
+    font-size: 15px;
+    margin-left: 10px;
+    width: 50px;
+    height: 30px;
+}
+
+
+
+.input{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input > svg{
+    color: red;
+    cursor: pointer;
+}
+.type_input{
+    width: 200px;
+}
+.type_input > select{
+    width: 100px;
+}
+.input_testcase{
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 5px;
+    width: 500px;
+    border-radius: 10px;
+    background-color: white;
+    position: fixed;
+    padding: 10px 10px;
+    height: 300px;
+    box-sizing: border-box;
+}
+.input_value{
+    width: 90%;
+    height: 110px;
+}
+.testcase{
+    width: 100%;
+    margin-top: 10px;
+    background-color: orange;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 40px;
+    box-sizing: border-box;
+}
+.btn_open_testcase{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.testcase_btn{
+    cursor: pointer;
+}
+.btn_close{
+    cursor: pointer;
+    margin-right: 20px;
+}
+.btn_save{
+    color: red;
+    cursor: pointer;
+}
+.btn_update{
+    color: white;
+    margin-right: 20px;
+}
+.btn_delete{
+    color: red;
+}

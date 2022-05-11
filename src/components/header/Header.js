@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Header.module.css";
+import { auth }  from '../../firebase/config';
 import companyLogo from '../../images/logo_transparent.png';
 import Login from '../Login/Login';
 import UserNav from "./UserNav";
@@ -12,9 +13,7 @@ import Backdrop from '../Backdrop';
 
 function Header(props) {
 
-    const data = props.data;
-
-
+    
     const [modalopen, setModalOpen] = useState(false);
     const [userNavOpen, setUserNavOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
@@ -22,6 +21,27 @@ function Header(props) {
     // const [dataUser, setDataUser] = useState('');
 
     const showSideBar = () => setHeaderNavbar(!headerNavBar);
+
+    const [dataUser, setDataUser] = useState('');
+
+    useEffect(() => {
+        const login = auth.onAuthStateChanged((user) => {
+            if (user) {
+
+                const { displayName, email, uid, photoURL, providerId, Provider } = user;
+                setDataUser({ displayName, email, uid, photoURL, providerId, Provider });
+                localStorage.setItem("User", uid);
+                return;
+            }
+
+            setDataUser('');
+        });
+        return () => {
+            login();
+        }
+    }, [])
+
+    // console.log("DataUser: ", dataUser);
 
     const menuItem = [
         {
@@ -38,17 +58,17 @@ function Header(props) {
         },
     ]
 
-    useEffect(() => {
-        if (data !== '') {
-            setIsLogin(true);
-            return;
-        }
-        setIsLogin(false);
-    }, [data])
+    // useEffect(() => {
+    //     if (data !== undefined) {
+    //         setIsLogin(true);
+    //         return;
+    //     }
+    //     setIsLogin(false);
+    // }, [data])
 
-   
+    // console.log("DataHeader: ",data);
 
-    if (isLogin === true) {
+    if (dataUser !== '') {
         return (
             <div id={styles.header} >
                 <div className={styles.List_menu}>
@@ -57,24 +77,18 @@ function Header(props) {
                     </NavLink>
 
                     <div className={styles.navbar} >
-
-                        <div className={styles.Menu_item}>
-                            <NavLink to="/practice" >Luyện tập</NavLink>
-                        </div>
-
-                        <div className={styles.Menu_item}>
-                            <NavLink to="/theory" >Lý thuyết</NavLink>
-                        </div>
-
-                        <div className={styles.Menu_item}>
-                            <NavLink to="/room" >Phòng học</NavLink>
-                        </div>
-                        <div className="animation-click"></div>
+                        {menuItem.map((menu, index) => (
+                            <NavLink to={menu.path} className={(navdata) => (navdata.isActive ? styles.Menu_item_active :styles.Menu_item) } key={index}>
+                                <p >{menu.name}</p>
+                            </NavLink>
+                        ))}
                     </div>
+                    
                 </div>
                 <div id={styles.button_logout} >
                     <FontAwesomeIcon className={styles.icon} icon={faBell} alt="notifi" size="2x" />
-                    <FontAwesomeIcon className={styles.icon} icon={faCircleUser} size="2x" onClick={() => setUserNavOpen(!userNavOpen)} alt="UserImage" />
+                    <FontAwesomeIcon className={styles.icon} icon={faCircleUser} size="2x" onClick={() => setUserNavOpen(true)} alt="UserImage" />
+                    {userNavOpen && <div className={styles.backdrop_white} onClick={() => setUserNavOpen(false)} ></div>}
                     {userNavOpen && <UserNav data={setIsLogin} />}
                     <FontAwesomeIcon className={styles.btnHeaderBars} icon={faBars} size="2x" />
                 </div>
@@ -98,17 +112,6 @@ function Header(props) {
                                 <p >{menu.name}</p>
                             </NavLink>
                         ))}
-                        {/* <div className={styles.Menu_item}>
-                            <NavLink to="/practice" >Luyện tập</NavLink>
-                        </div>
-
-                        <div className={styles.Menu_item}>
-                            <NavLink to="/theory" >Lý thuyết</NavLink>
-                        </div>
-
-                        <div className={styles.Menu_item}>
-                            <NavLink to="/room" >Phòng học</NavLink>
-                        </div> */}
                     </div>
 
                 </div>

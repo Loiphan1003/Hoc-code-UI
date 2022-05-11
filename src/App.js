@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { auth } from './firebase/config';
+// import { auth } from './firebase/config';
 
 import Content from './components/content/Content';
 import Home from './components/home/Home';
@@ -13,48 +13,71 @@ import CouresDetailSection from './features/coureDetail/coures/CouresDetailSecti
 import ClassRoom from './features/classRoom/ClassRoom';
 import Practice from './features/practice/Practice';
 import RoomDetail from './features/classRoom/RoomDetail';
+import Exercise from './features/exercise/Exercise';
+import CreateExercise from './features/exercise/createExercise/CreateExercise';
+import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises/MultipleChoiceExercises';
+import DefaultLayout from './layouts/defaultLayout';
+import LayoutCreate from './layouts/layoutCreate';
 
 function App() {
-
-
-    const [dataUser, setDataUser] = useState('');
-
-    useEffect(() => {
-        const login = auth.onAuthStateChanged((user) => {
-            if (user) {
-
-                const { displayName, email, uid, photoURL, providerId, Provider } = user;
-                setDataUser({ displayName, email, uid, photoURL, providerId, Provider });
-                localStorage.setItem("User", uid);
-                return;
-            }
-            
-            setDataUser('');
-        });
-        return () =>{
-            login();
-        }
-    }, [])
 
 
     return (
         <div>
             <Router>
-                {/* <Header data={dataUser}/> */}
                 <Routes>
-                    <Route exac path='/Hoc-code-UI' element={<Content data={dataUser} />} />
-                    <Route path='/home' element={<Home data={dataUser} />} />
-                    <Route path='/learning' element={<Learn data={dataUser} />} />
-                    <Route path='/theory' element={<Theory data={dataUser} />} />
-                    <Route path="/theory/coureDetail/:courseID" element={<CouresDetail data={dataUser} />} />
-                    <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser} />} />
-                    <Route path='/room' element={<ClassRoom data={dataUser} />} />
-                    <Route path='/room/:roomName' element={<RoomDetail data={dataUser} />} />
-                    <Route path='/room/:roomName/create' element={<CreateCourseWork />} />
-                    <Route path='/practice' element={<Practice data={dataUser} />} />
+                    <Route exac path='/Hoc-code-UI' element={
+                        <DefaultLayout >
+                            <Content  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/home' element={
+                        <DefaultLayout >
+                            <Home  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/learning' element={<Learn  />} />
+                    <Route path='/theory' element={
+                        <DefaultLayout>
+                            <Theory  />
+                        </DefaultLayout>}
+                    />
+                    <Route path="/theory/coureDetail/:courseID" element={
+                        <DefaultLayout>
+                            <CouresDetail  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/couredetail/section' element={<CouresDetailSection  />} />
+                    <Route path='/room' element={
+                        <DefaultLayout>
+                            <ClassRoom  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/room/:roomId' element={<RoomDetail  />} />
+                    <Route path='/room/:roomId/create' element={<CreateCourseWork />} />
+                    <Route path='/practice' element={
+                        <DefaultLayout>
+                            <Practice  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/exercise' element={
+                        <DefaultLayout>
+                            <Exercise  />
+                        </DefaultLayout>}
+                    />
+                    <Route path='/exercise/create' element={
+                        <LayoutCreate>
+                            <CreateExercise  />
+                        </LayoutCreate>}
+                    />
+                    <Route path='/exercise/multiplechoice' element={
+                        <LayoutCreate>
+                            <MultipleChoiceExercises />
+                        </LayoutCreate>}
+                    />
+
                     <Route path='/practice/code' element={<CodeUi />} />
                 </Routes>
-                {/* <Footer/> */}
             </Router>
         </div>
     )

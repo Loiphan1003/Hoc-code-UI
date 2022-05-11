@@ -6,7 +6,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 function Member(props) {
 
     // const members = props.member;
-   
+
 
     const colums = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -51,12 +51,25 @@ function Member(props) {
                     autoHeight
                     rows={rows}
                     columns={colums}
+                    
+
+                    
                     pageSize={10}
                     rowsPerPageOptions={[10]}
                     components={{
                         Toolbar: GridToolbar
                     }}
                     checkboxSelection
+                    localeText={{
+                        toolbarColumns: "Cột",
+                        toolbarFilters: "Tìm kiếm",
+                        toolbarDensity: "my density",
+                        toolbarExport: "my export",
+                        // Value: "Giá trị",
+                        filterPanelInputLabel: 'Giá trị',
+                        filterPanelColumns: 'Cột',
+                        filterPanelOperators: 'So sánh'
+                    }}
                 />
 
             </div>
