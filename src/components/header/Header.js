@@ -16,7 +16,6 @@ function Header(props) {
     
     const [modalopen, setModalOpen] = useState(false);
     const [userNavOpen, setUserNavOpen] = useState(false);
-    const [isLogin, setIsLogin] = useState(false);
     const [headerNavBar, setHeaderNavbar] = useState(false);
     // const [dataUser, setDataUser] = useState('');
 
@@ -87,9 +86,9 @@ function Header(props) {
                 </div>
                 <div id={styles.button_logout} >
                     <FontAwesomeIcon className={styles.icon} icon={faBell} alt="notifi" size="2x" />
-                    <FontAwesomeIcon className={styles.icon} icon={faCircleUser} size="2x" onClick={() => setUserNavOpen(true)} alt="UserImage" />
+                    <FontAwesomeIcon className={styles.icon} icon={faCircleUser} size="2x" onClick={() => setUserNavOpen(!userNavOpen)} alt="UserImage" />
                     {userNavOpen && <div className={styles.backdrop_white} onClick={() => setUserNavOpen(false)} ></div>}
-                    {userNavOpen && <UserNav data={setIsLogin} />}
+                    {userNavOpen && <UserNav />}
                     <FontAwesomeIcon className={styles.btnHeaderBars} icon={faBars} size="2x" />
                 </div>
             </div>

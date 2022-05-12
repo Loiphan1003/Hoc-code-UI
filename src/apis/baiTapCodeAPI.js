@@ -1,15 +1,14 @@
 import axiosClient from "./axiosClient";
 
-const CourseApi = {
-    getAll: (params) =>{
-        const url = 'MonHoc/getAll';
+const BaiTapCodeAPI = {
+    getAll: () =>{
+        const url = 'BaiTapCode/getAll'
         return axiosClient.get(url);
     },
     getOne: (params) =>{
-        const url = `MonHoc/getOne?Id=${params}`
+        const url = `BaiTapCode/getOne?id=${params}`
         return axiosClient.get(url, {params});
     }
-    
 }
 
-export default CourseApi;
+export default BaiTapCodeAPI;

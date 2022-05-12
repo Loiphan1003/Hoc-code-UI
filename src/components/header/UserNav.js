@@ -20,11 +20,10 @@ function UserNav(props) {
     }
 
 
-    console.log(props.onClick)
     return (
         <div className={styles.userNavItems} onClick={props.onClick}>
             <p>Thông tin cá nhân</p>
-            <NavLink to="/exercise">Quản lý bài tập</NavLink>
+            <p onClick={() => navigate('/exercise')}>Quản lý bài tập</p>
             <p>Trang cá nhân</p>
             <p onClick={logoutAccount}>Thoát</p>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { auth } from './firebase/config';
 
@@ -47,7 +47,7 @@ function App() {
                             <CouresDetail  />
                         </DefaultLayout>}
                     />
-                    <Route path='/couredetail/section' element={<CouresDetailSection  />} />
+                    <Route path='/couredetail/section/:idLyThuyet' element={<CouresDetailSection  />} />
                     <Route path='/room' element={
                         <DefaultLayout>
                             <ClassRoom  />
@@ -76,7 +76,7 @@ function App() {
                         </LayoutCreate>}
                     />
 
-                    <Route path='/practice/code' element={<CodeUi />} />
+                    <Route path='/practice/code/:id' element={<CodeUi />} />
                 </Routes>
             </Router>
         </div>

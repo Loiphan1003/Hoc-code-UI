@@ -118,7 +118,9 @@
     text-align: center;
     color: white;
     cursor: pointer;
-    width: 100px;
+    width: auto;
+    padding: auto;
+    box-sizing: border-box;
 }
 
 .btnHeaderBars {
@@ -163,20 +165,15 @@
 }
 
 .userNavItems {
-    /* margin-top: 2; */
     border-radius: 5%;
-    margin-left: -4rem;
     height: auto;
-    width: 160px;
+    width: 190px;
     top: 100%;
     right: 10%;
+    padding: 0px 20px;
     background-color: white;
     position: absolute;
     box-shadow: 0px 0px 4px 1px;
-    /* display: flex; */
-    /* justify-content: space-around; */
-    flex-direction: column;
-    /* align-items: stretch;  */
     align-items: center;
     box-sizing: border-box;
 }
@@ -185,7 +182,7 @@
     opacity: 0.5;
     text-align: left;
     height: 30px;
-    padding-left: 10px;
+    
     font-size: 15px;
     line-height: 200%;
     cursor: pointer;

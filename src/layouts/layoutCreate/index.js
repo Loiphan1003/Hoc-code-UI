@@ -7,7 +7,7 @@ function LayoutCreate({children}) {
     return (
         <>
             <Header/>
-            <div className={styles. container} >
+            <div className={styles.container} >
                 {children}
             </div>
         </>

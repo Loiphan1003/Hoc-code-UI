@@ -1,22 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect ,useRef } from 'react';
 import clsx from 'clsx';
 import { EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faCircleCheck, faCircleXmark, faSpinner, faAlignLeft, faRankingStar, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faCircle ,faCircleCheck, faCircleXmark, faSpinner, faAlignLeft, faRankingStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import styles from './CodeUi.module.css';
-// import axios from 'axios';
 import AceEditor from "react-ace";
 import RunCodeAPI from '../../apis/runCodeAPI';
+import BaiTapCodeAPI from '../../apis/baiTapCodeAPI';
+import { useParams } from 'react-router-dom';
 // import * as ace from 'ace-builds'
-// import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-csharp";
 import "ace-builds/src-noconflict/theme-one_dark";
-// import "react-ace-builds/webpack-resolver-min";
+import "react-ace-builds/webpack-resolver-min";
 
 
 function CodeUi() {
@@ -42,9 +42,11 @@ function CodeUi() {
     const [language, setLanguage] = useState("c")
     const [input, setInput] = useState("")
     const [tabType, setTabType] = useState("content")
-
+    const [baiTapCode, setBaiTapCode] = useState({})
+    const [testCases, setTestCases] = useState([])
     const [programming, setProgramming] = useState('c');
     // const [outputValue, setOutputValue] = useState("");
+    let params = useParams()
 
     const navLeftItems = [
         {
@@ -61,12 +63,36 @@ function CodeUi() {
         }
     ]
 
+    useEffect(() => {
+        // Lấy dữ liệu bài tập code từ DB
+        const getBaiTapCode = async () => {
+            try {
+                const response = await BaiTapCodeAPI.getOne(params.id);
+                setBaiTapCode(response.data);
+            } catch (error) {
+                console.log("Fetch data false ", error);
+            }
+        }
+        getBaiTapCode();
+        // lấy testCase từ DB ( chỉ để hiển thị lên UI không mang theo dữ liệu )
+        const getTestCase = async () => {
+            try {
+                const response = await RunCodeAPI.getTestCaseByID(params.id);
+                setTestCases(response.data);
+            } catch (error) {
+                console.log("Fetch data false ", error);
+            }
+        }
+        getTestCase();
+
+    }, [params.id])
+
     const handleNavLeft = (value) => {
         setTabType(value);
     }
 
     function handleClickRunCode() {
-        //console.log(editor.current.editor.getValue())
+        setResultCode("Đang chạy....")
         const data = async () => {
             try {
                 const response = await RunCodeAPI.postRunCode({
@@ -82,6 +108,23 @@ function CodeUi() {
         data();
     }
 
+    const handleClickSubmitCode = () => {
+        const submit = async () => {
+            setTestCases(testCases.map(() => 3))
+            try {
+                const response = await RunCodeAPI.postRunCodes({
+                    code: editor.current.editor.getValue(),
+                    input: input,
+                    language: language
+                }, params.id);
+                setTestCases(response.data)
+            } catch (error) {
+                console.log("Fetch data error: ", error);
+            }
+        }
+        submit();
+    }
+
     function handleChangeValueDropDownLanguage(e) {
         setLanguage(e.target.value)
         editor.current.editor.setValue(defaultValueEditor[e.target.value])
@@ -91,14 +134,14 @@ function CodeUi() {
         setInput(value)
     };
 
-    console.log(input)
+    // console.log(input)
 
     return (
         <div className={styles.content_body}>
 
             <div className={styles.header}>
                 <FontAwesomeIcon className={styles.headerIcon} icon={faChevronLeft} size="2x" />
-                <h3>Số nguyên tố</h3>
+                <h3>{baiTapCode.tieuDe}</h3>
             </div>
 
             <div className={styles.Body}>
@@ -112,17 +155,17 @@ function CodeUi() {
                     ))}
                 </div>
 
-                <div className={styles.content}>
+                <div className={styles.content} dangerouslySetInnerHTML={{ __html: baiTapCode.deBai }} >
                     {/* <!-- Nội dung bài tập --> */}
-                    <div className={styles.question}>
+                    {/* <div className={styles.question}>
                         <p>
                             Từ một thanh thép có độ dài là một số nguyên dương N cho trước
                             Người ta cho phép có thể cắt thành nhiều đoạn (đều có độ dài là số nguyên dương).
                             Hãy cho biết giá trị TÍCH số lớn nhất của tất cả các các đoạn con tạo ra?
                         </p>
-                    </div>
+                    </div> */}
 
-                    <div className={styles.input_format}>
+                    {/* <div className={styles.input_format}>
                         <h2>Input Format</h2>
                         <p> Dòng duy nhất chứa số nguyên dương N</p>
                     </div>
@@ -145,7 +188,7 @@ function CodeUi() {
                     <div className={styles.sample_output}>
                         <h2>Sample Ouput</h2>
                         <p>105<br />10<br />10<br />10</p>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className={styles.code_editor}>
@@ -176,15 +219,15 @@ function CodeUi() {
                                 $blockScrolling: true,
                             }}
                             setOptions={{
-
-                                // enableBasicAutocompletion: true,
-                                // enableLiveAutocompletion: false,
-                                // highlightActiveLine: true,
+                                enableBasicAutocompletion: true,
+                                enableLiveAutocompletion: true,
+                                enableSnippets: true,
+                                showLineNumbers: true,
                             }}
 
                         />
 
-                        <button className={styles.submit_code} >
+                        <button className={styles.submit_code} onClick={handleClickSubmitCode} >
                             {/* <i class="fa-solid fa-floppy-disk"></i> */}
                             <span>Nộp Bài</span>
                         </button>
@@ -199,95 +242,40 @@ function CodeUi() {
 
                         {isTestCase && <div className={styles.result_content}>
                             <ul className={styles.list_testcase}>
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_success} icon={faCircleCheck} />
-                                        <span>Test case #1</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_success} icon={faCircleCheck} />
-                                        <span>Test case #2</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_success} icon={faCircleCheck} />
-                                        <span>Test case #3</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faCircleXmark} />
-                                        <span>Test case #4</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #5</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #6</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #7</span>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #8</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #9</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #10</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className={styles.case}>
-                                        <FontAwesomeIcon className={styles.icon_error} icon={faSpinner} />
-                                        <span>Test case #11</span>
-                                    </div>
-                                </li>
-
+                                {
+                                    testCases.map((testCase, index) => (
+                                        <li key={index}>
+                                            <div className={styles.case}>
+                                                <FontAwesomeIcon
+                                                    className={clsx(styles.case_icon, {
+                                                        [styles.icon_success]: testCase === 1 || testCase === 2 || testCase === 3,
+                                                        [styles.icon_error]: testCase === 0
+                                                    }
+                                                    )}
+                                                    icon={testCase === 2
+                                                        ? faCircle : (testCase === 1
+                                                            ? faCircleCheck : (testCase === 0
+                                                                ? faCircleXmark : faSpinner))} />
+                                                <span>Test case #{index}</span>
+                                            </div>
+                                        </li>))
+                                }
                             </ul>
                         </div>}
 
-                        {isTestCase || 
-                        <div className = {styles.consoleScreen}>
-                            <div className={styles.consoleContent}>
-                                {resulCode}
-                            </div>
-                            <div className={styles.consoleInput}>
-                                <EditTextarea onSave={handleSaveInput} placeholder='Nhập input ...' rows={2} className={styles.inputEdittext}/>
-                                <button onClick={handleClickRunCode}>Chạy thử</button>
-                            </div>
-                        </div> }
+                        {isTestCase ||
+                            <div className={styles.consoleScreen}>
+                                <div className={styles.consoleContent}>
+                                    {resulCode}
+                                </div>
+                                <div className={styles.consoleInput}>
+                                    <EditTextarea onSave={handleSaveInput} placeholder='Nhập input ...' rows={2} className={styles.inputEdittext} />
+                                    <button onClick={handleClickRunCode}>Chạy thử</button>
+                                </div>
+                            </div>}
                     </div>
 
+                    {/* Mobile: */}
                     <div className={styles.button}>
                         <button className={styles.btn} >Nộp bài</button>
                     </div>

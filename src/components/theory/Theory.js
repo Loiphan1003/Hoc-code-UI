@@ -1,15 +1,29 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Course from './Course';
-import CourseAdvanced from './CourseAdvanced';
+import CourseApi from '../../apis/courseApi';
 import image1 from '../../images/headerTheory.png';
-import styles from './Theory.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './styles/Theory.module.css';
+
 
 function Theory(props) {
 
+    const [monHocs, setMonHocs] = useState([])
 
+    useEffect(() =>{
+        const data = async () => {
+            try {
+                const response = await CourseApi.getAll();
+                setMonHocs(response.data);
+            } catch (error) {
+                console.log("Fetch data error: ", error);
+            }
+        }
+        data();
+
+
+    },[])
 
     return (
         <div>
@@ -29,16 +43,9 @@ function Theory(props) {
 
                     <div className={styles.kienthuccoso}>
                         <h1>Kiến thức cơ sở</h1>
-                        <Course />
-                    </div>
-
-                    <div className={styles.kienthucnangcao}>
-                        <h1>Kiến thức nâng cao</h1>
-                        <CourseAdvanced />
+                        <Course  data={monHocs} />
                     </div>
                 </div>
-
-
             </div>
             {/* <Footer /> */}
         </div>

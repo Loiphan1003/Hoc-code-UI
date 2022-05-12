@@ -1,15 +1,14 @@
 import axiosClient from "./axiosClient";
 
-const CourseApi = {
+const LyThuyetAPI = {
     getAll: (params) =>{
-        const url = 'MonHoc/getAll';
+        const url = `LyThuyet/getAll?id=${params}`
         return axiosClient.get(url);
     },
     getOne: (params) =>{
-        const url = `MonHoc/getOne?Id=${params}`
+        const url = `LyThuyet/getOne?id=${params}`
         return axiosClient.get(url, {params});
     }
-    
 }
 
-export default CourseApi;
+export default LyThuyetAPI;

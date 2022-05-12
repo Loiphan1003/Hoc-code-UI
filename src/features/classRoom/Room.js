@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserGroup} from '@fortawesome/free-solid-svg-icons';
 import CourseApi from '../../apis/courseApi';
-import styles from './ClassRoom.module.css';
+import styles from './styles/ClassRoom.module.css';
 import DevImage from '../../images/userImageDev.png';
 
 

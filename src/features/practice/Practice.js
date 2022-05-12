@@ -3,14 +3,29 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
-import styles from './Practice.module.css';
+import styles from './styles/Practice.module.css';
 import ImageDev from '../../images/userImageDev.png';
+import BaiTapCodeAPI from '../../apis/baiTapCodeAPI';
 
 function Practice(props) {
 
     const [toggle, setToggle] = useState("Tự học");
     const [level, setLevel] = useState("Độ khó");
+    const [baiTapCode, setBaiTapCode] = useState([]);
     const navigate = useNavigate();
+
+    const getAllBaiTapCode = async () => {
+        try {
+            const response = await BaiTapCodeAPI.getAll();
+            setBaiTapCode(response.data);
+        } catch (error) {
+            console.log("Fetch data false");
+        }
+    }
+
+    useEffect(() => {
+        getAllBaiTapCode();
+    }, [])
 
     const handleToggle = () => {
         if (toggle === "Tự học") {
@@ -20,24 +35,32 @@ function Practice(props) {
             setToggle("Tự học");
         }
     }
-    const handClickPractice = () => {
-        navigate('/practice/code');
+
+    const handClickPractice = (id) => {
+        navigate(`/practice/code/${id}`);
     }
 
-    useEffect(() => {
+    const handleFindText = (text) => {
+        if(text.length > 0){
+            let searchText = baiTapCode.filter(baitap => baitap.tieuDe.includes(text));
+            setBaiTapCode(searchText);
+        }
+        if(text.length === 0){
+            getAllBaiTapCode();
+            return;
+        }
+    }
 
-    }, [])
-    // console.log("Level", level); 
     return (
         <>
             <div className={styles.practice}>
                 <div className={styles.conten_control}>
                     <div className={styles.conten_control_search}>
-                        <input type="text" className={styles.control_search} placeholder="Tìm kiếm bài tập" />
+                        <input type="text" className={styles.control_search} placeholder="Tìm kiếm bài tập" onChange={(e) => handleFindText(e.target.value)} />
                         <FontAwesomeIcon className={styles.iconPracticeHeader} icon={faMagnifyingGlass} />
                     </div>
 
-                    <select name="level" value={level} id={styles.option_trangthai} onChange={(e)=> setLevel(e.target.value)} >
+                    <select name="level" value={level} id={styles.option_trangthai} onChange={(e) => setLevel(e.target.value)} >
                         <option value="Dễ" >Dễ</option>
                         <option value="Trung bình" >Trung bình</option>
                         <option value="Khó">Khó</option>
@@ -51,125 +74,30 @@ function Practice(props) {
 
                 <div className={styles.conten_list_exercise}>
                     <ul className={styles.list_exercise}>
-                        <li>
-                            <div className={styles.item_list} onClick={handClickPractice}>
-                                <h3 className={styles.title}>SNT</h3>
-                                <div className={styles.tag}>
-                                    <span>Code</span>
-                                </div>
-                                <div className={styles.image_avatar} >
-
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                                </div>
-                                <div className={styles.username}>nvduy_0511</div>
-                                <div className={styles.item_footer}>
-                                    <div className={styles.userpass}>
-                                        {/* <i class="fa-solid fa-users"></i> */}
-                                        <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
+                        {baiTapCode.map(baitap => (
+                            <li key={baitap.id}>
+                                <div className={styles.item_list} onClick={() => handClickPractice(baitap.id)}>
+                                    <h3 className={styles.title}>{baitap.tieuDe}</h3>
+                                    <div className={styles.tag}>
+                                        <span>Code</span>
                                     </div>
-                                    <div className={styles.level}>
-                                        <span id={styles.average} >Trung Bình</span>
+                                    <div className={styles.image_avatar} >
+                                        <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div className={styles.item_list}>
-                                <h3 className={styles.title}>SNT</h3>
-                                <div className={styles.tag}>
-                                    <span>Code</span>
-                                </div>
-                                <div className={styles.image_avatar} >
-
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                                </div>
-                                <div className={styles.username}>nvduy_0511</div>
-                                <div className={styles.item_footer}>
-                                    <div className={styles.userpass}>
-                                        {/* <i class="fa-solid fa-users"></i> */}
-                                        <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
-                                    </div>
-                                    <div className={styles.level}>
-                                        <span id={styles.easy} >Dễ</span>
+                                    <div className={styles.username}>{baitap.uIdNguoiTao}</div>
+                                    <div className={styles.item_footer}>
+                                        <div className={styles.userpass}>
+                                            {/* <i class="fa-solid fa-users"></i> */}
+                                            <FontAwesomeIcon icon={faUserGroup} />
+                                            <span>50/120</span>
+                                        </div>
+                                        <div className={styles.level}>
+                                            <span id={baitap.doKho === "easy" ? styles.easy : (baitap.doKho === 'medium' ? styles.average : styles.hard)} >{baitap.doKho}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div className={styles.item_list}>
-                                <h3 className={styles.title}>SNT</h3>
-                                <div className={styles.tag}>
-                                    <span>Code</span>
-                                </div>
-                                <div className={styles.image_avatar} >
-
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                                </div>
-                                <div className={styles.username}>nvduy_0511</div>
-                                <div className={styles.item_footer}>
-                                    <div className={styles.userpass}>
-                                        {/* <i class="fa-solid fa-users"></i> */}
-                                        <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
-                                    </div>
-                                    <div className={styles.level}>
-                                        <span id={styles.hard} >Khó</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div className={styles.item_list}>
-                                <h3 className={styles.title}>SNT</h3>
-                                <div className={styles.tag}>
-                                    <span>Code</span>
-                                </div>
-                                <div className={styles.image_avatar} >
-
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                                </div>
-                                <div className={styles.username}>nvduy_0511</div>
-                                <div className={styles.item_footer}>
-                                    <div className={styles.userpass}>
-                                        {/* <i class="fa-solid fa-users"></i> */}
-                                        <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
-                                    </div>
-                                    <div className={styles.level}>
-                                        <span id={styles.easy} >Dễ</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div className={styles.item_list}>
-                                <h3 className={styles.title}>SNT</h3>
-                                <div className={styles.tag}>
-                                    <span>Code</span>
-                                </div>
-                                <div className={styles.image_avatar} >
-
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                                </div>
-                                <div className={styles.username}>nvduy_0511</div>
-                                <div className={styles.item_footer}>
-                                    <div className={styles.userpass}>
-                                        {/* <i class="fa-solid fa-users"></i> */}
-                                        <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
-                                    </div>
-                                    <div className={styles.level}>
-                                        <span id={styles.easy} >Dễ</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            </li>))
+                        }
                     </ul>
 
                 </div>

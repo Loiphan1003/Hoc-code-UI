@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './couresDetail.module.css';
-import CourseApi from '../../apis/courseApi';
-// import Course from '../../components/theory/Course';
+import LyThuyetAPI from '../../apis/lyThuyetAPI';
 
 function CouresDetail(props) {
 
@@ -16,7 +15,7 @@ function CouresDetail(props) {
     useEffect(() => {
         const getTheoryLection = async () => {
             try {
-                const response = await CourseApi.getOne(params.courseID);
+                const response = await LyThuyetAPI.getAll(params.courseID);
                 setCoures(response.data);
             } catch (error) {
                 console.log("Fetch data false ", error);
@@ -39,7 +38,7 @@ function CouresDetail(props) {
 
                 <ul className={styles.couresDetailList}>
                     {coures.map(coure => (
-                        <li key={coure.id} className={styles.coure} onClick={() => handleClick(coure.name)}>{coure.name}</li>
+                        <NavLink key={coure.id} to={`/couredetail/section/${coure.id}`} className={styles.coure} >{coure.tieuDe}</NavLink>
                     ))}
 
                 </ul>
