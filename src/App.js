@@ -13,6 +13,9 @@ import CouresDetailSection from './features/coureDetail/coures/CouresDetailSecti
 import ClassRoom from './features/classRoom/ClassRoom';
 import Practice from './features/practice/Practice';
 import RoomDetail from './features/classRoom/RoomDetail';
+import CourseWorkDetail from './features/classRoom/courseWorkDetail/CourseWorkDetail';
+import LoginAdmin from './admin/LoginAdmin'
+
 
 function App() {
 
@@ -50,9 +53,12 @@ function App() {
                     <Route path='/couredetail/section' element={<CouresDetailSection data={dataUser} />} />
                     <Route path='/room' element={<ClassRoom data={dataUser} />} />
                     <Route path='/room/:roomName' element={<RoomDetail data={dataUser} />} />
+                    <Route path='/courseworkdetail/:couredetailsName' element={<CourseWorkDetail data={dataUser}/>} />
                     <Route path='/room/:roomName/create' element={<CreateCourseWork />} />
                     <Route path='/practice' element={<Practice data={dataUser} />} />
                     <Route path='/practice/code' element={<CodeUi />} />
+                    <Route path='/practice/code' element={<CodeUi />} />
+                    <Route path='/admin' element={<LoginAdmin/>} />
                 </Routes>
                 {/* <Footer/> */}
             </Router>

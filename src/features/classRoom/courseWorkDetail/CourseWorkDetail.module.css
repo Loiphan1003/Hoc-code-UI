@@ -1,0 +1,256 @@
+:root {
+    --coursedetail-icon-color: #88929f;
+    --coursedetail-header-color: rgb(53, 45, 45);
+}
+.item_info{
+    display: inline-flex;
+    align-items: center;
+}
+.item_info > svg{
+    color: var(--coursedetail-icon-color);
+}
+.courseworkdetail_textSUBMISSIONS{
+    font-size: 15px;
+}
+.courseworkdetail_textSUBMISSIONS_header{
+    font-weight: 700;
+    color: #88929f;
+}
+.courseworkdetail_textGRADINGSTRATEGY{
+    margin-left: 50px;
+    font-size: 15px;
+}
+.courseworkdetail_textGRADINGSTRATEGY_header{
+    color: #88929f;
+    font-weight: 700;
+}
+.courseworkdetail_content_Total{
+    margin-top: 20px;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    color: #283238;
+    height: 30px;
+}
+.courseworkdetail_content_item{
+    padding: 0px 100px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+}
+.courseworkdetail_content_item2{
+    margin-top: 15px;
+    padding: 0px 100px;
+    width: 100%;
+    display: inline-flex;
+}
+.header_coursedetail{
+    color: var(--coursedetail-header-color);
+    width: 100%;
+    font-size: 15px;
+    margin-left: 10px;
+}
+.header_background_coursedetail{
+    color: var(--coursedetail-header-color);
+    width: 80px;
+    margin-left: 10px;
+    font-size: 20px;
+    background-color: #dee5ed;
+    text-align:center;
+    border-radius: 5%;
+}
+.Total1 {
+    width: 130px;
+    height: 80px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+    background-color: white;
+    cursor: pointer;
+    margin-right: 16px;
+    text-align: center;
+    display: inline-block;
+    min-width: 120px;
+    position: relative;
+}
+.PhanTram{
+    margin-top: 10px;
+    display: block;
+    font-size: 28px;
+    line-height: 32px;
+    text-align: center;
+}
+.Lable{
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #7c909b;
+    font-weight: 700;
+    cursor: inherit;
+    text-align: center;
+}
+.Tree{
+    margin-left: 100px;
+}
+.Complete_content{
+    margin-right: 40px;
+    display: inline-flex;
+    align-items: center;
+}
+.Node1{
+    border: 0;
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    background-color: #81d671;
+    height: 8px;
+    width: 8px;
+    border-radius: 1000px;
+    border-top-left-radius: 1000px;
+    border-top-right-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+    border-bottom-left-radius: 1000px;
+    display: block;
+}
+.Node2{
+    border: 0;
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    background-color: #e2b30a;
+    height: 8px;
+    width: 8px;
+    border-radius: 1000px;
+    border-top-left-radius: 1000px;
+    border-top-right-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+    border-bottom-left-radius: 1000px;
+    display: block;
+}
+.Node3{
+    border: 0;
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    background-color: #eb160e;
+    height: 8px;
+    width: 8px;
+    border-radius: 1000px;
+    border-top-left-radius: 1000px;
+    border-top-right-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+    border-bottom-left-radius: 1000px;
+    display: block;
+}
+.Complete{
+    margin-left: 4px;
+}
+.ThanhPhanTram{
+    max-width: 560px;
+    background: #d0d8dc;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    /* background-repeat-x: initial;
+    background-repeat-y: initial; */
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(208, 216, 220);
+    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 10px;
+    background: #d0d8dc;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    /* background-repeat-x: initial;
+    background-repeat-y: initial; */
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(208, 216, 220);
+    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 10px;
+    flex-direction: row;
+    align-items: stretch;
+    display: flex;
+}
+.LichTrinh{
+    background-color: #fff;
+    color: #283238;
+    border: 1px solid #d0d8dc;
+    font-weight: 700;
+    text-align: center;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px 0 rgb(40 50 56 / 24%);
+    border-radius: 5px;
+}

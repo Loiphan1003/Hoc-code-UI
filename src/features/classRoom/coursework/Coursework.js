@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import Backdrop from '../.././../components/Backdrop';
 import { faChevronRight, faCirclePlus, faMagnifyingGlass, faTableList, faFilter } from '@fortawesome/free-solid-svg-icons';
 import styles from "./CourseWork.module.css"
 import { NavLink, useParams } from 'react-router-dom';
+import CourseApi from '../../../apis/courseApi';
 
 
 function Coursework(props) {
+
+    const [couredetails, setCouredetail] = useState([]);
+
+    useEffect(() => {
+        const data = async () => {
+            try {
+                const response = await CourseApi.getAll();
+                setCouredetail(response.data);
+            } catch (error) {
+                console.log("Fetch data error: ", error);
+            }
+        }
+        data();
+        // return () => data();
+    }, [])
 
     const params = useParams();
     const [draft, setDarft] = useState(false);
@@ -125,14 +141,16 @@ function Coursework(props) {
 
                 </div>
                 {draft && <div className={styles.coursework_content} >
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
+                    {couredetails.map(couredetail => (
+                        <div className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList}/>
+                                <NavLink className={styles.item_name} to={`/courseworkdetail/${couredetail.name}`} key={couredetail.id}>{couredetail.name}</NavLink>
+                                <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                            </div>
+                            <p className={styles.item_draft}>Nháp</p>
                         </div>
-
-                        <p className={styles.item_draft}>Nháp</p>
-                    </div>
+                    ))}
                 </div>}
 
                 <div className={styles.courseWork_open}>
@@ -141,37 +159,18 @@ function Coursework(props) {
                         <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setOpen(!open)} />
                     </div>
                 </div>
+
                 {open && <div className={styles.coursework_content} >
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                    {couredetails.map(couredetail => (
+                        <div className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList}/>
+                                <NavLink className={styles.item_name} to={`/courseworkdetail/${couredetail.name}`} key={couredetail.id}>{couredetail.name}</NavLink>
+                                <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                            </div>
+                            <p className={styles.item_open}>Mở</p>
                         </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
+                    ))} 
                 </div>}
 
                 <div className={styles.courseWork_close}>
@@ -181,36 +180,16 @@ function Coursework(props) {
                     </div>
                 </div>
                 {close && <div className={styles.coursework_content} >
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
+                    {couredetails.map(couredetail => (
+                        <div className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList}/>
+                                <NavLink className={styles.item_name} to={`/courseworkdetail/${couredetail.name}`} key={couredetail.id}>{couredetail.name}</NavLink>
+                                <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                            </div>
+                            <p className={styles.item_close}>Kết thúc</p>
                         </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Lập trình hướng đối tượng</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
+                    ))}
                 </div>}
             </div>
 

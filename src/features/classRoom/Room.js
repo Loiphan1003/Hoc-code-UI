@@ -27,7 +27,7 @@ function Room(props) {
 
     // console.log(rooms);
 
-
+    // <NavLink id='nameCourse' className={styles.item_name} to="/courseworkdetail">Hello world</NavLink>
     return (
         <>
             {rooms.map(room => (
@@ -46,7 +46,6 @@ function Room(props) {
                     </div>
                 </NavLink>
             ))}
-
 
         </>
 
