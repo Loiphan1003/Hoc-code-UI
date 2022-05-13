@@ -37,7 +37,7 @@ function CreateCourseWork(props) {
         }
     }
 
-    console.log("Question: ", questions);
+    // console.log("Question: ", questions);
 
     // const handleAnswer = (event) => {
     //     // console.log(event.target.value);
@@ -51,6 +51,7 @@ function CreateCourseWork(props) {
 
     }
 
+    console.log(visibility);
 
     return (
         <>
@@ -74,7 +75,7 @@ function CreateCourseWork(props) {
                     <input className={styles.course_name} type='text' placeholder='Tên bài tập' onChange={(e) => setCourseName(e.target.value)} />
 
                     <div className={styles.course_discription} >
-                        <p>Mô tả:</p>
+                        <h2>Mô tả:</h2>
                         <CKEditor
                             // className={styles.editor}
                             height="500px"
@@ -108,7 +109,7 @@ function CreateCourseWork(props) {
                     </div>
 
                     <div className={styles.course_visibility} >
-                        <p>Hiện thị:</p>
+                        <h2>Hiện thị:</h2>
                         <form>
                             <input type="radio" id='darft' value="darft" onChange={(e => setVisibility(e.target.value))} checked={visibility === 'darft'} />
                             <label htmlFor="darft" >Lưu vào nháp</label> <br />
@@ -117,36 +118,40 @@ function CreateCourseWork(props) {
                         </form>
                     </div>
 
-                    <div>
-                        <label>Cài đặt câu hỏi:</label><br />
-                        <FormControlLabel
-                            value="Cài đặt câu hỏi"
-                            control={<Switch color="primary" onChange={() => setChecked(!checked)} />}
-                        />
-                    </div>
+                    {visibility === 'schedule' && <div div >
 
-                    <div >
-                        <p>Ngày mở và kết thúc:</p>
-                        <div className={styles.course_date} >
-                            <TextField
-                                label="Ngày mở:"
-                                type="datetime-local"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                        <div>
+                            <h2>Cài đặt câu hỏi:</h2>
+                            <FormControlLabel
+                                value="Cài đặt câu hỏi"
+                                control={<Switch color="primary" onChange={() => setChecked(!checked)} />}
                             />
+                        </div>
 
-                            <div className={styles.date_close} >
+                        <div >
+                            <h2>Ngày mở và kết thúc:</h2>
+                            <div className={styles.course_date} >
                                 <TextField
-                                    label="Ngày kết thúc:"
+                                    label="Ngày mở:"
                                     type="datetime-local"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
                                 />
+
+                                <div className={styles.date_close} >
+                                    <TextField
+                                        label="Ngày kết thúc:"
+                                        type="datetime-local"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>}
+
 
                     <div>
                         {questions.map((question, index) => (
@@ -181,7 +186,7 @@ function CreateCourseWork(props) {
                             <h2>Thêm câu hỏi</h2>
                             <input placeholder="Nhập mã bài tập" />
                             <div>
-                                <label>Loại bài tập</label><br/>
+                                <label>Loại bài tập</label><br />
                                 <select>
                                     <option>Bài tập code</option>
                                     <option>Bài tập trắc nghiệm</option>

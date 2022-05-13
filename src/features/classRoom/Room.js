@@ -6,6 +6,7 @@ import {faUserGroup} from '@fortawesome/free-solid-svg-icons';
 import CourseApi from '../../apis/courseApi';
 import styles from './styles/ClassRoom.module.css';
 import DevImage from '../../images/userImageDev.png';
+import RoomApi from '../../apis/roomApi';
 
 
 function Room(props) {
@@ -15,7 +16,8 @@ function Room(props) {
     useEffect(() => {
         const data = async () => {
             try {
-                const response = await CourseApi.getAll();
+                // const response = await CourseApi.getAll();
+                const response = await RoomApi.getRoomInfo()
                 setRooms(response.data);
             } catch (error) {
                 console.log("Fetch data error: ", error);

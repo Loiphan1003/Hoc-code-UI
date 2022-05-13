@@ -34,17 +34,17 @@ function JoinClass(props) {
 
     const handleJoinClass = () => {
         
-        // if(input.length == 0){
-        //     alert("Vui lòng nhập mã phòng học");
-        //     return;
-        // }
+        if(input.length == 0){
+            alert("Vui lòng nhập mã phòng học");
+            return;
+        }
         // room = {
         //     id: "",
         //     name: input,
         //     owner: localStorage.getItem('User')
         // }
 
-        // console.log(room);
+        console.log(input);
     }
     
 

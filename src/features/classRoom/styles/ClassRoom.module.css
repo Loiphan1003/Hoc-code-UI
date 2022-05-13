@@ -9,6 +9,7 @@
     padding: 0px 200px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     /* display: block; */
 }
 
@@ -36,16 +37,16 @@
     cursor: pointer;
 }
 .classRoomList {
-    width: calc(100% - 20%);
     height: fit-content;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 
 .room {
     width: 322px;
     height: 218px;
-    margin-left: 20px;
+    margin: 20px;
     text-decoration: none;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px black;
@@ -95,6 +96,7 @@
 
 .ownerName {
     font-size: 20px;
+    margin-top: 65px;
     margin-left: 10px;
     height: auto;
     white-space: nowrap;

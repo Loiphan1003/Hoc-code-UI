@@ -6,7 +6,7 @@ const RoomApi = {
         return axiosClient.get(url);
     },
     getRoomInfo: (params) => {
-        const url = `users/${params}`;
+        const url = `/users`;
         return axiosClient.get(url);
     }
 }

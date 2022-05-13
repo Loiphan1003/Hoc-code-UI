@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import Backdrop from '../.././../components/Backdrop';
 import { faChevronRight, faCirclePlus, faMagnifyingGlass, faTableList, faFilter } from '@fortawesome/free-solid-svg-icons';
 import styles from "./CourseWork.module.css"
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import RoomApi from '../../../apis/roomApi';
 
 
 function Coursework(props) {
 
+    const [courseWorks, setCourseWorks] = useState([]);
     const params = useParams();
     const [draft, setDarft] = useState(false);
     const [open, setOpen] = useState(true);
     const [close, setClose] = useState(true);
     const [mobileOpen, setMobileOpen] = useState();
+    const navigate = useNavigate();
+
 
     const [filter, setFilter] = useState({
         draft: false,
@@ -22,6 +26,29 @@ function Coursework(props) {
         code: false,
         mutiple_question: false,
     });
+
+    // const role = 'giangvien'
+
+    useEffect(() => {
+        const data = async () => {
+            try {
+                const respone = await RoomApi.getRoomInfo();
+                setCourseWorks(respone.data);
+            } catch (error) {
+                console.log("Fetch data false");
+            }
+        }
+        data();
+    }, [])
+
+    const handleSwitch = (name) => {
+        if(props.role === "giangvien"){
+            navigate(`/courseworkdetail/${name}`);
+        }
+        if(props.role === "hocvien"){
+            navigate(`/assignment/${name}`);
+        }
+    }
 
     const handleFilterChange = (event) => {
         setFilter({
@@ -33,10 +60,9 @@ function Coursework(props) {
 
     }
 
-    // console.log(params.roomId);
-    
     return (
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
+
             {/*Start Mobile  */}
             <div className={styles.mobile_btn} >
                 <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_mobile} >
@@ -114,112 +140,84 @@ function Coursework(props) {
                     </FormControl>
                 </div>
             </div>}
-
             {/*End:  Mobile */}
+
             <div className={styles.courseWork_left_content}>
-                <div className={styles.courseWork_draft}>
-                    <div className={styles.header}>
+                
+                {props.role === "giangvien" && 
+                <div className={styles.courseWork_draft} onClick={() => setDarft(!draft)}  >
+                    <div className={styles.header}  >
                         <p>Nháp</p>
-                        <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setDarft(!draft)} />
-                    </div>
-
-                </div>
-                {draft && <div className={styles.coursework_content} >
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                        </div>
-
-                        <p className={styles.item_draft}>Nháp</p>
+                        <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight} />
                     </div>
                 </div>}
 
-                <div className={styles.courseWork_open}>
+                {draft && <div className={styles.coursework_content} >
+
+                    {courseWorks.map(courseWork => (
+                        <div key={courseWork.id} className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList} />
+                                <a className={styles.item_name} onClick={() => handleSwitch(courseWork.name)} >{courseWork.name}</a>
+                            </div>
+
+                            <p className={styles.item_draft}>Nháp</p>
+                        </div>
+                    ))}
+
+                </div>}
+
+                <div className={styles.courseWork_open} onClick={() => setOpen(!open)} >
                     <div className={styles.header}>
                         <p>Mở</p>
-                        <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setOpen(!open)} />
+                        <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} />
                     </div>
                 </div>
                 {open && <div className={styles.coursework_content} >
 
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                    {courseWorks.map(courseWork => (
+                        <div key={courseWork.id} className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList} />
+                                <a className={styles.item_name} onClick={() => handleSwitch(courseWork.name)} >{courseWork.name}</a>
+                                <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
+                            </div>
+
+                            <p className={styles.item_open}>Mở</p>
                         </div>
+                    ))}
 
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
                 </div>}
 
-                <div className={styles.courseWork_close}>
+                <div className={styles.courseWork_close} onClick={() => setClose(!close)} >
                     <div className={styles.header}>
                         <p>Kết thúc</p>
-                        <FontAwesomeIcon className={close ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setClose(!close)} />
+                        <FontAwesomeIcon className={close ? styles.icon_active : styles.icon} icon={faChevronRight} />
                     </div>
                 </div>
                 {close && <div className={styles.coursework_content} >
 
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
+                    {courseWorks.map(courseWork => (
+                        <div key={courseWork.id} className={styles.coursework_content_item}>
+                            <div className={styles.item_info}>
+                                <FontAwesomeIcon icon={faTableList} />
+                                <NavLink className={styles.item_name} to="/" >{}courseWork.name</NavLink>
+                                <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
+                            </div>
+
+                            <p className={styles.item_close}>Kết thúc</p>
                         </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Lập trình hướng đối tượng</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
+                    ))}
                 </div>}
             </div>
 
             <div className={styles.courseWork_right_content}>
 
+                {props.role === "giangvien" && 
                 <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_}>
                     <FontAwesomeIcon icon={faCirclePlus} size="2x" />
                     <p>Tạo bài tập</p>
-                </NavLink>
+                </NavLink>}
 
                 <div className={styles.btn_} id={styles.find}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />

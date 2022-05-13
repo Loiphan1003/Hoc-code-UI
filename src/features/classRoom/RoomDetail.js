@@ -24,7 +24,6 @@ function RoomDetail(props) {
         const functions = async () => {
             try {
                 const responseRoomInfo = await RoomApi.getRoomInfo(params.roomId);
-                console.log(responseRoomInfo);
                 setRoomInfo(responseRoomInfo.data);
                 // RoomInfo = responseRoomInfo.data;
             } catch (error) {
@@ -33,6 +32,8 @@ function RoomDetail(props) {
         }
         functions();
     }, [params.roomId])
+
+    const role = "hocvien";
 
     const tabs = [
         {
@@ -49,8 +50,6 @@ function RoomDetail(props) {
         setTabType(value.name)
 
     }
-
-   
 
     useEffect(() => {
         const functions = async () => {
@@ -78,16 +77,13 @@ function RoomDetail(props) {
         functions();
     }, [tabType])
 
-    console.log("State: ",roomInfo);
-
-
-
     return (
         <>
             <div className={styles.header}>
+
                 <div className={styles.header_left}>
                     <FontAwesomeIcon icon={faChevronLeft} size='2x' />
-                    <h1>{roomInfo === undefined ? '': roomInfo.name}</h1>
+                    <h1>{roomInfo === undefined ? '' : roomInfo.name}</h1>
                 </div>
 
             </div>
@@ -96,10 +92,11 @@ function RoomDetail(props) {
                 {/* <img src={ImageBackground} alt="background" /> */}
                 <div className={styles.content}>
 
+                    {role === 'giangvien' && 
                     <div className={styles.roomdetail_id} >
                         <p>Mã Lớp</p>
-                        <p>{roomInfo === undefined ? '': roomInfo.id}</p>
-                    </div>
+                        <p>{roomInfo === undefined ? '' : roomInfo.id}</p>
+                    </div>}
 
                     <div className={styles.roomdetail_header}>
 
@@ -119,7 +116,7 @@ function RoomDetail(props) {
                         ))}
 
                     </div>
-                    {tabType === "Bài tập" && <Coursework type={tabType} />}
+                    {tabType === "Bài tập" && <Coursework type={tabType} role={role} />}
                     {tabType === "Thành viên" && <Member type={tabType} member={member} />}
                 </div>
             </div>

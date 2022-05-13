@@ -1,7 +1,7 @@
 // import { memo } from "react";
 import React from "react";
 import useLookBodyScroll from "../useLockBodyScroll";
-import '../Login/Login.css';
+import '../Login/styles/Login.css';
 import { auth, googleProvider, githubProvider } from '../../firebase/config';
 import { signInWithPopup } from "firebase/auth";
 // import firebase from "../../firebase/config";
