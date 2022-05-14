@@ -20,6 +20,7 @@ function CreateExercise(props) {
     const [inputs, setInputs] = useState();
     const [outputs, setOutputs] = useState();
     const [testCases, setTestCases] = useState([]);
+    const [file, setFile] = useState();
     const [exercise, setExercise] = useState({
         tag: "lập trình",
         dokho: 'Dễ',
@@ -102,6 +103,25 @@ function CreateExercise(props) {
             return () => document.body.style.overflow = originalStyle;
         }
     }, [openTestCase])
+
+    
+
+    
+
+    const handleFileChosen = (e) => {
+        
+        
+        const reader = new FileReader();
+        reader.readAsText(e.target.files[0])
+        reader.onloadend = (e) => {
+            setFile(e.target.result);
+        }
+        reader.onerror = () => {
+            console.log("File error: ", reader.error);
+        }
+
+    };
+
 
     // useEffect(() => {
     //     setTestCases(testCases);
@@ -234,12 +254,12 @@ function CreateExercise(props) {
                     {openTestCase && <div className={styles.input_testcase} >
                         <div className={styles.input_value} >
                             <p>Đầu vào</p>
-                            <EditTextarea  rows={2} placeholder="Nhập đầu vào" onSave={handleSaveInput} />
+                            <EditTextarea rows={2} placeholder="Nhập đầu vào" onSave={handleSaveInput} />
                         </div>
 
                         <div className={styles.input_value} >
                             <p>Kết quả</p>
-                            <EditTextarea  rows={2} placeholder="Nhập đầu vào" onSave={handleSaveOutput} />
+                            <EditTextarea rows={2} placeholder="Nhập đầu vào" onSave={handleSaveOutput} />
                         </div>
 
                         <div className={styles.btn_open_testcase} >
@@ -255,6 +275,8 @@ function CreateExercise(props) {
                 <div className={styles.exercise_btn} >
                     <p>Hủy</p>
                     <button onClick={() => handleSaveExercise(nameExercise, level, discription)}>Lưu</button>
+                    <input type="file" name='file' onChange={(e) => handleFileChosen(e)} />
+                    <p>{file}</p>
                 </div>
                 {/* </div> */}
             </div>

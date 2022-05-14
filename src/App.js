@@ -19,6 +19,7 @@ import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises
 import CourseWorkDetail from './features/classRoom/courseworkDetail/CourseWorkDetail';
 import ExerciseClassRoom from './features/classRoom/courseworkDetail/ExerciseClassRoom';
 import LoginAdmin from './components/Login/LoginAdmin';
+import LanddingPage from './layouts/landdingPage';
 import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
 
@@ -26,7 +27,7 @@ function App() {
 
 
     return (
-        <div>
+        <React.Fragment>
             <Router>
                 <Routes>
                     <Route exac path='/Hoc-code-UI' element={
@@ -86,7 +87,7 @@ function App() {
                     
                 </Routes>
             </Router>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -8,6 +8,7 @@
     font-size: 18px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     /* position: absolute; */
     /* background-color: white; */
 }
@@ -257,6 +258,8 @@
         font-size: 18px;
         display: flex;
         justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
     }
 
     .List_menu {
@@ -299,6 +302,10 @@
         margin-right: 2%;
         height: 60px;
         width: 50%;
+        box-sizing: border-box;
+    }
+    #button_logout > .icon{
+        margin-right: 30px;
     }
 
     #button {
@@ -308,6 +315,51 @@
     .sidebar {
         display: inline;
     }
+    .headerNavBars {
+        z-index: 10;
+        top: 0;
+        right: -100%;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        height: 100vh;
+        padding: 20px 0px 20px 20px;
+        box-sizing: border-box;
+        transition: 950ms;
+    }
+    
+    .headerNavBars_active {
+        z-index: 10;
+        top: 0;
+        right: 0;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        box-shadow: 0px 0px 3px 1px;
+        height: 100vh;
+        border-radius: 20px 0px 0px 20px;
+        padding: 20px 0px 20px 20px;
+        box-sizing: border-box;
+        transition: 350ms;
+    }
+    /* .navItem{
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .nameNavItem{
+        text-decoration: none;
+    }
+    .navItem_active {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--main_color);
+        text-decoration: none;
+        cursor: pointer;
+    } */
+    
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

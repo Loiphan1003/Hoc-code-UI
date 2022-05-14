@@ -1,0 +1,48 @@
+:root {
+    --main-background-color: #F8F4EB;
+    --text-color: #39424E;
+    --button-login-color: #0096C7;
+    /* --second-content-color: #1E266D;
+    --three-content-text-color: #455880; */
+}
+
+.signUp{
+    position: fixed;
+    min-width: 300px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.signUpHeader{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signUpHeader > svg{
+    cursor: pointer;
+}
+.signUp_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+}
+.signUp > button{
+    height: 50px;
+    margin-top: 20px;
+    border-style: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--button-login-color);
+    /* box-sizing: border-box; */
+}

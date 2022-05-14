@@ -7,11 +7,17 @@ import CourseApi from '../../apis/courseApi';
 import styles from './styles/ClassRoom.module.css';
 import DevImage from '../../images/userImageDev.png';
 import RoomApi from '../../apis/roomApi';
+import { getAuth } from 'firebase/auth';
 
 
 function Room(props) {
 
     const [rooms, setRooms] = useState([]);
+
+    // const auth = getAuth()
+    // const user = auth.currentUser();
+
+    // console.log(user);
 
     useEffect(() => {
         const data = async () => {
