@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/Hoc-code-UI/static/css/main.392e4163.css",
-    "main.js": "/Hoc-code-UI/static/js/main.43eb8fdb.js",
-    "static/js/787.03749fbf.chunk.js": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js",
+    "main.css": "/Hoc-code-UI/static/css/main.ffd6fa02.css",
+    "main.js": "/Hoc-code-UI/static/js/main.232b64e8.js",
+    "static/js/27.c2bf8fe1.chunk.js": "/Hoc-code-UI/static/js/27.c2bf8fe1.chunk.js",
     "worker-xquery.js": "/Hoc-code-UI/f21e72e1c070a994cf8a724a2491ed1d.js",
+    "static/media/Anh-nen-Admin.png": "/Hoc-code-UI/static/media/Anh-nen-Admin.b4b59be79c7ab7c78c3b.png",
     "worker-javascript.js": "/Hoc-code-UI/0538b28885aaef97b24d7364e9385012.js",
     "mode-php_laravel_blade.js": "/Hoc-code-UI/b35a058b42e4459b45c7930aca121e96.js",
     "mode-php.js": "/Hoc-code-UI/78ed71a5f92a22c3d3302305c01e6eb9.js",
@@ -19,6 +20,7 @@
     "mode-html_ruby.js": "/Hoc-code-UI/7a8885d17f30b01c89d9ab89bbdfcc8d.js",
     "mode-ejs.js": "/Hoc-code-UI/4f6a6444838e66dd01513f72c4e40aa8.js",
     "mode-html_elixir.js": "/Hoc-code-UI/ee9f0e50eb7c5ad88b9c3b76da237662.js",
+    "static/media/image 5.png": "/Hoc-code-UI/static/media/image 5.39a0e7bfbfe4b551a927.png",
     "mode-markdown.js": "/Hoc-code-UI/09bd1e1efee96f52d90dc0a5be7f7b64.js",
     "mode-csound_document.js": "/Hoc-code-UI/6462d7225d15d12b39d6b6b2d5bfa920.js",
     "worker-php.js": "/Hoc-code-UI/1c6ef5edef111f1fe55b4eb3d1582267.js",
@@ -56,6 +58,7 @@
     "mode-powershell.js": "/Hoc-code-UI/6de319e2eb4277226bf0d16bd78818c3.js",
     "mode-ftl.js": "/Hoc-code-UI/2f0408d36631693daf81878013bfdfc0.js",
     "mode-svg.js": "/Hoc-code-UI/4063f038a24663c724dfa596ad159910.js",
+    "static/media/image 11.png": "/Hoc-code-UI/static/media/image 11.8a957c9d8db9ea678bc8.png",
     "mode-erlang.js": "/Hoc-code-UI/d47da8f23bb191e48cf211e17c318224.js",
     "mode-gobstones.js": "/Hoc-code-UI/ca1933352aee65f3b203600530085416.js",
     "theme-ambiance.js": "/Hoc-code-UI/f56a493c0f365699f24a460b8480b751.js",
@@ -111,6 +114,7 @@
     "mode-logtalk.js": "/Hoc-code-UI/ac8bd550766a3d00f75726e7d68b77a4.js",
     "mode-nsis.js": "/Hoc-code-UI/7ca1ae248544882109e6d398098d4f5d.js",
     "mode-praat.js": "/Hoc-code-UI/3683955b831b2433fa07c9da4e45daf0.js",
+    "static/media/image 4.png": "/Hoc-code-UI/static/media/image 4.c2be556ef1fd57711099.png",
     "mode-crystal.js": "/Hoc-code-UI/082b9518ec6f25c12d36a33e01bc6f10.js",
     "mode-mediawiki.js": "/Hoc-code-UI/cd4ff17026497d3d210b28741408e405.js",
     "mode-zeek.js": "/Hoc-code-UI/2169a9eaa9cd437852ee251e81925d76.js",
@@ -423,13 +427,10 @@
     "red.js": "/Hoc-code-UI/eaaef4e79646fc640dfc47f992c7b9a4.js",
     "qml.js": "/Hoc-code-UI/ff16e13e3c743c99b7cd17ca4ea30292.js",
     "d.js": "/Hoc-code-UI/d8a84e57436817a85f6c19a4c1498feb.js",
-    "mode-text.js": "/Hoc-code-UI/fc47afbc1973c25ac5c07d588d993d6b.js",
-    "main.392e4163.css.map": "/Hoc-code-UI/static/css/main.392e4163.css.map",
-    "main.43eb8fdb.js.map": "/Hoc-code-UI/static/js/main.43eb8fdb.js.map",
-    "787.03749fbf.chunk.js.map": "/Hoc-code-UI/static/js/787.03749fbf.chunk.js.map"
+    "mode-text.js": "/Hoc-code-UI/fc47afbc1973c25ac5c07d588d993d6b.js"
   },
   "entrypoints": [
-    "static/css/main.392e4163.css",
-    "static/js/main.43eb8fdb.js"
+    "static/css/main.ffd6fa02.css",
+    "static/js/main.232b64e8.js"
   ]
 }
