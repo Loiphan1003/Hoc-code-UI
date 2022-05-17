@@ -2,96 +2,139 @@ import React, { useState } from 'react';
 import Header from '../../components/header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faPlus, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import ImageDev from '../../images/userImageDev.png'
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import Button from '@mui/material/Button';
+
 import styles from './Exercise.module.css';
 // import { Fragment } from 'react';
 
+function createDataCauHoiCode(id, tieuDe, noiDung, capDo) {
+    return { id, tieuDe, noiDung, capDo };
+}
+
+function createDataCauHoiTN(id, cauHoi, tl1, tl2, tl3, tl4, dapAn) {
+    return { id, cauHoi, tl1, tl2, tl3, tl4, dapAn };
+}
+
 function Exercise(props) {
 
-    const [openNav, setOpenNav] = useState(false);
-
-        
-    const test =   [
-        { title: "Lập trình c", tag: "code", ownerName: "nvduy_0511", level: "Dễ" },
-        { title: "Lập trình c++", tag: "code", ownerName: "nvduy_0511", level: "Trung bình" }
+    const rows = [
+        createDataCauHoiCode(1, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Dễ"),
+        createDataCauHoiCode(2, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(3, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(4, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(5, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(6, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(7, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(8, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+        createDataCauHoiCode(9, "Cộng hai số", "<h2>Cộng hai số từ bàn phím</h2>", "Dễ"),
+    ];
+    const rowsTN = [
+        createDataCauHoiTN(1, "Lập trình C là gì", "A", "B", "C", "D", "A"),
+        createDataCauHoiTN(2, "Lập trình C là gì", "A", "B", "C", "D", "A"),
+        createDataCauHoiTN(3, "Lập trình C là gì", "A", "B", "C", "D", "A"),
+        createDataCauHoiTN(4, "Lập trình C là gì", "A", "B", "C", "D", "A"),
     ]
+    const navigate = useNavigate();
 
-    const [dataTest, setDataTest] = useState(test);
 
 
-    const handleFindText = (value) => {
-        let searchText = test.filter(data => data.title.includes(value)) 
-        // )
-        setDataTest(searchText);
-        // console.log(searchText);
-    }
 
-    console.log(dataTest);
 
     return (
         <>
             <div className={styles.container}>
-                <div className={styles.toolbar} >
-
-                    <div className={styles.find} >
-                        <input type='text' placeholder='Tim kiem' onChange={(e) => handleFindText(e.target.value)} />
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <div className={styles.TableCauHoiCode}>
+                    <div>
+                        <h2>Câu hỏi code</h2>
+                        <Button className={styles.btnTaoBai} variant="contained"
+                            endIcon={<AddCircleOutlinedIcon />}
+                            onClick={() => {
+                                navigate('/exercise/create')
+                            }}>
+                            Tạo bài tập code
+                        </Button>
                     </div>
-
-                    {/* <div> */}
-                    <select className={styles.level} defaultValue="Cấp độ" >
-                        <option>Dễ</option>
-                        <option>Trung bình</option>
-                        <option>Khó</option>
-                    </select>
-                    {/* </div> */}
-
-                    <div className={styles.create_exercise} >
-                        <div className={styles.create} onClick={() => setOpenNav(true)} >
-                            <FontAwesomeIcon icon={faPlus} />
-                            <p>Tạo bài tập</p>
-                        </div>
-
-                        {openNav && <div className={styles.backdrop} onClick={() => setOpenNav(false)} ></div>}
-                        {openNav && <div className={styles.navCreateExercise} >
-                            <NavLink to='/exercise/create' >Bài tập code</NavLink>
-                            <NavLink to='/exercise/multiplechoice' >Bài tập trắc nghiệm</NavLink>
-                        </div>}
-
-                    </div>
-
-
-
+                    <TableContainer component={Paper} style={{ maxHeight: 350 }}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell align="center">Tiêu Đề</TableCell>
+                                    <TableCell align="center">Nội dung</TableCell>
+                                    <TableCell align="center">Cấp độ</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map((row) => (
+                                    <TableRow
+                                        key={row.id}
+                                        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                                        <TableCell component="th" scope="row" >{row.id}</TableCell>
+                                        <TableCell align="center" >{row.tieuDe}</TableCell>
+                                        <TableCell align="center" >
+                                            {row.noiDung}
+                                        </TableCell>
+                                        <TableCell align="center" >{row.capDo}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
-                <div className={styles.content} >
-                    {dataTest.map((data, index) => (
 
-                        <div key={index} >
-                            <p>{data.title}</p></div>
-                        // <div key={index} className={styles.item_list}>
-                        //     <h3 className={styles.title}>{data.title}</h3>
-                        //     <div className={styles.tag}>
-                        //         <span>{data.tag}</span>
-                        //     </div>
-                        //     <div className={styles.image_avatar} >
-
-                        //         <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
-                        //     </div>
-                        //     <div className={styles.username}>nvduy_0511</div>
-                        //     <div className={styles.item_footer}>
-                        //         <div className={styles.userpass}>
-                        //             {/* <i class="fa-solid fa-users"></i> */}
-                        //             <FontAwesomeIcon icon={faUserGroup} />
-                        //             <span>50/120</span>
-                        //         </div>
-                        //         <div className={styles.level}>
-                        //             <span id={styles.average} >Trung Bình</span>
-                        //         </div>
-                        //     </div>
-                        // </div>
-                    ))
-                    }
+                {/* table câu hỏi trắc nghiệm */}
+                <div className={styles.TableCauHoiCode}>
+                    <div>
+                        <h2>Câu hỏi trắc nghiệm</h2>
+                        <Button className={styles.btnTaoBai} variant="contained"
+                            endIcon={<AddCircleOutlinedIcon />}
+                            onClick={() => {
+                                navigate('/exercise/multiplechoice')
+                            }}
+                        >
+                            Tạo bài tập trắc nghiệm
+                        </Button>
+                    </div>
+                    <TableContainer component={Paper} style={{ maxHeight: 350 }}>
+                        <Table sx={{ minWidth: 800 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell align="center">Câu hỏi</TableCell>
+                                    <TableCell align="center">Câu trả lời 1</TableCell>
+                                    <TableCell align="center">Câu trả lời 2</TableCell>
+                                    <TableCell align="center">Câu trả lời 3</TableCell>
+                                    <TableCell align="center">Câu trả lời 4</TableCell>
+                                    <TableCell align="center">Đáp án</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rowsTN.map((row) => (
+                                    <TableRow
+                                        key={row.id}
+                                        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                                        <TableCell component="th" scope="row" >{row.id}</TableCell>
+                                        <TableCell align="center" style={{ minWidth: "200px" }} >{row.cauHoi}</TableCell>
+                                        <TableCell align="center" >{row.tl1}</TableCell>
+                                        <TableCell align="center" >{row.tl2}</TableCell>
+                                        <TableCell align="center" >{row.tl3}</TableCell>
+                                        <TableCell align="center" >{row.tl4}</TableCell>
+                                        <TableCell align="center" >{row.dapAn}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
             </div>
         </>

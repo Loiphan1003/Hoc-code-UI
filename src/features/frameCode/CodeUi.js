@@ -1,14 +1,15 @@
-import React, { useState, useEffect ,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faCircle ,faCircleCheck, faCircleXmark, faSpinner, faAlignLeft, faRankingStar, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faCircle, faCircleCheck, faCircleXmark, faAlignLeft, faRankingStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import styles from './CodeUi.module.css';
 import AceEditor from "react-ace";
 import RunCodeAPI from '../../apis/runCodeAPI';
 import BaiTapCodeAPI from '../../apis/baiTapCodeAPI';
 import { useParams } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 // import * as ace from 'ace-builds'
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -44,7 +45,6 @@ function CodeUi() {
     const [tabType, setTabType] = useState("content")
     const [baiTapCode, setBaiTapCode] = useState({})
     const [testCases, setTestCases] = useState([])
-    const [programming, setProgramming] = useState('c');
     // const [outputValue, setOutputValue] = useState("");
     let params = useParams()
 
@@ -194,7 +194,7 @@ function CodeUi() {
                 <div className={styles.code_editor}>
 
                     <div className={styles.option_language}>
-                        <select className={styles.selectpicker} onChange={handleChangeValueDropDownLanguage} data-live-search="true" name="Language" id="mode" defaultValue={programming}>
+                        <select className={styles.selectpicker} onChange={handleChangeValueDropDownLanguage} data-live-search="true" name="Language" id="mode" defaultValue={language}>
                             <option value="c" id="c">C</option>
                             <option value="c++" id="c++">C++</option>
                             <option value="py" id="python">Python</option>
@@ -254,8 +254,12 @@ function CodeUi() {
                                                     )}
                                                     icon={testCase === 2
                                                         ? faCircle : (testCase === 1
-                                                            ? faCircleCheck : (testCase === 0
-                                                                ? faCircleXmark : faSpinner))} />
+                                                            ? faCircleCheck : testCase === 0
+                                                                ? faCircleXmark : "")} />
+                                                {testCase === 3 &&<CircularProgress
+                                                    className={styles.icon_load}
+                                                    size={15}
+                                                />}
                                                 <span>Test case #{index}</span>
                                             </div>
                                         </li>))

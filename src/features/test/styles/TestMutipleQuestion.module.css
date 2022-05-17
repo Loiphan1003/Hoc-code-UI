@@ -1,0 +1,39 @@
+.testMutiple {
+    padding: 10px 50px;
+    height: 100%;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+}
+
+.testMutiple>h2 {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    color: #6F767A;
+}
+
+.testMutiple>h3 {
+    margin-left: 40px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 32px;
+    color: #646A6D;
+}
+
+.testMutiple>div {
+    margin-left: 80px;
+}
+
+.answer_content {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+
+    color: #646A6D;
+}

@@ -158,7 +158,7 @@ function Coursework(props) {
                         <div key={courseWork.id} className={styles.coursework_content_item}>
                             <div className={styles.item_info}>
                                 <FontAwesomeIcon icon={faTableList} />
-                                <a className={styles.item_name} onClick={() => handleSwitch(courseWork.name)} >{courseWork.name}</a>
+                                <a href='#' className={styles.item_name} onClick={() => handleSwitch(courseWork.name)} >{courseWork.name}</a>
                             </div>
 
                             <p className={styles.item_draft}>Nháp</p>

@@ -11,6 +11,13 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use(async (config) => {
+
+    // const currentUser = auth.currentUser;
+    // if(currentUser) {
+    //     const token = await currentUser.getIdToken();
+    //     // console.log("Token: ", token);
+    //     config.headers.Authorization = `Barer ${token}`;
+    // }
     // const token = await getFireBaseToken();
     // if(token){
     //     config.headers.Authorization = `Bearer ${token}`;

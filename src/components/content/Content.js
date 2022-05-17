@@ -14,7 +14,7 @@ import styles from './Content.module.css';
 import Backdrop from '../Backdrop';
 import Login from '../Login/Login';
 import SignUp from './SignUp';
-import { image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9, image_10, image_11, imghead } from './export';
+import { image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9, image_10, imghead } from './export';
 
 function Content(props) {
 
@@ -23,7 +23,6 @@ function Content(props) {
     const [language, setLanguage] = useState("c");
     const [input, setInput] = useState("");
     const [resultCode, setResultCode] = useState();
-    const [programming, setProgramming] = useState('c');
 
 
     const editor = useRef();
@@ -170,7 +169,7 @@ function Content(props) {
                     <div className={styles.code_editor} >
 
                         <div className={styles.option_language}>
-                            <select className={styles.selectpicker} onChange={handleChangeValueDropDownLanguage} data-live-search="true" name="Language" id="mode" defaultValue={programming}>
+                            <select className={styles.selectpicker} onChange={handleChangeValueDropDownLanguage} data-live-search="true" name="Language" id="mode" defaultValue={language}>
                                 <option value="c" id="c">C</option>
                                 <option value="c++" id="c++">C++</option>
                                 <option value="py" id="python">Python</option>

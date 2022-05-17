@@ -1,14 +1,15 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressBook, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/config';
+import classNames from 'classnames/bind'
+import styles from '../header/styles/UserNav.module.css';
 
-import styles from '../header/Header.module.css';
-// import loginSlice from '../../redux/loginSlice';
-// import { useDispatch } from "react-redux";
+const cx = classNames.bind(styles);
 
 function UserNav(props) {
-
-    // const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -21,11 +22,21 @@ function UserNav(props) {
 
 
     return (
-        <div className={styles.userNavItems} onClick={props.onClick}>
-            <p>Thông tin cá nhân</p>
-            <p onClick={() => navigate('/exercise')}>Quản lý bài tập</p>
-            <p>Trang cá nhân</p>
-            <p onClick={logoutAccount}>Thoát</p>
+        <div className={cx('userNavItems')} onClick={props.onClick}>
+            <div className={cx('item_userNav')} >
+                <FontAwesomeIcon className={cx('item-icon')} icon={faUser} />
+                <p>Thông tin cá nhân</p>
+            </div>
+
+            <div className={cx('item_userNav')} onClick={() => navigate('/exercise')} >
+                <FontAwesomeIcon className={cx('item-icon')} icon={faAddressBook} />
+                <p>Quản lý bài tập</p>
+            </div>
+
+            <div className={cx('item_userNav')} onClick={logoutAccount} >
+                <FontAwesomeIcon className={cx('item-icon')} icon={faPowerOff} />
+                <p>Thoát</p>
+            </div>
         </div>
     );
 }

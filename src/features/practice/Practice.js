@@ -60,7 +60,7 @@ function Practice(props) {
                         <FontAwesomeIcon className={styles.iconPracticeHeader} icon={faMagnifyingGlass} />
                     </div>
 
-                    <select name="level" value={level} id={styles.option_trangthai} onChange={(e) => setLevel(e.target.value)} >
+                    <select name="level" value={level} defaultValue="" id={styles.option_trangthai} onChange={(e) => setLevel(e.target.value)} >
                         <option value="Dễ" >Dễ</option>
                         <option value="Trung bình" >Trung bình</option>
                         <option value="Khó">Khó</option>
@@ -92,7 +92,7 @@ function Practice(props) {
                                             <span>50/120</span>
                                         </div>
                                         <div className={styles.level}>
-                                            <span id={baitap.doKho === "easy" ? styles.easy : (baitap.doKho === 'medium' ? styles.average : styles.hard)} >{baitap.doKho}</span>
+                                            <span id={baitap.doKho === "0" ? styles.easy : (baitap.doKho === 1 ? styles.average : styles.hard)} >{baitap.doKho === 1 ? "Dễ" : (baiTapCode.doKho === 2 ? "Trung bình":"Khó")}</span>
                                         </div>
                                     </div>
                                 </div>

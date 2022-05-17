@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faBell, faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Header.module.css";
 import { auth } from '../../firebase/config';
 import companyLogo from '../../images/logo_transparent.png';
@@ -18,10 +18,7 @@ function Header(props) {
 
     const [modalopen, setModalOpen] = useState(false);
     const [headerNavBar, setHeaderNavbar] = useState(false);
-    // const [dataUser, setDataUser] = useState('');
-
     const showSideBar = () => setHeaderNavbar(!headerNavBar);
-
     const [dataUser, setDataUser] = useState('');
 
     useEffect(() => {
@@ -72,7 +69,7 @@ function Header(props) {
         return (
             <div id={styles.header} >
                 <div className={styles.List_menu}>
-                    <NavLink className={styles.logo} to="/home">
+                    <NavLink className={styles.logo} to={dataUser === ''? '/Hoc-code-UI':'/home'}>
                         <img src={companyLogo} alt="Logo" />
                     </NavLink>
 
@@ -95,7 +92,7 @@ function Header(props) {
                         </Tippy>
                     </div>) : (
                     <div id={styles.button}>
-                        <div className={styles.btn_} id="btnLogIn" onClick={() => setModalOpen(true)} >ĐĂNG NHẬP</div>
+                        {/* <div className={styles.btn_} id="btnLogIn" onClick={() => setModalOpen(true)} >ĐĂNG NHẬP</div> */}
                         <FontAwesomeIcon className={styles.btnHeaderBars} icon={faBars} onClick={showSideBar} />
                     </div>)
                 }
@@ -113,48 +110,6 @@ function Header(props) {
                 {modalopen && <Login />}
             </div>
         )
-    // }
-
-
-    // return (
-
-    //     <>
-    //         <div id={styles.header} >
-    //             {/* {console.log(isLogin)} */}
-    //             <div className={styles.List_menu}>
-    //                 <NavLink className={styles.logo} to="/Hoc-code-UI">
-    //                     <img src={companyLogo} alt="Logo" />
-    //                 </NavLink>
-    //                 <div className={styles.navbar} >
-    //                     {menuItem.map((menu, index) => (
-    //                         <NavLink to={menu.path} className={(navdata) => (navdata.isActive ? styles.Menu_item_active : styles.Menu_item)} key={index}>
-    //                             <p >{menu.name}</p>
-    //                         </NavLink>
-    //                     ))}
-    //                 </div>
-
-    //             </div>
-    //             <div id={styles.button}>
-    //                 <div className={styles.btn_} id="btnLogIn" onClick={() => setModalOpen(true)} >ĐĂNG NHẬP</div>
-    //                 <FontAwesomeIcon className={styles.btnHeaderBars} icon={faBars} onClick={showSideBar} />
-    //             </div>
-
-    //             <div className={headerNavBar ? styles.headerNavBars_active : styles.headerNavBars}>
-    //                 <FontAwesomeIcon className={styles.icon} icon={faXmark} size='2x' onClick={showSideBar} />
-    //                 {menuItem.map((item, index) => (
-    //                     <NavLink to={item.path} className={(navdata) => (navdata.isActive ? styles.navItem_active : styles.navItem)} key={index}>
-    //                         <p className={styles.nameNavItem}  >{item.name}</p>
-    //                         <div className={styles.line}></div>
-    //                     </NavLink>
-    //                 ))}
-    //             </div>
-    //             {modalopen && <Backdrop onClick={() => setModalOpen(false)} />}
-    //             {modalopen && <Login />}
-    //         </div>
-
-    //     </>
-
-    // )
 }
 
 export default Header;

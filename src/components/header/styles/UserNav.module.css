@@ -1,0 +1,34 @@
+
+.userNavItems {
+    height: max-content;
+    padding: 10px 0px;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+    transition: opacity 300ms ease 0s;
+}
+
+.item_userNav{
+    color: rgb(66, 67, 69);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+}
+
+.item_userNav:hover{
+    background-color: rgb(241 241 242);
+}
+
+.item_userNav p{
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.item-icon{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -3,38 +3,23 @@
     --icon-color: #0070FF;
 }
 
-/* .container {
-    padding: 10px 300px;
+.container {
+    padding: 10px 20px;
     box-sizing: border-box;
-} */
+}
 
-.content {
+/* .content {
     width: auto;
     height: auto;
     display: flex;
     flex-direction: column;
-}
+} */
 
-.content_left {
+/* .content_left {
     width: auto;
     padding: 0px 20px;
     box-sizing: border-box;
-}
-
-.exercise_name {
-    width: auto;
-}
-
-.exercise_name>input {
-    width: 98%;
-    height: 30px;
-    font-size: 20px;
-    padding: 0px 10px;
-    border-radius: 5px;
-    /* box-sizing: border-box; */
-}
-
-
+} */
 
 .exercise_score {
     width: auto;
@@ -50,92 +35,48 @@
 }
 
 .exercise_level {
+    margin-top: 30px;
+}
+
+.btnAddTestCase{
+    float: right;
+}
+
+.content_TestCase {
+    margin-top: 20px;
     width: auto;
 }
 
-.exercise_level>select {
-    width: 100%;
-    font-size: 20px;
-}
-
-
-.content_right {
-    width: auto;
-    padding: 0px 20px;
-    box-sizing: border-box;
-}
-.exercise_input{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
-}
-.exercise_add_button{
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-}
 .exercise_btn{
-    display: inline-flex;
-    cursor: pointer;
-    align-items: center;
-    padding: 0px 20px;
-    box-sizing: border-box;
-}
-.exercise_btn > p{
-    color: var(--main-color);
-}
-.exercise_btn > button{
-    cursor: pointer;
-    outline: none;
-    color: white;
-    background-color: var(--main-color);
-    font-size: 15px;
-    margin-left: 10px;
-    width: 50px;
-    height: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
 }
 
-
-
-.input{
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.input > svg{
-    color: red;
-    cursor: pointer;
-}
-.type_input{
-    width: 200px;
-}
-.type_input > select{
-    width: 100px;
-}
 .input_testcase{
     z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0px 0px 5px;
     width: 500px;
     border-radius: 10px;
+    padding: 10px 20px;
     background-color: white;
     position: fixed;
-    padding: 10px 10px;
     height: 300px;
     box-sizing: border-box;
+    overflow: auto;
 }
-.input_value{
-    width: 90%;
-    height: 110px;
+
+.input_output{
+    width: 100%;
 }
 .testcase{
     width: 100%;
     margin-top: 10px;
-    background-color: orange;
+    background-color: #e7dfdf;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
@@ -145,11 +86,21 @@
     height: 40px;
     box-sizing: border-box;
 }
-.btn_open_testcase{
+.testcase label{
+    color: rgb(59, 58, 58);
+}
+.input_testcase h2{
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+.btn_intputTestCase{
+    margin-top: 30px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
+
 .testcase_btn{
     cursor: pointer;
 }

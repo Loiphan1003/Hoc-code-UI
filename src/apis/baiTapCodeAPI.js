@@ -8,6 +8,10 @@ const BaiTapCodeAPI = {
     getOne: (params) =>{
         const url = `BaiTapCode/getOne?id=${params}`
         return axiosClient.get(url, {params});
+    },
+    postAddBaiTapCode: (btCodeAndTestCases) =>{
+        const url = 'BaiTapCode/postBaiTapCode';
+        return axiosClient.post(url,btCodeAndTestCases);
     }
 }
 

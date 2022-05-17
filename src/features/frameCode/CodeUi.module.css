@@ -213,9 +213,12 @@
 }
 
 .case {
-    height: 30px;
+    /* height: 30px;
     margin: 5px 5px;
-    padding-left: 20px;
+    padding-left: 20px; */
+    display: flex;
+
+    align-items: center;
 }
 
 .case_icon {
@@ -224,12 +227,14 @@
 
 .case span {
     color: white;
-    top: 50%;
+    /* top: 50%;
     left: 50px;
     transform: translateY(-50%);
-    font-size: 15px;
+    font-size: 15px; */
 }
-
+.icon_load{
+    margin-right: 8px;
+}
 .icon_success {
     color: #23A44F;
 }

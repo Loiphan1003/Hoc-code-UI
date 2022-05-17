@@ -18,8 +18,8 @@ import CreateExercise from './features/exercise/createExercise/CreateExercise';
 import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises/MultipleChoiceExercises';
 import CourseWorkDetail from './features/classRoom/courseworkDetail/CourseWorkDetail';
 import ExerciseClassRoom from './features/classRoom/courseworkDetail/ExerciseClassRoom';
+import Test from './features/test/Test';
 import LoginAdmin from './components/Login/LoginAdmin';
-import LanddingPage from './layouts/landdingPage';
 import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
 
@@ -84,7 +84,7 @@ function App() {
                     <Route path='/admin' element={<LoginAdmin />} />
                     <Route path='/courseworkdetail/:couredetailsName' element={<CourseWorkDetail />} />
                     <Route path='/assignment/:couredetailsName' element={<ExerciseClassRoom />} />
-                    
+                    <Route path='/test' element={<Test />} />
                 </Routes>
             </Router>
         </React.Fragment>

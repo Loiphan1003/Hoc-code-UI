@@ -4,23 +4,35 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { EditTextarea } from 'react-edit-text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
-// import Header from '../../../components/header/Header';
-// import HTMLReactParser from 'html-react-parser';
 import styles from './CreateExercise.module.css';
 import Backdrop from '../../../components/Backdrop';
-// import { Select } from 'antd';
+import BaiTapCodeAPI from '../../../apis/baiTapCodeAPI';
+
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
+import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 function CreateExercise(props) {
 
-
+    const defaulDiscrition = "<h3>Đề bài</h3><p>&nbsp;</p><h3>Mô tả</h3><p>&nbsp;</p><h3><i><strong>SampleInput</strong></i></h3><blockquote><p>&nbsp;</p></blockquote><h3><i><strong>SampleOutput</strong></i></h3><blockquote><p>&nbsp;</p></blockquote>"
     const [nameExercise, setNameExercise] = useState("");
     const [discription, setDiscription] = useState("");
-    const [level, setLevel] = useState();
+    const [level, setLevel] = useState(1);
     const [openTestCase, setOpenTestCase] = useState(false);
-    const [inputs, setInputs] = useState();
-    const [outputs, setOutputs] = useState();
+    const [input, setInput] = useState();
+    const [output, setOutput] = useState();
     const [testCases, setTestCases] = useState([]);
     const [file, setFile] = useState();
+    const [isPublic, setIsPublic] = useState(false);
     const [exercise, setExercise] = useState({
         tag: "lập trình",
         dokho: 'Dễ',
@@ -29,71 +41,42 @@ function CreateExercise(props) {
         ispublic: false,
     })
 
+    const handleSaveExercise = () => {
+        let ob = {
+            doKho: "Dễ",
+            tieuDe: nameExercise,
+            deBai: discription,
+            isPublic: isPublic,
+            uIdNguoiTao: "gv1",
+            testCases: testCases
+        }
 
-    // const ref = useRef()
-    // const handleAddInput = () => {
-    //     setInputs(
-    //         [
-    //             ...inputs,
-    //             { id: inputs.length, name: 'arg', type: "string" }
-    //         ]
-    //     )
-    // }
-
-    const handleSaveExercise = (name, level, discription) => {
-        console.log("Lưu thành công");
-        setExercise(
-            {
-                tag: "lập trình",
-                dokho: level,
-                tieude: name,
-                debai: discription,
-                ispublic: false,
+        const addBTCode = async () => {
+            try {
+                const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
+                console.log(response.data);
+            } catch (error) {
+                console.log("Fetch data error: ", error);
             }
-        )
-        props.data.push(
-            {
-                tag: "lập trình",
-                dokho: level,
-                tieude: name,
-                debai: discription,
-                ispublic: false,
-            }
-        )
+        }
+        addBTCode();
     }
 
-    const handleAddTestCase = (input, output) => {
+    const handleAddTestCase = () => {
         setTestCases(
             [
                 ...testCases,
-                { id: testCases.length, input: { input }, output: { output } }
+                { input: { input }, output: { output } }
             ]
         )
         setOpenTestCase(false);
+        setInput('')
+        setOutput('')
     }
-    // const handleChangeName = (name, index) => {
-    //     setInputs(
-    //         // Tim dau vao qua id sau do dung Oject.assign de sao chep va hop nhat cung du lieu thuoc tinh moi la name
-    //         inputs.map(input => input.id === index ? Object.assign(input, { name }) : input)
-    //     )
-    // }
-    // const handleChangeLevelInput = (type, index) => {
-    //     setInputs(
-    //         // Tim dau vao qua id sau do dung Oject.assign de sao chep va hop nhat cung du lieu thuoc tinh moi la type
-    //         inputs.map(input => input.id === index ? Object.assign(input, { type }) : input)
-    //     )
-    // }
 
-    const handleSaveInput = ({ name, value, previousValue }) => {
-        setInputs(value)
-    };
-
-    const handleSaveOutput = ({ name, value, previousValue }) => {
-        setOutputs(value)
-    };
-    const handleRemoveInput = (value) => {
-        const remove = testCases.filter(testcase => testcase.id !== value);
-        setTestCases(remove);
+    const handleRemoveInput = (index) => {
+        testCases.splice(index, 1)
+        setTestCases([...testCases])
     }
 
     useEffect(() => {
@@ -104,13 +87,12 @@ function CreateExercise(props) {
         }
     }, [openTestCase])
 
-    
 
-    
+
+
 
     const handleFileChosen = (e) => {
-        
-        
+
         const reader = new FileReader();
         reader.readAsText(e.target.files[0])
         reader.onloadend = (e) => {
@@ -119,166 +101,134 @@ function CreateExercise(props) {
         reader.onerror = () => {
             console.log("File error: ", reader.error);
         }
-
     };
-
-
-    // useEffect(() => {
-    //     setTestCases(testCases);
-    // }, [testCases])
-    // ref.current = testCases;
-
 
     return (
         <>
             <div className={styles.container}>
 
-                {/* <div className={styles.content}> */}
-                <div className={styles.content_left} >
+                <TextField fullWidth label="Nhập tên bài tập" onChange={e => setNameExercise(e.target.value)}
+                    placeholder='Nhập tên bài tập' />
 
-                    <div className={styles.exercise_name} >
-                        <p>Tên bài</p>
-                        <input type='text' onChange={e => setNameExercise(e.target.value)} placeholder='Nhâp tên bài tập' />
-                    </div>
+                <div className={styles.exxercise_disciption} >
+                    <p>Mô tả</p>
+                    <CKEditor
+                        // className={styles.editor}
+                        height="700px"
+                        editor={ClassicEditor}
+                        data={defaulDiscrition}
+                        config={{
+                            toolbar: ['heading', '|','alignment','bold', 'italic', 'blockQuote', 'link','_','code', 'numberedList', 'bulletedList', 'imageUpload', 'insertTable',
+                                'tableColumn', 'tableRow', 'mergeTableCells', 'mediaEmbed', '|', 'undo', 'redo'],
+                            shouldNotGroupWhenFull: true
+                        }}
+                        onReady={(editor) => {
+                            editor.editing.view.change((writer) => {
+                                writer.setStyle(
+                                    "height",
+                                    "400px",
+                                    editor.editing.view.document.getRoot()
+                                );
+                            });
+                        }}
+                        onChange={(event, editor) => {
+                            const data = editor.getData();
+                            setDiscription(data);
+                        }}
 
-                    <div className={styles.exxercise_disciption} >
-                        <p>Mô tả</p>
-                        <CKEditor
-                            // className={styles.editor}
-                            height="500px"
-                            editor={ClassicEditor}
-                            data="<p>hello world</p>"
-                            onReady={(editor) => {
-                                editor.editing.view.change((writer) => {
-                                    writer.setStyle(
-                                        "height",
-                                        "400px",
-                                        editor.editing.view.document.getRoot()
-                                    );
-                                });
-                            }}
-                            // onReady={editor => {
-                            //     // You can store the "editor" and use when it is needed.
-                            //     console.log('Editor is ready to use!', editor);
-                            // }}
-                            onChange={(event, editor) => {
-                                const data = editor.getData();
-                                setDiscription(data);
-                                // console.log("Change", { event, editor, data });
-                            }}
-                        // onBlur={(event, editor) => {
-                        //     console.log('Blur.', editor);
-                        // }}
-                        // onFocus={(event, editor) => {
-                        //     console.log('Focus.', editor);
-                        // }}
-                        />
-                    </div>
-
-                    <div className={styles.exercise_score} >
-                        <p>Điểm</p>
-                        <input type='number' placeholder="" />
-                    </div>
-
-                    <div className={styles.exercise_level} >
-                        <p>Cấp độ</p>
-                        <select defaultValue="Dễ" onChange={e => setLevel(e.target.value)} >
-                            <option>Dễ</option>
-                            <option>Trung bình</option>
-                            <option>Khó</option>
-                        </select>
-                    </div>
-
-
+                    />
                 </div>
 
+                <div className={styles.exercise_score} >
+                    <p>Điểm</p>
+                    <input type='number' placeholder="" />
+                </div>
+
+                <div className={styles.exercise_level} >
+                    <FormControl fullWidth>
+                        <InputLabel id="level-label">Cấp độ</InputLabel>
+                        <Select
+                            labelId="level-label"
+                            value={level}
+                            label="Cấp độ"
+                            onChange={e => setLevel(e.target.value)}
+                        >
+                            <MenuItem value={1}>Dễ</MenuItem>
+                            <MenuItem value={2}>Khó</MenuItem>
+                            <MenuItem value={3}>Trung Bình</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <FormControlLabel control={<Checkbox onChange={e => setIsPublic(e.target.checked)} />} label="Công khai" />
 
                 <div className={styles.content_right} >
 
-                    {/* <div className={styles.exercise_input} >
-                            <p>Đầu vào</p>
-                            <div className={styles.exercise_add_button} onClick={() => handleAddInput()} >
-                                <FontAwesomeIcon icon={faPlus} />
-                                <p>Thêm đầu vào</p>
-                            </div>
-                        </div> */}
-
-                    {/* {inputs.map(input => (
-                            <div className={styles.input} key={input.id} >
-                                <div className={styles.name_input} >
-                                    <label>Tên</label><br />
-                                    <input type='text' value={input.name} onChange={(e) => handleChangeName(e.target.value, input.id)} />
-                                </div>
-
-                                <div className={styles.type_input} >
-                                    <label>Kiểu</label><br />
-                                    <select value={input.type} onChange={(e) => handleChangeLevelInput(e.target.value, input.id)} >
-                                        <option>integer</option>
-                                        <option>float</option>
-                                        <option>string</option>
-                                        <option>boolean</option>
-                                        <option>char</option>
-                                    </select>
-                                </div>
-
-                                <FontAwesomeIcon icon={faTrashCan} size='2x' onClick={() => handleRemoveInput(input.id)} />
-                            </div>
-                        ))} */}
-
-
-
-                    <div className={styles.exercise_input} >
-                        <p>Kiểm thử</p>
-                        <div className={styles.exercise_add_button} onClick={() => setOpenTestCase(true)} >
-                            <FontAwesomeIcon icon={faPlus} />
-                            <p>Thêm kiểm thử</p>
-                        </div>
-                    </div>
+                    <Button variant="contained" className={styles.btnAddTestCase}
+                        endIcon={<AddCircleOutlinedIcon />}
+                        onClick={() => setOpenTestCase(true)}
+                    >
+                        Thêm TestCase
+                    </Button>
 
                     {testCases.map((testcase, index) => (
-                        <div className={styles.testcase} key={testcase.id} >
+                        <div className={styles.testcase} key={index} >
                             <div className={styles.name_input} >
                                 <label>Kiểm thử {index + 1}</label><br />
-                                {/* <input type='text' value={input.name} onChange={(e) => handleChangeName(e.target.value, input.id)} /> */}
                             </div>
 
                             <div className={styles.testcase_btn} >
                                 <FontAwesomeIcon className={styles.btn_update} icon={faPen} />
-                                <FontAwesomeIcon className={styles.btn_delete} icon={faTrashCan} onClick={() => handleRemoveInput(testcase.id)} />
+                                <FontAwesomeIcon className={styles.btn_delete} icon={faTrashCan} onClick={() => handleRemoveInput(index)} />
                             </div>
                         </div>
                     ))}
-
-
-                    {openTestCase && <Backdrop onClick={() => setOpenTestCase(false)} />}
-                    {openTestCase && <div className={styles.input_testcase} >
-                        <div className={styles.input_value} >
-                            <p>Đầu vào</p>
-                            <EditTextarea rows={2} placeholder="Nhập đầu vào" onSave={handleSaveInput} />
-                        </div>
-
-                        <div className={styles.input_value} >
-                            <p>Kết quả</p>
-                            <EditTextarea rows={2} placeholder="Nhập đầu vào" onSave={handleSaveOutput} />
-                        </div>
-
-                        <div className={styles.btn_open_testcase} >
-                            <span className={styles.btn_close} onClick={() => setOpenTestCase(false)} >Đóng</span>
-                            <span className={styles.btn_save} onClick={() => handleAddTestCase(inputs, outputs)} >Lưu</span>
-                        </div>
-                    </div>}
-                    {/* <div>
-                            {HTMLReactParser(discription)}
-                        </div> */}
                 </div>
 
                 <div className={styles.exercise_btn} >
-                    <p>Hủy</p>
-                    <button onClick={() => handleSaveExercise(nameExercise, level, discription)}>Lưu</button>
-                    <input type="file" name='file' onChange={(e) => handleFileChosen(e)} />
-                    <p>{file}</p>
+                    <Button variant="contained" style={{ backgroundColor: "ButtonShadow" }}
+                        endIcon={<CancelIcon />}
+                        onClick={() => { console.log("Thực hiện thao tác trở vể trang trước"); }}
+                    >
+                        Hủy
+                    </Button>
+
+                    <Button variant="contained" style={{ marginLeft: "20px" }}
+                        endIcon={<SaveIcon />}
+                        onClick={handleSaveExercise}
+                    >
+                        Lưu
+                    </Button>
                 </div>
-                {/* </div> */}
+
+                {/* Dialog Add TestCase */}
+                {openTestCase && <Backdrop onClick={() => setOpenTestCase(false)} />}
+                {openTestCase && <div className={styles.input_testcase} >
+                    <h2>NHẬP TESTCASE</h2>
+                    <div>
+                        <TextField className={styles.input_output} label="Đầu vào"
+                            placeholder="Nhập đầu vào (input)" value={input}
+                            multiline onChange={e => setInput(e.target.value)} />
+                        <div style={{ width: "100%", height: "30px" }}></div>
+                        <TextField className={styles.input_output} label="Đầu ra"
+                            placeholder="Nhập đầu ra (output)" value={output}
+                            multiline onChange={e => setOutput(e.target.value)} />
+                    </div>
+                    <div className={styles.btn_intputTestCase} >
+                        <Button variant="contained" style={{ backgroundColor: "ButtonShadow" }}
+                            endIcon={<CancelIcon />}
+                            onClick={() => setOpenTestCase(false)}
+                        >
+                            Hủy
+                        </Button>
+
+                        <Button variant="contained" style={{ marginLeft: "20px" }}
+                            endIcon={<SaveIcon />}
+                            onClick={handleAddTestCase}
+                        >
+                            Lưu
+                        </Button>
+                    </div>
+                </div>}
             </div>
         </>
     );
