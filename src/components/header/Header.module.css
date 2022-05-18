@@ -1,0 +1,517 @@
+:root {
+    --main_color: #03045E;
+}
+
+#header {
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.List_menu {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+
+.Menu_item {
+    font-size: 21px;
+    cursor: pointer;
+    width: fit-content;
+    color: rgb(90 86 86);
+    text-decoration: none;
+}
+.Menu_item p{
+    width: fit-content;
+    font-weight: 600;
+    margin: 0px;
+    padding-bottom: 4px;
+}
+
+.Menu_item_active {
+    font-size: 22px;
+    text-decoration: none;
+    color: var(--main_color);
+    border-bottom: solid 2.5px var(--main_color);
+}
+.Menu_item_active p{
+    width: fit-content;
+    font-weight: 600;
+    margin: 0px;
+    padding-bottom: 4px;
+}
+
+.Menu_item:hover {
+    opacity: 1;
+    background-color: rgba(194, 53, 100, 0.05);
+    border-color: rgba(204, 70, 115, 0.1);
+}
+
+.Menu-item::after:active {
+    background-color: aqua;
+}
+
+.animation-click {
+    position: absolute;
+    transition: 0.5;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    margin-top: 17px;
+    background-color: red;
+    height: 50%;
+    width: 110px;
+    opacity: 0;
+}
+
+.more_btn{
+    display: flex;
+}
+
+.more_btn button{
+    background-color: transparent;
+    border: 0px;
+    width: 30px;
+    margin-right: 23px;
+}
+
+.iNoti{
+    font-size: 30px;
+    color: #464849;
+    cursor: pointer;
+}
+
+.navbar div:nth-child(1).active~.animation-click {
+    /* height: 100%; */
+    opacity: 1;
+    left: 178px;
+}
+
+.navbar div:nth-child(3).active~.animation-click {
+    opacity: 1;
+    left: 300px;
+}
+
+
+#button {
+    /* background-color: #ede0d4; */
+    /* margin-top: 32px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* cursor: pointer; */
+}
+
+#button_logout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 20px;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.btn_ {
+    font-size: 20px;
+    height: 30px;
+    cursor: pointer;
+    min-width: 10rem;
+}
+
+.btnHeaderBars {
+    cursor: pointer;
+}
+
+.loginForm {
+    height: 500px;
+    width: 500px;
+    background-color: black;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 10%;
+}
+
+.mask {
+    position: absolute;
+    height: 1000px;
+    width: 100%;
+    background-color: gray;
+    opacity: 0.5;
+}
+
+
+.backdrop {
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(66, 63, 63, 0.75);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.userNavItems {
+    /* margin-top: 2; */
+    border-radius: 5%;
+    margin-left: -4rem;
+    height: auto;
+    width: 160px;
+    top: 60%;
+    right: 2.5%;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0px 0px 4px 1px;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    flex-direction: column;
+    /* align-items: stretch;  */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.userNavItems p {
+    opacity: 0.5;
+    text-align: left;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 15px;
+    line-height: 200%;
+}
+
+.userNavItems p:hover {
+    opacity: 1;
+    /* background-color: grey; */
+}
+
+.headerNavBars {
+    z-index: 10;
+    right: -100%;
+    position: fixed;
+    width: 60%;
+    background-color: white;
+    height: 100%;
+    padding: 20px 0px 20px 20px;
+    box-sizing: border-box;
+    border-left: solid 1px rgb(84, 82, 82);
+    transition: 950ms;
+}
+
+.headerNavBars_active {
+    z-index: 10;
+    right: 0;
+    position: fixed;
+    width: 60%;
+    background-color: white;
+    height: 100%;
+    padding: 20px 10px 20px 20px;
+    box-sizing: border-box;
+    transition: 350ms;
+    border-left: solid 0.5px rgb(130, 127, 127);
+}
+.navItem{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(89, 85, 85);
+    text-decoration: none;
+    cursor: pointer;
+}
+.nameNavItem{
+    text-decoration: none;
+}
+.navItem_active {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--main_color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nameNavItem:hover{
+    color: var(--main_color);
+    text-decoration: none;
+
+}
+
+.line{
+    width: auto;
+    height: 1px;
+    background-color: rgb(96, 91, 91);
+    margin-right: 20px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #header {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        /* background-color: white; */
+    }
+
+    .List_menu {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        /* padding-top: 2rem;
+        margin-left: -60rem; */
+        /* box-sizing: border-box; */
+    }
+
+    .logo {
+        /* padding: 5%; */
+        /* margin-top: -10%; */
+        height: 100%;
+        width: 45%;
+        /* height: 100%; */
+        box-sizing: border-box;
+    }
+
+    .logo img {
+        margin-top: 5px;
+        margin-left: 10px;
+        width: 50%;
+        object-fit: cover;
+
+    }
+
+    .navbar {
+        display: none;
+    }
+
+
+    .btn_ {
+        font-size: 15px;
+        height: fit-content;
+        cursor: pointer;
+        min-width: 100px;
+    }
+
+    #button_logout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 20px;
+    }
+    .icon{
+        margin-right: 15px;
+        font-size: 25px;
+    }
+
+    #button {
+        margin-right: 20px;
+    }
+
+    .sidebar {
+        display: inline;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .List_menu {
+        width: auto;
+        display: flex;
+        align-items: center;
+        /* padding-top: 2rem;
+        margin-left: -60rem; */
+        /* box-sizing: border-box; */
+    }
+
+    .logo {
+        width: 30%;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    #button_logout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 20px;
+    }
+
+    .btn_ {
+        margin-top: 0%;
+        font-size: 15px;
+        height: fit-content;
+        cursor: pointer;
+        min-width: 100px;
+    }
+    /* .headerNavBars {
+        z-index: 10;
+        right: -100%;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        height: 100%;
+        padding-top: 20px;
+        box-sizing: border-box;
+        transition: 950ms;
+    }
+
+    .headerNavBars_active {
+        z-index: 10;
+        right: 0;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        height: 100%;
+        padding-top: 20px;
+        box-sizing: border-box;
+        transition: 350ms;
+    } */
+}
+
+/* Medium devices (landscape tablets, 768px and up)  */
+@media only screen and (min-width: 768px) {
+
+    .List_menu {
+        width: auto;
+        display: flex;
+        align-items: center;
+        /* padding-top: 2rem;
+        margin-left: -60rem; */
+        /* box-sizing: border-box; */
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .logo img {
+        /* margin-top: -30px; */
+        width: 100px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    #button {
+        margin-right: 1%;
+    }
+
+    #button_logout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 20px;
+    }
+
+    .btn_ {
+        margin-top: 0%;
+        font-size: 15px;
+        height: fit-content;
+        cursor: pointer;
+        min-width: 100px;
+    }
+    /* .headerNavBars {
+        z-index: 10;
+        right: -100%;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        height: 100%;
+        padding-top: 20px;
+        box-sizing: border-box;
+        transition: 950ms;
+    }
+
+    .headerNavBars_active {
+        z-index: 10;
+        right: 0;
+        position: fixed;
+        width: 70%;
+        background-color: white;
+        height: 100%;
+        padding-top: 20px;
+        box-sizing: border-box;
+        transition: 350ms;
+    } */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .List_menu {
+        height: 50px;
+        width: 700px;
+        display: flex;
+        align-content: space-around;
+        padding-right: 2%;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        height: 100%;
+        float: left;
+        width:30%;
+    }
+
+    .logo img {
+        height: 90%;
+        width: auto;
+        margin-left: 50px;
+        margin-top: 5px;
+    }
+
+    .navbar {
+        display: flex;
+        width: 70%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+    }
+
+    #button {
+        margin-right: 1%;
+    }
+
+
+    #button_logout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 20px;
+    }
+
+    .btn_ {
+        font-size: 18px;
+        height: fit-content;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .btnHeaderBars {
+        display: none;
+    }
+}

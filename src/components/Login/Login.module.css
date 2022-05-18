@@ -1,0 +1,78 @@
+.Login{
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 380px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.Login span{
+    margin-top: 20px;
+    color: rgb(80, 81, 82);
+}
+.modal {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+.modal h1{
+    text-transform: uppercase;
+    color: rgb(80, 81, 82);
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.modal .input{
+    outline: none;
+    margin-top: 25px;
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: solid 1px rgb(88, 85, 85);
+}
+
+.btnLogin{
+    margin-top: 20px;
+    width: 60%;
+    height: 45px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgba(255, 0, 0, 0.813);
+}
+.btnLogin:hover{
+    cursor: pointer;
+    background-color: rgba(236, 49, 49, 0.79);
+}
+
+.socialNetwork{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn_socialNetwork{
+    background-color: white;
+    margin: 2px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.dangKy:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 25);
+}

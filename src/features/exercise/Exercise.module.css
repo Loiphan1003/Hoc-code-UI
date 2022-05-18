@@ -1,0 +1,31 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    color: black;
+    padding: 10px 80px;
+    box-sizing: border-box;
+}
+
+.TableCauHoiCode{
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.conten_cell {
+    padding: 0px;
+    margin: 0px;
+}
+
+

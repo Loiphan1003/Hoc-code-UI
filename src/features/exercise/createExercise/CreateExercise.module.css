@@ -1,0 +1,99 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+.content{
+    width: auto;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+
+.exercise_level {
+    margin-top: 30px;
+}
+
+.btnAddTestCase{
+    float: right;
+}
+
+
+.content_TestCase {
+    margin-top: 20px;
+    width: auto;
+}
+
+.exercise_btn{
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input_output{
+    width: 100%;
+}
+
+.input_testcase{
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    border-radius: 5px;
+    background-color: white;
+    position: fixed;
+    padding: 2rem;
+    height: 50%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.testcase{
+    width: 100%;
+    margin-top: 10px;
+    background-color: #e7dfdf;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.testcase label{
+    color: rgb(59, 58, 58);
+}
+.input_testcase h2{
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+.btn_intputTestCase{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.testcase_btn{
+    cursor: pointer;
+}
+.btn_close{
+    cursor: pointer;
+    margin-right: 20px;
+}
+.btn_save{
+    color: red;
+    cursor: pointer;
+}
+.btn_update{
+    color: #434242;
+    margin-right: 20px;
+}
+.btn_delete{
+    color: #e51e1ef5;
+}

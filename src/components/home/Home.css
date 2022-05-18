@@ -1,0 +1,50 @@
+.contentHome{
+    /* box-sizing: border-box; */
+    /* min-height: 400px; */
+    /* height: 400px; */
+    padding-top: 60px;
+    /* background-color: red; */
+}
+.contentHome div{
+    margin-top: 0;
+}
+.information{
+    height: 350px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-left: 250px;
+    background-color: gray;
+}
+.information p{
+    font-size: 20px;
+    
+    color: white;
+}
+.information-account{
+    border-radius: 20px;
+    width: 450px;
+    height: 250px;
+    background-color: black;
+}
+.course{
+    padding-left: 12%;
+    box-sizing: border-box;
+    height: 500px;
+    background-color: green;
+}
+.course h2{
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: blue;
+}
+.menu{
+    margin-left: -30px;
+    width: 500px;
+    height: 100px;
+    box-sizing: border-box;
+}
+.menu h3{
+    margin-left: 50px;
+    float: left;
+    cursor: pointer;
+}

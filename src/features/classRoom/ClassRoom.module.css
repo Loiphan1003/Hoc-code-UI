@@ -1,0 +1,85 @@
+:root {
+    --roomheader-color: #24859A;
+    --header-theory: #03045E;
+}
+
+.classRoom {
+    width: 100%;
+    min-height: 450px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+.area_joinClass{
+    width: 100%;
+    height: 50px;
+}
+
+.classRoomList{
+    margin: 30px 58px;
+}
+.room{
+    text-decoration: none;
+}
+
+.roomheader {
+    width: 100%;
+    height: 80px;
+    color: white;
+    padding-top: 2%;
+    background-color: var(--roomheader-color);
+}
+
+.roomName {
+    margin-top: 2%;
+    margin-left: 8%;
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+    font-size-adjust: 20%;
+}
+
+
+.owner {
+    width: 100%;
+    margin: 10px 0px;
+    color: rgb(77, 74, 74);
+    font-size: 20px;
+    height: fit-content;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ownerImage {
+    margin-left: 20px;
+    margin-top: -25px;
+    font-size: 35px;
+}
+
+
+.line {
+    margin-top: 3px;
+    width: 100%;
+    height: 0.5px;
+    background-color: rgb(104, 98, 98);
+}
+
+.numberStudent {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: rgb(104, 98, 98);
+}
+.numberStudent span{
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.icon_numberStuden{
+    font-size: 18px;
+    margin-right: 8px;
+}
