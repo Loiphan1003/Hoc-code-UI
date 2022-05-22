@@ -14,7 +14,7 @@
 
 .first_content {
     display: flex;
-    height: 625px;
+    height: 93vh;
     background-color: var(--main-background-color);
     flex-direction: row;
     align-items: flex-start;

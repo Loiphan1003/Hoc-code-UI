@@ -77,7 +77,7 @@ function Room(props) {
                             {...stringAvatar(room.tenPhong.substr(0,room.tenPhong.length-1))}
                         >
                         </Avatar>
-                        <div className={styles.owner}>
+                        <div className={styles.ownerName}>
                             nvduy_0511
                         </div>
                         <div className={styles.line}></div>

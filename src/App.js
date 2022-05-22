@@ -13,11 +13,12 @@ import ClassRoom from './features/classRoom/ClassRoom';
 import Practice from './features/practice/Practice';
 import RoomDetail from './features/classRoom/RoomDetail';
 import Exercise from './features/exercise/Exercise';
-import CreateExercise from './features/exercise/createExercise/CreateExercise';
+import CreateBTCode from './features/exercise/createBTCode';
+import CreateBTLuyenTap from './features/exercise/createBTLuyenTap';
 import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises/MultipleChoiceExercises';
 import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
-
+import Test from './features/test/Test';
 function App() {
 
 
@@ -61,7 +62,12 @@ function App() {
                     />
                     <Route path='/exercise/create' element={
                         <LayoutCreate>
-                            <CreateExercise  />
+                            <CreateBTCode  />
+                        </LayoutCreate>}
+                    />
+                    <Route path='/exercise/createLuyenTap' element={
+                        <LayoutCreate>
+                            <CreateBTLuyenTap  />
                         </LayoutCreate>}
                     />
                     <Route path='/exercise/multiplechoice' element={
@@ -77,6 +83,8 @@ function App() {
                             <Content  />
                         </DefaultLayout>}
                     />
+
+                    <Route path='/test' element={<Test />} />
                 </Routes>
             </Router>
         </div>

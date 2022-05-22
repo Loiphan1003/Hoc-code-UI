@@ -25,42 +25,16 @@
     background: rgb(189, 187, 187);
 }
 
-.content_body {
-    height: 100vh;
-    width: 100wh;
-}
-
-.header {
-    height: 5%;
-    background-color: #D5DCEB;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.header h3 {
-    margin-left: 2%;
-    font-size: 22px;
-    color: #3b3838;
-}
 
 .Body {
-    display: inline-block;
     width: 100%;
-    height: 95%;
-    height: fit-content;
-}
-
-.headerIcon{
-    margin-left: 2%;
-    position: relative;
-    font-size: 25px;
+    height: 100%;
 }
 
 
 .nav_left {
     width: 4%;
-    height: 94vh;
+    height: 100vh;
     background-color: #D5DCEB;
     text-align: center;
     float: left;
@@ -94,17 +68,32 @@
     font-size: 30px;
     background-color: var(--nav-left-button);
 }
-
+/* Nội dung bài tập */
 .content {
-    /* position: absolute; */
     width: 46%;
-    height: 94vh;
+    height: 100vh;
     background-color: white;
     overflow: auto;
     overflow-x: hidden;
     padding: 20px;
     float: left;
+    color: #242526;
     box-sizing: border-box;
+}
+.content h1{
+    text-align: center;
+}
+.content div p{
+    font-size: 17px;
+}
+
+.sample_output div, .sample_input div{
+    background-color: #e7ebf0;
+    padding: 5px 10px;
+    white-space: pre-line;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 
@@ -125,7 +114,7 @@
     right: 0px;
     bottom: 0px;
     width: 50%;
-    height: 95%;
+    height: 100vh;
 }
 
 .editor{
@@ -158,7 +147,7 @@
 }
 
 .result h3 {
-    height: 20px;
+    height: 30px;
     font-size: 18px;
     margin-left: 10px;
     margin-top: 5px;

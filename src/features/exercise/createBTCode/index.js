@@ -1,9 +1,7 @@
-import React, { useState} from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import React, { useRef, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
-import styles from './CreateExercise.module.css';
+import styles from './CreateBTCode.module.css';
 import Backdrop from '../../../components/Backdrop';
 import BaiTapCodeAPI from '../../../apis/baiTapCodeAPI';
 
@@ -17,39 +15,54 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-function CreateExercise(props) {
-    const defaulDiscrition = "<h3>Đề bài</h3><p>&nbsp;</p><h3>Mô tả</h3><p>&nbsp;</p><h3><i><strong>SampleInput</strong></i></h3><blockquote><p>&nbsp;</p></blockquote><h3><i><strong>SampleOutput</strong></i></h3><blockquote><p>&nbsp;</p></blockquote>"
+function CreateBTCode(props) {
+    
     const [nameExercise, setNameExercise] = useState("");
-    const [discription, setDiscription] = useState(defaulDiscrition);
-    const [level, setLevel] = useState(1);
     const [openTestCase, setOpenTestCase] = useState(false);
     const [input, setInput] = useState();
     const [output, setOutput] = useState();
     const [testCases, setTestCases] = useState([]);
-    const [isPublic,setIsPublic] = useState(false);
+    const [language, setLanguage] = useState("c")
+
+    const deBaiRef = useRef()
+    const rangBuocRef = useRef()
+    const dinhDangDauVaoRef = useRef()
+    const dinhDangDauRaRef = useRef()
+    const mauDauVaoRef = useRef()
+    const mauDauRaRef = useRef()
 
     const handleSaveExercise = () => {
-        let ob = {
-            doKho: level,
-            tieuDe: nameExercise,
-            deBai: discription,
-            isPublic: isPublic,
-            uIdNguoiTao: "gv1",
-            testCases: testCases
-        }
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let ob = {
+                    tieuDe: nameExercise,
+                    deBai: deBaiRef.current.value,
+                    uIdNguoiTao: user.uid,
+                    ngonNgu: language,
+                    rangBuoc: rangBuocRef.current.value,
+                    dinhDangDauVao: dinhDangDauVaoRef.current.value,
+                    dinhDangDauRa: dinhDangDauRaRef.current.value,
+                    mauDauVao: mauDauVaoRef.current.value,
+                    mauDauRa: mauDauRaRef.current.value,
+                    testCases: testCases
+                }
 
-        const addBTCode = async () => {
-            try {
-                const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
-                console.log(response.data);
-            } catch (error) {
-                console.log("Fetch data error: ", error);
+                const addBTCode = async () => {
+                    try {
+                        const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
+                        if(response.data)
+                            alert("Thêm bài tập code thành công!")
+                        console.log(response.data);
+                    } catch (error) {
+                        console.log("Fetch data error: ", error);
+                    }
+                }
+                addBTCode();
             }
-        }
-        addBTCode();
+        });
         
     }
     
@@ -70,52 +83,44 @@ function CreateExercise(props) {
         setTestCases([...testCases])
     }
 
-
     return (
         <>
             <div className={styles.content} >
 
-                <TextField fullWidth label="Nhập tên bài tập" onChange={e => setNameExercise(e.target.value)}
-                    placeholder='Nhập tên bài tập' />
+                <input className={styles.input_NameEx}
+                    type='text' placeholder='Nhập tên bài tập' 
+                    onChange={e => setNameExercise(e.target.value)}
+                ></input>
 
-                <div className={styles.exxercise_disciption} >
-                    <p>Mô tả</p>
-                    <CKEditor
-                        height="500px"
-                        editor={ClassicEditor}
-                        data={discription}
-                        onReady={(editor) => {
-                            editor.editing.view.change((writer) => {
-                                writer.setStyle(
-                                    "height",
-                                    "400px",
-                                    editor.editing.view.document.getRoot()
-                                );
-                            });
-                        }}
-                        onChange={(event,editor) => {
-                            const data = editor.getData();
-                            setDiscription(data);
-                        }}
-                    />
+                <div className={styles.exxercise_discription} >
+                    Mô tả
+                    <TextField inputRef={deBaiRef} sx={{marginTop:"20px"}} fullWidth label="Nhập đề bài" multiline />
+                    <TextField inputRef={rangBuocRef} sx={{marginTop:"20px"}} fullWidth label="Nhập ràng buộc" multiline />
+                    <TextField inputRef={dinhDangDauVaoRef} sx={{marginTop:"20px"}} fullWidth label="Nhập định dạng đầu vào" multiline />
+                    <TextField inputRef={dinhDangDauRaRef} sx={{marginTop:"20px"}} fullWidth label="Nhập định dạng đầu ra" multiline />
+                    <TextField inputRef={mauDauVaoRef} sx={{marginTop:"20px"}} fullWidth label="Nhập mẫu đầu vào" multiline />
+                    <TextField inputRef={mauDauRaRef} sx={{marginTop:"20px"}} fullWidth label="Nhập mẫu đầu ra" multiline />
                 </div>
                 
-                <div className={styles.exercise_level} >
+
+                <div className={styles.excercise_language}>
                     <FormControl fullWidth>
-                        <InputLabel id="level-label">Cấp độ</InputLabel>
+                        <InputLabel id="language-label">Ngôn ngữ</InputLabel>
                         <Select
-                            labelId="level-label"
-                            value={level}
-                            label="Cấp độ"
-                            onChange={e => setLevel(e.target.value)}
+                            labelId="language-label"
+                            value={language}
+                            label="Ngôn ngữ"
+                            onChange={e => setLanguage(e.target.value)}
                         >
-                            <MenuItem value={1}>Dễ</MenuItem>
-                            <MenuItem value={2}>Khó</MenuItem>
-                            <MenuItem value={3}>Trung Bình</MenuItem>
+                            <MenuItem value='c'>C</MenuItem>
+                            <MenuItem value='cpp'>C++</MenuItem>
+                            <MenuItem value='py'>Python</MenuItem>
+                            <MenuItem value='cs'>C#</MenuItem>
+                            <MenuItem value='java'>Java</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
-                <FormControlLabel  control={<Checkbox onChange={e => setIsPublic(e.target.checked)}/>} label="Công khai" />
+               
 
                 <div className={styles.content_TestCase} >
 
@@ -129,7 +134,7 @@ function CreateExercise(props) {
                     {testCases.map((testcase, index) => (
                         <div className={styles.testcase} key={index} >
                             <div className={styles.name_input} >
-                                <label>TestCase #{index + 1}</label><br />
+                                TestCase #{index + 1}
                             </div>
 
                             <div className={styles.testcase_btn} >
@@ -143,7 +148,9 @@ function CreateExercise(props) {
                 <div className={styles.exercise_btn} >
                     <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
                         endIcon={<CancelIcon />}
-                        onClick={() => {console.log("Thực hiện thao tác trở vể trang trước");}}
+                        onClick={() => {
+                            console.log('Hủy')
+                        }}
                     >
                         Hủy
                     </Button>
@@ -165,7 +172,7 @@ function CreateExercise(props) {
                     <TextField className={styles.input_output}  label="Đầu vào" 
                         placeholder="Nhập đầu vào (input)" value={input}
                         multiline onChange= {e => setInput(e.target.value)}/>
-                    <div style={{width:"100%", height:"30px"}}></div>
+                    <div style={{width:"100%", height:"20px"}}></div>
                     <TextField className={styles.input_output} label="Đầu ra" 
                         placeholder="Nhập đầu ra (output)" value={output}
                         multiline onChange= {e => setOutput(e.target.value)}/>
@@ -173,7 +180,7 @@ function CreateExercise(props) {
                 <div className={styles.btn_intputTestCase} >
                     <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
                         endIcon={<CancelIcon />}
-                        onClick={() => setOpenTestCase(false)}
+                        onClick={() => setOpenTestCase(false) }
                     >
                         Hủy
                     </Button>
@@ -190,4 +197,4 @@ function CreateExercise(props) {
     );
 }
 
-export default CreateExercise;
+export default CreateBTCode;

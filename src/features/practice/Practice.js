@@ -6,7 +6,7 @@ import { faMagnifyingGlass, faSortDown, faUserGroup } from '@fortawesome/free-so
 import NavBarLevel from './NavBarLevel';
 import styles from './Practice.module.css';
 import ImageDev from '../../images/userImageDev.png';
-import BaiTapCodeAPI from '../../apis/baiTapCodeAPI';
+import BaiTapLuyenTapAPI from '../../apis/baiTapLuyenTapAPI';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function Practice(props) {
@@ -35,7 +35,7 @@ function Practice(props) {
             if (user) {
                 const getAllBaiTapCode = async () =>{
                     try {
-                        const response = await BaiTapCodeAPI.getAll();
+                        const response = await BaiTapLuyenTapAPI.getAll();
                         setBaiTapCode(response.data);
                     } catch (error) {
                         console.log("Fetch data false ", error);
@@ -75,17 +75,17 @@ function Practice(props) {
                             <div className={styles.item_list} onClick={() => handClickPractice(baitap.id)}>
                                 <h3 className={styles.title}>{baitap.tieuDe}</h3>
                                 <div className={styles.tag}>
-                                    <span>Code</span>
+                                    <span>{baitap.tag}</span>
                                 </div>
                                 <div className={styles.image_avatar} >
-                                    <img className={styles.avatar} src={ImageDev} alt='OwnerImage' />
+                                    <img className={styles.avatar} src={baitap.linkAvatar||ImageDev} alt='OwnerImage' />
                                 </div>
-                                <div className={styles.username}>{baitap.uIdNguoiTao}</div>
+                                <div className={styles.username}>{baitap.tenHienThi}</div>
                                 <div className={styles.item_footer}>
                                     <div className={styles.userpass}>
                                         {/* <i class="fa-solid fa-users"></i> */}
                                         <FontAwesomeIcon icon={faUserGroup} />
-                                        <span>50/120</span>
+                                        <span>{baitap.soNguoiLam+'/'+baitap.soNguoiThanhCong}</span>
                                     </div>
                                     <div className={styles.level}>
                                         <span id={styles.average} >Trung Bình</span>

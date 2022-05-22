@@ -16,7 +16,12 @@ const BaiTapCodeAPI = {
     deleteBaiTapCode: (id) => {
         const url = `BaiTapCode?id=${id}`;
         return axiosClient.delete(url,{id});
+    },
+    searchBaiTapCode: (value) => {
+        const url = `BaiTapCode/search?searchValue=${value}`
+        return axiosClient.get(url,{value})
     }
+    
 
 }
 

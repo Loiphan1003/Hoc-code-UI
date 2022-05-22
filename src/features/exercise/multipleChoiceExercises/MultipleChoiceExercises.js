@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useRef } from 'react';
 import styles from './MultipleChoiceExercises.module.css';
-import Backdrop from '../../../components/Backdrop';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+
+import TextField from '@mui/material/TextField';
 
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -20,50 +17,14 @@ import BaiTapTN from '../../../apis/baiTapTN_API';
 
 function MultipleChoiceExercises({ data }) {
 
-    const [exerciseName, setExerciseName] = useState('');
-    const [answerOne, setAnswerOne] = useState('');
-    const [answerSecond, setAnswerSecond] = useState('');
-    const [answerThree, setAnswerThree] = useState('');
-    const [answerFour, setAnswerFour] = useState('');
-
-    const [valueInputAnswer, setValueInputAnswer] = useState('');
+    
     const [trueAnswer, setTrueAnswer] = useState(1);
-    const [open, setOpen] = useState({ value: false, answer: 0 });
 
-    const handleSaveAnswer = (numberAnswer) => {
-        switch (numberAnswer) {
-            case 1:
-                setAnswerOne(valueInputAnswer);
-                break;
-            case 2:
-                setAnswerSecond(valueInputAnswer);
-                break;
-            case 3:
-                setAnswerThree(valueInputAnswer);
-                break;
-            case 4:
-                setAnswerFour(valueInputAnswer);
-                break;
-            default:
-                break;
-        }
-        setOpen(false);
-    }
-
-    const handleDisplayValueAnswer = (numberAnswer) => {
-        if (numberAnswer === 1) {
-            return answerOne;
-        }
-        if (numberAnswer === 2) {
-            return answerSecond;
-        }
-        if (numberAnswer === 3) {
-            return answerThree;
-        }
-        if (numberAnswer === 4) {
-            return answerFour;
-        }
-    }
+    const cauHoiRef = useRef();
+    const answerOneRef = useRef();
+    const answerSecondRef = useRef();
+    const answerThreeRef = useRef();
+    const answerFourRef = useRef();
 
     const handleSave = () => {
         const auth = getAuth();
@@ -71,18 +32,19 @@ function MultipleChoiceExercises({ data }) {
             if (user) {
                 let ob= 
                 {
-                    cauHoi: exerciseName,
-                    cauTraLoi1: answerOne,
-                    cauTraLoi2: answerSecond,
-                    cauTraLoi3: answerThree,
-                    cauTraLoi4: answerFour,
+                    cauHoi: cauHoiRef.current.value,
+                    cauTraLoi1: answerOneRef.current.value,
+                    cauTraLoi2: answerSecondRef.current.value,
+                    cauTraLoi3: answerThreeRef.current.value,
+                    cauTraLoi4: answerFourRef.current.value,
                     dapAn: trueAnswer,
                     uIdNguoiTao: user.uid
                 }
                 const addBTTN = async () => {
                     try {
                         const response = await BaiTapTN.postAddBaiTapTN(ob);
-                        console.log(response.data);
+                        if(response.data)
+                            alert('Thêm bài tập trắc nghiệm thành công!')
                     } catch (error) {
                         console.log("Fetch data error: ", error);
                     }
@@ -108,25 +70,7 @@ function MultipleChoiceExercises({ data }) {
 
                 <div className={styles.exxercise_disciption} >
                     <h2>Câu hỏi</h2>
-                    <CKEditor
-                        height="500px"
-                        editor={ClassicEditor}
-                        data={exerciseName}
-                        onReady={(editor) => {
-                            editor.editing.view.change((writer) => {
-                                writer.setStyle(
-                                    "height",
-                                    "400px",
-                                    editor.editing.view.document.getRoot()
-                                );
-                            });
-                        }}
-                        onChange={(event, editor) => {
-                            const data = editor.getData();
-                            setExerciseName(data);
-                            
-                        }}
-                    />
+                     <TextField inputRef={cauHoiRef} sx={{marginTop:"20px"}} fullWidth label="Nhập câu hỏi" multiline />
                 </div>
             </div>
 
@@ -134,28 +78,32 @@ function MultipleChoiceExercises({ data }) {
                 <div className={styles.exercise_input} >
                     <h2>Câu trả lời</h2>
                     <div className={styles.input_items} >
-                        <div className={styles.input_item} onClick={() => setOpen({ value: true, answer: 1 })}  >
-                            Câu trả lời 1:
-                            <div className={styles.conten_input} dangerouslySetInnerHTML={{__html: answerOne}} />
-                            <FontAwesomeIcon className={styles.icon_edit} icon={faPencil} />
+                        <div className={styles.input_item}  >
+                            A:
+                            <div className={styles.conten_input} >
+                                <input ref={answerOneRef} type={'text'} placeholder="Nhập câu trả lời"></input>
+                            </div>
                         </div>
 
-                        <div className={styles.input_item} onClick={() => setOpen({ value: true, answer: 2 })}>
-                            Câu trả lời 2:
-                            <div className={styles.conten_input} dangerouslySetInnerHTML={{__html: answerSecond}} />
-                            <FontAwesomeIcon className={styles.icon_edit} icon={faPencil}  />
+                        <div className={styles.input_item} >
+                            B:
+                            <div className={styles.conten_input} >
+                                <input ref={answerSecondRef} type={'text'} placeholder="Nhập câu trả lời"></input>
+                            </div>
                         </div>
 
-                        <div className={styles.input_item} onClick={() => setOpen({ value: true, answer: 3 })} >
-                            Câu trả lời 3:
-                            <div className={styles.conten_input} dangerouslySetInnerHTML={{__html: answerThree}} />
-                            <FontAwesomeIcon className={styles.icon_edit} icon={faPencil} />
+                        <div className={styles.input_item} >
+                            C:
+                            <div className={styles.conten_input} >
+                                <input ref={answerThreeRef} type={'text'} placeholder="Nhập câu trả lời"></input>
+                            </div>
                         </div>
 
-                        <div className={styles.input_item} onClick={() => setOpen({ value: true, answer: 4 })} >
-                            Câu trả lời 4:
-                            <div className={styles.conten_input} dangerouslySetInnerHTML={{__html: answerFour}} />
-                            <FontAwesomeIcon className={styles.icon_edit} icon={faPencil}  />
+                        <div className={styles.input_item} >
+                            D:
+                            <div className={styles.conten_input} >
+                                <input ref={answerFourRef} type={'text'} placeholder="Nhập câu trả lời"></input>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,10 +116,10 @@ function MultipleChoiceExercises({ data }) {
                         label="Cấp độ"
                         onChange={e => setTrueAnswer(e.target.value)}
                     >
-                        <MenuItem value={1}>Câu 1</MenuItem>
-                        <MenuItem value={2}>Câu 2</MenuItem>
-                        <MenuItem value={3}>Câu 3</MenuItem>
-                        <MenuItem value={4}>Câu 4</MenuItem>
+                        <MenuItem value={1}>Câu A</MenuItem>
+                        <MenuItem value={2}>Câu B</MenuItem>
+                        <MenuItem value={3}>Câu C</MenuItem>
+                        <MenuItem value={4}>Câu D</MenuItem>
                     </Select>
                 </FormControl>
                 
@@ -191,44 +139,6 @@ function MultipleChoiceExercises({ data }) {
                     Lưu
                 </Button>
             </div>
-
-            {open.value && <Backdrop onClick={() => setOpen(false)} />}
-            {open.value && 
-            <div className={styles.answer_input}  >
-                <h2>Nội dung</h2>
-                <CKEditor
-                    height="500px"
-                    editor={ClassicEditor}
-                    data={handleDisplayValueAnswer(open.answer)}
-                    onReady={(editor) => {
-                        editor.editing.view.change((writer) => {
-                            writer.setStyle(
-                                "height",
-                                "400px",
-                                editor.editing.view.document.getRoot()
-                            );
-                        });
-                    }}
-                    onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setValueInputAnswer(data)
-                    }}/>
-
-                <div className={styles.btn_answer_input} >
-                    <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
-                        endIcon={<CancelIcon />}
-                        onClick={() => setOpen(false)}>
-                        Hủy
-                    </Button>
-
-                    <Button  variant="contained" style={{marginLeft:"20px"}}
-                        endIcon={<SaveIcon />}
-                        onClick={() => handleSaveAnswer(open.answer)}>
-                        Lưu
-                    </Button>
-                </div>
-            </div>
-            }
         </div>
     );
 }

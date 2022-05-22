@@ -16,6 +16,10 @@ const BaiTapTN = {
     deleteBaiTapTN: (id) => {
         const url = `BaiTapTracNghiem?id=${id}`;
         return axiosClient.delete(url,{id});
+    },
+    searchBaiTapTN: (value) => {
+        const url = `BaiTapTracNghiem/search?searchValue=${value}`
+        return axiosClient.get(url,{value})
     }
 
 }

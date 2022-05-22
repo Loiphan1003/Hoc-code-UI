@@ -17,7 +17,6 @@ function Header(props) {
     const [headerNavBar, setHeaderNavbar] = useState(false);
     const [dataUser, setDataUser] = useState(null);
     const [popUp,setPopUp] = useState(false);
-
     const showSideBar = () => setHeaderNavbar(!headerNavBar);
     const showPopUp = () => setPopUp(!popUp);
     

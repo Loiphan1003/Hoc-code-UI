@@ -1,0 +1,138 @@
+:root {
+    --color-green: #81D671;
+}
+
+.content{
+    background-color: white;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    color: #242526;
+    box-sizing: border-box;
+}
+.content h1{
+    text-align: center;
+}
+.content div p{
+    margin-left: 20px;
+    font-size: 17px;
+}
+.content h2{
+    color: #6F767A;
+}
+
+.sample_output div, .sample_input div{
+    background-color: #e7ebf0;
+    padding: 10px 20px;
+    white-space: pre-line;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.code {
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.code>h2 {
+    margin: 10px 40px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    color: #6F767A;
+}
+
+.code>h3 {
+    margin: 20px 80px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 32px;
+    color: #646A6D;
+}
+
+.code_section {
+    height: 400px;
+    margin-left: 61px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.testcase_section {
+    width: 25%;
+}
+.testcase_header {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+.twoButon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.twoButon>button {
+    margin-bottom: 10px;
+    background-color: var(--color-green);
+    color: white;
+    border-style: none;
+    width: 78px;
+    height: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.testcaseTitle{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .testcase_btn>svg {
+        color: #6F767A;
+    }
+
+    .testcaseTitle>p {
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        color: #6F767A;
+        margin: 0;
+        margin-left: 5px;
+    }
+
+.testcase_list {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+
+.testcase_item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.testcase_item>svg {
+    color: var(--color-green);
+}
+
+.testcase_item>p {
+    margin-left: 10px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    color: #6F767A;
+}

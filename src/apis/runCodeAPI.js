@@ -6,11 +6,11 @@ const RunCodeAPI = {
         return axiosClient.post(url,runCodeRequest);
     },
     postRunCodes: (runCodeRequest,id) => {
-        const url = `runCodes?id=${id}`;
+        const url = `runCodesLuyenTap?id=${id}`;
         return axiosClient.post(url,runCodeRequest,{id});
     },
     getTestCaseByID: (id) => {
-        const url = `TestCase?id=${id}`;
+        const url = `TestCaseLuyenTap?id=${id}`;
         return axiosClient.get(url,{id});
     }
 }

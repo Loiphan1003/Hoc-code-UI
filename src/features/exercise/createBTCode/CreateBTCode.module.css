@@ -9,9 +9,37 @@
     box-sizing: border-box;
 }
 
-
-.exercise_level {
+.input_NameEx{
     margin-top: 30px;
+    box-sizing: border-box;
+    height: 64px;
+    outline: none;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    background: transparent;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 32px;
+    width: 100%;
+    color: #4e5052;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 0 rgb(40 50 56 / 24%), 0 2px 4px 0 rgb(40 50 56 / 24%);
+    
+}
+
+.input_NameEx:focus {
+    outline: solid 2px #5fa0f5;
+}
+
+.exxercise_discription
+{
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.excercise_language{
+    margin: 20px 0;
 }
 
 .btnAddTestCase{
@@ -46,7 +74,7 @@
     background-color: white;
     position: fixed;
     padding: 2rem;
-    height: 50%;
+    height: 42%;
     box-sizing: border-box;
     overflow: auto;
 }
@@ -64,10 +92,12 @@
     height: 40px;
     box-sizing: border-box;
 }
-
-.testcase label{
+.name_input{
     color: rgb(59, 58, 58);
+    font-size: 16px;
+    font-weight: 700;
 }
+
 .input_testcase h2{
     margin-top: 0px;
     width: 100%;
