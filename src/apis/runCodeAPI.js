@@ -9,8 +9,16 @@ const RunCodeAPI = {
         const url = `runCodesLuyenTap?id=${id}`;
         return axiosClient.post(url,runCodeRequest,{id});
     },
-    getTestCaseByID: (id) => {
+    postRunCodeBaiTap: (runCodeRequest,id) => {
+        const url = `runCodesBaiTap?id=${id}`;
+        return axiosClient.post(url,runCodeRequest,{id});
+    },
+    getTestCaseLuyenTapByID: (id) => {
         const url = `TestCaseLuyenTap?id=${id}`;
+        return axiosClient.get(url,{id});
+    },
+    getTestCaseBTByID: (id) => {
+        const url = `TestCaseBT?id=${id}`;
         return axiosClient.get(url,{id});
     }
 }

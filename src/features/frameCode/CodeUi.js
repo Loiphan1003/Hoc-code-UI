@@ -54,7 +54,7 @@ function CodeUi() {
                 // lấy testCase từ DB ( chỉ để hiển thị lên UI không mang theo dữ liệu )
                 const getTestCase = async () => {
                     try {
-                        const response = await RunCodeAPI.getTestCaseByID(params.id);
+                        const response = await RunCodeAPI.getTestCaseLuyenTapByID(params.id);
                         setTestCases(response.data);
                     } catch (error) {
                         console.log("Fetch data false ", error);

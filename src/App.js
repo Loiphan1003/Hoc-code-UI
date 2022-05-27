@@ -19,6 +19,9 @@ import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises
 import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
 import Test from './features/test/Test';
+
+import CreateMonHoc from './features/create/createMonHoc';
+import CreateLyThuyet from './features/create/createLyThuyet';
 function App() {
 
 
@@ -85,6 +88,9 @@ function App() {
                     />
 
                     <Route path='/test' element={<Test />} />
+
+                    <Route path='/createMonHoc'  element={<CreateMonHoc/>}/>
+                    <Route path='/createLyThuyet'  element={<CreateLyThuyet/>}/>
                 </Routes>
             </Router>
         </div>

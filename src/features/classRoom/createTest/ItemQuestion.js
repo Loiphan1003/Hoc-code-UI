@@ -16,8 +16,8 @@ function ItemQuestion({data,index}) {
     const dispatch = useDispatch();
     const [question,setQuestion] = useState({});
     
-    const handleDeleteQuestion = (question) => {
-        dispatch(createTestSlice.actions.deleteQuestion(question))
+    const handleDeleteQuestion = (data) => {
+        dispatch(createTestSlice.actions.deleteQuestion(data))
     }
 
     useEffect(() => {
@@ -57,7 +57,7 @@ function ItemQuestion({data,index}) {
                 <span className={cx('scores')}>{data.diem} điểm</span>
                 <span className={cx('type-ques')}>{data.loaiCauHoi === 0 ? 'TRẮC NGHIỆM':'CODE'}</span>
             </div>
-            <div onClick={() => handleDeleteQuestion(question)}><DeleteForeverIcon fontSize='small' className={cx('icon-delete')} /></div>
+            <div onClick={() => handleDeleteQuestion(data)}><DeleteForeverIcon fontSize='small' className={cx('icon-delete')} /></div>
         </div>
 
         <h3 className={cx('name-ques')}>{ data.loaiCauHoi === 0 ? question.cauHoi : question.deBai}</h3>

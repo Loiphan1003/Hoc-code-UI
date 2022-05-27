@@ -88,14 +88,14 @@ function CreateTest(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounece]);
 
-    const questions = useSelector((state) => state.tests.questions)
+    const questions = useSelector((state) => state.createTest.questions)
 
     const handleSave = () => {
         const lsCauHoi = questions.map( (item,index) => ({
             id:parseInt(item.id),
             stt: index+1,
             diem: parseFloat(item.diem),
-            loaiCauHoi: item.loaiBai
+            loaiCauHoi: item.loaiCauHoi
         }))
         const baiKiemTra = {
             ngayBatDau: startDate,
@@ -109,6 +109,8 @@ function CreateTest(props) {
             try {
                 const response = await DeKiemTraAPI.add(baiKiemTra);
                 console.log(response.data);
+                if(response.data)
+                    alert("Thêm bài kiểm tra thành công!")
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }

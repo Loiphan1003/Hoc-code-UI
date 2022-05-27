@@ -6,7 +6,6 @@
 }
 
 .testMutiple>h2 {
-    font-family: 'Lora';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
@@ -16,7 +15,6 @@
 
 .testMutiple>h3 {
     margin-left: 40px;
-    font-family: 'Lora';
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -29,7 +27,6 @@
 }
 
 .answer_content {
-    font-family: 'Lora';
     font-style: normal;
     font-weight: 700;
     font-size: 19px;

@@ -2,6 +2,21 @@
     --color-green: #81D671;
 }
 
+
+.icon_success {
+    color: #23A44F;
+}
+
+.icon_error {
+    color: #FF4848;
+}
+
+.question{
+    font-size: 18px;
+    margin: 20px;
+    white-space: pre-line;
+}
+
 .content{
     background-color: white;
     overflow: auto;
@@ -80,7 +95,6 @@
 }
 
 .twoButon>button {
-    margin-bottom: 10px;
     background-color: var(--color-green);
     color: white;
     border-style: none;
@@ -114,7 +128,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     overflow-y: auto;
 }
 
@@ -124,11 +138,10 @@
     align-items: center;
 }
 
-.testcase_item>svg {
-    color: var(--color-green);
-}
 
 .testcase_item>p {
+    margin: 0;
+    margin-top: 5px;
     margin-left: 10px;
     font-family: 'Lora';
     font-style: normal;

@@ -10,7 +10,7 @@ const createTestSlice = createSlice({
             state.questions = [...state.questions,action.payload]
         },
         deleteQuestion: (state,action) => {
-            console.log(action.payload.id , action.payload.loaiCauHoi)
+            console.log(action.payload)
             state.questions = state.questions.filter((item) => {
                 if(item.id === action.payload.id)
                 {
