@@ -8,25 +8,28 @@ import FlagIcon from '@mui/icons-material/Flag';
 import DeKiemTraAPI from '../../apis/deKiemTraAPI';
 import Button from '@mui/material/Button';
 import ResultView from './ResultView';
+import { useParams } from 'react-router-dom';
 
 
 function Test(props) {
 
+    const params = useParams();
     const [collapse, setCollapse] = useState(false);
     const [select, setSelect] = useState();
     const [test,setTest] = useState({});
     const [questions,setQuestions] = useState([]);
     const [resultView,setResultView] = useState(false);
+    const idDeKiemTra = 10;
 
     useEffect(() => {
         const getBaiKiemTra = async ()=>{
-            const response = await DeKiemTraAPI.getOneById(10);
+            const response = await DeKiemTraAPI.getOneById(params.idDeKiemTra);
             setTest(response.data);
             setQuestions(response.data.listCauHoi)
         }
 
         getBaiKiemTra();
-    }, []);
+    }, [params]);
 
     const handleSelect = (index) => {
         setSelect(questions.at(index));
@@ -107,7 +110,7 @@ function Test(props) {
 
                 <div className={styles.right_content} >
                     {(!!select && !resultView) &&  (select.loaiCauHoi === 0  ? <TestMutipleQuestion data={select} /> :  <TestCode data={select} />  ) }
-                    { resultView && <ResultView></ResultView> }
+                    { resultView && <ResultView idDeKiemTra = {idDeKiemTra}></ResultView> }
                 </div>
 
             </div>

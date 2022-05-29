@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import Backdrop from '../.././../components/Backdrop';
 import { faChevronRight, faCirclePlus, faMagnifyingGlass, faTableList, faFilter } from '@fortawesome/free-solid-svg-icons';
 import styles from "./CourseWork.module.css"
 import { NavLink, useParams } from 'react-router-dom';
+import DeKiemTraAPI from '../../../apis/deKiemTraAPI';
 
 
 function Coursework(props) {
 
     const params = useParams();
+    const idPhong = params.roomId;
     const [draft, setDarft] = useState(false);
     const [open, setOpen] = useState(true);
     const [close, setClose] = useState(true);
+    const [testDraft,setTestDraft] = useState([]);
+    const [testOpen,setTestOpen] = useState([]);
+    const [testClose,setTestClose] = useState([]);
     const [mobileOpen, setMobileOpen] = useState();
+
+    useEffect(() => {
+        const getListDeKiemTra = async ()=>{
+            try {
+                const response = await DeKiemTraAPI.getByIDPhonng(idPhong);
+                setTestDraft(response.data.filter(item => item.trangThai ===0));
+                setTestOpen(response.data.filter(item => item.trangThai ===1));
+                setTestClose(response.data.filter(item => item.trangThai ===2));
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getListDeKiemTra();
+    }, [idPhong]);
 
     const [filter, setFilter] = useState({
         draft: false,
@@ -33,13 +52,13 @@ function Coursework(props) {
 
     }
 
-    // console.log(params.roomId);
+    // console.log(idPhong.roomId);
     
     return (
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
             {/*Start Mobile  */}
             <div className={styles.mobile_btn} >
-                <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_mobile} >
+                <NavLink to={`/room/${idPhong.roomId}/create`} className={styles.btn_mobile} >
                     <FontAwesomeIcon icon={faCirclePlus} />
                     <span>Tạo bài tập</span>
                 </NavLink>
@@ -48,7 +67,6 @@ function Coursework(props) {
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     <span>Tìm kiếm</span>
                 </div>
-
 
                 <div className={styles.btn_mobile} onClick={() => setMobileOpen("filter")} >
                     <FontAwesomeIcon icon={faFilter} />
@@ -117,146 +135,96 @@ function Coursework(props) {
 
             {/*End:  Mobile */}
             <div className={styles.courseWork_left_content}>
-                <div className={styles.courseWork_draft}>
-                    <div className={styles.header}>
+                <div className={styles.courseWork_item} onClick={() => setDarft(!draft)}>
+                    <div className={styles.courseWork_item_content}>
                         <p>Nháp</p>
-                        <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setDarft(!draft)} />
+                        <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight}/>
+                        <span>{testDraft.length}</span>
                     </div>
-
                 </div>
                 {draft && <div className={styles.coursework_content} >
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                        </div>
-
-                        <p className={styles.item_draft}>Nháp</p>
-                    </div>
+                    {
+                        testDraft.map((test,index) => (
+                            <div className={styles.coursework_content_item} key={index}>
+                                <div className={styles.item_info}>
+                                    <FontAwesomeIcon icon={faTableList} />
+                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
+                                </div>
+                                <p className={styles.item_draft}>Nháp</p>
+                            </div>
+                        ))
+                    }
                 </div>}
 
-                <div className={styles.courseWork_open}>
-                    <div className={styles.header}>
+                <div className={styles.courseWork_item} onClick={() => setOpen(!open)} >
+                    <div className={styles.courseWork_item_content}>
                         <p>Mở</p>
-                        <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setOpen(!open)} />
+                        <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} />
+                        <span>{testOpen.length}</span>
                     </div>
                 </div>
                 {open && <div className={styles.coursework_content} >
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Bắt đầu lúc 09:00 AM 29/04/2022 kết thúc lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_open}>Mở</p>
-                    </div>
+                    {
+                        testOpen.map((test,index) => (
+                            <div className={styles.coursework_content_item} key={index}>
+                                <div className={styles.item_info}>
+                                    <FontAwesomeIcon icon={faTableList} />
+                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
+                                    <p className={styles.item_time}>Bắt đầu lúc {test.ngayBatDau} kết thúc lúc {test.ngayKetThuc}</p>
+                                </div>
+                                <p className={styles.item_open}>Mở</p>
+                            </div>
+                        ))
+                    }
                 </div>}
 
-                <div className={styles.courseWork_close}>
-                    <div className={styles.header}>
+                <div className={styles.courseWork_item} onClick={() => setClose(!close)}>
+                    <div className={styles.courseWork_item_content}>
                         <p>Kết thúc</p>
-                        <FontAwesomeIcon className={close ? styles.icon_active : styles.icon} icon={faChevronRight} onClick={() => setClose(!close)} />
+                        <FontAwesomeIcon className={close ? styles.icon_active : styles.icon} icon={faChevronRight}  />
+                        <span>{testClose.length}</span>
                     </div>
                 </div>
                 {close && <div className={styles.coursework_content} >
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Hello world</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
-
-                    <div className={styles.coursework_content_item}>
-                        <div className={styles.item_info}>
-                            <FontAwesomeIcon icon={faTableList} />
-                            <NavLink className={styles.item_name} to="/" >Lập trình hướng đối tượng</NavLink>
-                            <p className={styles.item_time}>Đã kết thúc vào lúc: 09:00 AM 30/04/2022</p>
-                        </div>
-
-                        <p className={styles.item_close}>Kết thúc</p>
-                    </div>
+                    {
+                        testClose.map((test,index) => (
+                            <div className={styles.coursework_content_item} key={index}>
+                                <div className={styles.item_info}>
+                                    <FontAwesomeIcon icon={faTableList} />
+                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
+                                    <p className={styles.item_time}>Đã kết thúc vào lúc {test.ngayKetThuc}</p>
+                                </div>
+                                <p className={styles.item_close}>Kết thúc</p>
+                            </div>
+                        ))
+                    }
+                    
                 </div>}
             </div>
 
             <div className={styles.courseWork_right_content}>
 
-                <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_}>
-                    <FontAwesomeIcon icon={faCirclePlus} size="2x" />
+                <NavLink to={`/room/${idPhong.roomId}/create`} className={styles.btn_}>
+                    <FontAwesomeIcon icon={faCirclePlus} fontSize='22px' />
                     <p>Tạo bài tập</p>
                 </NavLink>
 
-                <div className={styles.btn_} id={styles.find}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-                    <input placeholder='Tìm kiếm' />
-                </div>
-
                 <div className={styles.btn_fillter}>
-                    <div className={styles.fillter_}>
-                        <p>Tìm kiếm theo trạng thái:</p>
+                    <p>Trạng thái</p>
 
-                        <div className={styles.status}>
-                            <input name='Draft' type="checkbox" value="Nháp" />
-                            <label id={styles.draft} htmlFor="Draft">Nháp</label>
-                        </div>
-
-                        <div className={styles.status}>
-                            <input name='Open' type="checkbox" value="Nháp" />
-                            <label id={styles.open} htmlFor="Open">Mở</label>
-                        </div>
-
-                        <div className={styles.status} >
-                            <input name='Close' type="checkbox" value="Nháp" />
-                            <label id={styles.close} htmlFor="Close">Đóng</label>
-                        </div>
+                    <div className={styles.status}>
+                        <input id='Draft' type="checkbox" value="Nháp" />
+                        <label id={styles.draft} htmlFor="Draft">Nháp</label>
                     </div>
-                    <div className={styles.fillter_type}>
-                        <p>Tìm kiếm theo loại bài tập:</p>
 
-                        <div className={styles.type}>
-                            <input name='Draft' type="checkbox" value="Nháp" />
-                            <label htmlFor="Draft">Trắc nghiệm</label>
-                        </div>
+                    <div className={styles.status}>
+                        <input id='Open' type="checkbox" value="Nháp" />
+                        <label id={styles.open} htmlFor="Open">Mở</label>
+                    </div>
 
-                        <div className={styles.type}>
-                            <input name='code' type="checkbox" value="code" />
-                            <label htmlFor="code">Viết code</label>
-                        </div>
+                    <div className={styles.status} >
+                        <input id='Close' type="checkbox" value="Nháp" />
+                        <label id={styles.close} htmlFor="Close">Kết thúc</label>
                     </div>
                 </div>
             </div>

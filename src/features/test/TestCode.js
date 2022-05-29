@@ -75,7 +75,8 @@ function TestCode({data}) {
             loaiCauHoi:1,
             cauHoi:baiTapCode.deBai,
             dapAn: newValue,
-            diemToiDa:data.diem
+            diemToiDa:data.diem,
+            diemDatDuoc:0
         }))
     }
 

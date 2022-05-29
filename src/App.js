@@ -87,7 +87,7 @@ function App() {
                         </DefaultLayout>}
                     />
 
-                    <Route path='/test' element={<Test />} />
+                    <Route path='/test/:idDeKiemTra' element={<Test />} />
 
                     <Route path='/createMonHoc'  element={<CreateMonHoc/>}/>
                     <Route path='/createLyThuyet'  element={<CreateLyThuyet/>}/>

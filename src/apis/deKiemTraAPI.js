@@ -8,6 +8,11 @@ const DeKiemTraAPI = {
     getOneById: (id) => {
         const url = `DeKiemTra/getById?id=${id}`
         return axiosClient.get(url,{id});
+    },
+    getByIDPhonng(id)
+    {
+        const url = `DeKiemTra/getByIdPhong?id=${id}`
+        return axiosClient.get(url,{id});
     }
 }
 

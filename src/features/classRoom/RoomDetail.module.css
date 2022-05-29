@@ -8,76 +8,61 @@
 
 .header{
     width: 100%;
-    height: 100px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    background-color: var(--main-color);
     justify-content: space-between;
+    padding: 20px 200px;
+    border-bottom: 1px solid #d0d8dc;
 }
-.header_left{
-    display: inline-flex;
+
+.header h2{
+    margin-bottom: 0;
+    color: #397cef;
+    padding: 2px 15px;
+    background-color: #f5f7f8;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgb(40 50 56 / 24%);
+}
+
+
+.nameRoom{
+    display: flex;
     align-items: center;
-    margin-left: 20px;
-    width: 300px;
-    color: white;
-    justify-content: space-evenly;
 }
-.header_left{
-    width: fit-content;
+
+.iconHeader{
+    color: #7c909b;;
+    font-size: 30px;
 }
-.header_right{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 10px;
-    width: 200px;
-    margin-right: 200px;
-}
-.header_right > svg{
-    color: var(--icon-color);
-}
-.header_right > p{
-    width: fit-content;
-    height: fit-content;
-}
+    .nameRoom h1{
+        margin-left: 10px;
+        margin-bottom: 0;
+        font-weight: bold;
+        color: #404448;
+    }
 
 .container{
     width: 80%;
-    height: fit-content;
-    padding: 0px 9%;
-    /* background-color: green; */
-}
-.container > img{
-    margin-top: 3%;
-    width: 100%;
+    margin: auto;
 }
 .content{
-    margin-top: 20px;
     width: 100%;
     display:flex;
     flex-direction: column;
 }
-.roomdetail_id{
-    width: 100px;
-    height: auto;
-    padding: 0px 20px;
-    border-radius: 5px;
-    border: 1px solid black;
-    box-sizing: border-box;
-}
-
 /**/
 .roomdetail_header{
-    width: 100%;
-    height: fit-content;
     margin-top: 10px;
+    width: 100%;
 }
 .roomdetail_header button{
+    color: #7c909b;
+    text-transform: uppercase;
+    background: #f5f7f8;
+    border-radius: 4px;
     width: 100px;
-    height: 50px;
+    height: 35px;
+    border: 1px solid #d0d8dc;
 }
 .left_content_header{
     width: 300px;

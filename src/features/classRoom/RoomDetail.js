@@ -1,105 +1,71 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom'
-
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import {faBook } from '@fortawesome/free-solid-svg-icons';
 import Coursework from './coursework/Coursework';
 import Member from './member/Member';
 import styles from './RoomDetail.module.css'
-import CourseApi from '../../apis/courseApi';
+import PhongHocAPI from '../../apis/phongHocApi';
 
 function RoomDetail(props) {
+    const tabs = ["Bài tập","Thành viên"]
 
     const [tabType, setTabType] = useState("Bài tập");
-    const [roomInfo, setRoomInfo] = useState();
-    const [member, setMember] = useState([]);
-    // let params = useParams();
-    // let RoomInfo = []
-
-    const tabs = [
-        {
-            path: "/practice",
-            name: "Bài tập",
-        },
-        {
-            path: "user",
-            name: "Thành viên",
-        },
-    ]
-
-    const handleTab = (value) => {
-        setTabType(value.name)
-
-    }
-
-   
+    const [roomInfo, setRoomInfo] = useState({});
+    let params = useParams();
 
     useEffect(() => {
-        const functions = async () => {
+        const getInforRoom = async()=>{
             try {
-
-                switch (tabType) {
-                    case "Thành viên":
-                        const responseMember = await CourseApi.getAll();
-                        setMember(responseMember.data);
-                        break;
-                    case "Bài tập":
-                        break;
-                    default:
-                        console.log("Unkown");
-                        break;
-                }
-
-                return;
+                const response = await PhongHocAPI.getOneByID(params.roomId);
+                setRoomInfo(response.data)
             } catch (error) {
-                console.log("Fetch data false ", error);
+                console.log(error)
             }
         }
-        functions();
-    }, [tabType])
+        getInforRoom();
+    }, [params]);
 
 
+    const handleTab = (value) => {
+        setTabType(value)
+    }
 
 
     return (
         <>
             <div className={styles.header}>
-                <div className={styles.header_left}>
-                    <FontAwesomeIcon icon={faChevronLeft} size='2x' />
-                    <h1>{roomInfo === undefined ? '': roomInfo.name}</h1>
+                <div className={styles.nameRoom}>
+                    <FontAwesomeIcon className={styles.iconHeader} icon={faBook} />
+                    <h1>{roomInfo.tenPhong}</h1>
                 </div>
-
+                <h2>{roomInfo.id}</h2>
             </div>
 
             <div className={styles.container}>
-                {/* <img src={ImageBackground} alt="background" /> */}
+               
                 <div className={styles.content}>
-
-                    <div className={styles.roomdetail_id} >
-                        <p>Mã Lớp</p>
-                        <p>{roomInfo === undefined ? '': roomInfo.id}</p>
-                    </div>
 
                     <div className={styles.roomdetail_header}>
 
                         {tabs.map((tab) => (
 
-                            <button key={tab.name}
+                            <button key={tab}
                                 onClick={() => handleTab(tab)}
-                                style={tabType === tab.name ? {
+                                style={tabType === tab ? {
                                     color: 'white',
-                                    backgroundColor: '#3F48CC'
+                                    backgroundColor: '#3e80ef'
                                 } : {
 
                                 }}
                             >
-                                {tab.name}
+                                {tab}
                             </button>
                         ))}
 
                     </div>
                     {tabType === "Bài tập" && <Coursework type={tabType} />}
-                    {tabType === "Thành viên" && <Member type={tabType} member={member} />}
+                    {tabType === "Thành viên" && <Member type={tabType} />}
                 </div>
             </div>
         </>
