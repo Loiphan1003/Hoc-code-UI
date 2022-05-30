@@ -12,6 +12,14 @@ const BaiTapTN = {
     postAddBaiTapTN: (btTN) =>{
         const url = 'BaiTapTracNghiem/addBaiTapTN';
         return axiosClient.post(url,btTN);
+    },
+    getListBaiTapTNByuID: (uID) => {
+        const url = `BaiTapTracNghiem/getListByUId?uID=${uID}`;
+        return axiosClient.get(url);
+    },
+    deleteBaiTapTN: (id) => {
+        const url = `BaiTapTracNghiem/deleteBaiTapTN?id=${id}`;
+        return axiosClient.delete(url);
     }
 
 }

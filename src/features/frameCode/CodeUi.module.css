@@ -27,40 +27,16 @@
 
 .content_body {
     height: 100vh;
-    width: 100wh;
-}
-
-.header {
-    height: 5%;
-    background-color: #D5DCEB;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.header h3 {
-    margin-left: 2%;
-    font-size: 22px;
-    color: #3b3838;
+    width: 100%;
 }
 
 .Body {
-    display: inline-block;
     width: 100%;
-    height: 95%;
-    height: fit-content;
+    height: 100%;
 }
-
-.headerIcon{
-    margin-left: 2%;
-    position: relative;
-    font-size: 25px;
-}
-
-
 .nav_left {
     width: 4%;
-    height: 94vh;
+    height: 100vh;
     background-color: #D5DCEB;
     text-align: center;
     float: left;
@@ -68,6 +44,7 @@
 
 .nav_left div {
     padding: 20px 0px;
+    box-sizing: border-box;
 }
 
 #is_select {
@@ -78,7 +55,7 @@
 }
 
 .nav_item {
-    font-size: px;
+    font-size: 20px;
 }
 .navLeftItem_icon
 {
@@ -96,36 +73,51 @@
 }
 
 .content {
-    /* position: absolute; */
     width: 46%;
-    height: 94vh;
+    height: 100vh;
     background-color: white;
     overflow: auto;
     overflow-x: hidden;
     padding: 20px;
     float: left;
+    color: #242526;
     box-sizing: border-box;
 }
 
+
+.content > h1 {
+    text-align: center;
+}
+
+.content div p {
+    font-size: 17px;
+}
+
+.sample_output div, .sample_input div{
+    background-color: #e7ebf0;
+    padding: 5px 10px;
+    white-space: pre-line;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
 
 .content h2 {
     margin-top: 30px;
     font-size: 19px;
 }
-
 .content p {
     margin-top: 10px;
     line-height: 1.6;
     font-size: 16px;
 }
 
-
 .code_editor {
     position: absolute;
     right: 0px;
     bottom: 0px;
     width: 50%;
-    height: 95%;
+    height: 100vh;
 }
 
 .editor{
@@ -150,18 +142,15 @@
 .result {
     overflow: auto;
     overflow-x: hidden;
-    left: 0;
     width: 100%;
     height: 25%;
-    position: absolute;
-    bottom: 0px;
-    padding-left: 40px;
+    padding-left: 20px;
     box-sizing: border-box;
     background-color: var(--testcase-color);
 }
 
 .result h3 {
-    height: 20px;
+    height: 30px;
     font-size: 18px;
     margin-left: 10px;
     margin-top: 5px;
@@ -174,7 +163,6 @@
     position: absolute;
     right: 20px;
     bottom: 10px;
-    /* bottom: 20px; */
     font-size: 15px;
     border: none;
     border-radius: 5px;
@@ -193,32 +181,31 @@
 
 
 .result_content {
-    width: 1000px;
+    width: auto;
     min-height: 25%;
 }
 
 .list_testcase {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    /* flex-direction: row; */
     margin: 0;
     width: 564px;
     padding: 10px 0px;
     list-style: none;
+    box-sizing: border-box;
 }
 
 .list_testcase li {
     width: 150px;
-    /* flex-basis: 33.3%; */
 }
 
 .case {
-    /* height: 30px;
+    height: 30px;
     margin: 5px 5px;
-    padding-left: 20px; */
     display: flex;
-
     align-items: center;
+    justify-content: center;
 }
 
 .case_icon {
@@ -227,10 +214,7 @@
 
 .case span {
     color: white;
-    /* top: 50%;
-    left: 50px;
-    transform: translateY(-50%);
-    font-size: 15px; */
+    font-size: 15px;
 }
 .icon_load{
     margin-right: 8px;
@@ -243,8 +227,7 @@
     color: #FF4848;
 }
 
-.navRessult{
-    width: 100%;
+.navRessult{ 
     height: 35px;
     display: flex;
 }
@@ -309,8 +292,6 @@
     outline: none;
     border-radius: 10px;
 }
-
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

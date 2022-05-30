@@ -27,6 +27,7 @@
     "firebase": "^9.6.10",
     "gh-pages": "^3.2.3",
     "html-react-parser": "^1.4.12",
+    "nanoid": "^3.3.4",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-ace": "^9.5.0",

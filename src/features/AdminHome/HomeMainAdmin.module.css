@@ -1,0 +1,84 @@
+.head{
+    height: min-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.scrolls{
+    overflow-y: scroll;
+    height: 100vh;
+}
+.header_icon{
+    font-size: 28px;
+    font-weight: 700;
+    color: #283238;
+    padding: 20px 30px;
+}
+.header_icon_left{
+    margin-left: 10px;
+}
+.gachngang{
+    border-bottom: 1px solid #dcdfe0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(216, 220, 222);
+}
+.thongke{
+    display: flex;
+    padding: 20px 30px;
+    
+}
+/* thong ke ly thuyet */
+.thongkelythuyet{
+    /* background-color: rgb(6, 159, 103); */
+    margin-left: 30px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 270px;
+    color: #fff;
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+
+}
+.thongkelythuyetDetail{
+    display: flex;
+    width: 100%;
+    padding: 30px 0px;
+    align-items: center;
+    justify-content: space-around;
+}
+.thongkelythuyetDetail1{
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+}
+.icon_thongkelythuyetDetail{
+    font-size: 60px;
+}
+.solieu_thongkelythuyetDetail{
+    margin-left: 20px;
+    font-size: 20px;
+    width: auto;
+    text-align: center;
+}
+.thongkebaitapcode{
+    background-color: aqua;
+    margin-left: 10px;
+}
+.thongkebaitaptracnghiem{
+    background-color: aqua;
+    margin-left: 10px;
+}
+.solieu_thongkelythuyetDetail_nangcao{
+    margin-left: 90px;
+    font-size: 20px;
+    width: auto;
+    text-align: center;
+}
+.solieu_lythuyet_tongbai{
+    font-size: 50px;
+    font-weight: 700;
+}

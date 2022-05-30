@@ -23,7 +23,7 @@ function Content(props) {
     const [language, setLanguage] = useState("c");
     const [input, setInput] = useState("");
     const [resultCode, setResultCode] = useState();
-
+    const [isGiangVien, setIsGiangVien] = useState(false);
 
     const editor = useRef();
 
@@ -40,6 +40,16 @@ function Content(props) {
         "java": "java",
         "py": "python",
         "cs": "csharp"
+    }
+
+    const handleLoginGiangVien = () => {
+        setIsGiangVien(true);
+        setLogin(true);
+    }
+
+    const handleLoginSinhVien = () => {
+        setIsGiangVien(false);
+        setLogin(true);
     }
 
     function handleClickRunCode() {
@@ -77,7 +87,7 @@ function Content(props) {
                                     <span>Tạo và quản lý lớp học</span>
                                     <span>Thêm mới bài tập</span>
                                 </div>
-                                <button className={styles.button_login_content} onClick={() => setLogin(true)} >Đăng nhập</button>
+                                <button className={styles.button_login_content} onClick={() => handleLoginGiangVien()} >Đăng nhập</button>
                                 <p>Tạo mới miễn phí</p>
                             </div>
 
@@ -88,7 +98,7 @@ function Content(props) {
                                     <span>Luyện tập và tiếp thu kiến thức</span>
                                 </div>
 
-                                <button className={styles.button_login_content} >Đăng nhập</button>
+                                <button className={styles.button_login_content} onClick={() => handleLoginSinhVien()} >Đăng nhập</button>
                                 <div className={styles.group2} >
                                     <span>Chưa có tài khoản sinh viên</span>
                                     <p onClick={() => setStudentSignUp(true)} >Tạo mới miễn phí</p>
@@ -223,7 +233,7 @@ function Content(props) {
                 </div>
             </div>
             {login && <Backdrop onClick={() => setLogin(false)} />}
-            {login && <Login />}
+            {login && <Login isGiangVien={isGiangVien} />}
             {studentSignUp && <SignUp close={setStudentSignUp} />}
         </React.Fragment>
 

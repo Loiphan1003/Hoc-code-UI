@@ -1,6 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
-
+import {auth} from '../firebase/config';
 
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BASE_API,
@@ -15,7 +15,7 @@ axiosClient.interceptors.request.use(async (config) => {
     // const currentUser = auth.currentUser;
     // if(currentUser) {
     //     const token = await currentUser.getIdToken();
-    //     // console.log("Token: ", token);
+    //     console.log("Token: ", token);
     //     config.headers.Authorization = `Barer ${token}`;
     // }
     // const token = await getFireBaseToken();

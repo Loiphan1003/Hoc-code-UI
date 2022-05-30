@@ -1,21 +1,8 @@
 import React from 'react'
-// import { useEffect } from 'react';
 import './Home.css'
-// import Footer from '../footer/Footer';
-// import {AuthContext} from './context/AuthProvider'
 
-// const courseList = ['Khóa học gợi ý', 'Đang học', 'Đã hoàn thành'];
 
 function Home(props) {
-
-    // const [type, setType] = useState('Khóa học gợi ý');
-    // useEffect(() =>{
-    // const {user: {displayName, photoURL, uid}} = React.useContext(AuthContext);
-
-    // console.log("Data: ", {displayName, photoURL, uid});
-    // },[])
-
-
 
     return (
 

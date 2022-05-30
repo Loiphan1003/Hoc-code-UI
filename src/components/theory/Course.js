@@ -6,9 +6,7 @@ import image from '../../images/C-programming 1.png'
 
 function Course({data}) {
 
-    let params = useParams();
-    console.log(params.couredetailID);
-
+    // let params = useParams();
 
     return (
         <div className={styles.listCourse}>

@@ -1,0 +1,17 @@
+.content{
+    width: 600px;
+    margin: auto;
+}
+
+
+.input-file{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 40px 0;
+}
+
+.input-file p{
+    font-size: 20px;
+    font-weight: bold;
+}
+

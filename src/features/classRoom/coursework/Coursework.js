@@ -214,7 +214,7 @@ function Coursework(props) {
             <div className={styles.courseWork_right_content}>
 
                 {props.role === "giangvien" && 
-                <NavLink to={`/room/${params.roomId}/create`} className={styles.btn_}>
+                <NavLink to={`/room/create`} className={styles.btn_}>
                     <FontAwesomeIcon icon={faCirclePlus} size="2x" />
                     <p>Tạo bài tập</p>
                 </NavLink>}

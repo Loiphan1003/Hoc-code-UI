@@ -1,0 +1,148 @@
+.custom_table{
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 0.9em;
+    width: 90%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+}
+.custom_table thead tr{
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+.custom_table th,
+.custom_table td{
+    padding: 12px 15px;
+}
+.custom_table tbody tr{
+    border-bottom: 1px solid #dddddd;
+
+}
+.custom_table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+.custom_table tbody tr td button{
+    padding: 5px 8px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+.custom_table tbody tr td button:hover{
+    background-color: rgb(40 50 56 / 24%);
+    border-radius: 5px;
+}
+.btnAdd{
+    background-color: #009879;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 70px;
+    cursor: pointer;
+}
+.btnAdd:hover{
+    background-color: #067d65;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+}
+.modal_inner{
+    width: 400px;
+    position: relative;
+    top:  10%;
+    left: 30%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.modal_header{
+    background-color: #009879;
+    padding: 15px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+.modal_body
+{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal_footer{
+    padding: 15px;
+    /* text-align: right; */
+    display: flex;
+    justify-content: space-around;
+}
+.modal_footer button{
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    background: #009879;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.modal_footer button:hover{
+    background: #067d65;
+}
+.from_body{
+    position: relative;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1.5rem;
+    margin-top: 10px;
+}
+.custom_input{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #949d9b;
+    border-radius: 5px;
+    outline: none;
+    z-index: 1;
+}
+.custom_lable{
+    position: absolute;
+    left: 0.5rem;
+    top: 0.4rem;
+    padding: 0.25rem;
+    background-color: white;
+    color: #949d9b;
+    transition: .3s;
+}
+.custom_input:focus + .custom_lable{
+    top: -1rem;
+    left: .8rem;
+    color: black;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 10;
+}
+.custom_input:not(:placeholder-shown).custom_input:not(:focus) + .custom_lable{
+    top: -1rem;
+    left: .8rem;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 10;
+}
+.custom_input:focus{
+    border: 1.5px solid black;
+}

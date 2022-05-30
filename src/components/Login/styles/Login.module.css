@@ -1,52 +1,47 @@
 .Login{
     display: flex;
-    
-    /* background-color: #ede0d4; */
-    /* padding: 15em; */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* margin-top: calc(100% - 80%);
-    margin-left: calc(100% - 60%); */
-    /* justify-content: center; */
-    /* align-content: center; */
-    height: max-content;
-    width: auto;
+    height: 500px;
+    width: 380px;
     z-index: 10;
 }
 
 .Login span{
-    margin-top: 10px;
+    margin-top: 20px;
+    color: rgb(80, 81, 82);
 }
 .modal {
-    /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); */
     border-radius: 6px;
     background-color: white;
-    height: 25rem;
-    /* text-align: center; */
-    width: 25rem;
+    height: 100%;
+    width: 100%;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
-    margin-top: -10rem;
-
-    /* align-content: center; */
-    /* position: relative; */
-    /* justify-content: center; */
+    padding: 30px 40px;
+    box-sizing: border-box;
 }
 .modal h1{
     text-transform: uppercase;
     font-size: 2rem;
+    color: rgb(80, 81, 82);
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .modal .input{
+    outline: none;
     width: max-content;
     margin-top: 20px;
-    height: 40px;
-    width: 300px;
-    font-size: 20px;
-    border-radius: 0.5rem;
+    height: 45px;
+    width: 100%;
+    font-size: 18px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: solid 1px rgb(88, 85, 85);
+    box-sizing: border-box;
 }
 
 .btnLogin{
@@ -58,11 +53,9 @@
     border-radius: 0.5rem;
     border-style: none;
     background-color: red;
-    /* background-color: ; */
 }
 .btnLogin:hover{
     cursor: pointer;
-    color: black;
     background-color: red,0.5;
 }
 
@@ -77,5 +70,13 @@
 .btn_socialNetwork{
     background-color: white;
     cursor: pointer;
+    /* margin: 2px 20px; */
+    cursor: pointer;
     border-radius: 10px;
+    border: 0px;
+}
+
+.dangKy:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 25);
 }

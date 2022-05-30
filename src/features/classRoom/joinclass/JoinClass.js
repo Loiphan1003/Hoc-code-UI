@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import styles from './JoinClass.module.css';
 import { useNavigate } from 'react-router-dom';
 import useLock from '../../../components/useLockBodyScroll'
+import RoomApi from '../../../apis/roomApi';
 // import RoomApi from '../../../apis/roomApi';
 
 function JoinClass(props) {
 
     useLock();
     const [input, setInput] = useState('');
-    const navigate = useNavigate();
-    
-   
+    // const navigate = useNavigate();
+
+
 
     // const getRoomInfo = async (id) => {
     //     try {
@@ -33,20 +34,26 @@ function JoinClass(props) {
 
 
     const handleJoinClass = () => {
-        
-        if(input.length == 0){
+
+        if (input.length === 0) {
             alert("Vui lòng nhập mã phòng học");
             return;
         }
-        // room = {
-        //     id: "",
-        //     name: input,
-        //     owner: localStorage.getItem('User')
-        // }
 
-        console.log(input);
+        const data = async () => {
+            try {
+                const response = await RoomApi.addUserToPhongHoc(localStorage.getItem("User"), input);
+                console.log(response.data);
+                if(response.data === true){
+                    alert("Tham gia phong thanh cong");
+                }
+            } catch (error) {
+                console.log("Error: ", error);
+            }
+        }
+        data();
     }
-    
+
 
     return (
         <>

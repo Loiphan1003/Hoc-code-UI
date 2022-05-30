@@ -23,7 +23,7 @@ function UserNav(props) {
 
     return (
         <div className={cx('userNavItems')} onClick={props.onClick}>
-            <div className={cx('item_userNav')} >
+            <div className={cx('item_userNav')} onClick={() => navigate('/user/information')} >
                 <FontAwesomeIcon className={cx('item-icon')} icon={faUser} />
                 <p>Thông tin cá nhân</p>
             </div>
