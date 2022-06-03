@@ -21,9 +21,9 @@ function JoinClass(props) {
                     try {
                         const response = await PhongHocAPI.joinPhongHoc(user.uid,input);
                         if(response.data)
-                            console.log("join thanh cong");
+                            alert("join thanh cong");
                         else
-                            console.log("joni that bai");
+                            alert("joni that bai");
                     } catch (error) {
                         console.log("Fetch data error: ", error);
                     }

@@ -78,7 +78,7 @@ function CodeUi() {
                     input: input,
                     language: language
                 });
-                setResultCode(response.data.output);
+                setResultCode(response.data);
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }

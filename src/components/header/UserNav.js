@@ -16,14 +16,14 @@ function UserNav(props) {
 
     const logoutAccount = () => {
         auth.signOut();
-        localStorage.removeItem('isTeacher');
+        localStorage.clear();
         navigate('/');
         alert("User log out");
     }
 
     return (
         <div className={cx('userNavItems')} onClick={props.onClick}>
-            <div className={cx('item_userNav')} >
+            <div className={cx('item_userNav')} onClick={() => navigate("/infomation")} >
                 <FontAwesomeIcon className={cx('item-icon')} icon={faUser}/>
                 <p>Thông tin cá nhân</p>
             </div>

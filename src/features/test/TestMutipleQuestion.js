@@ -1,16 +1,17 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Radio, RadioGroup, FormControlLabel } from '@mui/material';
 import BaiTapTN from '../../apis/baiTapTN_API'
 import { useDispatch ,useSelector} from 'react-redux';
 import doTestSlice from '../../redux/doTestSlice'
 
 import styles from './styles/TestMutipleQuestion.module.css';
+import { useStateIfMounted } from "use-state-if-mounted";
 
 function TestMutipleQuestion({data}) {
 
     const dispatch = useDispatch();
     const answer = useSelector((state) => state.doTest.answer.find(element => element.id === data.id&&element.loaiCauHoi=== data.loaiCauHoi))
-    const [question, setQuestion] = useState({});
+    const [question, setQuestion] = useStateIfMounted({});
 
     useEffect(() =>{
         const getBTTN = async () =>{
@@ -18,6 +19,7 @@ function TestMutipleQuestion({data}) {
             setQuestion(response.data);
         }
         getBTTN();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[data]);
 
     const handleChangeValue = (e) =>{

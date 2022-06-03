@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ClassRoom.module.css';
 import Room from './Room';
 import JoinClass from './joinclass/JoinClass';
 import Button from '@mui/material/Button';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import { useStateIfMounted } from "use-state-if-mounted";
 
 
 function ClassRoom(props) {
 
-    const [openJoin, setOpenJoin] = useState(false);
+    const [openJoin, setOpenJoin] = useStateIfMounted(false);
 
 
     return (

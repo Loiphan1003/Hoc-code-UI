@@ -1,51 +1,23 @@
 import React, {useEffect} from 'react'
 import classNames from 'classnames/bind'
-import {  useSelector } from 'react-redux';
 import styles from './styles/resultTest.module.css'
 import AceEditor from 'react-ace-builds';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-import BaiLamkiemTraAPI from '../../apis/baiLamKiemTraAPI';
+import doTestSlice from '../../redux/doTestSlice';
+import { useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
-function ResultView({idDeKiemTra}) {
+function ResultView({totalScore, answers}) {
 
   const dapAn ={ '1':'A','2':'B','3':'C','4':'D'};
-  let answers = useSelector((state) => state.doTest.answer);
-  answers = [...answers].sort((a,b) => a.stt-b.stt);
-  const totalScore = answers.reduce((sum, answer) => sum+answer.diemDatDuoc, 0);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              const saveBaiLamKiemTra = async()=>{
-                try {
-                  const response = await BaiLamkiemTraAPI.add({
-                    tongDiem : totalScore,
-                    uId: user.uid,
-                    idDeKiemTra: idDeKiemTra,
-                    lsCauTraLoi: answers.map((answer) => ({
-                                              id: answer.id,
-                                              dapAn: answer.dapAn,
-                                              loaiCauHoi: answer.loaiCauHoi,
-                                              diem: answer.diemDatDuoc}))
-                  });
-                  console.log(response.data)
-                  if(response.data)
-                    alert("Lưu bài làm kiểm tra thành công!");
-                } catch (error) {
-                  console.log(error)
-                }
-              }
-          
-              saveBaiLamKiemTra();
-            }
-        });
     
+    return ()=>{
+      dispatch(doTestSlice.actions.clearAnswer([]))
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

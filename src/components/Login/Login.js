@@ -3,20 +3,49 @@ import useLookBodyScroll from "../useLockBodyScroll";
 import { auth, googleProvider, githubProvider } from '../../firebase/config';
 import { signInWithPopup } from "firebase/auth";
 import styles from "./Login.module.css";
-
+import GiangVienAPI from "../../apis/giangVienAPI"
+import NguoiDungAPI from "../../apis/nguoiDungAPI"
 import { useNavigate } from "react-router-dom"
 
 function Login({isGiangVien}) {
     useLookBodyScroll();
     const navigate = useNavigate();
-    // dựa vào isGiangVien để query table nào
     const handleGoogleLogin = async (value) => {
         const data = await signInWithPopup(auth, googleProvider);
-        console.log("Value: ", data);
+        localStorage.setItem('linkAvatar', JSON.stringify(window.btoa(data.user.photoURL)));
+        if(isGiangVien)
+        {
+            const getGv = async() => {
+                const response = await GiangVienAPI.getOneGV(data.user.uid);
+                checkExist(response.data);
+            } 
+            getGv();
+        }
+        else{
+            const getSv = async() => {
+                const response = await NguoiDungAPI.getThongTinNguoiDung(data.user.uid);
+                console.log(typeof(response.data))
+                checkExist(response.data);
+            } 
+            getSv();
+        }
         localStorage.setItem('isTeacher', JSON.stringify(isGiangVien));
-        navigate('/home');
+        localStorage.setItem('uId', JSON.stringify(data.user.uid));
     }
 
+    const checkExist = (existValue) => {
+        if(existValue === '')
+        {
+            console.log("Chua ton tai nguoi dung")
+            navigate('/infomation')
+        }
+        else
+        {
+            localStorage.setItem('linkAvatar', JSON.stringify(existValue.linkAvatar));
+            navigate('/home')
+        }
+           
+    }
 
     const handleGitHubLogin = async (value) => {
         try {

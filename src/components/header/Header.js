@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
@@ -11,24 +11,29 @@ import 'tippy.js/dist/tippy.css';
 import Avatar from '@mui/material/Avatar';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
+import { useStateIfMounted } from "use-state-if-mounted";
 
 
 function Header(props) {
-    const [headerNavBar, setHeaderNavbar] = useState(false);
-    const [dataUser, setDataUser] = useState(null);
-    const [popUp,setPopUp] = useState(false);
+    const [headerNavBar, setHeaderNavbar] = useStateIfMounted(false);
+    const [dataUser, setDataUser] = useStateIfMounted(null);
+    const [popUp,setPopUp] = useStateIfMounted(false);
     const showSideBar = () => setHeaderNavbar(!headerNavBar);
     const showPopUp = () => setPopUp(!popUp);
     
-    
+    const auth = getAuth();
+    const linkAvatar = JSON.parse(localStorage.getItem('linkAvatar')); 
     useEffect( () => {
-        const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             setDataUser(user)
         });
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     const menuItem = [
+        {
+            path: "/home",
+            name: "Trang chủ",
+        },
         {
             path: "/practice",
             name: "Luyện tập",
@@ -41,6 +46,10 @@ function Header(props) {
             path: "/room",
             name: "Phòng học",
         },
+        {
+            path: "/aaa",
+            name: "Trợ giúp",
+        }
     ]
 
     return (
@@ -76,7 +85,7 @@ function Header(props) {
                                             </Tippy>
                                             
                                             <Avatar alt="Remy Sharp"
-                                            src={dataUser.photoURL} onClick={showPopUp} 
+                                            src={!!linkAvatar ? window.atob(linkAvatar) : dataUser.photoURL} onClick={showPopUp} 
                                             sx={{
                                                 cursor:"pointer",
                                                 width:"32px",

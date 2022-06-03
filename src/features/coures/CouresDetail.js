@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import styles from './styles/couresDetail.module.css';
 import LyThuyetAPI from '../../apis/lyThuyetAPI';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 function CouresDetail(props) {
 
     const [coures, setCoures] = useState([]);
+    const [nameTheory,setNameTheory] = useState('');
     let params = useParams()
-
+    const uId = JSON.parse(localStorage.getItem('uId')); 
     useEffect(() => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const getTheoryLection = async () =>{
-                    try {
-                        const response = await LyThuyetAPI.getAll(params.courseID);
-                        setCoures(response.data);
-                    } catch (error) {
-                        console.log("Fetch data false ", error);
-                    }
+        window.scrollTo(0, 0)
+        if (!!uId) {
+            const getTheoryLection = async () =>{
+                try {
+                    const response = await LyThuyetAPI.getAll(params.courseID);
+                    setNameTheory(response.data.tenMonHoc)
+                    setCoures(response.data.lyThuyets);
+                } catch (error) {
+                    console.log("Fetch data false ", error);
                 }
-                getTheoryLection();
             }
-        });
+            getTheoryLection();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.courseID])
 
 
@@ -31,11 +34,45 @@ function CouresDetail(props) {
         <>
             <div className={styles.couresDetail}>
                 <div className={styles.couresDetailTitle}>
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABCUlEQVRoge2ZvQ7BUBhADxJeQFls4nkM1MuIUTwLFoN4FYsJg5+RWBkaC9r7SfD1k+8kd23PzT1Nb2/BcRznnygBA2ADXIAF0FI1epMRcH0YWyDSlJJSBs48T+AKTBS9xES8lr+PWE9Nzor0CRwwkFJM9iqYSGmC8ZSqwI70CRyBupqdkDbZqzDTU5PjKeUBTykPeEp5IZRSR09NRkSyH0qbwBIoqNkJCaXUePeCxU/aCaj8+H4fxXxCph/iHtnyYz21MFVgT/aLrKZmJyCUTldPLYyno8kUw7tQT0cT0+mYP9gyfbRo/nC3DJwwms6dIc/yZn5wQPKB1AfWJL+Y5kBT1chxHOer3ACRUQNvmM3mPwAAAABJRU5ErkJggg==" alt='icon' />
-                    <h1>Chương trình C cho người bắt đầu</h1>
+                    <div className={styles.heading}>
+                        <h1>{nameTheory}</h1>
+                        <p>Hiểu sâu hơn về cách Javascript hoạt động, tìm hiểu về IIFE, closure, reference types, this keyword, bind, call, apply, prototype, ...</p>
+                    </div>
+                    <div className={styles.what_learn}>
+                        <h2>Bạn sẽ học được những gì?</h2>
+                        <ul className={styles.list_whatLearn}>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Được học kiến thức miễn phí với nội dung chất lượng hơn mất phí
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Hiểu được cách tư duy nâng cao của các lập trình viên có kinh nghiệm
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Có nền tảng Javascript vững chắc để làm việc với mọi thư viện, framework viết bởi Javascript
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Các kiến thức nâng cao của Javascript giúp code trở nên tối ưu hơn
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Hiểu được các khái niệm khó như từ khóa this, phương thức bind, call, apply & xử lý bất đồng bộ
+                            </li>
+                            <li>
+                                <FontAwesomeIcon icon={faCheck}/>
+                                Nâng cao cơ hội thành công khi phỏng vấn xin việc nhờ kiến thức chuyên môn vững chắc
+                            </li>
+                        </ul>
+                    </div>
                     <ul className={styles.couresDetailList}>
                         {coures.map(coure => (
-                            <NavLink  to={`/couredetail/section/${coure.id}`} key={coure.id} className={styles.coure} >{coure.tieuDe}</NavLink>
+                            <NavLink  to={`/couredetail/section/${coure.id}`} key={coure.id} className={styles.coure} >
+                                <LibraryBooksIcon/>
+                                {coure.tieuDe}
+                            </NavLink>
                         ))}
                     </ul>
                 </div>

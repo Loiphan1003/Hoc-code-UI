@@ -1,0 +1,131 @@
+.container {
+    margin: 50px auto 150px;
+    min-height: 75vh;
+    padding: 10px 15px;
+    width: 70%;
+    font-family: 'Roboto';
+    /* background-color: #3b3c54; */
+    box-sizing: border-box;
+}
+
+.container>h1 {
+    font-family: 'Roboto';
+    color: #3b7fdd;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+}
+.user_Avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label.btn_chose_image input[type="file"] {
+    position: absolute;
+    top: -1000px;
+}
+
+.btn_chose_image {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    color: #545bcc;
+    background: #dddddd;
+    display: inline-block;
+}
+
+.btn_chose_image:hover {
+    background: #5cbd95;
+}
+
+.btn_chose_image:active {
+    background: #9fa1a0;
+}
+
+.btn_chose_image:invalid+span {
+    color: #000000;
+}
+
+.btn_chose_image:valid+span {
+    color: #ffffff;
+}
+
+.right_content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 45px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.row>label {
+    text-align: left;
+    width: 20%;
+    padding-left: 15px;
+    color: #898989;
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: normal;
+}
+
+.row>input {
+    outline: none;
+    font-size: 17px;
+    height: 34px;
+    width: 75%;
+    padding: 6px 12px;
+    background-color: white;
+    color: #898989;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button {
+    margin-top: 20px;
+    width: 220px;
+}
+
+.button_information_cancel {
+    height: 35px;
+    width: 104px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border: 1px solid #3F48CC;
+    display: block;
+    float: left;
+    cursor: pointer;
+}
+
+.button_information_save {
+    height: 35px;
+    width: 104px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: white;
+    background-color: #3F48CC;
+    border-style: none;
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+
+

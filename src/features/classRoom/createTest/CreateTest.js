@@ -22,19 +22,26 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { useSelector, useDispatch } from 'react-redux';
 import createTestSlice from '../../../redux/createTestSlice';
 import ItemQuestion from './ItemQuestion';
+import {useParams, useNavigate} from 'react-router-dom';
 import useDebounce from '../../../hooks/useDebounce'
-import {  } from '@fortawesome/free-solid-svg-icons';
 import InputAdornment from '@mui/material/InputAdornment';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import BaiTapTN from '../../../apis/baiTapTN_API';
 import BaiTapCodeAPI from '../../../apis/baiTapCodeAPI';
 import DeKiemTraAPI from '../../../apis/deKiemTraAPI';
+import { useStateIfMounted } from "use-state-if-mounted";
+
+
+
 const { RangePicker } = DatePicker;
 const cx = classNames.bind(styles);
 
 
 function CreateTest(props) {
+
+    const params = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     
     const [nameTest,setNameTest] = useState('');
@@ -43,7 +50,7 @@ function CreateTest(props) {
     const [typeQuestion,setTypeQuestion] = useState();
     const [scores,setScores] = useState(1);
     const [idQuestion,setIdQuestion] = useState('');
-    const [searchResult,setSearchResult] = useState([]);
+    const [searchResult,setSearchResult] = useStateIfMounted([]);
     const [searchValue,setSearchValue] = useState({
         search:'',
         selectValue:''
@@ -84,7 +91,6 @@ function CreateTest(props) {
             }
             getResultSearchCode();
         }
-        console.log("debounce",debounece)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounece]);
 
@@ -101,7 +107,7 @@ function CreateTest(props) {
             ngayBatDau: startDate,
             ngayKetThuc: endDate,
             moTa:nameTest,
-            idPhong:1,
+            idPhong:params.idPhong,
             trangThai:0,
             listCauHoi: lsCauHoi
         }
@@ -110,7 +116,11 @@ function CreateTest(props) {
                 const response = await DeKiemTraAPI.add(baiKiemTra);
                 console.log(response.data);
                 if(response.data)
-                    alert("Thêm bài kiểm tra thành công!")
+                {
+                    alert("Thêm bài kiểm tra thành công!");
+                    navigate(-1)
+                }
+                    
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }

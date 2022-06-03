@@ -17,6 +17,7 @@ import { faCircleCheck, faCircleXmark, faCircle } from '@fortawesome/free-solid-
 import clsx from 'clsx';
 import doTestSlice from '../../redux/doTestSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useStateIfMounted } from "use-state-if-mounted";
 
 
 function TestCode({data}) {
@@ -26,8 +27,8 @@ function TestCode({data}) {
     const language = {'py' : 'Python','c': 'C','c++': 'C++','java': 'Java' }
 
     const [openTestCase, setOpenTestCase] = useState(false);
-    const [baiTapCode,setBaiTapCode] = useState({});
-    const [testCase,setTestCase] = useState([]);
+    const [baiTapCode,setBaiTapCode] = useStateIfMounted({});
+    const [testCase,setTestCase] = useStateIfMounted([]);
 
     useEffect(() => {
         const getBaiTapCode = async () => {
@@ -41,6 +42,7 @@ function TestCode({data}) {
             setTestCase(response.data)
         }
         getTestCase();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
     
     const handleRunCode = () => {

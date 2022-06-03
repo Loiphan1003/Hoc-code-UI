@@ -35,6 +35,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "^5.0.0",
     "save": "^2.4.0",
+    "use-state-if-mounted": "^1.0.7",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -63,5 +64,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage" : "http://localhost:3000/"
+  "homepage": "http://localhost:3000/"
 }

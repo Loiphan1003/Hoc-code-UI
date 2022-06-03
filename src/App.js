@@ -19,11 +19,14 @@ import MultipleChoiceExercises from './features/exercise/multipleChoiceExercises
 import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
 import Test from './features/test/Test';
+import UseInfomation from './features/userInfomation/UserInformation';
 
 import CreateMonHoc from './features/create/createMonHoc';
 import CreateLyThuyet from './features/create/createLyThuyet';
-function App() {
+import TestOverview from './features/classRoom/testOverview';
 
+
+function App() {
 
     return (
         <div>
@@ -52,7 +55,7 @@ function App() {
                         </DefaultLayout>}
                     />
                     <Route path='/room/:roomId' element={<RoomDetail  />} />
-                    <Route path='/createTest' element={<CreateTest />} />
+                    <Route path='/create-test/:idPhong' element={<CreateTest />} />
                     <Route path='/practice' element={
                         <DefaultLayout>
                             <Practice  />
@@ -91,6 +94,12 @@ function App() {
 
                     <Route path='/createMonHoc'  element={<CreateMonHoc/>}/>
                     <Route path='/createLyThuyet'  element={<CreateLyThuyet/>}/>
+                    <Route path='/infomation' element={
+                        <DefaultLayout >
+                            <UseInfomation/>
+                        </DefaultLayout>
+                    }/>
+                    <Route path='/test-overview/:idTest' element={<TestOverview/>}/>
                 </Routes>
             </Router>
         </div>

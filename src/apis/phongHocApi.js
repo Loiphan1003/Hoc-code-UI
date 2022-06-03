@@ -12,6 +12,10 @@ const PhongHocAPI = {
     getOneByID:(id)=>{
         const url = `PhongHoc/getOne?id=${id}`;
         return axiosClient.get(url,{id});
+    },
+    getByUidGiangVien: (uID) => {
+        const url = `PhongHoc/getByUidGiangVien?uID=${uID}`;
+        return axiosClient.get(url,{uID});
     }
 }
 

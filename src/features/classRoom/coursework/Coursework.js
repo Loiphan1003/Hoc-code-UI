@@ -4,8 +4,15 @@ import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@
 import Backdrop from '../.././../components/Backdrop';
 import { faChevronRight, faCirclePlus, faMagnifyingGlass, faTableList, faFilter } from '@fortawesome/free-solid-svg-icons';
 import styles from "./CourseWork.module.css"
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { NavLink, useParams } from 'react-router-dom';
 import DeKiemTraAPI from '../../../apis/deKiemTraAPI';
+import { useStateIfMounted } from "use-state-if-mounted";
 
 
 function Coursework(props) {
@@ -15,24 +22,43 @@ function Coursework(props) {
     const [draft, setDarft] = useState(false);
     const [open, setOpen] = useState(true);
     const [close, setClose] = useState(true);
-    const [testDraft,setTestDraft] = useState([]);
-    const [testOpen,setTestOpen] = useState([]);
-    const [testClose,setTestClose] = useState([]);
+    const [test,setTest] = useStateIfMounted({
+        testDraft:[],
+        testOpen:[],
+        testClose:[]
+    });
     const [mobileOpen, setMobileOpen] = useState();
+    const isTeacher = JSON.parse(localStorage.getItem('isTeacher')); 
+    const [openDialogPublic, setOpenDialogPublic] = React.useState(false);
+    const [testSelect,setTestSelect] = useState({});
+
+    const handleClickOpen = (test) => {
+        setOpenDialogPublic(true);
+        setTestSelect(test);
+    };
+
+    const handleClose = () => {
+        setOpenDialogPublic(false);
+    };
+
+    const getListDeKiemTra = async ()=>{
+        try {
+            const response = await DeKiemTraAPI.getByIDPhonng(idPhong);
+            setTest({
+                testDraft:response.data.filter(item => item.trangThai ===0),
+                testOpen:response.data.filter(item => item.trangThai ===1),
+                testClose:response.data.filter(item => item.trangThai ===2)
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
-        const getListDeKiemTra = async ()=>{
-            try {
-                const response = await DeKiemTraAPI.getByIDPhonng(idPhong);
-                setTestDraft(response.data.filter(item => item.trangThai ===0));
-                setTestOpen(response.data.filter(item => item.trangThai ===1));
-                setTestClose(response.data.filter(item => item.trangThai ===2));
-            } catch (error) {
-                console.log(error);
-            }
-        }
+
         getListDeKiemTra();
-    }, [idPhong]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const [filter, setFilter] = useState({
         draft: false,
@@ -41,7 +67,6 @@ function Coursework(props) {
         code: false,
         mutiple_question: false,
     });
-
     const handleFilterChange = (event) => {
         setFilter({
             // copy filter
@@ -52,8 +77,22 @@ function Coursework(props) {
 
     }
 
-    // console.log(idPhong.roomId);
-    
+    const handleAccept = (id) => {
+        const publicBaiKiemTra = async () => {
+            try {
+                const response = await DeKiemTraAPI.publicDeKiemTra(id);
+                if(response.data)
+                {
+                    getListDeKiemTra();
+                    setOpenDialogPublic(false);
+                }
+            } catch (error) {
+                console.log(5)
+            }
+        }
+        publicBaiKiemTra();
+    }
+
     return (
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
             {/*Start Mobile  */}
@@ -135,41 +174,47 @@ function Coursework(props) {
 
             {/*End:  Mobile */}
             <div className={styles.courseWork_left_content}>
-                <div className={styles.courseWork_item} onClick={() => setDarft(!draft)}>
-                    <div className={styles.courseWork_item_content}>
-                        <p>Nháp</p>
-                        <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight}/>
-                        <span>{testDraft.length}</span>
-                    </div>
-                </div>
-                {draft && <div className={styles.coursework_content} >
-                    {
-                        testDraft.map((test,index) => (
-                            <div className={styles.coursework_content_item} key={index}>
-                                <div className={styles.item_info}>
-                                    <FontAwesomeIcon icon={faTableList} />
-                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
-                                </div>
-                                <p className={styles.item_draft}>Nháp</p>
-                            </div>
-                        ))
-                    }
-                </div>}
-
+                {
+                    isTeacher &&
+                    (
+                    <>
+                        <div className={styles.courseWork_item} onClick={() => setDarft(!draft)}>
+                        <div className={styles.courseWork_item_content}>
+                            <p>Nháp</p>
+                            <FontAwesomeIcon className={draft ? styles.icon_active : styles.icon} icon={faChevronRight}/>
+                            <span>{test.testDraft.length}</span>
+                        </div>
+                        </div>
+                        {draft && <div className={styles.coursework_content} >
+                            {
+                                test.testDraft.map((test,index) => (
+                                    <div className={styles.coursework_content_item} key={index}>
+                                        <div className={styles.item_info}>
+                                            <FontAwesomeIcon icon={faTableList} />
+                                            <div className={styles.item_name} onClick={() => handleClickOpen(test)}>{test.moTa}</div>
+                                        </div>
+                                        <p className={styles.item_draft}>Nháp</p>
+                                    </div>
+                                ))
+                            }</div>
+                        }
+                    </>
+                    )
+                }
                 <div className={styles.courseWork_item} onClick={() => setOpen(!open)} >
                     <div className={styles.courseWork_item_content}>
                         <p>Mở</p>
                         <FontAwesomeIcon className={open ? styles.icon_active : styles.icon} icon={faChevronRight} />
-                        <span>{testOpen.length}</span>
+                        <span>{test.testOpen.length}</span>
                     </div>
                 </div>
                 {open && <div className={styles.coursework_content} >
                     {
-                        testOpen.map((test,index) => (
+                        test.testOpen.map((test,index) => (
                             <div className={styles.coursework_content_item} key={index}>
                                 <div className={styles.item_info}>
                                     <FontAwesomeIcon icon={faTableList} />
-                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
+                                    <NavLink className={styles.item_name} to={isTeacher ? `/test-overview/${test.id}`:`/test/${test.id}`} >{test.moTa}</NavLink>
                                     <p className={styles.item_time}>Bắt đầu lúc {test.ngayBatDau} kết thúc lúc {test.ngayKetThuc}</p>
                                 </div>
                                 <p className={styles.item_open}>Mở</p>
@@ -182,16 +227,16 @@ function Coursework(props) {
                     <div className={styles.courseWork_item_content}>
                         <p>Kết thúc</p>
                         <FontAwesomeIcon className={close ? styles.icon_active : styles.icon} icon={faChevronRight}  />
-                        <span>{testClose.length}</span>
+                        <span>{test.testClose.length}</span>
                     </div>
                 </div>
                 {close && <div className={styles.coursework_content} >
                     {
-                        testClose.map((test,index) => (
+                        test.testClose.map((test,index) => (
                             <div className={styles.coursework_content_item} key={index}>
                                 <div className={styles.item_info}>
                                     <FontAwesomeIcon icon={faTableList} />
-                                    <NavLink className={styles.item_name} to={`/test/${test.id}`} >{test.moTa}</NavLink>
+                                    <NavLink className={styles.item_name} to={isTeacher ? `/test-overview/${test.id}`:`/test/${test.id}`} >{test.moTa}</NavLink>
                                     <p className={styles.item_time}>Đã kết thúc vào lúc {test.ngayKetThuc}</p>
                                 </div>
                                 <p className={styles.item_close}>Kết thúc</p>
@@ -204,7 +249,7 @@ function Coursework(props) {
 
             <div className={styles.courseWork_right_content}>
 
-                <NavLink to={`/room/${idPhong.roomId}/create`} className={styles.btn_}>
+                <NavLink to={`/create-test/${idPhong}`} className={styles.btn_}>
                     <FontAwesomeIcon icon={faCirclePlus} fontSize='22px' />
                     <p>Tạo bài tập</p>
                 </NavLink>
@@ -228,6 +273,27 @@ function Coursework(props) {
                     </div>
                 </div>
             </div>
+            <Dialog
+                open={openDialogPublic}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                {"Bạn có muốn công khai bài kiểm tra này?"}
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                   {testSelect.moTa}
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={handleClose}>Hủy</Button>
+                <Button onClick={() => handleAccept(testSelect.id)} autoFocus>
+                    Đồng ý
+                </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }

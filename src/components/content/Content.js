@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState,useEffect, useRef } from "react";
 import AceEditor from "react-ace";
 import RunCodeAPI from "../../apis/runCodeAPI";
 import "ace-builds/src-noconflict/ext-language_tools";
@@ -8,6 +8,8 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-csharp";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "react-ace-builds/webpack-resolver-min";
+import { useNavigate } from "react-router-dom";
+
 
 // import Footer from '../footer/Footer';
 import styles from './Content.module.css';
@@ -18,12 +20,18 @@ import { image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8,
 
 function Content(props) {
 
+    const navigate = useNavigate();
     const [studentSignUp, setStudentSignUp] = useState(false);
     const [login, setLogin] = useState(false);
     const [language, setLanguage] = useState("c");
     const [resultCode, setResultCode] = useState();
     const [isGiangVien, setIsGiangVien] = useState(false);
-
+    const uId = JSON.parse(localStorage.getItem('uId')); 
+    useEffect(()=>{
+        if(!!uId)
+            navigate('/home');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     const editor = useRef();
 
@@ -63,7 +71,6 @@ function Content(props) {
         setLanguage(e.target.value)
         editor.current.editor.setValue(defaultValueEditor[e.target.value])
     }
-    console.log("re-render");
     return (
         <React.Fragment>
             <div className={styles.Content}>

@@ -10,6 +10,7 @@
 
 .theoryHeader {
     width: 100%;
+    height: 150px;
     background-color: var(--header-theory);
     flex-direction: row;
     display: flex;
@@ -18,8 +19,13 @@
     box-sizing: border-box;
 }
 
+.theoryHeaderLeft {
+    width: auto;
+    padding-top: 1%;
+
+}
+
 .theoryHeader h1 {
-    /* font-family: Roboto; */
     color: white;
     font-size: 25px;
     box-sizing: border-box;
@@ -46,6 +52,7 @@
 
 .container {
     width: 100%;
+    padding: 30px 150px 30px 150px;
 }
 
 .kienthuccoso {
@@ -58,6 +65,7 @@
 }
 
 .kienthuccoso h1 {
+    margin-top: 20px;
     text-transform: uppercase;
 }
 
@@ -68,6 +76,7 @@
     align-items: stretch;
     flex-wrap: wrap;
     box-sizing: border-box;
+    margin-bottom: 200px;
 }
 
 
@@ -134,333 +143,3 @@
     height: 10px;
 }
 
-.kienthucnangcao {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* margin: 0px 300px; */
-    /* margin: 0px 10px; */
-}
-
-.kienthucnangcao h1 {
-    text-transform: uppercase;
-}
-
-.courseAdvancedList {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-}
-
-
-
-/* Small devices (portrait tablets and large phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .theoryHeader {
-        width: 100%;
-        height: 100px;
-        background-color: var(--header-theory);
-        display: block;
-        padding: 0px 20px;
-        box-sizing: border-box;
-    }
-
-    .theoryHeaderLeft {
-        width: auto;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .theoryHeaderLeft>h1 {
-        color: white;
-        font-size: 20px;
-    }
-
-    .theoryHeader img {
-        display: none;
-    }
-
-    .findTheory {
-        display: flex;
-        padding: 0px 5px;
-        flex-direction: row;
-        height: 30px;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 5px;
-        width: 250px;
-        box-sizing: border-box;
-    }
-
-    .nameTheory {
-        padding: 0;
-        width: auto;
-        font-size: 15px;
-        border-color: white;
-        outline-style: none;
-        box-sizing: border-box;
-    }
-
-    .kienthuccoso {
-        padding: 0px 20px;
-        width: auto;
-    }
-
-    .listCourse {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .course {
-        width: 100%;
-        background-color: var(--main-color);
-        border-radius: 5px;
-        height: 450px;
-        display: flex;
-        margin-right: 20px;
-        margin-top: 20px;
-        flex-direction: column;
-        box-shadow: 0px 5px 5px 0px gray;
-    }
-
-    .course img {
-        cursor: pointer;
-    }
-
-    .course div {
-        width: 100%;
-        height: 100%;
-        display: block;
-        padding-left: 10px;
-        border-radius: 0px 30px 5px 5px;
-        background-color: white;
-        box-sizing: border-box;
-    }
-
-    .kienthucnangcao {
-        padding: 0px 20px;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-
-    .theoryHeaderLeft {
-        width: auto;
-        display: flex;
-        padding-top: 3%;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
-
-    .theoryHeaderLeft>h1 {
-        color: white;
-        font-size: 20px;
-    }
-
-    .findTheory {
-        display: flex;
-        padding: 0px 5px;
-        flex-direction: row;
-        height: 30px;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 5px;
-        width: 250px;
-        box-sizing: border-box;
-    }
-
-    .nameTheory {
-        padding: 0;
-        width: auto;
-        font-size: 15px;
-        border-color: white;
-        outline-style: none;
-        box-sizing: border-box;
-    }
-
-    .kienthuccoso {
-        padding: 0px 65px;
-        width: auto;
-    }
-    .kienthucnangcao {
-        padding: 0px 65px;
-    }
-    .listCourse {
-        display: flex;
-        justify-content: first baseline;
-        flex-direction: row;
-    }
-
-    .course {
-        width: 300px;
-        background-color: var(--main-color);
-        border-radius: 5px;
-        height: 370px;
-        display: flex;
-        margin-right: 20px;
-        margin-top: 20px;
-        flex-direction: column;
-        box-shadow: 0px 5px 5px 0px gray;
-    }
-
-    .course img {
-        cursor: pointer;
-    }
-
-    .course div {
-        width: 100%;
-        height: 100%;
-        display: block;
-        padding-left: 10px;
-        border-radius: 0px 30px 5px 5px;
-        background-color: white;
-        box-sizing: border-box;
-    }
-
-    
-}
-
-
-
-@media only screen and (min-width: 992px) {
-
-    .container {
-        max-width: 1399px;
-        width: 100%;
-        padding-left: 100px;
-        padding-right: 100px;
-        margin-left: 30px;
-        box-sizing: border-box;
-    }
-
-    /* .kienthuccoso {
-        height: fit-content;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .kienthucnangcao {
-        width: auto;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-    }
-
-
-    .courseAdvancedList {
-        min-width: 500px;
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        gap: 30px 30px;
-    } */
-}
-/* Responsive for deskstop */
-@media only screen and (min-width: 1200px) {
-    .theoryHeaderLeft {
-        width: auto;
-        display: flex;
-        padding-top: 1%;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
-
-    .theoryHeaderLeft>h1 {
-        color: white;
-        font-size: 20px;
-    }
-
-    .findTheory {
-        display: flex;
-        padding: 0px 5px;
-        flex-direction: row;
-        height: 30px;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 5px;
-        width: 250px;
-        box-sizing: border-box;
-    }
-
-    .nameTheory {
-        padding: 0;
-        width: auto;
-        font-size: 15px;
-        border-color: white;
-        outline-style: none;
-        box-sizing: border-box;
-    }
-}
-@media only screen and (min-width: 1400px) {
-
-    .theoryHeaderLeft {
-        width: auto;
-        display: flex;
-        padding-top: 1%;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
-
-    .theoryHeaderLeft>h1 {
-        color: white;
-        font-size: 20px;
-    }
-
-    .findTheory {
-        display: flex;
-        padding: 0px 5px;
-        flex-direction: row;
-        height: 30px;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 5px;
-        width: 250px;
-        box-sizing: border-box;
-    }
-
-    .nameTheory {
-        padding: 0;
-        width: auto;
-        font-size: 15px;
-        border-color: white;
-        outline-style: none;
-        box-sizing: border-box;
-    }
-    .container {
-        max-width: 1600px;
-        width: 100%;
-        padding-left: 100px;
-        padding-right: 100px;
-        margin: auto;
-        box-sizing: border-box;
-    }
-
-    .kienthuccoso {
-        height: fit-content;
-        width: 100%;
-        /* display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: flex-start; */
-    }
-    .listCourse {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-    }
-    .kienthucnangcao {
-        width: 100%;
-        height: fit-content;
-        /* display: flex;
-        flex-direction: column;
-        justify-items: center;
-        align-items: flex-start; */
-    }
-
-
-}

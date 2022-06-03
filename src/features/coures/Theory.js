@@ -12,23 +12,21 @@ import styles from './styles/Theory.module.css';
 function Theory(props) {
 
     const [monHocs, setMonHocs] = useState([])
-
+    const uId = JSON.parse(localStorage.getItem('uId')); 
     useEffect(() =>{
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const data = async () => {
-                    try {
-                        const response = await CourseApi.getAll();
-                        setMonHocs(response.data);
-                    } catch (error) {
-                        console.log("Fetch data error: ", error);
-                    }
+        if (!!uId) {
+            const data = async () => {
+                try {
+                    const response = await CourseApi.getAll();
+                    setMonHocs(response.data);
+                } catch (error) {
+                    console.log("Fetch data error: ", error);
                 }
-                data();
             }
-        });
+            data();
+        }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 

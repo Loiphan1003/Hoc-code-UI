@@ -3,10 +3,9 @@ import styles from './ItemQuestion.module.css';
 import classNames from 'classnames/bind'
 import {  useDispatch } from 'react-redux';
 import createTestSlice from '../../../redux/createTestSlice';
-
 import BaiTapCodeAPI from '../../../apis/baiTapCodeAPI';
 import BaiTapTN from '../../../apis/baiTapTN_API';
-
+import { useStateIfMounted } from "use-state-if-mounted";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const cx = classNames.bind(styles);
 
@@ -14,7 +13,7 @@ const cx = classNames.bind(styles);
 function ItemQuestion({data,index}) {
 
     const dispatch = useDispatch();
-    const [question,setQuestion] = useState({});
+    const [question,setQuestion] = useStateIfMounted({});
     
     const handleDeleteQuestion = (data) => {
         dispatch(createTestSlice.actions.deleteQuestion(data))

@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faSortDown, faUserGroup } from '@fortawesome/free-solid-svg-icons'
-
-import NavBarLevel from './NavBarLevel';
+import { faMagnifyingGlass, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { Avatar } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
 import styles from './Practice.module.css';
-import ImageDev from '../../images/userImageDev.png';
+import clsx from 'clsx';
 import BaiTapLuyenTapAPI from '../../apis/baiTapLuyenTapAPI';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function Practice(props) {
 
-    const [toggle, setToggle] = useState("Tự học");
-    const [level, setLevel] = useState("Độ khó");
-    const [navBarLevelOpen, setNavBarLevelOpen] = useState(false);
+    const [level, setLevel] = useState(0);
     const [baiTapCode,setBaiTapCode] = useState([])
     const navigate = useNavigate();
 
-    const handleToggle = () => {
-        if (toggle === "Tự học") {
-            setToggle("Luyện tập");
-            return;
-        } else {
-            setToggle("Tự học");
-        }
-    }
     const handClickPractice = (id) => {
         navigate(`/practice/code/${id}`);
     }
@@ -54,17 +46,20 @@ function Practice(props) {
                         <input type="text" className={styles.control_search} placeholder="Tìm kiếm bài tập" />
                         <FontAwesomeIcon className={styles.iconPracticeHeader} icon={faMagnifyingGlass} />
                     </div>
-
-                    <div name="level" id={styles.option_trangthai} onClick={() => setNavBarLevelOpen(!navBarLevelOpen)}>
-                        <span>{level}</span>
-                        <FontAwesomeIcon className={styles.icon_small} icon={faSortDown} />
-                        {navBarLevelOpen && <NavBarLevel value={setLevel} />}
+                    <div>
+                        <FormControl >
+                            <Select
+                                value={level}
+                                onChange={e => setLevel(e.target.value)}
+                                sx={{backgroundColor:'white', height:'31px', marginLeft:"10px"}}
+                            >
+                                <MenuItem value={0}>Tất cả</MenuItem>
+                                <MenuItem value={1}>Dễ</MenuItem>
+                                <MenuItem value={2}>Khó</MenuItem>
+                                <MenuItem value={3}>Trung Bình</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
-                    <div className={styles.toggle}>
-                        <input type="checkbox" onClick={handleToggle} />
-                        <label className={styles.onbtn}>{toggle}</label>
-                    </div>
-                    {/* <img class="baner" src="img\banner.png"/> */}
                 </div>
 
                 <div className={styles.conten_list_exercise}>
@@ -78,7 +73,20 @@ function Practice(props) {
                                     <span>{baitap.tag}</span>
                                 </div>
                                 <div className={styles.image_avatar} >
-                                    <img className={styles.avatar} src={baitap.linkAvatar||ImageDev} alt='OwnerImage' />
+                                    {
+                                        console.log(baitap.linkAvatar)
+                                    }
+                                    <Avatar className={styles.avatar}
+                                        alt='avatar'
+                                        sx={{
+                                            height: "70px",
+                                            width: "70px",
+                                            fontSize: "25px"
+                                        }}
+                                        src={window.atob(baitap.linkAvatar)}
+                                    >
+                                        U
+                                    </Avatar>
                                 </div>
                                 <div className={styles.username}>{baitap.tenHienThi}</div>
                                 <div className={styles.item_footer}>
@@ -88,12 +96,17 @@ function Practice(props) {
                                         <span>{baitap.soNguoiLam+'/'+baitap.soNguoiThanhCong}</span>
                                     </div>
                                     <div className={styles.level}>
-                                        <span id={styles.average} >Trung Bình</span>
+                                        <span className={clsx({
+                                            [styles.easy]: baitap.doKho === 1,
+                                            [styles.average]: baitap.doKho === 2,
+                                            [styles.hard]: baitap.doKho === 3,
+                                        })}>{baitap.doKho === 1 ? 'Dễ':(baitap.doKho === 2 ? 'Trung bình':'Khó' )}</span>
                                     </div>
                                 </div>
                             </div>
                         </li>))
                     }
+
                     </ul>
 
                 </div>

@@ -3,11 +3,12 @@
 }
 
 #header {
-    height: 50px;
     width: 100%;
     font-size: 18px;
     display: flex;
     justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid #e8ebed;
 }
 
 .logo img {
@@ -29,7 +30,8 @@
 }
 
 .Menu_item {
-    font-size: 21px;
+    font-size: 18px;
+    margin: 0 15px;
     cursor: pointer;
     width: fit-content;
     color: rgb(90 86 86);
@@ -43,7 +45,8 @@
 }
 
 .Menu_item_active {
-    font-size: 22px;
+    font-size: 19px;
+    margin: 0 15px;
     text-decoration: none;
     color: var(--main_color);
     border-bottom: solid 2.5px var(--main_color);
@@ -57,7 +60,6 @@
 
 .Menu_item:hover {
     opacity: 1;
-    background-color: rgba(194, 53, 100, 0.05);
     border-color: rgba(204, 70, 115, 0.1);
 }
 
@@ -87,6 +89,8 @@
     border: 0px;
     width: 30px;
     margin-right: 23px;
+    display: flex;
+    align-items: center;
 }
 
 .iNoti{
@@ -246,7 +250,6 @@
 .nameNavItem:hover{
     color: var(--main_color);
     text-decoration: none;
-
 }
 
 .line{
@@ -286,11 +289,8 @@
     }
 
     .logo img {
-        margin-top: 5px;
-        margin-left: 10px;
-        width: 50%;
-        object-fit: cover;
-
+        object-fit: scale-down;
+        height: 100%;
     }
 
     .navbar {
@@ -462,7 +462,7 @@
 @media only screen and (min-width: 992px) {
     .List_menu {
         height: 50px;
-        width: 700px;
+        width: 100%;
         display: flex;
         align-content: space-around;
         padding-right: 2%;
@@ -472,22 +472,23 @@
     .logo {
         height: 100%;
         float: left;
-        width:30%;
+        width:100px;
+        margin-right: 15px;
     }
 
     .logo img {
         height: 90%;
         width: auto;
-        margin-left: 50px;
+        float: right;
         margin-top: 5px;
     }
 
     .navbar {
         display: flex;
-        width: 70%;
+        width: 90%;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         box-sizing: border-box;
     }
 

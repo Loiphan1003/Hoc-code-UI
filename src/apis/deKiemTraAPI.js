@@ -13,6 +13,10 @@ const DeKiemTraAPI = {
     {
         const url = `DeKiemTra/getByIdPhong?id=${id}`
         return axiosClient.get(url,{id});
+    },
+    publicDeKiemTra:(id)=>{
+        const url = `DeKiemTra/public-de-kiem-tra?id=${id}`
+        return axiosClient.post(url,{id});
     }
 }
 

@@ -1,0 +1,66 @@
+
+.content{
+    padding: 20px;
+}
+
+.TotalScore{
+    width: 100%;
+}
+.TotalScore h2{
+    text-align: center;
+    margin: 10px 0;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    color: #6F767A;
+}
+
+.item h2{
+    margin: 20px 0;
+    margin-left: 10px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    color: #6F767A;
+}
+
+.answer, .score{
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.answer p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #6F767A;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+.questionTitle{
+    font-size: 17px;
+    font-weight: 500;
+    color: #5f6365;
+    margin-left: 25px;
+    width: 1110px;
+    overflow-wrap: break-word; 
+    white-space: pre-line;
+}
+.score p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #6F767A;
+    margin-bottom: 0;
+}
+
+.success{
+    color: green;
+}
+
+.error{
+    color: rgb(244, 59, 59);
+}

@@ -6,12 +6,12 @@ import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import styles from './ClassRoom.module.css';
 import PhongHocAPI from '../../apis/phongHocApi';
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Avatar } from '@mui/material';
 import { stringAvatar, stringToBGColor } from '../../components/funC/genColorAvatar'
+import { useStateIfMounted } from "use-state-if-mounted";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Room(props) {
 
-    const [rooms, setRooms] = useState([]);
+    const [rooms, setRooms] = useStateIfMounted([]);
     const R_gridTemplateColumns = {
         xxs: "repeat(1, 1fr)",
         xs: "repeat(1, 1fr)",
@@ -33,21 +33,23 @@ function Room(props) {
         lg: "repeat(4, 1fr)",
         xl: "repeat(4, 1fr)"
     }
+    const uId = JSON.parse(localStorage.getItem('uId')); 
+    const isTeacher = JSON.parse(localStorage.getItem('isTeacher')); 
     useEffect(() => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const data = async () => {
-                    try {
-                        const response = await PhongHocAPI.getByUid(user.uid);
-                        setRooms(response.data);
-                    } catch (error) {
-                        console.log("Fetch data error: ", error);
-                    }
+        if(!!uId)
+        {
+            const data = async () => {
+                try {
+
+                    const response =  isTeacher ? await PhongHocAPI.getByUidGiangVien(uId) : await PhongHocAPI.getByUid(uId);
+                    setRooms(response.data);
+                } catch (error) {
+                    console.log("Fetch data error: ", error);
                 }
-                data();
             }
-        });
+            data();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -74,16 +76,17 @@ function Room(props) {
                                 width: "70px",
                                 fontSize: "30px"
                             }}
+                            src={window.atob(room.linkAvatar)}
                             {...stringAvatar(room.tenPhong.substr(0,room.tenPhong.length-1))}
                         >
                         </Avatar>
                         <div className={styles.ownerName}>
-                            nvduy_0511
+                            {room.tenHienThi}
                         </div>
                         <div className={styles.line}></div>
                         <div className={styles.numberStudent}>
                             <FontAwesomeIcon className={styles.icon_numberStuden} icon={faUserGroup} />
-                            <span>20</span>
+                            <span>{room.soLuongThanhVien}</span>
                         </div>
                     </Item>
                 </NavLink>

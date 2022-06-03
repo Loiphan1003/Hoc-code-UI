@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import LyThuyetAPI from '../../apis/lyThuyetAPI';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import styles from './styles/CouresSection.module.css';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 function CouresDetailSection(props) {
 
@@ -31,6 +32,7 @@ function CouresDetailSection(props) {
     return (
         <div>
             <div className={styles.header}>
+                <LibraryBooksIcon/>
                 <h1>{lyThuyet.tieuDe}</h1>
             </div>
 

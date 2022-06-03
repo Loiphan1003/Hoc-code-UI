@@ -13,17 +13,17 @@ export function stringToColor(string) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.slice(-2);
   }
-  /* eslint-enable no-bitwise */
-
-  return color;
+    return color;
+ 
 }
+
 export function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
       height: "70px",
       width: "70px",
-      fontSize: "30px"
+      fontSize: "25px"
     },
     children: `${name.substr(0,1)}`,
   };

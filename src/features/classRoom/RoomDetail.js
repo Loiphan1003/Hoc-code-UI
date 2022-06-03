@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBook } from '@fortawesome/free-solid-svg-icons';
@@ -6,12 +6,13 @@ import Coursework from './coursework/Coursework';
 import Member from './member/Member';
 import styles from './RoomDetail.module.css'
 import PhongHocAPI from '../../apis/phongHocApi';
+import { useStateIfMounted } from "use-state-if-mounted";
 
 function RoomDetail(props) {
     const tabs = ["Bài tập","Thành viên"]
 
-    const [tabType, setTabType] = useState("Bài tập");
-    const [roomInfo, setRoomInfo] = useState({});
+    const [tabType, setTabType] = useStateIfMounted("Bài tập");
+    const [roomInfo, setRoomInfo] = useStateIfMounted({});
     let params = useParams();
 
     useEffect(() => {
@@ -24,6 +25,7 @@ function RoomDetail(props) {
             }
         }
         getInforRoom();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params]);
 
 

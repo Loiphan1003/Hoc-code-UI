@@ -9,27 +9,62 @@ import DeKiemTraAPI from '../../apis/deKiemTraAPI';
 import Button from '@mui/material/Button';
 import ResultView from './ResultView';
 import { useParams } from 'react-router-dom';
+import { useStateIfMounted } from "use-state-if-mounted";
+import { useSelector } from 'react-redux';
+import BaiLamkiemTraAPI from '../../apis/baiLamKiemTraAPI';
 
 
 function Test(props) {
-
     const params = useParams();
     const [collapse, setCollapse] = useState(false);
     const [select, setSelect] = useState();
-    const [test,setTest] = useState({});
-    const [questions,setQuestions] = useState([]);
+    const [test,setTest] = useStateIfMounted({});
+    const [questions,setQuestions] = useStateIfMounted([]);
     const [resultView,setResultView] = useState(false);
-    const idDeKiemTra = 10;
+    const [tongDiem,setTongDiem] = useState(0);
+    const idDeKiemTra = params.idDeKiemTra;
+    let answers = useSelector((state) => state.doTest.answer);
+    answers = [...answers].sort((a,b) => a.stt-b.stt);
+    const uId = JSON.parse(localStorage.getItem('uId')); 
 
     useEffect(() => {
         const getBaiKiemTra = async ()=>{
-            const response = await DeKiemTraAPI.getOneById(params.idDeKiemTra);
+            const response = await DeKiemTraAPI.getOneById(idDeKiemTra);
             setTest(response.data);
             setQuestions(response.data.listCauHoi)
-        }
 
+        }
         getBaiKiemTra();
-    }, [params]);
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [idDeKiemTra]);
+
+    const handleNopBai = () => {
+        setResultView(true);
+        const totalScore = answers.reduce((sum, answer) => sum+answer.diemDatDuoc, 0);
+        setTongDiem(totalScore);
+              const saveBaiLamKiemTra = async()=>{
+                try {
+                  const response = await BaiLamkiemTraAPI.add({
+                    tongDiem : totalScore,
+                    uId: uId,
+                    idDeKiemTra: idDeKiemTra,
+                    lsCauTraLoi: answers.map((answer) => ({
+                                              id: answer.id,
+                                              dapAn: answer.dapAn,
+                                              loaiCauHoi: answer.loaiCauHoi,
+                                              diem: answer.diemDatDuoc}))
+                  });
+    
+                  if(response.data)
+                    alert("Lưu bài làm kiểm tra thành công!");
+                    
+                } catch (error) {
+                  console.log(error)
+                }
+              }
+              saveBaiLamKiemTra();
+    }
 
     const handleSelect = (index) => {
         setSelect(questions.at(index));
@@ -76,10 +111,10 @@ function Test(props) {
                 <div className={styles.right_header} >
                    <div>
                         <h1>{test.moTa}</h1>
-                        <Button sx={{position: 'absolute',top: '16px',right: '45px', backgroundColor: '#66d551'}} variant="contained"
-                            onClick={() => setResultView(true)}>
+                        {resultView || <Button sx={{position: 'absolute',top: '16px',right: '45px', backgroundColor: '#66d551'}} variant="contained"
+                            onClick={handleNopBai}>
                             Nộp bài
-                        </Button>
+                        </Button>}
                    </div>
                     <div className={styles.header_list} >
                         <div className={styles.header_items_list} >
@@ -110,7 +145,7 @@ function Test(props) {
 
                 <div className={styles.right_content} >
                     {(!!select && !resultView) &&  (select.loaiCauHoi === 0  ? <TestMutipleQuestion data={select} /> :  <TestCode data={select} />  ) }
-                    { resultView && <ResultView idDeKiemTra = {idDeKiemTra}></ResultView> }
+                    { resultView && <ResultView totalScore = {tongDiem} answers ={answers}></ResultView> }
                 </div>
 
             </div>

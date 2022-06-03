@@ -24,6 +24,9 @@ const doTestSlice = createSlice({
                         return item
                 })
             }
+        },
+        clearAnswer: (state,action) => {
+            state.answer  = action.payload;
         }
     }
 })
