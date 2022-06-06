@@ -4,7 +4,7 @@ import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
 import styles from './CreateBTLuyenTap.module.css';
 import Backdrop from '../../../components/Backdrop';
 import BaiTapLuyenTapAPI from '../../../apis/baiTapLuyenTapAPI';
-
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -33,16 +33,26 @@ function CreateBTLuyenTap(props) {
     const mauDauVaoRef = useRef()
     const mauDauRaRef = useRef()
     const tagRef = useRef()
+    const navigate = useNavigate();
+
 
     const handleSaveExercise = () => {
         const auth = getAuth();
+        console.log("Runnn");
         onAuthStateChanged(auth, (user) => {
-            if (user) {
+            // if (user) {
+                if(level === undefined || nameExercise === undefined || deBaiRef.current.value === undefined || rangBuocRef.current.value === undefined || 
+                    dinhDangDauVaoRef === undefined || dinhDangDauRaRef === undefined || mauDauVaoRef === undefined || mauDauRaRef === undefined || tagRef === undefined || testCases.length === 0
+                    )
+                    {
+                        alert("Vui lòng nhập đầy đủ thông tin");
+                        return;
+                    }
                 let ob = {
                     doKho: level,
                     tieuDe: nameExercise,
                     deBai: deBaiRef.current.value,
-                    uIdNguoiTao: user.uid,
+                    // uIdNguoiTao: user.uid,
                     rangBuoc: rangBuocRef.current.value,
                     dinhDangDauVao: dinhDangDauVaoRef.current.value,
                     dinhDangDauRa: dinhDangDauRaRef.current.value,
@@ -52,18 +62,19 @@ function CreateBTLuyenTap(props) {
                     testCases: testCases
                 }
 
+                console.log(ob);
                 const addBTCode = async () => {
                     try {
                         const response = await BaiTapLuyenTapAPI.add(ob);
                         if(response.data)
                             alert("Thêm bài tập luyện tập thành công!")
-                        console.log(response.data);
+                        navigate('/Admin/Quanlybaitapcode')
                     } catch (error) {
                         console.log("Fetch data error: ", error);
                     }
                 }
                 addBTCode();
-            }
+            // }
         });
         
     }
@@ -115,8 +126,8 @@ function CreateBTLuyenTap(props) {
                             onChange={e => setLevel(e.target.value)}
                         >
                             <MenuItem value={1}>Dễ</MenuItem>
-                            <MenuItem value={2}>Khó</MenuItem>
-                            <MenuItem value={3}>Trung Bình</MenuItem>
+                            <MenuItem value={2}>Trung bình</MenuItem>
+                            <MenuItem value={3}>Khó</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
@@ -156,7 +167,7 @@ function CreateBTLuyenTap(props) {
 
                     <Button  variant="contained" style={{marginLeft:"20px"}}
                         endIcon={<SaveIcon />}
-                        onClick={handleSaveExercise}
+                        onClick={() => handleSaveExercise()}
                     >
                         Lưu
                     </Button>

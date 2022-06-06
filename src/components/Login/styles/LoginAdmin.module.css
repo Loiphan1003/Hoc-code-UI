@@ -1,0 +1,60 @@
+
+.button_DangNhap{
+    margin-top: 15px;
+    height: 50px;
+    width: 80%;
+    font-size: 20px;
+    color: white;
+    border-radius: 0.5rem;
+    border-style: none;
+    background-color: #1877F2;
+}
+.button_DangNhap:hover{
+    cursor: pointer;
+    color: black;
+    background-color: red,0.5;
+}
+.modall{
+    border-radius: 6px;
+    background-color: white;
+    height: 20rem;
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.modall h1{
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+.modall .input{
+    width: max-content;
+    margin-top: 20px;
+    height: 40px;
+    width: 80%;
+    font-size: 20px;
+    border-radius: 0.5rem;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+.login{
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: max-content;
+    width: auto;
+    z-index: 10;
+}
+.login span{
+    margin-top: 10px;
+}
+.bgr_image{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)),url("../../../images//Anh-nen-Admin.png");
+    background-size: cover;
+    background-repeat: none;
+}

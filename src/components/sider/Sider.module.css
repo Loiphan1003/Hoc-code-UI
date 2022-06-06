@@ -1,0 +1,92 @@
+.nav_menu{
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+    width: 250px;
+    height: 100vh;
+    transition: 850ms;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 10px 0px;
+    display: block;
+}
+.nav_text{
+    width: max-content;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 15px 10px;
+    list-style: none;
+    height: 30px;
+    border-radius: 10px;
+    color: black;
+}
+.nav_text:hover{
+    background-color: rgb(235, 230, 230);
+}
+.nav_name{  
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: center;
+
+}
+.nav_namemenu{  
+    margin-left: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.header {
+    height: 100px;
+    width: 100%;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+.logoAdmin{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headerAdmin{
+    width: auto;
+    align-items: center;
+    justify-content: center;
+}
+.account{
+    width: 250px;
+    top: 80%;
+    text-align: left;
+    position: absolute;
+    overflow-y: hidden;
+}
+.info{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.info:hover{
+    background-color: rgb(176, 182, 182);
+}
+.horizontal{
+    background-color: rgb(176, 182, 182);
+    height: 1px;
+    width: 100%;
+}
+.Logout{
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 50px;
+}
+.Logout:hover{
+    background-color: rgb(176, 182, 182);
+    cursor: pointer;
+}

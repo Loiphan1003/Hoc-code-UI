@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary
 }));
 
-function Room(props) {
+function Room({render}) {
 
     const [rooms, setRooms] = useStateIfMounted([]);
     const R_gridTemplateColumns = {
@@ -50,7 +50,7 @@ function Room(props) {
             data();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [render])
 
     return (
         <Box

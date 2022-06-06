@@ -1,0 +1,170 @@
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    color: black;
+    padding: 10px 80px;
+    box-sizing: border-box;
+}
+
+.TableCauHoiCode{
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.conten_cell {
+    padding: 0px;
+    margin: 0px;
+}
+.TableBody{
+    overflow-y: scroll;
+    height: 90vh;
+}
+:root {
+    --main-color: #3F48CC;
+    --icon-color: #0070FF;
+}
+
+.content{
+    width: auto;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+.content h1{
+    font-weight: 700;
+    text-align: center;
+}
+.input_NameEx{
+    margin-top: 30px;
+    box-sizing: border-box;
+    height: 64px;
+    outline: none;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    background: transparent;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 32px;
+    width: 100%;
+    color: #4e5052;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 0 rgb(40 50 56 / 24%), 0 2px 4px 0 rgb(40 50 56 / 24%);
+    
+}
+
+.input_NameEx:focus {
+    outline: solid 2px #5fa0f5;
+}
+
+.exxercise_discription
+{
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+.exercise_level {
+    margin-top: 30px;
+}
+
+.excercise_language{
+    margin: 20px 0;
+}
+
+.btnAddTestCase{
+    float: right;
+}
+
+
+.content_TestCase {
+    margin-top: 20px;
+    width: auto;
+}
+
+.exercise_btn{
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input_output{
+    width: 100%;
+}
+
+.input_testcase{
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    border-radius: 5px;
+    background-color: white;
+    position: fixed;
+    padding: 2rem;
+    height: 42%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.testcase{
+    width: 100%;
+    margin-top: 10px;
+    background-color: #e7dfdf;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 40px;
+    box-sizing: border-box;
+}
+.name_input{
+    color: rgb(59, 58, 58);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.input_testcase h2{
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+.btn_intputTestCase{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.testcase_btn{
+    cursor: pointer;
+}
+.btn_close{
+    cursor: pointer;
+    margin-right: 20px;
+}
+.btn_save{
+    color: red;
+    cursor: pointer;
+}
+.btn_update{
+    color: #434242;
+    margin-right: 20px;
+}
+.btn_delete{
+    color: #e51e1ef5;
+}

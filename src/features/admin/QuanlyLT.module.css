@@ -1,0 +1,116 @@
+.custom_table{
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+}
+.custom_table thead tr{
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.custom_table th,
+.custom_table td{
+    padding: 12px 15px;
+}
+
+
+.custom_table tbody tr{
+    border-bottom: 1px solid #dddddd;
+
+}
+.custom_table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+.custom_table tbody tr td button{
+    padding: 5px 8px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+}
+.custom_table tbody tr td button:hover{
+    background-color: rgb(40 50 56 / 24%);
+    border-radius: 5px;
+}
+.btnAdd{
+    background-color: #009879;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 70px;
+    cursor: pointer;
+}
+.btnAdd:hover{
+    background-color: #067d65;
+}
+.content{
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    width: 40%;
+    border-radius: 5px;
+    background-color: white;
+    position: fixed;
+    padding: 2rem;
+    height: auto;
+    box-sizing: border-box;
+}
+.input-file{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 40px 0;
+}
+
+.input-file p{
+    font-size: 20px;
+    font-weight: bold;
+}
+.upfile{
+    font-size: 15px;
+    background-color: white;
+    border-radius: 10px;
+    width: 350px;
+    outline: none;
+    box-shadow: 0px 0px 2px 0px rgb(40 50 56 / 24%), 0px 2px 4px 0px rgb(40 50 56 / 24%);
+}
+::-webkit-file-upload-button{
+    color: white;
+    background-color: #1976d2;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+::-webkit-file-upload-button:hover{
+    background-color: #155fa8;
+}
+
+.contentLT{
+    width: 900px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    border-radius: 5px;
+    background-color: white;
+    position: fixed;
+    padding: 2rem;
+    height: 80%;
+    box-sizing: border-box;
+}
+
+.noiDung{
+    margin: 20px 0px;
+}

@@ -118,6 +118,7 @@ function Exercise(props) {
         setOpen(false);
     }
   
+    console.log(rows)
 
     return (
         <>
@@ -141,7 +142,7 @@ function Exercise(props) {
                                 <TableRow>
                                     <TableCell sx={{ width: 40, fontWeight: "700" }}>ID</TableCell>
                                     <TableCell sx={{ fontWeight: "700" }} align="center">Tiêu Đề</TableCell>
-                                    <TableCell sx={{ fontWeight: "700" }} align="center">Cấp độ</TableCell>
+                                    <TableCell sx={{ fontWeight: "700" }} align="center">Ngôn ngữ</TableCell>
                                     <TableCell sx={{ width: 40, fontWeight: "700" }} align="center">Xóa</TableCell>
                                     <TableCell sx={{ width: 40, fontWeight: "700" }} align="center">Sửa</TableCell>
 
@@ -155,8 +156,7 @@ function Exercise(props) {
                                         <TableCell component="th" scope="row" >{row.id}</TableCell>
                                         <TableCell align="center" >{row.tieuDe}</TableCell>
                                         <TableCell align="center" >
-                                            {row.doKho === 1 ? "Dễ" :
-                                                (row.doKho === 2 ? "Trung bình" : "Khó")}
+                                            {row.ngonNgu}
                                         </TableCell>
                                         <TableCell align="center" >
                                             <DeleteIcon sx={{ cursor: "pointer", color: "#f04530" }}

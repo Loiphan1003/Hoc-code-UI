@@ -97,6 +97,7 @@ function Coursework(props) {
         <div className={props.type === 'Bài tập' ? styles.courseWork : styles.none} >
             {/*Start Mobile  */}
             <div className={styles.mobile_btn} >
+               
                 <NavLink to={`/room/${idPhong.roomId}/create`} className={styles.btn_mobile} >
                     <FontAwesomeIcon icon={faCirclePlus} />
                     <span>Tạo bài tập</span>
@@ -248,11 +249,12 @@ function Coursework(props) {
             </div>
 
             <div className={styles.courseWork_right_content}>
-
+                
+                {localStorage.getItem("isTeacher") === 'true' && 
                 <NavLink to={`/create-test/${idPhong}`} className={styles.btn_}>
                     <FontAwesomeIcon icon={faCirclePlus} fontSize='22px' />
                     <p>Tạo bài tập</p>
-                </NavLink>
+                </NavLink>}
 
                 <div className={styles.btn_fillter}>
                     <p>Trạng thái</p>

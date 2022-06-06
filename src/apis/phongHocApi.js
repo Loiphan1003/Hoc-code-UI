@@ -16,7 +16,11 @@ const PhongHocAPI = {
     getByUidGiangVien: (uID) => {
         const url = `PhongHoc/getByUidGiangVien?uID=${uID}`;
         return axiosClient.get(url,{uID});
-    }
+    },
+    createRoom: (room) => {
+        const url = 'PhongHoc/createRoom';
+        return axiosClient.post(url, room);
+    },
 }
 
 export default PhongHocAPI;

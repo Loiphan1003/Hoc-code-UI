@@ -20,11 +20,16 @@ import DefaultLayout from './layouts/defaultLayout';
 import LayoutCreate from './layouts/layoutCreate';
 import Test from './features/test/Test';
 import UseInfomation from './features/userInfomation/UserInformation';
-
+import AdminHome from './features/admin/HomeMainAdmin';
+import LoginAdmin from './components/Login/LoginAdmin.js';
 import CreateMonHoc from './features/create/createMonHoc';
 import CreateLyThuyet from './features/create/createLyThuyet';
+import QuanLyGV from './features/admin/QuanLyGV';
 import TestOverview from './features/classRoom/testOverview';
-
+import LayoutAdmin from './layouts/layoutAdmin/index';
+import QuanLyNguoiDung from './features/admin/QuanLyUser';
+import QuanLyBTCode from './features/admin/QuanlyBTLT';
+import QuanLyLT from './features/admin/QuanlyLT';
 
 function App() {
 
@@ -34,46 +39,46 @@ function App() {
                 <Routes>
                     <Route path='/home' element={
                         <DefaultLayout >
-                            <Home  />
+                            <Home />
                         </DefaultLayout>}
                     />
-                    <Route path='/learning' element={<Learn  />} />
+                    <Route path='/learning' element={<Learn />} />
                     <Route path='/theory' element={
                         <DefaultLayout>
-                            <Theory  />
+                            <Theory />
                         </DefaultLayout>}
                     />
                     <Route path="/theory/coureDetail/:courseID" element={
                         <DefaultLayout>
-                            <CouresDetail  />
+                            <CouresDetail />
                         </DefaultLayout>}
                     />
-                    <Route path='/couredetail/section/:idLyThuyet' element={<CouresDetailSection  />} />
+                    <Route path='/couredetail/section/:idLyThuyet' element={<CouresDetailSection />} />
                     <Route path='/room' element={
                         <DefaultLayout>
-                            <ClassRoom  />
+                            <ClassRoom />
                         </DefaultLayout>}
                     />
-                    <Route path='/room/:roomId' element={<RoomDetail  />} />
+                    <Route path='/room/:roomId' element={<RoomDetail />} />
                     <Route path='/create-test/:idPhong' element={<CreateTest />} />
                     <Route path='/practice' element={
                         <DefaultLayout>
-                            <Practice  />
+                            <Practice />
                         </DefaultLayout>}
                     />
                     <Route path='/exercise' element={
                         <DefaultLayout>
-                            <Exercise  />
+                            <Exercise />
                         </DefaultLayout>}
                     />
                     <Route path='/exercise/create' element={
                         <LayoutCreate>
-                            <CreateBTCode  />
+                            <CreateBTCode />
                         </LayoutCreate>}
                     />
                     <Route path='/exercise/createLuyenTap' element={
                         <LayoutCreate>
-                            <CreateBTLuyenTap  />
+                            <CreateBTLuyenTap />
                         </LayoutCreate>}
                     />
                     <Route path='/exercise/multiplechoice' element={
@@ -86,20 +91,75 @@ function App() {
 
                     <Route exact path='/' element={
                         <DefaultLayout >
-                            <Content  />
+                            <Content />
                         </DefaultLayout>}
                     />
 
                     <Route path='/test/:idDeKiemTra' element={<Test />} />
 
-                    <Route path='/createMonHoc'  element={<CreateMonHoc/>}/>
-                    <Route path='/createLyThuyet'  element={<CreateLyThuyet/>}/>
+                    <Route path='/createMonHoc' element={<CreateMonHoc />} />
+                    <Route path='/createLyThuyet' element={<CreateLyThuyet />} />
                     <Route path='/infomation' element={
                         <DefaultLayout >
-                            <UseInfomation/>
+                            <UseInfomation />
                         </DefaultLayout>
-                    }/>
-                    <Route path='/test-overview/:idTest' element={<TestOverview/>}/>
+                    } />
+                    <Route path='/test-overview/:idTest' element={<TestOverview />} />
+
+                    {/* Admin */}
+                    <Route path='/admin'
+                        element={<LoginAdmin />}
+                    />
+
+                    <Route
+                        path='/admin/home'
+                        element={
+                            <LayoutAdmin>
+                                < AdminHome />
+                            </LayoutAdmin>
+                        }
+                    />
+
+                    <Route
+                        path='/Admin/Quanlygv'
+                        element={
+                            <LayoutAdmin>
+                                <QuanLyGV/>
+                            </LayoutAdmin>
+                        }
+                    />
+
+                    <Route
+                        path='/Admin/Quanlyuser'
+                        element={
+                            <LayoutAdmin>
+                                <QuanLyNguoiDung/>
+                            </LayoutAdmin>
+                        }
+                    />
+
+                    <Route
+                        path='/Admin/Quanlybaitapcode'
+                        element={
+                            <LayoutAdmin>
+                                <QuanLyBTCode/>
+                            </LayoutAdmin>
+                        }
+                    />
+
+                    <Route
+                        path='/Admin/Quanlybailythuyet'
+                        element={
+                            <LayoutAdmin>
+                                <QuanLyLT/>
+                            </LayoutAdmin>
+                        }
+                    />
+                    <Route path='/QuanLyLT/createLyThuyet/:IdMonHoc/:TenMonHoc' element={
+                        <LayoutAdmin>
+                            <CreateLyThuyet  />
+                        </LayoutAdmin>}
+                    />
                 </Routes>
             </Router>
         </div>
