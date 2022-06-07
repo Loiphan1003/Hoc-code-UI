@@ -38,7 +38,8 @@
     "react-scripts": "^5.0.0",
     "save": "^2.4.0",
     "use-state-if-mounted": "^1.0.7",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -20,7 +20,12 @@ const BaiTapCodeAPI = {
     searchBaiTapCode: (value) => {
         const url = `BaiTapCode/search?searchValue=${value}`
         return axiosClient.get(url,{value})
+    },
+    addList: (listBai, uID) => {
+        const url = `BaiTapCode/addListBaiTapCode?uID=${uID}`;
+        return axiosClient.post(url, listBai, {uID});
     }
+
     
 
 }

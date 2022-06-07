@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { faCode, faBook, faUser, faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Sider.module.css'
 import companyLogo from '../../images/logo_transparent.png';
 import FaceTwoToneIcon from '@mui/icons-material/FaceTwoTone';
@@ -10,7 +10,6 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 function Sider() {
 
     const [openLogout, setOpenLogout] = useState(false);
-    const navigate = useNavigate();
     const TkAdmin = JSON.parse(sessionStorage.getItem("Admin"));
 
     const SideData = [
@@ -73,7 +72,7 @@ function Sider() {
                     <div className={styles.horizontal}></div>
                     {openLogout && <NavLink style={{ color: "black" }} className={styles.Logout} onClick={handleLogout} to={'/Admin'}>
                         <div className={styles.Logout} >
-                            <ExitToAppIcon style={{ margin: "0px", margin: "0px 10px" }} /> Đăng xuất
+                            <ExitToAppIcon style={{ margin: "0px 10px" }} /> Đăng xuất
                         </div>
                     </NavLink>}
                     <div className={styles.horizontal}></div>

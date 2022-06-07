@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './QuanLyGV.module.css'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDeleteLeft, faPen, faAdd } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faAdd } from '@fortawesome/free-solid-svg-icons';
 import GiangVienAPI from '../../apis/giangVienAPI';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase/config';

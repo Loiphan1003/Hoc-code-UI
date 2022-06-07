@@ -1,0 +1,13 @@
+.container{
+    position: fixed;
+    background-color: white;
+    width: 300px;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 2px black;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+
+}
