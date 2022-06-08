@@ -17,6 +17,10 @@ const DeKiemTraAPI = {
     publicDeKiemTra:(id)=>{
         const url = `DeKiemTra/public-de-kiem-tra?id=${id}`
         return axiosClient.post(url,{id});
+    },
+    getListCauHoi: (uID) => {
+        const url = `DeKiemTra/getListCauHoi?uID=${uID}`;
+        return axiosClient.get(url, {uID});
     }
 }
 
