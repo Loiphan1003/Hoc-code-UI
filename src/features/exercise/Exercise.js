@@ -15,7 +15,6 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -36,6 +35,7 @@ function Exercise(props) {
         isBTCode: false,
         id: 1
     });
+    const uId = JSON.parse(localStorage.getItem('uId')); 
 
     useEffect(() => {
         const getAllBTCode = async () => {
@@ -117,44 +117,92 @@ function Exercise(props) {
         setOpen(false);
     };
 
+    const addBTCode = async (ob) => {
+        try {
+            const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
+            if(response.data)
+                alert(`Thêm bài tập có tiêu đề : ${ob.tieuDe} thành công!`)
+            console.log(response.data);
+        } catch (error) {
+            console.log("Fetch data error: ", error);
+        }
+    }
+
     const handleAddListBTCode = () => {
-        let list = [];
-        let ob = {};
+        
+        dataImport.forEach((data) =>{
 
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-
-                dataImport.forEach(element => {
-                    ob = {
-                        tieuDe: element[0],
-                        deBai: element[1],
-                        rangBuoc: element[2],
-                        dinhDangDauVao: element[3],
-                        dinhDangDauRa: element[4],
-                        mauDauVao: element[5],
-                        mauDauRa: element[6],
-                        ngonNgu: element[7]
-                    }
-                    list.push(ob);
-                });
-                const addList = async () => {
-                    try {
-                        const response = await BaiTapCodeAPI.addList(list, user.uid);
-                        if (response.data === true) {
-                            alert("Thêm thành công")
-                            console.log(response.data);
-                            setDataImport([]);
-                            setReset(true);
-                        }
-                    } catch (error) {
-                        console.log("Error: ", error);
-                    }
+            let baiTapCode = {
+                tieuDe: data.shift().toString(),
+                deBai: data.shift().toString(),
+                rangBuoc: data.shift().toString(),
+                dinhDangDauVao: data.shift().toString(),
+                dinhDangDauRa: data.shift().toString(),
+                mauDauVao: data.shift().toString(),
+                mauDauRa: data.shift().toString(),
+                ngonNgu: data.shift().toString(),
+                uIdNguoiTao: uId,
+                
+            };
+            let testCase = [];
+            while(data.length > 0)
+            {
+                if(data[0] !== ''){
+                    testCase.push({
+                        Input: data.shift().toString(),
+                        Output: data.shift().toString(),
+                    })
                 }
-                addList();
+                else
+                    break;
+                
             }
+            baiTapCode = {
+                ...baiTapCode,
+                testCases: testCase
+            }
+            addBTCode(baiTapCode)
+
         })
 
+
+
+        // let list = [];
+        // let ob = {};
+
+        // const auth = getAuth();
+        // onAuthStateChanged(auth, (user) => {
+        //     if (user) {
+
+        //         dataImport.forEach(element => {
+        //             ob = {
+        //                 tieuDe: element[0],
+        //                 deBai: element[1],
+        //                 rangBuoc: element[2],
+        //                 dinhDangDauVao: element[3],
+        //                 dinhDangDauRa: element[4],
+        //                 mauDauVao: element[5],
+        //                 mauDauRa: element[6],
+        //                 ngonNgu: element[7]
+        //             }
+        //             list.push(ob);
+        //         });
+        //         const addList = async () => {
+        //             try {
+        //                 const response = await BaiTapCodeAPI.addList(list, user.uid);
+        //                 if (response.data === true) {
+        //                     alert("Thêm thành công")
+        //                     console.log(response.data);
+        //                     setDataImport([]);
+        //                     setReset(true);
+        //                 }
+        //             } catch (error) {
+        //                 console.log("Error: ", error);
+        //             }
+        //         }
+        //         addList();
+        //     }
+        // })
 
     }
 

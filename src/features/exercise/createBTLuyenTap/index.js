@@ -15,7 +15,6 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function CreateBTLuyenTap(props) {
     
@@ -34,49 +33,46 @@ function CreateBTLuyenTap(props) {
     const mauDauRaRef = useRef()
     const tagRef = useRef()
     const navigate = useNavigate();
+    const uId = JSON.parse(localStorage.getItem('uId')); 
 
 
     const handleSaveExercise = () => {
-        const auth = getAuth();
-        console.log("Runnn");
-        onAuthStateChanged(auth, (user) => {
-            // if (user) {
-                if(level === undefined || nameExercise === undefined || deBaiRef.current.value === undefined || rangBuocRef.current.value === undefined || 
-                    dinhDangDauVaoRef === undefined || dinhDangDauRaRef === undefined || mauDauVaoRef === undefined || mauDauRaRef === undefined || tagRef === undefined || testCases.length === 0
-                    )
-                    {
-                        alert("Vui lòng nhập đầy đủ thông tin");
-                        return;
-                    }
-                let ob = {
-                    doKho: level,
-                    tieuDe: nameExercise,
-                    deBai: deBaiRef.current.value,
-                    // uIdNguoiTao: user.uid,
-                    rangBuoc: rangBuocRef.current.value,
-                    dinhDangDauVao: dinhDangDauVaoRef.current.value,
-                    dinhDangDauRa: dinhDangDauRaRef.current.value,
-                    mauDauVao: mauDauVaoRef.current.value,
-                    mauDauRa: mauDauRaRef.current.value,
-                    tag:tagRef.current.value,
-                    testCases: testCases
+        if(!!uId)
+        {
+            if(level === undefined || nameExercise === undefined || deBaiRef.current.value === undefined || rangBuocRef.current.value === undefined || 
+                dinhDangDauVaoRef === undefined || dinhDangDauRaRef === undefined || mauDauVaoRef === undefined || mauDauRaRef === undefined || tagRef === undefined || testCases.length === 0
+                )
+                {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                    return;
                 }
-
-                console.log(ob);
-                const addBTCode = async () => {
-                    try {
-                        const response = await BaiTapLuyenTapAPI.add(ob);
-                        if(response.data)
-                            alert("Thêm bài tập luyện tập thành công!")
-                        navigate('/Admin/Quanlybaitapcode')
-                    } catch (error) {
-                        console.log("Fetch data error: ", error);
-                    }
+            let ob = {
+                doKho: level,
+                tieuDe: nameExercise,
+                deBai: deBaiRef.current.value,
+                // uIdNguoiTao: user.uid,
+                rangBuoc: rangBuocRef.current.value,
+                dinhDangDauVao: dinhDangDauVaoRef.current.value,
+                dinhDangDauRa: dinhDangDauRaRef.current.value,
+                mauDauVao: mauDauVaoRef.current.value,
+                mauDauRa: mauDauRaRef.current.value,
+                tag:tagRef.current.value,
+                testCases: testCases
+            }
+    
+            console.log(ob);
+            const addBTCode = async () => {
+                try {
+                    const response = await BaiTapLuyenTapAPI.add(ob);
+                    if(response.data)
+                        alert("Thêm bài tập luyện tập thành công!")
+                    navigate('/Admin/Quanlybaitapcode')
+                } catch (error) {
+                    console.log("Fetch data error: ", error);
                 }
-                addBTCode();
-            // }
-        });
-        
+            }
+            addBTCode();
+        }
     }
     
     const handleAddTestCase = () => {

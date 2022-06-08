@@ -15,7 +15,6 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function CreateBTCode(props) {
     
@@ -32,37 +31,36 @@ function CreateBTCode(props) {
     const dinhDangDauRaRef = useRef()
     const mauDauVaoRef = useRef()
     const mauDauRaRef = useRef()
-
+    const uId = JSON.parse(localStorage.getItem('uId')); 
+    
     const handleSaveExercise = () => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                let ob = {
-                    tieuDe: nameExercise,
-                    deBai: deBaiRef.current.value,
-                    uIdNguoiTao: user.uid,
-                    ngonNgu: language,
-                    rangBuoc: rangBuocRef.current.value,
-                    dinhDangDauVao: dinhDangDauVaoRef.current.value,
-                    dinhDangDauRa: dinhDangDauRaRef.current.value,
-                    mauDauVao: mauDauVaoRef.current.value,
-                    mauDauRa: mauDauRaRef.current.value,
-                    testCases: testCases
-                }
-
-                const addBTCode = async () => {
-                    try {
-                        const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
-                        if(response.data)
-                            alert("Thêm bài tập code thành công!")
-                        console.log(response.data);
-                    } catch (error) {
-                        console.log("Fetch data error: ", error);
-                    }
-                }
-                addBTCode();
+        if(!!uId)
+        {
+            let ob = {
+                tieuDe: nameExercise,
+                deBai: deBaiRef.current.value,
+                uIdNguoiTao: uId,
+                ngonNgu: language,
+                rangBuoc: rangBuocRef.current.value,
+                dinhDangDauVao: dinhDangDauVaoRef.current.value,
+                dinhDangDauRa: dinhDangDauRaRef.current.value,
+                mauDauVao: mauDauVaoRef.current.value,
+                mauDauRa: mauDauRaRef.current.value,
+                testCases: testCases
             }
-        });
+    
+            const addBTCode = async () => {
+                try {
+                    const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
+                    if(response.data)
+                        alert("Thêm bài tập code thành công!")
+                    console.log(response.data);
+                } catch (error) {
+                    console.log("Fetch data error: ", error);
+                }
+            }
+            addBTCode();
+        }
         
     }
     

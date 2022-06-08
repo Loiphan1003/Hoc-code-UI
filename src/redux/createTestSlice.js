@@ -7,7 +7,10 @@ const createTestSlice = createSlice({
     },
     reducers: {
         addQuestion: (state, action) => {
-            state.questions = [...state.questions,action.payload]
+
+            state.questions = [...state.questions,...action.payload]
+            const score = 10/state.questions.length;
+            state.questions.forEach( item => item.diem = score);
         },
         deleteQuestion: (state,action) => {
             console.log(action.payload)
@@ -21,6 +24,8 @@ const createTestSlice = createSlice({
                 }
                 return true
             } )
+            const score = 10/state.questions.length;
+            state.questions.forEach( item => item.diem = score);
         }
     }
 })

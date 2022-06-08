@@ -15,6 +15,7 @@ function ImportBTCode({data}) {
             header: 1,
             defval: ""
         });
+        console.log(jsonData)
         data(jsonData.slice(1));
     }
 

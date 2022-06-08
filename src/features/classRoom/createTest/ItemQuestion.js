@@ -1,4 +1,4 @@
-import React ,{memo, useEffect, useState} from 'react'
+import React ,{memo, useEffect} from 'react'
 import styles from './ItemQuestion.module.css';
 import classNames from 'classnames/bind'
 import {  useDispatch } from 'react-redux';
@@ -14,13 +14,12 @@ function ItemQuestion({data,index}) {
 
     const dispatch = useDispatch();
     const [question,setQuestion] = useStateIfMounted({});
-    
     const handleDeleteQuestion = (data) => {
         dispatch(createTestSlice.actions.deleteQuestion(data))
     }
 
     useEffect(() => {
-        console.log("call API con")
+        console.log("call API con ", data.loaiCauHoi)
         if(data.loaiCauHoi === 0)
         {
             const getOneTN = async()=>{
@@ -45,6 +44,7 @@ function ItemQuestion({data,index}) {
             }
             getOneCode();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
 
@@ -88,7 +88,9 @@ function ItemQuestion({data,index}) {
                 <h3 className={cx('ans-title')}>Ví dụ mẫu</h3>
                 <div className={cx('sample-code')}>
                     <p>Input</p>
-                    <div>{question.mauDauVao}</div>
+                    <div>
+                    {question.mauDauVao}
+                    </div>
                     <p>Output</p>
                     <div>{question.mauDauRa}</div>
                 </div>
