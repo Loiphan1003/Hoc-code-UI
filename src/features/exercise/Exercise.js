@@ -158,7 +158,7 @@ function Exercise(props) {
             addBTCode(baiTapCode)
 
         })
-
+        setDataImport([]);
     }
 
 
@@ -369,7 +369,7 @@ function Exercise(props) {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => handleAddListBTCode()}>LƯU</Button>
-                        <Button onClick={handleClose}>THOÁT</Button>
+                        <Button onClick={() => setDataImport([])}>THOÁT</Button>
                     </DialogActions>
                 </Dialog>
 
