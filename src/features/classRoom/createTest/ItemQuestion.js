@@ -88,11 +88,9 @@ function ItemQuestion({data,index}) {
                 <h3 className={cx('ans-title')}>Ví dụ mẫu</h3>
                 <div className={cx('sample-code')}>
                     <p>Input</p>
-                    <div>
-                    {question.mauDauVao}
-                    </div>
+                    <div>{!!question.mauDauVao && question.mauDauVao.replace(/\\n/g,'\n')}</div>
                     <p>Output</p>
-                    <div>{question.mauDauRa}</div>
+                    <div>{!!question.mauDauRa && question.mauDauRa.replace(/\\n/g,'\n')}</div>
                 </div>
             </div>
         }

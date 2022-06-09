@@ -115,6 +115,8 @@ function CreateBTCode(props) {
                             <MenuItem value='py'>Python</MenuItem>
                             <MenuItem value='cs'>C#</MenuItem>
                             <MenuItem value='java'>Java</MenuItem>
+                            <MenuItem value='go'>GoLang</MenuItem>
+                            <MenuItem value='js'>JavaScript</MenuItem>
                         </Select>
                     </FormControl>
                 </div>

@@ -41,7 +41,8 @@ function Test(props) {
 
     const handleNopBai = () => {
         setResultView(true);
-        const totalScore = answers.reduce((sum, answer) => sum+answer.diemDatDuoc, 0);
+        let totalScore = answers.reduce((sum, answer) => sum+answer.diemDatDuoc, 0);
+        totalScore = Math.round(totalScore*10)/10;
         setTongDiem(totalScore);
               const saveBaiLamKiemTra = async()=>{
                 try {

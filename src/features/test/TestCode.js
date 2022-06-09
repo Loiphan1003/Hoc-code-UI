@@ -24,7 +24,7 @@ function TestCode({data}) {
 
     const dispatch = useDispatch();
     const answer = useSelector((state) => state.doTest.answer.find(element => element.id === data.id&&element.loaiCauHoi=== data.loaiCauHoi))
-    const language = {'py' : 'Python','c': 'C','c++': 'C++','java': 'Java' }
+    const language = {'py' : 'Python','c': 'C','c++': 'C++','java': 'Java','js':'JavaScript','go':'GoLang' }
 
     const [openTestCase, setOpenTestCase] = useState(false);
     const [baiTapCode,setBaiTapCode] = useStateIfMounted({});
@@ -48,20 +48,29 @@ function TestCode({data}) {
     const handleRunCode = () => {
         const runCode = async()=>{
             try {
+                console.log(baiTapCode.ngonNgu)
                 const response = await RunCodeAPI.postRunCodeBaiTap({
                     code: answer.dapAn,
                     input: '',
-                    language: 'c'
+                    language: baiTapCode.ngonNgu
                 },data.id,)
-                const score = response.data;
-                const heSoDiem = (score.reduce((sum,value) => sum+value,0)) / score.length;
+                if(response.data[0] === -111)
+                {
+                    alert("Lỗi cú pháp");
+                }
+                else
+                {   
+                    const score = response.data;
+                    const heSoDiem = (score.reduce((sum,value) => sum+value,0)) / score.length;
+                    
+                    dispatch(doTestSlice.actions.addAnswer({
+                        ...answer,
+                        diemDatDuoc: Math.floor((heSoDiem*data.diem)*100)/100
+                    }))
 
-                dispatch(doTestSlice.actions.addAnswer({
-                    ...answer,
-                    diemDatDuoc:heSoDiem*data.diem
-                }))
-
-                setTestCase(response.data);
+                    setTestCase(response.data);
+                }
+                
             } catch (error) {
                 console.log(error)
             }
@@ -78,7 +87,7 @@ function TestCode({data}) {
             cauHoi:baiTapCode.deBai,
             dapAn: newValue,
             diemToiDa:data.diem,
-            diemDatDuoc:0
+            diemDatDuoc: !!answer ? answer.diemDatDuoc:0
         }))
     }
 
@@ -119,6 +128,10 @@ function TestCode({data}) {
                 <div>
                     <h2>Ngôn ngữ </h2>
                     <p>{language[baiTapCode.ngonNgu]}</p>
+                </div>
+                <div>
+                    <h2>Điểm đạt được </h2>
+                    <p>{!!answer && (answer.diemDatDuoc||0)}</p>
                 </div>
             </div>
 

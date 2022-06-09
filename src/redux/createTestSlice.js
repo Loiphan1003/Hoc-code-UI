@@ -9,11 +9,11 @@ const createTestSlice = createSlice({
         addQuestion: (state, action) => {
 
             state.questions = [...state.questions,...action.payload]
-            const score = 10/state.questions.length;
+            let score = (10/state.questions.length);
+            score = Math.floor(score * 100) / 100;
             state.questions.forEach( item => item.diem = score);
         },
         deleteQuestion: (state,action) => {
-            console.log(action.payload)
             state.questions = state.questions.filter((item) => {
                 if(item.id === action.payload.id)
                 {
@@ -24,8 +24,12 @@ const createTestSlice = createSlice({
                 }
                 return true
             } )
-            const score = 10/state.questions.length;
+            let score = (10/state.questions.length);
+            score = Math.floor(score * 100) / 100;
             state.questions.forEach( item => item.diem = score);
+        },
+        clearQuestion: (state,action) => {
+            state.questions = action.payload;
         }
     }
 })

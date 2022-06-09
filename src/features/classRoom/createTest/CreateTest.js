@@ -84,6 +84,7 @@ function CreateTest(props) {
                 console.log(response.data);
                 if (response.data) {
                     alert("Thêm bài kiểm tra thành công!");
+                    dispatch(createTestSlice.actions.clearQuestion([]));
                     navigate(-1)
                 }
 

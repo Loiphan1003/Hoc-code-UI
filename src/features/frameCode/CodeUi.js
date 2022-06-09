@@ -147,12 +147,12 @@ function CodeUi() {
 
                 <div className={styles.sample_input}>
                     <h2>Đầu vào mẫu</h2>
-                    <div>{baiTapCode.mauDauVao}</div>
+                    <div>{!!baiTapCode.mauDauVao && baiTapCode.mauDauVao.replace(/\\n/g,'\n')}</div>
                 </div>
 
                 <div className={styles.sample_output}>
                     <h2>Đầu ra mẫu</h2>
-                    <div>{baiTapCode.mauDauRa}</div>
+                    <div>{!!baiTapCode.mauDauVao && baiTapCode.mauDauRa.replace(/\\n/g,'\n')}</div>
                 </div>
 
             </div>
@@ -167,6 +167,8 @@ function CodeUi() {
                         <option value="py" id="python">Python</option>
                         <option value="cs" id="c#">C#</option>
                         <option value="java" id="java">Java</option>
+                        <option value="go" id="go">GoLang</option>
+                        <option value="js" id="java">JavaScript</option>
                     </select>
                 </div>
 

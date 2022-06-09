@@ -27,7 +27,6 @@ function Exercise(props) {
     const [rows, setRows] = useState([])
     const [rowsTN, setRowsTN] = useState([])
     const navigate = useNavigate();
-    const [openImport, setOpenImport] = useState(false);
     const [dataImport, setDataImport] = useState([]);
     const [reset, setReset] = useState(false);
     const [open, setOpen] = React.useState(false);
@@ -90,11 +89,6 @@ function Exercise(props) {
 
     }, [reset]);
 
-    useEffect(() => {
-        if (dataImport.length > 0) {
-            setOpenImport(false);
-        }
-    }, [dataImport])
 
     const deleteBTCode = (id) => {
         setOpen(true);
@@ -165,45 +159,6 @@ function Exercise(props) {
 
         })
 
-
-
-        // let list = [];
-        // let ob = {};
-
-        // const auth = getAuth();
-        // onAuthStateChanged(auth, (user) => {
-        //     if (user) {
-
-        //         dataImport.forEach(element => {
-        //             ob = {
-        //                 tieuDe: element[0],
-        //                 deBai: element[1],
-        //                 rangBuoc: element[2],
-        //                 dinhDangDauVao: element[3],
-        //                 dinhDangDauRa: element[4],
-        //                 mauDauVao: element[5],
-        //                 mauDauRa: element[6],
-        //                 ngonNgu: element[7]
-        //             }
-        //             list.push(ob);
-        //         });
-        //         const addList = async () => {
-        //             try {
-        //                 const response = await BaiTapCodeAPI.addList(list, user.uid);
-        //                 if (response.data === true) {
-        //                     alert("Thêm thành công")
-        //                     console.log(response.data);
-        //                     setDataImport([]);
-        //                     setReset(true);
-        //                 }
-        //             } catch (error) {
-        //                 console.log("Error: ", error);
-        //             }
-        //         }
-        //         addList();
-        //     }
-        // })
-
     }
 
 
@@ -251,13 +206,7 @@ function Exercise(props) {
                     <div>
                         <h2>Câu hỏi code</h2>
 
-                        <Button sx={{ marginBottom: "20px", float: "right" }} variant="contained"
-                            endIcon={<AddCircleOutlinedIcon />}
-                            onClick={() =>
-                                setOpenImport(true)
-                            }>
-                            Tạo nhiều bài tập code
-                        </Button>
+                        <ImportBTCode data={setDataImport} style={{marginBottom: "20px", float: "right"}} />
 
                         <Button sx={{ marginBottom: "20px", marginRight: "20px", float: "right" }} variant="contained"
                             endIcon={<AddCircleOutlinedIcon />}
@@ -353,75 +302,77 @@ function Exercise(props) {
                         </Table>
                     </TableContainer>
                 </div>
-
-                {openImport === true &&
-                    <ImportBTCode data={setDataImport} />
-                }
-
-                {dataImport.length > 0 &&
-                    <div className={styles.list_item_import} >
-                        <div>
-                            <h2>Các câu hỏi đã thêm</h2>
-                        </div>
-                        <TableContainer component={Paper} style={{ maxHeight: 350 }}>
-                            <Table sx={{ minWidth: 1300 }} aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell sx={{ width: 40, fontWeight: "700" }}>STT</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }} align="center">Tên bài</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }} align="center">Đề bài</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }}>Ràng buộc</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }}>Định dạng đầu vào</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }}>Định dạng đầu ra</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }}>Mẫu đầu vào</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }}>Mẫu đầu ra</TableCell>
-                                        <TableCell sx={{ fontWeight: "700" }} align="center">Xóa</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {dataImport.map((row, index) => (
-                                        <TableRow
-                                            key={index}
-                                            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                                            <TableCell component="th" scope="row" >{index + 1}</TableCell>
-                                            <TableCell className={styles.conten_cell} align="center" style={{ minWidth: "200px" }}>{row[0]}</TableCell>
-                                            <TableCell align="center" >{row[1]}</TableCell>
-                                            <TableCell >
-                                                {row[2]}
-                                            </TableCell>
-                                            <TableCell  >
-                                                {row[3]}
-                                            </TableCell>
-
-                                            <TableCell  >
-                                                {row[4]}
-                                            </TableCell>
-
-                                            <TableCell  >
-                                                {row[5]}
-                                            </TableCell>
-
-                                            <TableCell  >
-                                                {row[6]}
-                                            </TableCell>
-
-                                            <TableCell align="center" >
-                                                <DeleteIcon sx={{ cursor: "pointer", color: "#f04530" }}
-                                                    onClick={() => console.log(index)}
-                                                />
-                                            </TableCell>
+                <Dialog
+                    open={dataImport.length > 0}
+                    fullWidth
+                    maxWidth='xl' 
+                    onClose={() => setDataImport([])}
+                    aria-labelledby="scroll-dialog-title"
+                    aria-describedby="scroll-dialog-description"
+                >
+                    <DialogTitle id="scroll-dialog-title" sx={{color: '#6F767A'}}>Các câu hỏi đã thêm</DialogTitle>
+                    <DialogContent  dividers >
+                        
+                            <TableContainer component={Paper} style={{ maxHeight: 350 }}>
+                                <Table  aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell sx={{ width: '5%', fontWeight: "700" }}>STT</TableCell>
+                                            <TableCell sx={{width: '20%', fontWeight: "700" }} align="center">Tên bài</TableCell>
+                                            <TableCell sx={{width: '20%', fontWeight: "700" }} align="center">Đề bài</TableCell>
+                                            <TableCell sx={{width: '10%', fontWeight: "700" }}>Ràng buộc</TableCell>
+                                            <TableCell sx={{width: '10%', fontWeight: "700" }}>Định dạng đầu vào</TableCell>
+                                            <TableCell sx={{width: '10%', fontWeight: "700" }}>Định dạng đầu ra</TableCell>
+                                            <TableCell sx={{width: '10%', fontWeight: "700" }}>Mẫu đầu vào</TableCell>
+                                            <TableCell sx={{width: '10%', fontWeight: "700" }}>Mẫu đầu ra</TableCell>
+                                            <TableCell sx={{width: '5%', fontWeight: "700" }} align="center">Xóa</TableCell>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                                    </TableHead>
+                                    <TableBody>
+                                        {dataImport.map((row, index) => (
+                                            <TableRow
+                                                key={index}
+                                                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                                                <TableCell component="th" scope="row" >{index + 1}</TableCell>
+                                                <TableCell className={styles.conten_cell} align="center" style={{ minWidth: "200px" }}>{row[0]}</TableCell>
+                                                <TableCell align="center" >{row[1]}</TableCell>
+                                                <TableCell >
+                                                    {row[2]}
+                                                </TableCell>
+                                                <TableCell  >
+                                                    {row[3]}
+                                                </TableCell>
 
-                        <button
-                            onClick={() => handleAddListBTCode()}
-                        >
-                            Thêm câu hỏi
-                        </button>
-                    </div>}
+                                                <TableCell  >
+                                                    {row[4]}
+                                                </TableCell>
+
+                                                <TableCell  >
+                                                    {row[5]}
+                                                </TableCell>
+
+                                                <TableCell  >
+                                                    {row[6]}
+                                                </TableCell>
+
+                                                <TableCell align="center" >
+                                                    <DeleteIcon sx={{ cursor: "pointer", color: "#f04530" }}
+                                                        onClick={() => console.log(index)}
+                                                    />
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => handleAddListBTCode()}>LƯU</Button>
+                        <Button onClick={handleClose}>THOÁT</Button>
+                    </DialogActions>
+                </Dialog>
+
 
                 <Dialog
                     open={open}
