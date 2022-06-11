@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Member.module.css';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-
+import { DataGrid, GridToolbarContainer, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarExport, GridToolbarDensitySelector } from '@mui/x-data-grid';
 
 function Member(props) {
 
@@ -12,10 +11,31 @@ function Member(props) {
         { field: 'Email', headerName: 'Email', width: 130 }
     ]
 
+    
+
+    const toolBarCustom = () => {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarColumnsButton />
+                <GridToolbarFilterButton />
+                <GridToolbarDensitySelector />
+                <GridToolbarExport/>
+                <div onClick={() => handleImport()} >  
+                    <p>Import thành viên</p>
+                </div>
+            </GridToolbarContainer>
+        )
+    }
+
     const rows = [
         { id: 1, hoTen: 'Snow', tenHienThi: 'Jon', Email: 'nvduy.k19' },
 
     ];
+
+    const handleImport = () => {
+        console.log("runn")
+    }
+
 
 
     return (
@@ -30,7 +50,7 @@ function Member(props) {
                     pageSize={10}
                     rowsPerPageOptions={[10]}
                     components={{
-                        Toolbar: GridToolbar
+                        Toolbar: toolBarCustom,
                     }}
                     checkboxSelection
                     localeText={{

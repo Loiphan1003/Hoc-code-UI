@@ -28,6 +28,10 @@ const BaiTapCodeAPI = {
     getListByuID: (uID) => {
         const url = `BaiTapCode/getListByuID?uID=${uID}`
         return axiosClient.get(url, {uID} )
+    },
+    editBaiTapCode: (baiTapCode_Custom) => {
+        const url = `BaiTapCode/editBaiTapCode`;
+        return axiosClient.put(url, baiTapCode_Custom);
     }
 
     

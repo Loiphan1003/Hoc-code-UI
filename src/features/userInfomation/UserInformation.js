@@ -39,10 +39,16 @@ function UserIformation(props) {
                 setTruong(response.data.truong);
                 setEmail(response.data.email);
                 setDisplayName(response.data.tenHienThi);
-                let curr = response.data.namSinh;
-                let split_curr = curr.split('T');
-                const date_res = split_curr[0];
-                setDate(date_res);
+                if(response.data.namSinh !== undefined){
+                    let curr = response.data.namSinh;
+                    let split_curr = curr.split('T');
+                    const date_res = split_curr[0];
+                    setDate(date_res);
+                }
+                else{
+                    let curr = response.data.namSinh;
+                    setDate(curr);
+                }
                 setUserName(response.data.hoTen);
             }
             data();

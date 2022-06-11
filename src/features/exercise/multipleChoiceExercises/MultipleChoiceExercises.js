@@ -1,10 +1,8 @@
 import React, { useState, useRef } from 'react';
 import styles from './MultipleChoiceExercises.module.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
-
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
@@ -12,14 +10,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-
 import BaiTapTN from '../../../apis/baiTapTN_API';
 
 function MultipleChoiceExercises({ data }) {
 
-    
+    const navigate = useNavigate();
     const [trueAnswer, setTrueAnswer] = useState(1);
-
     const cauHoiRef = useRef();
     const answerOneRef = useRef();
     const answerSecondRef = useRef();
@@ -30,7 +26,7 @@ function MultipleChoiceExercises({ data }) {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                let ob= 
+                let ob =
                 {
                     cauHoi: cauHoiRef.current.value,
                     cauTraLoi1: answerOneRef.current.value,
@@ -43,8 +39,10 @@ function MultipleChoiceExercises({ data }) {
                 const addBTTN = async () => {
                     try {
                         const response = await BaiTapTN.postAddBaiTapTN(ob);
-                        if(response.data)
+                        if (response.data) {
                             alert('Thêm bài tập trắc nghiệm thành công!')
+                            navigate('/exercise');
+                        }
                     } catch (error) {
                         console.log("Fetch data error: ", error);
                     }
@@ -52,10 +50,10 @@ function MultipleChoiceExercises({ data }) {
                 addBTTN();
             }
         });
-        
+
     }
-    
-    
+
+
     // useEffect(() => {
     //     if (open === true) {
     //         const originalStyle = window.getComputedStyle(document.body).overflow;
@@ -70,7 +68,7 @@ function MultipleChoiceExercises({ data }) {
 
                 <div className={styles.exxercise_disciption} >
                     <h2>Câu hỏi</h2>
-                     <TextField inputRef={cauHoiRef} sx={{marginTop:"20px"}} fullWidth label="Nhập câu hỏi" multiline />
+                    <TextField inputRef={cauHoiRef} sx={{ marginTop: "20px" }} fullWidth label="Nhập câu hỏi" multiline />
                 </div>
             </div>
 
@@ -108,7 +106,7 @@ function MultipleChoiceExercises({ data }) {
                     </div>
                 </div>
                 <h2>Đáp án</h2>
-                <FormControl fullWidth style={{marginTop:"10px"}}>
+                <FormControl fullWidth style={{ marginTop: "10px" }}>
                     <InputLabel id="level-label">Đáp án</InputLabel>
                     <Select
                         labelId="level-label"
@@ -122,17 +120,17 @@ function MultipleChoiceExercises({ data }) {
                         <MenuItem value={4}>Câu D</MenuItem>
                     </Select>
                 </FormControl>
-                
+
             </div>
 
             <div className={styles.exercise_btn} >
-                <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
+                <Button variant="contained" style={{ backgroundColor: "ButtonShadow" }}
                     endIcon={<CancelIcon />}
                 >
                     Hủy
                 </Button>
 
-                <Button  variant="contained" style={{marginLeft:"20px"}}
+                <Button variant="contained" style={{ marginLeft: "20px" }}
                     endIcon={<SaveIcon />}
                     onClick={handleSave}
                 >

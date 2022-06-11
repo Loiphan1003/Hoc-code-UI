@@ -37,7 +37,7 @@ function CreateBTLuyenTap(props) {
 
 
     const handleSaveExercise = () => {
-        if(!!uId)
+        if(!!uId || sessionStorage.getItem('Admin') === 'true')
         {
             if(level === undefined || nameExercise === undefined || deBaiRef.current.value === undefined || rangBuocRef.current.value === undefined || 
                 dinhDangDauVaoRef === undefined || dinhDangDauRaRef === undefined || mauDauVaoRef === undefined || mauDauRaRef === undefined || tagRef === undefined || testCases.length === 0

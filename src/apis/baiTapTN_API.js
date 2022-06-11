@@ -20,6 +20,10 @@ const BaiTapTN = {
     searchBaiTapTN: (value) => {
         const url = `BaiTapTracNghiem/search?searchValue=${value}`
         return axiosClient.get(url,{value})
+    },
+    editBTTN: (btTN_Custom) => {
+        const url = `BaiTapTracNghiem/editBTTN`;
+        return axiosClient.put(url, btTN_Custom);
     }
 
 }

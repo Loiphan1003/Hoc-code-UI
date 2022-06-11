@@ -73,9 +73,7 @@ function Practice(props) {
                                     <span>{baitap.tag}</span>
                                 </div>
                                 <div className={styles.image_avatar} >
-                                    {
-                                        console.log(baitap.linkAvatar)
-                                    }
+                                   
                                     <Avatar className={styles.avatar}
                                         alt='avatar'
                                         sx={{
@@ -88,7 +86,7 @@ function Practice(props) {
                                         U
                                     </Avatar>
                                 </div>
-                                <div className={styles.username}>{baitap.tenHienThi}</div>
+                                <div className={styles.username}>{baitap.tenHienThi !== null ? baitap.tenHienThi : "Admin"}</div>
                                 <div className={styles.item_footer}>
                                     <div className={styles.userpass}>
                                         {/* <i class="fa-solid fa-users"></i> */}

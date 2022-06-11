@@ -82,8 +82,8 @@
 .item_list {
     cursor: pointer;
     margin: 20px;
-    width: 295px;
-    height: -moz-fit-content;
+    /* width: 295px;
+    height: -moz-fit-content; */
     height: fit-content;
     background-color: white;
     padding-top: 5px;
