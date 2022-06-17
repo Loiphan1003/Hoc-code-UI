@@ -18,7 +18,7 @@ function UserNav(props) {
         auth.signOut();
         localStorage.clear();
         navigate('/');
-        alert("User log out");
+        alert("Xác nhận đăng xuất");
     }
 
     return (

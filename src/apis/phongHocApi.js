@@ -21,6 +21,10 @@ const PhongHocAPI = {
         const url = 'PhongHoc/createRoom';
         return axiosClient.post(url, room);
     },
+    getMmeber: (idRoom) => {
+        const url = `PhongHoc/getMember?IdPhong=${idRoom}`;
+        return axiosClient.get(url);
+    }
 }
 
 export default PhongHocAPI;

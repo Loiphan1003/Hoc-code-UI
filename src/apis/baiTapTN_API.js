@@ -24,6 +24,10 @@ const BaiTapTN = {
     editBTTN: (btTN_Custom) => {
         const url = `BaiTapTracNghiem/editBTTN`;
         return axiosClient.put(url, btTN_Custom);
+    },
+    getListByUid: (uID) => {
+        const url = `BaiTapTracNghiem/getListByUid?uId=${uID}`;
+        return axiosClient.get(url, {uID});
     }
 
 }

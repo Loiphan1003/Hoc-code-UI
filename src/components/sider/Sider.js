@@ -10,7 +10,8 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 function Sider() {
 
     const [openLogout, setOpenLogout] = useState(false);
-    const TkAdmin = JSON.parse(sessionStorage.getItem("Admin"));
+    // const TkAdmin = JSON.parse(sessionStorage.getItem("Admin"));
+    const nameAdmin = atob(sessionStorage.getItem("Name"));
 
     const SideData = [
         {
@@ -36,6 +37,7 @@ function Sider() {
     ]
 
     const handleLogout = () => {
+        sessionStorage.removeItem('Name');
         sessionStorage.removeItem('Admin');
     }
     const handleOpenLogout = () => {
@@ -67,7 +69,7 @@ function Sider() {
                     <div className={styles.horizontal}></div>
                     <div className={styles.info} onClick={handleOpenLogout}>
                         <FaceTwoToneIcon style={{ fontSize: "50px", textAlign: "center" }} />
-                        <span style={{ textAlign: "center", fontSize: '15px', fontWeight: 'bold', marginLeft: '5px' }}>{TkAdmin ?? "Không có tài khoản đăng nhập"}</span>
+                        <span style={{ textAlign: "center", fontSize: '15px', fontWeight: 'bold', marginLeft: '5px' }}>{nameAdmin}</span>
                     </div>
                     <div className={styles.horizontal}></div>
                     {openLogout && <NavLink style={{ color: "black" }} className={styles.Logout} onClick={handleLogout} to={'/Admin'}>

@@ -20,8 +20,13 @@ function LoginAdmin() {
                 const response = await AdminAPI.login(account);
                 console.log(response.data);
                 if(response.data === true){
+                    let name = btoa(userName);
+                    sessionStorage.setItem('Name', name);
                     sessionStorage.setItem('Admin', JSON.stringify(true));
                     navigate('/admin/home');
+                }
+                else{
+                    alert("Sai tài khoản hoặc mật khẩu")
                 }
             } catch (error) {
                 console.log("Login false", error);

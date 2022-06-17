@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './Member.module.css';
+import { useParams } from 'react-router-dom';
 import { DataGrid, GridToolbarContainer, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarExport, GridToolbarDensitySelector } from '@mui/x-data-grid';
+import PhongHocAPI from '../../../apis/phongHocApi';
 
 function Member(props) {
 
     const colums = [
-        { field: 'id', headerName: 'uID', width: 150 },
         { field: 'hoTen', headerName: 'Họ và tên', width: 200 },
         { field: 'tenHienThi', headerName: 'Tên hiển thị', width: 200 },
-        { field: 'Email', headerName: 'Email', width: 130 }
+        { field: 'email', headerName: 'Email', width: 230 }
     ]
 
-    
+    const [member, setMember] = useState([]);
+    const params = useParams();
 
     const toolBarCustom = () => {
         return (
@@ -20,17 +22,27 @@ function Member(props) {
                 <GridToolbarFilterButton />
                 <GridToolbarDensitySelector />
                 <GridToolbarExport/>
-                <div onClick={() => handleImport()} >  
+                {/* <div onClick={() => handleImport()} >  
                     <p>Import thành viên</p>
-                </div>
+                </div> */}
             </GridToolbarContainer>
         )
     }
 
-    const rows = [
-        { id: 1, hoTen: 'Snow', tenHienThi: 'Jon', Email: 'nvduy.k19' },
+    useEffect(() => {
+        try {
+            const getMember = async () => {
+                const response = await PhongHocAPI.getMmeber(params.roomId);
+                if(response.data.length > 0){
+                    setMember(response.data);
+                }
+            }
+            getMember();
+        } catch (error) {
+            console.log(error);
+        }
+    },[params.roomId])
 
-    ];
 
     const handleImport = () => {
         console.log("runn")
@@ -45,7 +57,8 @@ function Member(props) {
 
                 <DataGrid
                     autoHeight
-                    rows={rows}
+                    getRowId={(row) => row.email}
+                    rows={member}
                     columns={colums}
                     pageSize={10}
                     rowsPerPageOptions={[10]}

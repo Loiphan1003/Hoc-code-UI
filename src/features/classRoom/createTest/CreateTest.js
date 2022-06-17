@@ -89,6 +89,9 @@ function CreateTest(props) {
                 }
 
             } catch (error) {
+                if("Error: Request failed with status code 400" === String(error)){
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                }
                 console.log("Fetch data error: ", error);
             }
         }
