@@ -26,6 +26,16 @@ function MultipleChoiceExercises({ data }) {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                if(cauHoiRef.current.value === '' ||
+                    answerOneRef.current.value === '' ||
+                    answerSecondRef.current.value === '' ||
+                    answerThreeRef.current.value === '' ||
+                    answerFourRef.current.value === '' ||
+                    trueAnswer){
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                    return;
+                }
+                
                 let ob =
                 {
                     cauHoi: cauHoiRef.current.value,
@@ -124,8 +134,11 @@ function MultipleChoiceExercises({ data }) {
             </div>
 
             <div className={styles.exercise_btn} >
-                <Button variant="contained" style={{ backgroundColor: "ButtonShadow" }}
+                <Button variant="contained" style={{ backgroundColor: "darkgray" }}
                     endIcon={<CancelIcon />}
+                    onClick={
+                        navigate("/exercise")
+                    }
                 >
                     Hủy
                 </Button>

@@ -243,7 +243,7 @@ function QuanlyBTLT() {
                     <Button sx={{ marginBottom: "20px", float: "right" }} variant="contained"
                         endIcon={<AddCircleOutlinedIcon />}
                         onClick={() => {
-                            navigate('/exercise/createLuyenTap')
+                            navigate('/Admin/CreateBTCode')
                         }}>
                         Tạo bài tập code luyện tập
                     </Button>

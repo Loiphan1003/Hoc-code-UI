@@ -28,6 +28,7 @@ import QuanLyGV from './features/admin/QuanLyGV';
 import TestOverview from './features/classRoom/testOverview';
 import LayoutAdmin from './layouts/layoutAdmin/index';
 import QuanLyNguoiDung from './features/admin/QuanLyUser';
+import CreateBTCodeLT from './features/admin/CreateBTCodeLT';
 import QuanLyBTCode from './features/admin/QuanlyBTLT';
 import QuanLyLT from './features/admin/QuanlyLT';
 
@@ -158,6 +159,11 @@ function App() {
                     <Route path='/QuanLyLT/createLyThuyet/:IdMonHoc/:TenMonHoc' element={
                         <LayoutAdmin>
                             <CreateLyThuyet  />
+                        </LayoutAdmin>}
+                    />
+                    <Route path='/Admin/CreateBTCode' element={
+                        <LayoutAdmin>
+                            <CreateBTCodeLT  />
                         </LayoutAdmin>}
                     />
                 </Routes>

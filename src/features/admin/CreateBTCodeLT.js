@@ -1,9 +1,9 @@
 import React, { useRef, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
-import styles from './CreateBTCode.module.css';
-import Backdrop from '../../../components/Backdrop';
-import BaiTapCodeAPI from '../../../apis/baiTapCodeAPI';
+import styles from './CreateBTCodeLT.module.css';
+import Backdrop from '../../components/Backdrop';
+import BaiTapLuyenTapAPI from '../../apis/baiTapLuyenTapAPI';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
@@ -16,15 +16,13 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
 
-function CreateBTCode(props) {
-    
-    const navigate = useNavigate();
+function CreateBTCodeLT() {
     const [nameExercise, setNameExercise] = useState("");
+    const [level, setLevel] = useState(1);
     const [openTestCase, setOpenTestCase] = useState(false);
     const [input, setInput] = useState();
     const [output, setOutput] = useState();
     const [testCases, setTestCases] = useState([]);
-    const [language, setLanguage] = useState("c")
 
     const deBaiRef = useRef()
     const rangBuocRef = useRef()
@@ -32,53 +30,48 @@ function CreateBTCode(props) {
     const dinhDangDauRaRef = useRef()
     const mauDauVaoRef = useRef()
     const mauDauRaRef = useRef()
+    const tagRef = useRef()
+    const navigate = useNavigate();
     const uId = JSON.parse(localStorage.getItem('uId')); 
-    
+
+
     const handleSaveExercise = () => {
-        if(!!uId)
+        if(!!uId || sessionStorage.getItem('Admin') === 'true')
         {
-            if(nameExercise === '' ||
-                deBaiRef.current.value === '' ||
-                rangBuocRef.current.value === ''||
-                dinhDangDauVaoRef.current.value === '' ||
-                dinhDangDauRaRef.current.value === '' ||
-                mauDauVaoRef.current.value === '' ||
-                mauDauRaRef.current.value === ''){
-                alert("Vui lòng nhập đầy đủ thông tin")
-                return;
-            }
-            if(testCases.length === 0){
-                alert("Vui lòng thêm TESTCASE");
-                return;
-            }
+            if(level === undefined || nameExercise === undefined || deBaiRef.current.value === undefined || rangBuocRef.current.value === undefined || 
+                dinhDangDauVaoRef === undefined || dinhDangDauRaRef === undefined || mauDauVaoRef === undefined || mauDauRaRef === undefined || tagRef === undefined || testCases.length === 0
+                )
+                {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                    return;
+                }
             let ob = {
+                doKho: level,
                 tieuDe: nameExercise,
                 deBai: deBaiRef.current.value,
-                uIdNguoiTao: uId,
-                ngonNgu: language,
+                // uIdNguoiTao: user.uid,
                 rangBuoc: rangBuocRef.current.value,
                 dinhDangDauVao: dinhDangDauVaoRef.current.value,
                 dinhDangDauRa: dinhDangDauRaRef.current.value,
                 mauDauVao: mauDauVaoRef.current.value,
                 mauDauRa: mauDauRaRef.current.value,
+                tag:tagRef.current.value,
                 testCases: testCases
             }
     
+            console.log(ob);
             const addBTCode = async () => {
                 try {
-                    const response = await BaiTapCodeAPI.postAddBaiTapCode(ob);
-                    if(response.data){
-                        alert("Thêm bài tập code thành công!")
-                        navigate("/exercise");
-                    }
-                    console.log(response.data);
+                    const response = await BaiTapLuyenTapAPI.add(ob);
+                    if(response.data)
+                        alert("Thêm bài tập luyện tập thành công!")
+                    navigate('/Admin/Quanlybaitapcode')
                 } catch (error) {
                     console.log("Fetch data error: ", error);
                 }
             }
             addBTCode();
         }
-        
     }
     
     const handleAddTestCase = () => {
@@ -115,29 +108,24 @@ function CreateBTCode(props) {
                     <TextField inputRef={dinhDangDauRaRef} sx={{marginTop:"20px"}} fullWidth label="Nhập định dạng đầu ra" multiline />
                     <TextField inputRef={mauDauVaoRef} sx={{marginTop:"20px"}} fullWidth label="Nhập mẫu đầu vào" multiline />
                     <TextField inputRef={mauDauRaRef} sx={{marginTop:"20px"}} fullWidth label="Nhập mẫu đầu ra" multiline />
+                    <TextField inputRef={tagRef} sx={{marginTop:"20px"}} fullWidth label="Nhập tag" multiline />
                 </div>
                 
-
-                <div className={styles.excercise_language}>
+                <div className={styles.exercise_level} >
                     <FormControl fullWidth>
-                        <InputLabel id="language-label">Ngôn ngữ</InputLabel>
+                        <InputLabel id="level-label">Cấp độ</InputLabel>
                         <Select
-                            labelId="language-label"
-                            value={language}
-                            label="Ngôn ngữ"
-                            onChange={e => setLanguage(e.target.value)}
+                            labelId="level-label"
+                            value={level}
+                            label="Cấp độ"
+                            onChange={e => setLevel(e.target.value)}
                         >
-                            <MenuItem value='c'>C</MenuItem>
-                            <MenuItem value='cpp'>C++</MenuItem>
-                            <MenuItem value='py'>Python</MenuItem>
-                            <MenuItem value='cs'>C#</MenuItem>
-                            <MenuItem value='java'>Java</MenuItem>
-                            <MenuItem value='go'>GoLang</MenuItem>
-                            <MenuItem value='js'>JavaScript</MenuItem>
+                            <MenuItem value={1}>Dễ</MenuItem>
+                            <MenuItem value={2}>Trung bình</MenuItem>
+                            <MenuItem value={3}>Khó</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
-               
 
                 <div className={styles.content_TestCase} >
 
@@ -166,7 +154,7 @@ function CreateBTCode(props) {
                     <Button  variant="contained" style={{backgroundColor:"darkgray"}}
                         endIcon={<CancelIcon />}
                         onClick={() => {
-                            navigate("/exercise")
+                            navigate(`/Admin/Quanlybaitapcode`);
                         }}
                     >
                         Hủy
@@ -174,7 +162,7 @@ function CreateBTCode(props) {
 
                     <Button  variant="contained" style={{marginLeft:"20px"}}
                         endIcon={<SaveIcon />}
-                        onClick={handleSaveExercise}
+                        onClick={() => handleSaveExercise()}
                     >
                         Lưu
                     </Button>
@@ -195,7 +183,7 @@ function CreateBTCode(props) {
                         multiline onChange= {e => setOutput(e.target.value)}/>
                 </div>
                 <div className={styles.btn_intputTestCase} >
-                    <Button  variant="contained" style={{backgroundColor:"darkgray"}}
+                    <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
                         endIcon={<CancelIcon />}
                         onClick={() => setOpenTestCase(false) }
                     >
@@ -214,4 +202,4 @@ function CreateBTCode(props) {
     );
 }
 
-export default CreateBTCode;
+export default CreateBTCodeLT
