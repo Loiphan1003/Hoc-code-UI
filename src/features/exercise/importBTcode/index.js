@@ -10,7 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileCsv, faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import { faFileCsv } from '@fortawesome/free-solid-svg-icons';
 const Input = styled('input')({
     display: 'none',
 });

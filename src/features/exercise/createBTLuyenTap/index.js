@@ -152,10 +152,10 @@ function CreateBTLuyenTap(props) {
                 </div>
 
                 <div className={styles.exercise_btn} >
-                    <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
+                    <Button  variant="contained" style={{backgroundColor:"darkgray"}}
                         endIcon={<CancelIcon />}
                         onClick={() => {
-                            console.log('Hủy')
+                            navigate(`/Admin/Quanlybaitapcode`);
                         }}
                     >
                         Hủy

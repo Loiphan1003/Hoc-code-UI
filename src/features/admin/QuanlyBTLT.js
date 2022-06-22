@@ -132,12 +132,19 @@ function QuanlyBTLT() {
         console.log(doKho);
         const editBTCode = async () => {
             try {
-                const response = await BaiTapLuyenTapAPI.EditBTLT(id, doKho, tieuDe, deBai, rangBuoc, dinhDangDauVao, dinhDangDauRa, mauDauVao, mauDauRa, tag);
-                if(response.data)
+                if(doKho === "" || tieuDe === "" || deBai === "" || rangBuoc === "" || dinhDangDauVao === "" || dinhDangDauRa === "" || mauDauVao === "" || mauDauRa === "" || tag === "")
                 {
-                    alert("Sửa bài tập luyện tập thành công!");
-                    setOpenEdit(false);
-                    setResetBT(!resetBT);
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                }
+                else
+                {
+                    const response = await BaiTapLuyenTapAPI.EditBTLT(id, doKho, tieuDe, deBai, rangBuoc, dinhDangDauVao, dinhDangDauRa, mauDauVao, mauDauRa, tag);
+                    if(response.data)
+                    {
+                        alert("Sửa bài tập luyện tập thành công!");
+                        setOpenEdit(false);
+                        setResetBT(!resetBT);
+                    }
                 }
             } catch (error) {
                 console.log("Fetch data error: ", error);
@@ -166,13 +173,22 @@ function QuanlyBTLT() {
     const handleAddTestCase = () => {
         const addTestCase = async () => {
             try {
-                const response = await TestCaseBTLT.AddTestCase(input, output, id);
-                if(response.data)
-                    alert("Thêm test case thành công!")
-                setOpenTestCase(false);
-                setInput("");
-                setOutput("");
-                setResetTC(!resetTC);
+                if(input === "" || output === "")
+                {
+                    alert("Chưa nhập đầy đủ thông tin");
+                }
+                else
+                {
+                    const response = await TestCaseBTLT.AddTestCase(input, output, id);
+                    if(response.data)
+                    {
+                        alert("Thêm test case thành công!")
+                        setOpenTestCase(false);
+                        setInput("");
+                        setOutput("");
+                        setResetTC(!resetTC);
+                    }
+                }
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }
@@ -183,13 +199,22 @@ function QuanlyBTLT() {
     const handleEditTestCase = () =>{
         const editTestCase = async () => {
             try {
-                const response = await TestCaseBTLT.EditTestCase(idTC, input, output);
-                if(response.data)
-                    alert("Sửa test case thành công!")
-                setChangeTestCase(false);
-                setInput("");
-                setOutput("");
-                setResetTC(!resetTC);
+                if(input === "" || output === "")
+                {   
+                    alert("Chưa nhập đầy đủ thông tin")
+                }
+                else
+                {
+                    const response = await TestCaseBTLT.EditTestCase(idTC, input, output);
+                    if(response.data)
+                    {
+                        alert("Sửa test case thành công!")
+                        setChangeTestCase(false);
+                        setInput("");
+                        setOutput("");
+                        setResetTC(!resetTC);
+                    }    
+                }
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }
@@ -331,7 +356,7 @@ function QuanlyBTLT() {
                         {testCases.map((testcase, index) => (
                             <div className={styles.testcase} key={index} >
                                 <div className={styles.name_input} >
-                                    TestCase #{testcase.id}
+                                    TestCase #{index + 1}
                                 </div>
                                 <div className={styles.testcase_btn} >
                                     <FontAwesomeIcon className={styles.btn_update} icon={faPen} onClick={() => editTestCase(testcase.id, testcase.input, testcase.output)}/>
@@ -342,7 +367,7 @@ function QuanlyBTLT() {
                     </div>
                     {/* nút hủy và lưu của from sửa */}
                     <div className={styles.exercise_btn} >
-                        <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
+                        <Button  variant="contained" style={{backgroundColor:"darkgray"}}
                             endIcon={<CancelIcon />}
                             onClick={CloseEditBTLT}
                         >
@@ -399,7 +424,7 @@ function QuanlyBTLT() {
                             multiline onChange= {e => setOutput(e.target.value)}/>
                     </div>
                     <div className={styles.btn_intputTestCase} >
-                        <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
+                        <Button  variant="contained" style={{backgroundColor:"darkgray"}}
                             endIcon={<CancelIcon />}
                             onClick={() => setChangeTestCase(false)}
                         >

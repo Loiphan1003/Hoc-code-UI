@@ -3,6 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './createLyThuyet.module.css'
 import LyThuyetAPI from '../../apis/lyThuyetAPI';
 import TextField from '@mui/material/TextField';
+import { fireStorage } from '../../firebase/config';
 import { useNavigate, useParams } from 'react-router-dom';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -70,10 +71,10 @@ function CreateLyThuyet() {
                     />
                 </div>
 
-                <Button variant="contained" style={{ backgroundColor: "ButtonShadow" }}
+                <Button variant="contained" style={{ backgroundColor: "darkgray" }}
                     endIcon={<CancelIcon />}
                     onClick={() => {
-                        console.log('Hủy')
+                        navigate(`/Admin/Quanlybailythuyet`);
                     }}
                 >
                     Hủy

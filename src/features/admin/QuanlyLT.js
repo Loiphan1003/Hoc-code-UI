@@ -10,6 +10,8 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteIcon from '@mui/icons-material/Delete';
 import classNames from 'classnames/bind';
+import { fireStorage } from '../../firebase/config';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 import LyThuyetAPI from '../../apis/lyThuyetAPI';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -54,12 +56,30 @@ function QuanlyLT() {
     const handleAdd = () => {
         const data = async () => {
             try {
-                const response = await MonHocAPI.AddMonHoc(monHoc_Custom);
-                if (response.data) {
-                    alert("Thêm mới thành công");
-                    setOpenAddMH(false);
-                    setMonHoc_Custom({ id: 0, ten: "", moTa: "", hinh: "" });
-                    setResetMH(!resetMH);
+                if (monHoc_Custom.ten === "" || monHoc_Custom.moTa === "") {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                }
+                else {
+                    if (monHoc_Custom.hinh !== '') {
+
+                        const storageRef = ref(fireStorage, `images/${monHoc_Custom.hinh.name}`);
+                        await uploadBytes(storageRef, monHoc_Custom.hinh).then((snapshot) => {
+                            getDownloadURL(snapshot.ref).then((url) => {
+                                saveDB(window.btoa(url),"add");
+                            })
+                        })
+                    }
+
+                    const add = async () => {
+                        const response = await MonHocAPI.AddMonHoc(monHoc_Custom);
+                        if (response.data) {
+                            alert("Thêm mới thành công");
+                            setOpenAddMH(false);
+                            setMonHoc_Custom({ id: 0, ten: "", moTa: "", hinh: "" });
+                            setResetMH(!resetMH);
+                        }
+                    }
+                    add()
                 }
             } catch (error) {
                 console.log("Error...", error);
@@ -67,6 +87,71 @@ function QuanlyLT() {
         }
         data();
     }
+
+    const handleEdit = () => {
+        const data = async () => {
+            try {
+                console.log("Runn");
+                if (monHoc_Custom.ten === "" || monHoc_Custom.moTa === "") {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                }
+
+                else {
+                    if (monHoc_Custom.hinh !== '') {
+                        const storageRef = ref(fireStorage, `images/${monHoc_Custom.hinh.name}`);
+                        await uploadBytes(storageRef, monHoc_Custom.hinh).then((snapshot) => {
+                            getDownloadURL(snapshot.ref).then((url) => {
+                                saveDB(window.btoa(url), "update");
+                            })
+                        })
+                    }
+                    else{
+                        const edit = async () => {
+                            const response = await MonHocAPI.EditMonHoc(monHoc_Custom);
+                            if (response.data) {
+                                setMonHoc_Custom({ id: 0, ten: "", moTa: "", hinh: "" });
+                                alert("Sửa thông tin môn học thành công");
+                                setOpenEditMH(false);
+                                setResetMH(!resetMH);
+                            }
+                        }
+                        edit();
+                    }
+                }
+            } catch (error) {
+                console.log("Error...", error);
+            }
+        }
+        data();
+    }
+
+    const saveDB = async (img, type) => {
+        
+        const ob = {
+            id: monHoc_Custom.id,
+            ten: monHoc_Custom.ten,
+            moTa: monHoc_Custom.moTa,
+            hinh: img,
+        }
+
+        console.log(ob);
+
+        const response = type === "add" ? await MonHocAPI.AddMonHoc(ob) : await MonHocAPI.EditMonHoc(ob);
+        console.log(response.data);
+        if (response.data) {
+            if(type === "add"){
+                alert("Thêm mới thành công");
+                setOpenAddMH(false);
+            }
+            if(type === "update"){
+                alert("Sửa thành công");
+                setOpenEditMH(false);
+            }
+            setMonHoc_Custom({ id: 0, ten: "", moTa: "", hinh: "" });
+            setResetMH(!resetMH);
+        }
+    }
+
     // const img = document.getElementById("upload").files[0].name;
     // console.log(img);
     // setHinh(img);
@@ -76,28 +161,12 @@ function QuanlyLT() {
             id: Id,
             ten: tenMonHoc,
             moTa: moTa,
-            hinh: "",
+            hinh: hinhAnh,
         })
         setOpenEditMH(true);
     }
 
-    const handleEdit = () => {
-        const data = async () => {
-            try {
-                const response = await MonHocAPI.EditMonHoc(monHoc_Custom);
-                if (response.data) {
-                    setMonHoc_Custom({ id: 0, ten: "", moTa: "", hinh: "" });
-                    alert("Sửa thông tin môn học thành công");
-                    setOpenEditMH(false);
-                    setResetMH(!resetMH);
-                }
-            } catch (error) {
-                console.log("Error...", error);
-            }
-        }
-        data();
-    }
-
+    
     const handOpenleDelete = (Id, tenMonHoc) => {
         setMonHoc_Custom({
             ...monHoc_Custom,
@@ -154,12 +223,17 @@ function QuanlyLT() {
     const handleEditLT = () => {
         const data = async () => {
             try {
-                const response = await LyThuyetAPI.EditLT(lyThuyet_Custom);
-                if (response.data) {
-                    setLyThuyet_Custom({ id: 0, tieuDe: "", noiDung: "", idMonHoc: 0 });
-                    alert("Sửa thông tin thành công");
-                    setOpenEditLT(false);
-                    setLyThuyet([]);
+                if (lyThuyet_Custom.tieuDe === "" || lyThuyet_Custom.noiDung === "") {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                }
+                else {
+                    const response = await LyThuyetAPI.EditLT(lyThuyet_Custom);
+                    if (response.data) {
+                        setLyThuyet_Custom({ id: 0, tieuDe: "", noiDung: "", idMonHoc: 0 });
+                        alert("Sửa thông tin thành công");
+                        setOpenEditLT(false);
+                        setLyThuyet([]);
+                    }
                 }
             } catch (error) {
                 console.log("Error...", error);
@@ -193,6 +267,8 @@ function QuanlyLT() {
         }
         data();
     }
+
+    console.log(monHoc_Custom);
 
     return (
         <div>
@@ -309,9 +385,8 @@ function QuanlyLT() {
                     <div className={cx('input-file')}>
                         <p>Hình ảnh cho môn học</p>
                         <input className={styles.upfile} id="upload" type="file" name='img' accept="image/*"
-                            value={monHoc_Custom.hinh}
-                            onChange={(event) => { setMonHoc_Custom({ ...monHoc_Custom, hinh: event.target.value }) }}
-                            onClick={(event) => { setMonHoc_Custom({ ...monHoc_Custom, hinh: event.target.value = null }) }}
+                            // value={monHoc_Custom.hinh}
+                            onChange={(event) => { setMonHoc_Custom({ ...monHoc_Custom, hinh: event.target.files[0] }) }}
                         />
                     </div>
 
@@ -323,7 +398,7 @@ function QuanlyLT() {
                     </Button>
                     <Button variant="contained" style={{ marginLeft: "20px" }}
                         endIcon={<SaveIcon />}
-                        onClick={handleAdd}
+                        onClick={() => handleAdd()}
                     >
                         Lưu
                     </Button>
@@ -337,8 +412,8 @@ function QuanlyLT() {
                     <div className={cx('input-file')}>
                         <p>Hình ảnh cho môn học</p>
                         <input className={styles.upfile} id="upload" type="file" name='img' accept="image/*"
-                        // value={monHoc_Custom.hinh}
-                        // onChange={(event) => {setMonHoc_Custom({...monHoc_Custom, hinh: event.target.value})}} 
+                            // value={monHoc_Custom.hinh}
+                            onChange={(event) => { setMonHoc_Custom({ ...monHoc_Custom, hinh: event.target.files[0] }) }}
                         // onClick={(event)=> {setMonHoc_Custom({...monHoc_Custom, hinh: event.target.value = null})}}
                         />
                     </div>
@@ -351,7 +426,7 @@ function QuanlyLT() {
                     </Button>
                     <Button variant="contained" style={{ marginLeft: "20px" }}
                         endIcon={<SaveIcon />}
-                        onClick={handleEdit}
+                        onClick={() => handleEdit()}
                     >
                         Lưu
                     </Button>
@@ -400,7 +475,7 @@ function QuanlyLT() {
                                 const data = editor.getData();
                                 setLyThuyet_Custom({ ...lyThuyet_Custom, noiDung: data });
                             }}
-                            
+
                         />
                     </div>
                     <Button variant="contained" style={{ backgroundColor: "darkgray" }}

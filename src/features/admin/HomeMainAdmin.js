@@ -40,25 +40,25 @@ function HomeMainAdmin() {
 
   const thongke = [
     {
-      icon: <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>,
+      icon: faBook,
       name: "Số bài lý thuyết",
       solieu: countLyThuyet,
       bg: "rgb(6, 159, 103)"
     },
     {
-      icon: <FontAwesomeIcon icon={faCode}></FontAwesomeIcon>,
+      icon: faCode,
       name: "Số bài code",
       solieu: countBaiLuyenTap,
       bg: "#FF8C00"
     },
     {
-      icon: <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>,
+      icon: faUser,
       name: "Số user",
       solieu: countUser,
       bg: "#0059ff"
     },
     {
-      icon: <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>,
+      icon: faPen,
       name: "Số bài trắc nghiệm",
       solieu: countLyThuyet,
       bg: "#FF1818"
@@ -79,16 +79,18 @@ function HomeMainAdmin() {
         {thongke.map((item, index) => {
           return (
             <div className={styles.thongkelythuyet} key={index} style={{ backgroundColor: item.bg }}>
-              <div className={styles.thongkelythuyetDetail}>
-                <div className={styles.icon_thongkelythuyetDetail}>
+              {/* <div className={styles.thongkelythuyetDetail}> */}
+                <FontAwesomeIcon icon={item.icon} />
+
+                {/* <div className={styles.icon_thongkelythuyetDetail}>
                   {item.icon}
-                </div>
+                </div> */}
                 <div className={styles.solieu_thongkelythuyetDetail}>
                   <span>{item.name}</span>
                   <br></br>
                   <span className={styles.solieu_lythuyet_tongbai}>{item.solieu}</span>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           );
         })}

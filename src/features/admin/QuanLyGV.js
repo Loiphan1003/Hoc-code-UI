@@ -63,17 +63,24 @@ function QuanLyGV() {
         const data = async () => {
             let id = '';
             try {
-                const response1 = await createUserWithEmailAndPassword(auth, mail, passworkEmail);
-                id = response1.user.uid;
-                const response = await GiangVienAPI.AddGV(id, name, mail, date, school);
-                if (response.data) {
-                    alert("Thêm tài khoản thành công");
-                    setName("");
-                    setMail("");
-                    setDate("");
-                    setSchool("");
-                    setPassworkEmail("");
-                    setReset(!reset);
+                if(name === "" || mail === "" || date === "" || school === "" || passworkEmail === "")
+                {
+                    alert("Chưa nhập đầy đủ thông tin");
+                }
+                else
+                {
+                    const response1 = await createUserWithEmailAndPassword(auth, mail, passworkEmail);
+                    id = response1.user.uid;
+                    const response = await GiangVienAPI.AddGV(id, name, mail, date, school);
+                    if (response.data) {
+                        alert("Thêm tài khoản thành công");
+                        setName("");
+                        setMail("");
+                        setDate("");
+                        setSchool("");
+                        setPassworkEmail("");
+                        setReset(!reset);
+                    } 
                 }
             } catch (error) {
                 if(String(error) === "FirebaseError: Firebase: Error (auth/email-already-in-use)."){
@@ -88,14 +95,20 @@ function QuanLyGV() {
     function handleUpdateuser() {
         const data = async () => {
             try {
-                // const response = 
-                await GiangVienAPI.EditGV(id, name, date, school);
-                alert("cap nhat thanh cong");
-                setName("");
-                setDate("");
-                setSchool("");
-                setReset(!reset);
-                setCloseEdit(true);
+                if(name === "" || date === "" || school === "")
+                {
+                    alert("Chưa nhập đầy đủ thông tin");
+                }
+                else
+                {
+                    await GiangVienAPI.EditGV(id, name, date, school);
+                    alert("cap nhat thanh cong");
+                    setName("");
+                    setDate("");
+                    setSchool("");
+                    setReset(!reset);
+                    setCloseEdit(true);
+                }
             } catch (error) {
                 console.log("Fetch data error: ", error);
             }

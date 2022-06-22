@@ -32,7 +32,7 @@ function Sider() {
         {
             title: 'Quản lý giảng viên',
             path: '/Admin/Quanlygv',
-            icon: <FontAwesomeIcon icon={faChalkboardTeacher} />,
+            icon: <FontAwesomeIcon icon={faChalkboardTeacher}  />,
         }
     ]
 
@@ -56,7 +56,7 @@ function Sider() {
                 </div>
                 {SideData.map((item, index) => {
                     return (
-                        <NavLink key={index} to={item.path} className={styles.nav_name}>
+                        <NavLink key={index} to={item.path} className={(navdata) => (navdata.isActive ? styles.nav_name_active : styles.nav_name)}>
                             <div className={styles.nav_text}>
                                 {item.icon}
                                 <span className={styles.nav_namemenu}>{item.title}</span>

@@ -73,6 +73,7 @@
     display: flex;
     width: 100%;
     justify-content: flex-start;
+    gap: 28px;
     align-items: stretch;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -82,30 +83,33 @@
 
 
 .course {
-    width: 260px;
-    background-color: var(--main-color);
+    width: 243px;
+    /* background-color: var(--main-color); */
     border-radius: 5px;
     height: 320px;
     display: flex;
-    margin-right: 20px;
-    margin-top: 20px;
     text-decoration: none;
     color: black;
     flex-direction: column;
+    position: relative;
     box-shadow: 0px 5px 5px 0px gray;
 }
 
-.course img {
+.course > img {
+    height: 160px;
+    border-radius: 5px 5px 0px 0px;
     cursor: pointer;
 }
 
-.course div {
-    width: 260px;
-    height: 100%;
+.course > div {
+    width: 100%;
+    height: 59%;
     display: block;
+    top: 42%;
+    position: absolute;
+    padding: 10px 5px;
     /* flex-direction: column; */
-    padding-left: 10px;
-    border-radius: 0px 30px 5px 5px;
+    border-radius: 0px 20px 5px 5px;
     background-color: white;
     box-sizing: border-box;
     /* justify-content: flex-start; */
@@ -113,8 +117,8 @@
 
 .discription {
     font-size: 14px;
-    width: 190x;
-    height: 45px;
+    width: auto;
+    height: 100px;
     /* background-color: red; */
     display: block;
 
@@ -139,6 +143,7 @@
 }
 
 .kind {
+    margin-top: 5px;
     color: var(--main-color);
     height: 10px;
 }

@@ -90,6 +90,7 @@ function UserIformation(props) {
         if (response.data === true) {
             localStorage.setItem('linkAvatar', JSON.stringify(window.btoa(linkAvatar)));
             alert("Lưu thành công");
+            setEdit(false);
         }
     }
 

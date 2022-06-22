@@ -75,6 +75,29 @@
     align-items: center;
     justify-content: space-between;
 }
+.coursework_content_item_close{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.coursework_content_item_close > div > .item_name_close{
+    margin: 0px;
+    text-decoration: none;
+    color: var(--main-color);
+    margin-left: 10px;
+    cursor: pointer;
+}
+.coursework_content_item_close > div > .item_name_close:hover{
+    text-decoration: underline;
+    color: var(--main-color);
+    margin-left: 10px;
+    cursor: pointer;
+}
 .countWork{
     margin: 0;
 }
@@ -90,11 +113,13 @@
     text-decoration: none;
     color: var(--main-color);
     margin-left: 10px;
+    cursor: pointer;
 }
 .item_name:hover{
     text-decoration: underline;
     color: var(--main-color);
     margin-left: 10px;
+    cursor: pointer;
 }
 .item_time{
     margin: 0;
@@ -129,9 +154,10 @@
 
 .courseWork_right_content{
     width: 20%;
+    margin-top: 10px;
     padding: 0 20px;
     display: flex;
-    justify-content: space-around;
+    gap: 20px;
     flex-direction: column;
     box-sizing: border-box;
 }

@@ -107,7 +107,7 @@ function Exercise(props) {
         if (reset === true) {
             const getAllBTCode = async () => {
                 try {
-                    const response = await BaiTapCodeAPI.getAll();
+                    const response = await BaiTapCodeAPI.getListByuID(uId);
                     setRows(response.data)
                 } catch (error) {
                     console.log("Fetch data error: ", error);
@@ -117,7 +117,7 @@ function Exercise(props) {
 
             const getAllBTTN = async () => {
                 try {
-                    const response = await BaiTapTN.getAll();
+                    const response = await BaiTapTN.getListByUid(uId);
                     setRowsTN(response.data)
                 } catch (error) {
                     console.log("Fetch data error: ", error);

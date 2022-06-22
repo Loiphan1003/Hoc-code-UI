@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import DeKiemTraAPI from '../../../apis/deKiemTraAPI';
 import { useStateIfMounted } from "use-state-if-mounted";
 
@@ -18,6 +18,7 @@ import { useStateIfMounted } from "use-state-if-mounted";
 function Coursework(props) {
 
     const params = useParams();
+    const navigate = useNavigate();
     const idPhong = params.roomId;
     const [draft, setDarft] = useState(false);
     const [open, setOpen] = useState(true);
@@ -91,6 +92,16 @@ function Coursework(props) {
             }
         }
         publicBaiKiemTra();
+    }
+
+    const handleExerciseClose = (id) => {
+        console.log(id);
+        if( isTeacher === true ){
+            navigate(`/test-overview/${id}`)
+        }
+        if(isTeacher === false){
+            alert("Bài tập đã kết thúc")
+        }
     }
 
     return (
@@ -234,10 +245,10 @@ function Coursework(props) {
                 {close && <div className={styles.coursework_content} >
                     {
                         test.testClose.map((test,index) => (
-                            <div className={styles.coursework_content_item} key={index}>
+                            <div className={styles.coursework_content_item_close} key={index}>
                                 <div className={styles.item_info}>
                                     <FontAwesomeIcon icon={faTableList} />
-                                    <NavLink className={styles.item_name} to={isTeacher ? `/test-overview/${test.id}`:`/test/${test.id}`} >{test.moTa}</NavLink>
+                                    <p className={styles.item_name_close}  onClick={() => handleExerciseClose(test.id)} >{test.moTa}</p>
                                     <p className={styles.item_time}>Đã kết thúc vào lúc {test.ngayKetThuc}</p>
                                 </div>
                                 <p className={styles.item_close}>Kết thúc</p>
@@ -259,10 +270,11 @@ function Coursework(props) {
                 <div className={styles.btn_fillter}>
                     <p>Trạng thái</p>
 
+                    {isTeacher === true &&
                     <div className={styles.status}>
                         <input id='Draft' type="checkbox" value="Nháp" />
                         <label id={styles.draft} htmlFor="Draft">Nháp</label>
-                    </div>
+                    </div>}
 
                     <div className={styles.status}>
                         <input id='Open' type="checkbox" value="Nháp" />

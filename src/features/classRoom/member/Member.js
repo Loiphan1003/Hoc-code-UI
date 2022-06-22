@@ -21,7 +21,7 @@ function Member(props) {
                 <GridToolbarColumnsButton />
                 <GridToolbarFilterButton />
                 <GridToolbarDensitySelector />
-                <GridToolbarExport/>
+                {localStorage.getItem("isTeacher") === "true" && <GridToolbarExport/>}
                 {/* <div onClick={() => handleImport()} >  
                     <p>Import thành viên</p>
                 </div> */}
@@ -44,11 +44,9 @@ function Member(props) {
     },[params.roomId])
 
 
-    const handleImport = () => {
-        console.log("runn")
-    }
-
-
+    // const handleImport = () => {
+    //     console.log("runn")
+    // }
 
     return (
 

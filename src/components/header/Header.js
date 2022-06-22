@@ -55,7 +55,7 @@ function Header(props) {
     return (
             <div id={styles.header} >
                 <div className={styles.List_menu}>
-                    <NavLink className={styles.logo} to="/home">
+                    <NavLink className={styles.logo} to={localStorage.getItem("uId") !== null ? "/home" : "/"}>
                         <img src={companyLogo} alt="Logo" />
                     </NavLink>
 

@@ -15,10 +15,13 @@ function UserNav(props) {
     const isTeacher = JSON.parse(localStorage.getItem('isTeacher')); 
 
     const logoutAccount = () => {
-        auth.signOut();
-        localStorage.clear();
-        navigate('/');
-        alert("Xác nhận đăng xuất");
+        
+        let confirm = window.confirm("Bạn thật sự muốn thoát")
+        if(confirm === true){
+            auth.signOut();
+            localStorage.clear();
+            navigate('/');
+        }
     }
 
     return (
