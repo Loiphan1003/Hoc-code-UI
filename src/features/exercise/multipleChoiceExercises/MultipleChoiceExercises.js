@@ -30,8 +30,7 @@ function MultipleChoiceExercises({ data }) {
                     answerOneRef.current.value === '' ||
                     answerSecondRef.current.value === '' ||
                     answerThreeRef.current.value === '' ||
-                    answerFourRef.current.value === '' ||
-                    trueAnswer){
+                    answerFourRef.current.value === ''){
                     alert("Vui lòng nhập đầy đủ thông tin");
                     return;
                 }
@@ -137,7 +136,7 @@ function MultipleChoiceExercises({ data }) {
                 <Button variant="contained" style={{ backgroundColor: "darkgray" }}
                     endIcon={<CancelIcon />}
                     onClick={
-                        navigate("/exercise")
+                        () => navigate("/exercise")
                     }
                 >
                     Hủy
@@ -145,7 +144,7 @@ function MultipleChoiceExercises({ data }) {
 
                 <Button variant="contained" style={{ marginLeft: "20px" }}
                     endIcon={<SaveIcon />}
-                    onClick={handleSave}
+                    onClick={() => handleSave()}
                 >
                     Lưu
                 </Button>

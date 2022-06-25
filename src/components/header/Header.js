@@ -45,11 +45,11 @@ function Header(props) {
         {
             path: "/room",
             name: "Phòng học",
-        },
-        {
-            path: "/aaa",
-            name: "Trợ giúp",
         }
+        // {
+        //     path: "/aaa",
+        //     name: "Trợ giúp",
+        // }
     ]
 
     return (

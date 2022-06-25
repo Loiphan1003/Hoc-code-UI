@@ -36,7 +36,7 @@ function CouresDetail(props) {
                 <div className={styles.couresDetailTitle}>
                     <div className={styles.heading}>
                         <h1>{nameTheory}</h1>
-                        <p>Hiểu sâu hơn về cách Javascript hoạt động, tìm hiểu về IIFE, closure, reference types, this keyword, bind, call, apply, prototype, ...</p>
+                        <p>Hiểu sâu hơn về cách hoạt động, tìm hiểu về IIFE, closure, reference types, this keyword, bind, call, apply, prototype, ...</p>
                     </div>
                     <div className={styles.what_learn}>
                         <h2>Bạn sẽ học được những gì?</h2>
@@ -51,15 +51,15 @@ function CouresDetail(props) {
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faCheck}/>
-                                Có nền tảng Javascript vững chắc để làm việc với mọi thư viện, framework viết bởi Javascript
+                                Có nền tảng vững chắc để làm việc với mọi thư viện, framework
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faCheck}/>
-                                Các kiến thức nâng cao của Javascript giúp code trở nên tối ưu hơn
+                                Các kiến thức nâng cao giúp code trở nên tối ưu hơn
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faCheck}/>
-                                Hiểu được các khái niệm khó như từ khóa this, phương thức bind, call, apply & xử lý bất đồng bộ
+                                Hiểu được các khái niệm khó về từ khóa, phương thức xử lý bất đồng bộ
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faCheck}/>

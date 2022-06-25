@@ -395,7 +395,7 @@ function QuanlyBTLT() {
                             multiline onChange= {e => setOutput(e.target.value)}/>
                     </div>
                     <div className={styles.btn_intputTestCase} >
-                        <Button  variant="contained" style={{backgroundColor:"ButtonShadow"}}
+                        <Button  variant="contained" style={{backgroundColor:"darkgray"}}
                             endIcon={<CancelIcon />}
                             onClick={() => setOpenTestCase(false)}
                         >
